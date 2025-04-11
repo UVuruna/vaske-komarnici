@@ -1,0 +1,31 @@
+#footer {
+  border-radius: 3rem;
+  padding: 3rem;
+  width: 90vw;
+  margin: 5vh auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+footer p {
+  margin: 0;
+}

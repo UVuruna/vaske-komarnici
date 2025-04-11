@@ -1,0 +1,158 @@
+#header {
+  color: white;
+  z-index: 1000;
+  background-color: inherit;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 7vh;
+  display: flex;
+  flex-direction: row;
+  white-space: nowrap;
+  padding: 5px 10vw;
+  align-items: center;
+}
+
+#header li {
+  font-weight: 600;
+}
+
+/* Logo */
+#logo {
+  cursor: pointer;
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-frame {
+  height: 95%;
+}
+
+/* Pages Span Section */
+
+nav > ul {
+  display: flex;
+}
+
+#menu-icon {
+  display: none;
+}
+
+.pages_frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 3rem;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 2;
+  flex-grow: 1;
+}
+
+.menu {
+  gap: 2rem;
+  padding: 0;
+  margin: 0;
+}
+
+#menu-icon {
+  width: 60px;
+}
+
+.dropdownTrigger {
+  cursor: pointer;
+  position: relative;
+}
+
+/* Dropdown */
+
+.dropdownTrigger ul {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 100%;
+  width: 10rem;
+  flex-direction: column;
+  white-space: nowrap;
+  border-radius: 1.3em;
+  padding: 0;
+  box-shadow: 0.75em 0.5em 5px rgba(80, 80, 80, 0.8);
+  text-align: center;
+}
+
+.dropdownTrigger li {
+  padding: 0.5em 1em;
+  display: block;
+  border-radius: 1em;
+}
+
+.dropdownTrigger:hover > ul,
+.dropdownTrigger:active > ul {
+  display: block;
+}
+
+/* --- TABLET Devices --- */
+@media (min-width: 750px) and (max-width: 1080px) {
+  #header {
+    padding: 0 2vw;
+  }
+}
+
+@media (max-width: 750px) {
+  #header {
+    flex-direction: row-reverse;
+  }
+
+  /* -- DROPDOWN Primary -- */
+
+  #menu-icon {
+    cursor: pointer;
+    display: flex;
+    height: 90%;
+    width: auto;
+  }
+
+  .pages_frame {
+    gap: 0;
+    padding-right: 0;
+    justify-content: left;
+  }
+
+  .menu {
+    display: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 5vh;
+    box-shadow: 0.75em 0.5em 5px rgba(80, 80, 80, 0.8);
+    border-radius: 2em;
+    gap: 0;
+    display: none;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    min-width: 40vw;
+  }
+
+  .menu > * {
+    padding: 1em 2em;
+    border-radius: 1em;
+    width: 100%;
+    text-align: center;
+    padding: 1em 2em;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  /* Center Button */
+
+  .pages_frame button {
+    margin: auto;
+  }
+}

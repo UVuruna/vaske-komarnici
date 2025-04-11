@@ -1,0 +1,170 @@
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../fonts/Poppins-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+html {
+  font-size: 16px;
+  font-family: 'Poppins';
+}
+
+body {
+  cursor: default;
+}
+
+button {
+  font-family: 'Poppins';
+  padding: 0.75em 1.5em;
+  text-align: center;
+  border-radius: 1.5em;
+  cursor: pointer;
+}
+
+button,
+li,
+i,
+img {
+  cursor: pointer;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+button:hover,
+button:active {
+  transform: scale(1.2);
+  font-weight: 700;
+}
+@media (min-width: 750px) {
+  .menu > li:hover,
+  .menu > li:active,
+  nav i:hover,
+  nav i:active {
+    transform: scale(1.2);
+    font-weight: 700;
+  }
+}
+
+img:hover,
+img:active {
+  transform: scale(1.1);
+}
+
+h1 {
+  margin: 0.5em 0 0.2em 0;
+  font-size: 2rem;
+}
+
+h2 {
+  margin: 0.5em 0 0.2em 0;
+  font-size: 1.5rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+button,
+span,
+li {
+  font-size: 1rem;
+}
+
+p {
+  margin: 5px 0;
+}
+
+h1,
+h2,
+h3,
+button {
+  font-weight: 600;
+  text-align: center;
+}
+
+button {
+  border: 2px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+}
+
+.media-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 1080px) and (max-width: 1440px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 750px) and (max-width: 1080px) {
+  html {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 750px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  border: none;
+  text-decoration: none;
+  background: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hoverHighlight {
+  cursor: pointer;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+
+  &:hover {
+    filter: hue-rotate(-35deg) contrast(60%) brightness(135%) saturate(135%);
+    -webkit-filter: hue-rotate(-35deg) contrast(60%) brightness(135%)
+      saturate(135%);
+    -moz-filter: hue-rotate(-35deg) contrast(60%) brightness(135%)
+      saturate(135%);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+}

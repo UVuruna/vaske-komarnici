@@ -1,0 +1,46 @@
+#about_us {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 7vh;
+  padding-bottom: 25px;
+  color: rgb(0, 0, 0);
+  border-radius: 3rem;
+}
+
+#about_us ul {
+  list-style-type: disc;
+  list-style-position: inside;
+  padding-left: 25px;
+  text-align: left;
+}
+
+section p {
+  text-align: justify;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5vw;
+}
+.cta button {
+  margin: 25px 0;
+  display: flex;
+}
+
+@media (min-width: 750px) and (max-width: 1080px) {
+  #about_us {
+    padding: 0 10vw;
+  }
+}
+
+/* --- MOBILE Devices --- */
+@media (max-width: 750px) {
+  #about_us {
+    padding: 0 5vw;
+  }
+}
