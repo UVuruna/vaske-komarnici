@@ -1,7 +1,7 @@
 <?php
-    $basePath = '../../';
+    $basePath = '../';
     $version  = '1.00';
-    $page     = 'plise';
+    $page     = 'naručivanje';
     $styles   = [];
 ?>
 

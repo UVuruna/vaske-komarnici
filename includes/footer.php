@@ -6,8 +6,11 @@
             termin za merenje, slobodno nas kontaktirajte putem sledećih kanala:
         </p>
         <ul>
-            <li>Telefon: <strong><a href="tel:+381631051331">+381 63 1051331</a></strong></li>
-            <li>Email: <strong><a href="mailto:vaske.komarnici@gmail.com">vaske.komarnici@gmail.com</a></strong></li>
+            <li>Telefon: <strong><a href=tel:<?php echo $companyPhone ?>><?php echo $companyPhoneGlobal ?></a></strong>
+            </li>
+            <li>Email: <strong><a
+                        href="mailto:<?php echo $companyEmail ?>?cc=<?php echo $developerEmail ?>"><?php echo $companyEmail ?></a></strong>
+            </li>
             <li>
                 <a href="https://www.google.com/maps?q=Beograd" target="_blank">
                     Adresa: <strong>Beograd, Srbija</strong>
@@ -17,8 +20,8 @@
     </section>
 
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> Vaske Komarnici | Sva prava zadržana</p>
-        <p>Autor: <a href="https://github.com/UVuruna" target="_blank">UVS — Uros Vuruna</a></p>
-        <p>Kontakt: <a href="mailto:vurunayas@gmail.com">vurunayas@gmail.com</a></p>
+        <p>&copy; <?php echo date("Y"); ?><?php echo $companyName ?> | Sva prava zadržana</p>
+        <p>Autor: <a href="<?php echo $developerSite ?>" target="_blank"><?php echo $developerName ?></a></p>
+        <p>Kontakt: <a href="mailto:<?php echo $developerEmail ?>"><?php echo $developerEmail ?></a></p>
     </footer>
 </div>
