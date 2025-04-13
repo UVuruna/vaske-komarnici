@@ -1,8 +1,8 @@
 <?php
     $basePath = '../';
-    $version  = '1.00';
     $page     = 'o_nama';
-    $styles   = ["css/about_us.css?v=$version"];
+    $styles   = ["css/about_us.css"];
+    $presentation = null;
 ?>
 
 <!DOCTYPE html>

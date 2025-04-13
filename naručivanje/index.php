@@ -1,8 +1,8 @@
 <?php
     $basePath = '../';
-    $version  = '1.00';
     $page     = 'naručivanje';
     $styles   = [];
+    $presentation = null;
 ?>
 
 <!DOCTYPE html>

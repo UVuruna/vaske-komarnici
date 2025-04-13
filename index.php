@@ -1,8 +1,8 @@
 <?php
     $basePath = './';
-    $version  = '1.00';
     $page     = null;
-    $styles   = ["css/about_us.css?v=$version", "css/catalogue.css?v=$version"];
+    $styles   = ["css/about_us.css", "css/catalogue.css"];
+    $presentation = true;
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@
         } from '<?php echo $basePath ?>js/video.js?v=<?php echo $version ?>'
 
         window.onload = event => {
-            loadVideo(basePath, 'promoVideo')
+            loadVideo(basePath, 'showcase')
         }
     </script>
 </body>

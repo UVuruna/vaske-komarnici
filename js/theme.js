@@ -1,8 +1,7 @@
 const version = localStorage.getItem('version')
 
-
 export let LOGO
-let ThemeList, ThemeColors, MENU, LightFrames, BUTTONS, ListItems, signs
+let ThemeList, ThemeColors, MENU, LightFrames, BUTTONS, ListItems
 
 export function themeCycle (basePath) {
   const THEME = localStorage.getItem('theme')
@@ -22,7 +21,6 @@ export function settingThemeOnload (globals, basePath) {
   LightFrames = globals.LightFrames
   BUTTONS = globals.BUTTONS
   ListItems = globals.ListItems
-  signs = globals.signs
 
   const Time = localStorage.getItem('Time')
 
@@ -48,28 +46,30 @@ export function settingTheme (Hovered, basePath) {
 
   // ----------> SINGS <----------
   document.body.style.backgroundColor = PresetColors.primary
-  signs.forEach(sign => {
-    sign.style.color = PresetColors.primaryElement
-    sign.style.boxShadow = `2px 2px 7px ${PresetColors.primaryElement},
-                           -2px -2px 7px ${PresetColors.primaryElement},
-                            2px -2px 7px ${PresetColors.primaryElement},
-                            -2px 2px 7px ${PresetColors.primaryElement}`
-    sign.style.backgroundColor= `${PresetColors.secondary}`
-    sign.style.border= `3px solid ${PresetColors.secondary}`
-  })
 
   // ----------> LIGHT BG <----------
   LightFrames.forEach(frame => {
     frame.style.backgroundColor = PresetColors.secondary
-    if (frame.tagName === 'LI') {
-      frame.style.border = `3px solid ${PresetColors.primaryElement}`
-      frame.style.boxShadow = `0 0 10px ${PresetColors.primaryElement}, 0 0 10px ${PresetColors.primaryElement}`
+
+    if (frame.tagName === 'LI' || frame.tagName === 'I') {
+      
+      frame.style.border = `3px solid ${PresetColors.secondary}`
+      frame.style.boxShadow = `2px 2px 4px ${PresetColors.primaryElement},
+                                -2px -2px 4px ${PresetColors.primaryElement},
+                                  2px -2px 4px ${PresetColors.primaryElement},
+                                  -2px 2px 4px ${PresetColors.primaryElement}`
 
       frame.addEventListener('mouseover', () => {
-        frame.style.boxShadow = `0 0 15px ${PresetColors.secondaryElement}, 0 0 25px ${PresetColors.secondaryElement}`
+        frame.style.boxShadow = `4px 4px 7px ${PresetColors.primaryElement},
+                                  -4px -4px 7px ${PresetColors.primaryElement},
+                                    4px -4px 7px ${PresetColors.primaryElement},
+                                    -4px 4px 7px ${PresetColors.primaryElement}`
       })
       frame.addEventListener('mouseout', () => {
-        frame.style.boxShadow = `0 0 10px ${PresetColors.primaryElement}, 0 0 10px ${PresetColors.primaryElement}`
+        frame.style.boxShadow = `2px 2px 4px ${PresetColors.primaryElement},
+                                  -2px -2px 4px ${PresetColors.primaryElement},
+                                    2px -2px 4px ${PresetColors.primaryElement},
+                                    -2px 2px 4px ${PresetColors.primaryElement}`
       })
     }
   })

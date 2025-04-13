@@ -1,8 +1,8 @@
 <?php
     $basePath = './';
-    $version  = '1.00';
     $page     = 'katalog';
-    $styles   = ["css/catalogue.css?v=$version"];
+    $styles   = ["css/catalogue.css"];
+    $presentation = ['FixedBoth-Window','FixedOne-Window','Rolo-Window','PliseBoth-Door','PliseOne-Door','PliseBoth-Window','PliseOne-Window'];
 ?>
 
 <!DOCTYPE html>
@@ -25,13 +25,13 @@
         } from '<?php echo $basePath ?>js/video.js?v=<?php echo $version ?>'
 
         window.onload = event => {
-            loadVideo(basePath, 'FixedBoth_Window', 'FixedBoth_Window')
-            loadVideo(basePath, 'FixedOne_Window', 'FixedOne_Window')
-            loadVideo(basePath, 'FixedBoth_Window', 'FixedBoth_Window')
-            loadVideo(basePath, 'FixedBoth_Window', 'FixedBoth_Window')
-            loadVideo(basePath, 'FixedBoth_Window', 'FixedBoth_Window')
-            loadVideo(basePath, 'FixedBoth_Window', 'FixedBoth_Window')
-            loadVideo(basePath, 'FixedBoth_Window', 'FixedBoth_Window')
+            loadVideo(basePath, 'FixedBoth-Window')
+            loadVideo(basePath, 'FixedOne-Window')
+            loadVideo(basePath, 'Rolo-Window')
+            loadVideo(basePath, 'PliseBoth-Door')
+            loadVideo(basePath, 'PliseOne-Door')
+            loadVideo(basePath, 'PliseBoth-Window')
+            loadVideo(basePath, 'PliseOne-Window')  
         }
     </script>
 </body>

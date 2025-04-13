@@ -38,12 +38,14 @@ export async function loadGlobals () {
     LOGO: document.getElementById('logo'),
     MENU: document.getElementById('menu-icon'),
     BUTTONS: document.querySelectorAll('button'),
-    LightFrames: document.querySelectorAll(
-      '#about_us, .selectFrame > *:not(:first-child), #footer'
-    ),
+    LightFrames: document.querySelectorAll(`
+      #about_us,
+      .selectFrame > *:not(:first-child),
+      #footer,
+      .fa-ban
+    `),
     ListItems: document.querySelectorAll('li strong'),
     videos: document.querySelectorAll('.video-loop'),
-    signs: document.querySelectorAll('.fa-ban'),
     ThemeList: ThemeList,
     ThemeColors: ThemeColors
   }
