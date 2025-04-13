@@ -10,10 +10,8 @@
     </p>
   </header>
 
-  <section>
-    <div class="media-container">
+  <section class="media-container">
       <video title="Prezentacija komarnika" class="video-loop" autoplay muted loop playsinline id="promoVideo"></video>
-    </div>
   </section>
 
   <div>

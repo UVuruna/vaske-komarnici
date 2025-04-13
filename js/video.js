@@ -1,4 +1,4 @@
-export function videoLoop (videos) {
+export function videoLoop(videos) {
   videos.forEach(video => {
     video.addEventListener('timeupdate', () => {
       if (video.currentTime >= 9) {
@@ -9,7 +9,7 @@ export function videoLoop (videos) {
   })
 }
 
-export function videoPlay (videos) {
+export function videoPlay(videos) {
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
@@ -32,35 +32,28 @@ export function videoPlay (videos) {
   })
 }
 
-export function loadVideo (basePath, videoID, videoName = null) {
+export function loadVideo(basePath, videoID, videoName = null) {
   const checkElementInterval = setInterval(() => {
     const videoElement = document.getElementById(videoID)
+    const version = localStorage.getItem('version')
 
     if (videoElement) {
       clearInterval(checkElementInterval)
 
-      if (videoName) {
-        videoElement.innerHTML = `
-                    <source src="${basePath}img/items/showroom/${videoName}.mp4?v=1.0" type="video/mp4" />
-                    <source src="${basePath}img/items/showroom/${videoName}.webm?v=1.0" type="video/webm" />
-                    <source src=".${basePath}img/items/showroom/${videoName}_h264.mp4?v=1.0" type="video/mp4" />
-                `
-      } else {
-        if (window.innerWidth >= 680) {
-          videoElement.innerHTML = `
-                        <source src="${basePath}img/items/showroom/showcase_PC.mp4?v=1.0" type="video/mp4" />
-                        <source src="${basePath}img/items/showroom/showcase_PC.webm?v=1.0" type="video/webm" />
-                        <source src="${basePath}img/items/showroom/showcase_PC_h264.mp4?v=1.0" type="video/mp4" />
-                    `
+      if (!videoName) {
+        if (window.innerWidth >=750) {
+          videoName = 'showcase-PC'
         } else {
-          videoElement.innerHTML = `
-                        <source src="${basePath}img/items/showroom/showcase_Mobile.mp4?v=1.0" type="video/mp4" />
-                        <source src="${basePath}img/items/showroom/showcase_Mobile.webm?v=1.0" type="video/webm" />
-                        <source src="${basePath}img/items/showroom/showcase_Mobile_h264.mp4?v=1.0" type="video/mp4" />
-                    `
+          videoName = 'showcase-Mobile'
         }
       }
+      videoElement.innerHTML = `
+                    <source src="${basePath}img/items/showroom/${videoName}.webm?v=${version}" type="video/webm" />
+                    <source src="${basePath}img/items/showroom/${videoName}.mp4?v=${version}" type="video/mp4" />
+                    <source src=".${basePath}img/items/showroom/${videoName}_H264.mp4?v=${version}" type="video/mp4" />
+                    <source src="${basePath}img/items/showroom/${videoName}.mov?v=${version}" type="video/quicktime" />
+                `
       videoElement.load()
     }
-  }, 100) // Mora interval jer nekada ne stigne da napravi taj DIV i onda ne moze da ucita
+  }, 50) // Mora interval jer nekada ne stigne da napravi taj DIV i onda ne moze da ucita
 }

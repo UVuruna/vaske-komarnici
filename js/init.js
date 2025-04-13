@@ -1,21 +1,29 @@
-import { themeCycle, settingThemeOnload } from './theme.js?v=1.0'
-import { mouseHoverLogo, mouseHoverDropdown } from './hoverLogoMenu.js?v=1.0'
-import { callContact } from './callContact.js?v=1.0'
-import { loadGlobals } from './globals.js?v=1.0'
-import { videoLoop, videoPlay, loadVideo } from './video.js?v=1.0'
-import { selectModel } from './selectModel.js?v=1.0'
+const version = localStorage.getItem('version')
 
-export async function init (basePath) {
-  const globals = loadGlobals()
+export async function init(basePath) {
+  const themeModule = await import(`./theme.js?v=${version}`);
+  const hoverLogoMenuModule = await import(`./hoverLogoMenu.js?v=${version}`);
+  const globalsModule = await import(`./globals.js?v=${version}`);
+  const videoModule = await import(`./video.js?v=${version}`);
+  const selectModelModule = await import(`./selectModel.js?v=${version}`);
 
-  settingThemeOnload(globals, basePath)
-  mouseHoverLogo(globals.LOGO)
-  mouseHoverDropdown()
-  videoPlay(globals.videos)
-  videoLoop(globals.videos)
-  selectModel()
+
+  const { themeCycle, settingThemeOnload } = themeModule;
+  const { mouseHoverLogo, mouseHoverDropdown } = hoverLogoMenuModule;
+  const { loadGlobals } = globalsModule;
+  const { videoLoop, videoPlay, loadVideo } = videoModule;
+  const { selectModel } = selectModelModule;
+
+
+  window.themeCycle = themeCycle;
+  window.loadVideo = loadVideo;
+
+
+  const globals = await loadGlobals();
+  settingThemeOnload(globals, basePath);
+  mouseHoverLogo(globals.LOGO);
+  mouseHoverDropdown();
+  videoPlay(globals.videos);
+  videoLoop(globals.videos);
+  selectModel();
 }
-
-window.themeCycle = themeCycle
-window.callContact = callContact
-window.loadVideo = loadVideo

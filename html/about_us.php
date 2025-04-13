@@ -1,6 +1,10 @@
+<?php
+$Title = str_replace(" | ", "<br>", $title);
+?>
+
 <div id="about_us">
   <header>
-    <h1>Izrada i montaža komarnika po meri</h1>
+    <h1><?php echo $Title ?></h1>
     <p>Profesionalna usluga izrade i montaže komarnika po meri za vaš prostor!</p>
   </header>
 

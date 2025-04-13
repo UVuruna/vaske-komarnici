@@ -5,25 +5,30 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 3rem;
 }
+
 
 #catalogue > div {
   width: 100%;
+  max-width: 1200px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 3rem;
 }
 
-#catalogue section {
+#catalogue section:not(.media-container) {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  border: 3px solid white;
+  border-radius: 50px;
+  padding: 1.5rem 0;
 }
 
 /* --- Promo Video Part --- */
@@ -98,26 +103,50 @@
 
 @media (max-width: 750px) {
   .selectFrame {
-    gap: 0.2rem;
+    gap: 0.5rem;
   }
 
   .selectFrame > * {
     border-radius: 20px;
   }
   .fa-ban {
-    margin-right: 1rem;
-    font-size: 2rem;
+    margin-right: 0.5rem;
   }
   .selectFrame ul {
-    gap: 0.3rem;
+    gap: 0.35rem;
   }
   .selectFrame h3,
   .selectFrame ul {
-    margin: 0 0.3rem;
+    margin: 0 0.5rem;
   }
   
   .selectFrame img {
-    height: 2rem;
+    height: 2.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .selectFrame {
+    gap: 0.35rem;
+  }
+
+  .selectFrame > * {
+    border-radius: 15px;
+  }
+  .fa-ban {
+    margin-right: 0;
+    font-size: 2rem;
+  }
+  .selectFrame ul {
+    gap: 0.15rem;
+  }
+  
+  .selectFrame img {
+    height: 1.8rem;
+  }
+  .selectFrame h3,
+  .selectFrame ul {
+    margin: 0 0.25rem;
   }
 }
 

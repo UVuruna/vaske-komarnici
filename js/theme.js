@@ -1,6 +1,8 @@
-import { ThemeList, ThemeColors } from './globals.js?v=1.0'
+const version = localStorage.getItem('version')
+
+
 export let LOGO
-let MENU, LightFrames, BUTTONS, ListItems, signs
+let ThemeList, ThemeColors, MENU, LightFrames, BUTTONS, ListItems, signs
 
 export function themeCycle (basePath) {
   const THEME = localStorage.getItem('theme')
@@ -13,6 +15,8 @@ export function themeCycle (basePath) {
 }
 
 export function settingThemeOnload (globals, basePath) {
+  ThemeColors = globals.ThemeColors
+  ThemeList = globals.ThemeList
   LOGO = globals.LOGO
   MENU = globals.MENU
   LightFrames = globals.LightFrames
@@ -131,8 +135,8 @@ export function settingTheme (Hovered, basePath) {
     }
   }
 
-  LOGO.src = `${basePath}img/logo/logo_${currentTheme}_${logoType}.webp?v=1.0`
-  MENU.src = `${basePath}img/other/dropdown-menu-${currentTheme}.svg?v=1.0`
+  LOGO.src = `${basePath}img/logo/logo_${currentTheme}_${logoType}.webp?v=${version}`
+  MENU.src = `${basePath}img/other/dropdown-menu-${currentTheme}.svg?v=${version}`
 }
 
 export function configDropdown (dropdownMenus, primaryColor, secondaryColor) {

@@ -33,6 +33,15 @@ html {
 
 body {
   cursor: default;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 5rem;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 button {

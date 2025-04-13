@@ -1,5 +1,5 @@
 <?php
-    $baseTitle = "Komarnici po meri Beograd | Izrada, Montaža, Servis";
+    $baseTitle = "Komarnici po meri Beograd - Izrada, Montaža, Servis";
 
     $developerName    = "UVS | Uroš Vuruna";
     $developerEmail   = "vurunayas@gmail.com";
@@ -30,14 +30,28 @@
             'o_nama' => "Ko smo mi? | {$baseTitle}",
             'kontakt' => "Kontakt | {$baseTitle}",
             'katalog' => "Katalog proizvoda (Tipovi komarnika) | {$baseTitle}",
-            'fiksni' => "Fiksni komarnici po meri | {$baseTitle}",
-            'rolo' => "Rolo komarnici po meri | {$baseTitle}",
-            'plise' => "Plise komarnici po meri | {$baseTitle}",
+            'fiksni' => "Fiksni komarnici | {$baseTitle}",
+            'rolo' => "Rolo komarnici | {$baseTitle}",
+            'plise' => "Plise komarnici | {$baseTitle}",
             'naručivanje' => "Poručite komarnike i zakažite montiranje | {$baseTitle}",
             default => $baseTitle,
         };
     ?>
     <title><?php echo htmlspecialchars($title); ?></title>
+
+    <!-- Open Graph za Google i društvene mreže -->
+    <meta property="og:title" content="<?php echo htmlspecialchars($title); ?>" />
+    <meta property="og:description"
+        content="Izrada i montaža rolo, plisiranih i fiksnih komarnika po meri u Beogradu.
+        Brza ugradnja i servis komarnika - zamena mreže i kanapa." />
+    <meta property="og:image" content="https://vaske-komarnici.com/img/logo/preview.jpg" />
+    <meta property="og:url" content="https://vaske-komarnici.com/" />
+    <meta property="og:type" content="website" />
+
+    <!-- Za Google da ne ignoriše -->
+    <meta name="robots" content="index, follow">
+
+    
 
     <link rel="icon" href="<?php echo $basePath ?>img/logo/favicon.svg?v=1.0" type="image/svg+xml" />
     <link rel="icon" href="<?php echo $basePath ?>img/logo/favicon-32x32.png?v=1.0" sizes="32x32" type="image/png" />
@@ -56,6 +70,9 @@
     }?>
     <link rel="stylesheet" href="<?php echo $basePath ?>css/footer.css?v=1.0" />
 
+    <script>
+        localStorage.setItem('version', <?php echo json_encode($version); ?>);
+    </script>
     <script type="module">
         import(`${'<?php echo $basePath ?>'}js/init.js?v=1.0`).then(module => {
             module.init('<?php echo $basePath ?>');

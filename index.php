@@ -19,6 +19,7 @@
 
     <script type="module">
         const basePath = '<?php echo $basePath ?>';
+        const version = '<?php echo $version ?>';
 
         import {
             loadVideo

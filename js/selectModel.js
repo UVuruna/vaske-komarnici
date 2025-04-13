@@ -1,4 +1,5 @@
 export function selectModel () {
+  const version = localStorage.getItem('version')
   const type = ['Both', 'One']
   const color = ['White', 'Brown', 'Antracite']
   const shade = ['Light', 'Dark']
@@ -20,7 +21,7 @@ export function selectModel () {
           const name = this.getAttribute('src').split('/').pop().split('.')[0] // White,Brown,Antracite,Light,Dark,Both,One
 
           if (!imageSRC.includes('_')) {
-            imageSRC = imageSRC.replace('.webp?v=1.0', '') + '_White-Light.webp?v=1.0'
+            imageSRC = imageSRC.replace(`.webp?v=${version}`, '') + `_White-Light.webp?v=${version}`
           }
 
           const list = [type, color, shade].find(list => list.includes(name))
@@ -34,7 +35,7 @@ export function selectModel () {
           const parts = imageSRC.split('/')
           const change = parts.pop().split('.')[0].split('_')[0]
           const newSRC = parts.join('/')
-          image.src = `${newSRC}/${change}.webp?v=1.0`
+          image.src = `${newSRC}/${change}.webp?v=${version}`
         }
 
         setTimeout(() => {

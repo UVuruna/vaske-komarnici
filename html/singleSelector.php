@@ -78,12 +78,12 @@ function displayProduct($basePath, $imgLink, $buttonLink, $priceText, $showTipKo
 
     echo "</ul>
 
-        <img
-            class='hoverHighlight'
-            src='{$basePath}img/items/product/{$imgLink}'
-            alt='Fiksni komarnik slika'
-        />
-        <h2>{$priceText}</h2>
-        <button onclick='window.location.href='{$buttonLink}';'>Saznaj više</button>
-    </section>";
+    <img
+        class='hoverHighlight'
+        src='{$basePath}img/items/product/{$imgLink}'
+        alt='Fiksni komarnik slika'
+    />
+    <h2>{$priceText}</h2>
+    <button onclick=\"window.location.href='{$buttonLink}';\">Saznaj više</button>
+</section>";
 }

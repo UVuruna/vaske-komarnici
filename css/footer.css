@@ -1,8 +1,8 @@
 #footer {
   border-radius: 3rem;
-  padding: 3rem;
-  width: 90vw;
-  margin: 5vh auto;
+  padding: 1.5rem;
+  width: 95vw;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 5vh;
