@@ -33,7 +33,7 @@
   </section>
 
   <section class="media-container">
-    <video title="Prezentacija fiksnih komarnika" class="video-loop" autoplay muted loop playsinline id="Fixed_Both">
+    <video title="Prezentacija obostranih fiksnih komarnika" class="video-loop" autoplay muted loop playsinline id="Fixed_Both">
     </video>
   </section>
 
@@ -66,7 +66,7 @@
   </div>
 
   <section class="media-container">
-    <video title="Prezentacija fiksnih komarnika" class="video-loop" autoplay muted loop playsinline id="Fixed_One">
+    <video title="Prezentacija jednostranih fiksnih komarnika" class="video-loop" autoplay muted loop playsinline id="Fixed_One">
     </video>
   </section>
 

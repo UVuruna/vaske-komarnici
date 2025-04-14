@@ -21,10 +21,13 @@ export async function init(basePath, presentation) {
   mouseHoverLogo(globals.LOGO)
   mouseHoverDropdown()
 
-  if (presentation === true || presentation === false) {
-    console.log('pusta video')
-    videoPlay(globals.videos)
-    videoLoop(globals.videos)
+  if (presentation === true || presentation === false) { 
+    
     selectModel(presentation)
+
+    setTimeout(() => {
+      videoPlay(globals.videos)
+      videoLoop(globals.videos)
+    }, 100)
   }
 }

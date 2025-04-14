@@ -15,6 +15,7 @@ export function videoPlay(videos) {
             entries.forEach(entry => {
                 const video = entry.target
                 if (entry.isIntersecting) {
+                    console.log('Pušta video: '+video.title)
                     video.play()
                 } else {
                     video.pause()
@@ -22,7 +23,7 @@ export function videoPlay(videos) {
             })
         },
         {
-            threshold: 1
+            threshold: 0.5
         }
     )
 
@@ -54,9 +55,7 @@ export function loadVideo(basePath, videoID) {
                     <source src=".${basePath}img/items/showroom/${videoID}_H264.mp4?v=${version}" type="video/mp4" />
                     <source src="${basePath}img/items/showroom/${videoID}.mov?v=${version}" type="video/quicktime" />
                 `
-            
-            videoElement.load()
-            
+            videoElement.load()  
         }
-    }, 50) // Mora interval jer nekada ne stigne da napravi taj DIV i onda ne moze da ucita
+    }, 10) // Mora interval jer nekada ne stigne da napravi taj DIV i onda ne moze da ucita
 }
