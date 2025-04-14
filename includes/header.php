@@ -16,10 +16,10 @@
                         <li><a href="<?php echo $basePath ?>katalog/plise">Plise</a></li>
                     </ul>
                 </li>
-                <li><a href="<?php echo $basePath ?>o_nama" class="white">O nama</a></li>
-                <li><a href="<?php echo $basePath ?>katalog/" class="white">Katalog</a></li>
-                <li><a href="<?php echo $basePath ?>naručivanje/" class="white">Naručivanje</a></li>
-                <li><a href="<?php echo $basePath ?>kontakt/" class="white">Kontakt</a></li>
+                <li><a href="<?php echo $basePath ?>o_nama">O nama</a></li>
+                <li><a href="<?php echo $basePath ?>katalog/">Katalog</a></li>
+                <li><a href="<?php echo $basePath ?>naručivanje/">Naručivanje</a></li>
+                <li><a href="<?php echo $basePath ?>kontakt/">Kontakt</a></li>
             </ul>
         </nav>
         <button onclick="window.location.href='tel:<?php echo $companyPhone ?>'">

@@ -2,7 +2,7 @@
     $basePath = './';
     $page     = null;
     $styles   = ["css/about_us.css", "css/catalogue.css"];
-    $presentation = true;
+    $presentation = false;
 ?>
 
 <!DOCTYPE html>

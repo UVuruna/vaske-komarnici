@@ -1,7 +1,12 @@
 const version = localStorage.getItem('version')
 
 export let LOGO
-let ThemeList, ThemeColors, MENU, LightFrames, BUTTONS, ListItems
+let ThemeList,
+  ThemeColors,
+  MENU,
+  LightFrames,
+  BUTTONS,
+  ListItems
 
 export function themeCycle (basePath) {
   const THEME = localStorage.getItem('theme')
@@ -9,11 +14,10 @@ export function themeCycle (basePath) {
   let newIndex = (currentIndex + 1) % ThemeList.length
   localStorage.setItem('theme', ThemeList[newIndex])
 
-  settingTheme(true, basePath
-  )
+  settingTheme(true, basePath)
 }
 
-export function settingThemeOnload (globals, basePath) {
+export function settingThemeOnload (globals, basePath, mouseHoverMenu) {
   ThemeColors = globals.ThemeColors
   ThemeList = globals.ThemeList
   LOGO = globals.LOGO
@@ -44,6 +48,7 @@ export function settingTheme (Hovered, basePath) {
   let logoType
   const dropdownMenus = document.querySelectorAll('#header ul')
 
+
   // ----------> SINGS <----------
   document.body.style.backgroundColor = PresetColors.primary
 
@@ -52,7 +57,6 @@ export function settingTheme (Hovered, basePath) {
     frame.style.backgroundColor = PresetColors.secondary
 
     if (frame.tagName === 'LI' || frame.tagName === 'I') {
-      
       frame.style.border = `3px solid ${PresetColors.secondary}`
       frame.style.boxShadow = `2px 2px 4px ${PresetColors.primaryElement},
                                 -2px -2px 4px ${PresetColors.primaryElement},
@@ -94,14 +98,13 @@ export function settingTheme (Hovered, basePath) {
   // ----------> LIST strong Items <----------
   ListItems.forEach(item => {
     item.style.color = PresetColors.primaryElement
-    item.style.fontWeight = '700'
     item.style.cursor = 'pointer'
     if (!item.closest('.selectFrame')) {
-      item.style.fontSize = '1.3rem'
+      item.style.fontSize = '1.15rem'
     }
-
   })
 
+  // ----------> Navigation Dropdown Menu <----------
   configDropdown(
     dropdownMenus,
     PresetColors.primary,
@@ -115,6 +118,7 @@ export function settingTheme (Hovered, basePath) {
     )
   })
 
+  // ----------> Choosing LOGO <----------
   const Time = localStorage.getItem('Time')
   if (
     (Time >= 6 && Time < 7) ||
@@ -143,7 +147,7 @@ export function configDropdown (dropdownMenus, primaryColor, secondaryColor) {
   dropdownMenus.forEach(menu => {
     if (
       !menu.classList.contains('menu') ||
-      window.matchMedia('(max-width: 750px)').matches
+      window.matchMedia('(max-width: 800px)').matches
     ) {
       menu.style.border = `3px solid ${secondaryColor}`
       menu.style.backgroundColor = primaryColor
@@ -153,13 +157,7 @@ export function configDropdown (dropdownMenus, primaryColor, secondaryColor) {
         dropdownEleHoverColor(element, secondaryColor)
       })
     } else {
-      menu.style.border = `none`
-      menu.style.backgroundColor = ''
-
-      const menuElements = Array.from(menu.children)
-      menuElements.forEach(element => {
-        dropdownEleHoverColor(element, '')
-      })
+      menu.style.border = 'none'
     }
   })
 }

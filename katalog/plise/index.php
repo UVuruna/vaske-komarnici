@@ -1,8 +1,9 @@
 <?php
     $basePath = '../../';
     $page     = 'plise';
-    $styles   = [];
-    $presentation = ['PliseBoth-Door','PliseOne-Door','PliseBoth-Window','PliseOne-Window'];
+    $styles   = ["css/catalogue.css", "css/singleCatalogue.css"];
+    $genericTitle = true;
+    $presentation = true;
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +13,7 @@
 <body>
     <?php include "{$basePath}includes/header.php"; ?>
     <main>
+        <?php include "{$basePath}html/plise.php"; ?>
     </main>
     <?php include "{$basePath}includes/footer.php"; ?>
 
@@ -24,10 +26,10 @@
         } from '<?php echo $basePath ?>js/video.js?v=<?php echo $version ?>'
 
         window.onload = event => {
-            loadVideo(basePath, 'PliseBoth-Door')
-            loadVideo(basePath, 'PliseOne-Door')
-            loadVideo(basePath, 'PliseBoth-Window')
-            loadVideo(basePath, 'PliseOne-Window')  
+            loadVideo(basePath, 'PliseDoor_Both');
+            loadVideo(basePath, 'PliseDoor_One');
+            loadVideo(basePath, 'PliseWindow_Both');
+            loadVideo(basePath, 'PliseWindow_One')
         }
     </script>
 </body>

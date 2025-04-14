@@ -1,8 +1,9 @@
 <?php
     $basePath = '../../';
     $page     = 'fiksni';
-    $styles   = ["css/catalogue.css", "css/fixed.css"];
-    $presentation = ['FixedBoth-Window','FixedOne-Window'];
+    $styles   = ["css/catalogue.css", "css/singleCatalogue.css"];
+    $genericTitle = true;
+    $presentation = true;
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +26,8 @@
         } from '<?php echo $basePath ?>js/video.js?v=<?php echo $version ?>'
 
         window.onload = event => {
-            loadVideo(basePath, 'FixedBoth-Window');
-            loadVideo(basePath, 'FixedOne-Window')
+            loadVideo(basePath, 'Fixed_Both');
+            loadVideo(basePath, 'Fixed_One')
         }
     </script>
 </body>

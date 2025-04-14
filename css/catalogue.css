@@ -130,17 +130,13 @@
   .selectFrame ul {
     gap: 0.35rem;
   }
-  .selectFrame h3,
-  .selectFrame ul {
-    margin: 0 0.5rem;
-  }
   
   .selectFrame img {
     height: 2.2rem;
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
   .selectFrame {
     gap: 0.35rem;
   }

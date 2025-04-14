@@ -42,9 +42,9 @@ export function loadVideo(basePath, videoID) {
 
             if (videoID === 'showcase') {
                 if (window.innerWidth >= 750) {
-                    videoID = videoID + '-PC'
+                    videoID = videoID + '_PC'
                 } else {
-                    videoID = videoID + '-Mobile'
+                    videoID = videoID + '_Mobile'
                 }
             }
             

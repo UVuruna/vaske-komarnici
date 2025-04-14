@@ -1,6 +1,6 @@
 import os
 
-folder_path = "U:/xampp/htdocs/vaske-komarnici/img/items/showroom/"
+folder_path = "U:/xampp/htdocs/vaske-komarnici/img/items/product/"
 prefiks = "novi_"
 COUNTER = 0
 for fajl in os.listdir(folder_path):
@@ -9,11 +9,17 @@ for fajl in os.listdir(folder_path):
     
     if os.path.isfile(stara_putanja):
         COUNTER += 1
-        if '.mov' in ime_fajla:
-            ime_fajla = ime_fajla.replace(" H264", "")
-        elif ' H264' in ime_fajla:
-            ime_fajla = ime_fajla.replace(" H264", "_H264")
+        if 'Plise' in ime_fajla:
+            for i in ['Window','Door']:
+                if i in ime_fajla:
+                    ime_fajla = ime_fajla.replace(f"_{i}", "")
+                    ime_fajla = ime_fajla.replace("Plise", f"Plise{i}")
         else:
+            ime_fajla = ime_fajla.replace("_Window", "")
+            if 'Rolo' in ime_fajla:
+                ime_fajla = ime_fajla.replace("Rolo", "Rolled")
+        
+        if ime_fajla == fajl:
             continue
         
         nova_putanja = os.path.join(folder_path, ime_fajla)

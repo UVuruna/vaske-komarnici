@@ -15,7 +15,7 @@
 }
 
 #header li {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* Logo */
@@ -32,7 +32,7 @@
 
 /* Pages Span Section */
 
-nav > ul {
+.menu {
   display: flex;
 }
 
@@ -96,13 +96,21 @@ nav > ul {
 }
 
 /* --- TABLET Devices --- */
-@media (min-width: 750px) and (max-width: 1080px) {
+@media (min-width: 800px) and (max-width: 1080px) {
   #header {
     padding: 0 2vw;
   }
+  .pages_frame {
+    gap: 2rem;
+  }
+  
+  .menu {
+    gap: 1.5rem;
+  }
+  
 }
 
-@media (max-width: 750px) {
+@media (max-width: 800px) {
   #header {
     flex-direction: row-reverse;
   }
@@ -140,10 +148,10 @@ nav > ul {
 
   .menu > * {
     padding: 1em 2em;
-    border-radius: 1em;
     width: 100%;
     text-align: center;
     padding: 1em 2em;
+    border-radius: 1.5rem;
   }
 
   .menu.show {

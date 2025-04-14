@@ -18,9 +18,6 @@
 header p {
   text-align: center;
 }
-section p {
-  text-align: justify;
-}
 
 .cta {
   display: flex;
@@ -30,7 +27,7 @@ section p {
   padding: 0 5vw;
 }
 .cta button {
-  margin: 25px 0;
+  margin: 1rem 0;
   display: flex;
 }
 

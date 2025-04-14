@@ -106,8 +106,8 @@
 
     <!-- Loading INIT JavaScript -->
     <script type="module">
-        const path = '<?php echo $basePath ?>'
-        const presentation = '<?php echo $presentation ?>'
+        const path = '<?php echo $basePath ?>';
+        const presentation = <?php echo json_encode($presentation) ?>;
 
         import(`${path}js/init.js?v=<?php echo $version?>`).then(module => {
             module.init(path, presentation);

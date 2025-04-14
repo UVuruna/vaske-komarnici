@@ -3,8 +3,8 @@
     "short_name":"Komarnici",
     "start_url": "/",
     "display":"standalone",
-    "theme_color":"#ffffff",
-    "background_color":"#ffffff",
+    "theme_color":"#646464",
+    "background_color":"#646464",
     "icons": [
         {
             "src":"./img/logo/android-chrome-192x192.png",
