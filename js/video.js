@@ -34,10 +34,11 @@ export function videoPlay(videos) {
 }
 
 export function loadVideo(basePath, videoID) {
+    
     const checkElementInterval = setInterval(() => {
         const videoElement = document.getElementById(videoID)
         const version = localStorage.getItem('version')
-
+        
         if (videoElement) {
             clearInterval(checkElementInterval)
 
@@ -55,7 +56,7 @@ export function loadVideo(basePath, videoID) {
                     <source src=".${basePath}img/items/showroom/${videoID}_H264.mp4?v=${version}" type="video/mp4" />
                     <source src="${basePath}img/items/showroom/${videoID}.mov?v=${version}" type="video/quicktime" />
                 `
-            videoElement.load()  
+            videoElement.load()
         }
-    }, 10) // Mora interval jer nekada ne stigne da napravi taj DIV i onda ne moze da ucita
+    }, 20) // Mora interval jer nekada ne stigne da napravi taj DIV i onda ne moze da ucita
 }

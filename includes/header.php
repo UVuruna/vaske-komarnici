@@ -11,9 +11,9 @@
                 <li class="dropdownTrigger">
                     Tip Komarnika <i class="fa-solid fa-caret-down"></i>
                     <ul>
-                        <li><a href="<?php echo $basePath ?>katalog/fiksni-komarnici">Fiksni</a></li>
-                        <li><a href="<?php echo $basePath ?>katalog/rolo-komarnici">Rolo</a></li>
-                        <li><a href="<?php echo $basePath ?>katalog/plise">Plise</a></li>
+                        <li onclick="location.href='<?php echo $basePath ?>katalog/fiksni-komarnici'">Fiksni</li>
+                        <li onclick="location.href='<?php echo $basePath ?>katalog/rolo-komarnici'">Rolo</li>
+                        <li onclick="location.href='<?php echo $basePath ?>katalog/plise'">Plise</li>
                     </ul>
                 </li>
                 <li><a href="<?php echo $basePath ?>o_nama">O nama</a></li>
