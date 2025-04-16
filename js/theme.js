@@ -1,12 +1,25 @@
 const version = localStorage.getItem('version')
 
-export let LOGO
 let ThemeList,
   ThemeColors,
+  LOGO,
   MENU,
   LightFrames,
   BUTTONS,
   ListItems
+
+export function colorChange(element, primaryColor, secondaryColor) {
+  console.log(primaryColor)
+  console.log(secondaryColor)
+  element.style.filter = primaryColor;
+
+  element.addEventListener('mouseover', () => {
+    element.style.filter = secondaryColor;
+  })
+  element.addEventListener('mouseout', () => {
+    element.style.filter = primaryColor;
+  })
+}
 
 export function themeCycle (basePath) {
   const THEME = localStorage.getItem('theme')
@@ -14,7 +27,7 @@ export function themeCycle (basePath) {
   let newIndex = (currentIndex + 1) % ThemeList.length
   localStorage.setItem('theme', ThemeList[newIndex])
 
-  settingTheme(true, basePath)
+  settingTheme(basePath)
 }
 
 export function settingThemeOnload (globals, basePath, mouseHoverMenu) {
@@ -38,14 +51,13 @@ export function settingThemeOnload (globals, basePath, mouseHoverMenu) {
     localStorage.setItem('theme', 'night')
   }
 
-  //localStorage.setItem('theme', 'noon') // TESTING PURPOSES
-  settingTheme(null, basePath)
+  localStorage.setItem('theme', 'afternoon') // TESTING PURPOSES
+  settingTheme(basePath)
 }
 
-export function settingTheme (Hovered, basePath) {
+export function settingTheme (basePath) {
   let currentTheme = localStorage.getItem('theme')
   let PresetColors = ThemeColors[currentTheme]
-  let logoType
   const dropdownMenus = document.querySelectorAll('#header ul')
 
 
@@ -64,10 +76,10 @@ export function settingTheme (Hovered, basePath) {
                                   -2px 2px 4px ${PresetColors.primaryElement}`
 
       frame.addEventListener('mouseover', () => {
-        frame.style.boxShadow = `4px 4px 7px ${PresetColors.primaryElement},
-                                  -4px -4px 7px ${PresetColors.primaryElement},
-                                    4px -4px 7px ${PresetColors.primaryElement},
-                                    -4px 4px 7px ${PresetColors.primaryElement}`
+        frame.style.boxShadow = `4px 4px 7px ${PresetColors.secondaryElement},
+                                  -4px -4px 7px ${PresetColors.secondaryElement},
+                                    4px -4px 7px ${PresetColors.secondaryElement},
+                                    -4px 4px 7px ${PresetColors.secondaryElement}`
       })
       frame.addEventListener('mouseout', () => {
         frame.style.boxShadow = `2px 2px 4px ${PresetColors.primaryElement},
@@ -90,6 +102,13 @@ export function settingTheme (Hovered, basePath) {
       })
       link.addEventListener('mouseout', () => {
         link.style.boxShadow = `5px 5px 20px ${PresetColors.primaryElement}, -5px -5px 20px ${PresetColors.primaryElement}`
+        link.style.backgroundColor = PresetColors.primaryElement
+      })
+    } else {
+      link.addEventListener('mouseover', () => {
+        link.style.backgroundColor = PresetColors.secondaryElement
+      })
+      link.addEventListener('mouseout', () => {
         link.style.backgroundColor = PresetColors.primaryElement
       })
     }
@@ -118,28 +137,7 @@ export function settingTheme (Hovered, basePath) {
     )
   })
 
-  // ----------> Choosing LOGO <----------
-  const Time = localStorage.getItem('Time')
-  if (
-    (Time >= 6 && Time < 7) ||
-    (Time >= 12 && Time < 13) ||
-    (Time >= 18 && Time < 19) ||
-    Time < 1
-  ) {
-    if (!Hovered) {
-      logoType = 'fire'
-    } else {
-      logoType = 'simple'
-    }
-  } else {
-    if (!Hovered) {
-      logoType = 'simple'
-    } else {
-      logoType = 'fire'
-    }
-  }
-
-  LOGO.src = `${basePath}img/logo/logo_${currentTheme}_${logoType}.webp?v=${version}`
+  colorChange(LOGO, PresetColors.filterPrimary, PresetColors.filterSecondary)
   MENU.src = `${basePath}img/other/dropdown-menu-${currentTheme}.svg?v=${version}`
 }
 

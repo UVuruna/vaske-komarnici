@@ -101,8 +101,8 @@ $Title = str_replace(" | ", "<br>", $title);
       Kontaktirajte nas odmah i rezervišite besplatno merenje za komarnike po
       vašoj meri!
     </p>
-    <a href="<?php echo $basePath ?>kontakt/">
-      <button class="cta-button">Kontaktirajte nas</button>
-    </a>
+    <button class="cta-button" onclick="window.location.href='<?php echo $basePath ?>kontakt/'">
+      Kontaktirajte nas
+    </button>
   </section>
 </div>

@@ -7,13 +7,13 @@
 
 <!DOCTYPE html>
 <html lang="sr">
-<?php include "{$basePath}includes/head.php"; ?>
+<?php include "{$basePath}html/includes/head.php"; ?>
 
 <body>
-    <?php include "{$basePath}includes/header.php"; ?>
+    <?php include "{$basePath}html/includes/header.php"; ?>
     <main>
     </main>
-    <?php include "{$basePath}includes/footer.php"; ?>
+    <?php include "{$basePath}html/includes/footer.php"; ?>
 </body>
 
 </html>

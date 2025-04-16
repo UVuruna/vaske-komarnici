@@ -8,16 +8,16 @@
 
 <!DOCTYPE html>
 <html lang="sr">
-<?php include "{$basePath}includes/head.php"; ?>
+<?php include "{$basePath}html/includes/head.php"; ?>
 
 <body>
-    <?php include "{$basePath}includes/header.php"; ?>
+    <?php include "{$basePath}html/includes/header.php"; ?>
     <main>
         <?php include "{$basePath}html/fixed.php"; ?>
         <?php include "{$basePath}html/rolled.php"; ?>
         <?php include "{$basePath}html/plise.php"; ?>
     </main>
-    <?php include "{$basePath}includes/footer.php"; ?>
+    <?php include "{$basePath}html/includes/footer.php"; ?>
 
     <script type="module">
         const basePath = '<?php echo $basePath ?>';
@@ -34,7 +34,8 @@
             loadVideo(basePath, 'PliseDoor_Both');
             loadVideo(basePath, 'PliseDoor_One');
             loadVideo(basePath, 'PliseWindow_Both');
-            loadVideo(basePath, 'PliseWindow_One') 
+            loadVideo(basePath, 'PliseWindow_One');
         }
+        
     </script>
 </body>

@@ -1,0 +1,41 @@
+/*! Font Awesome Minimal 6.5.0 – Only fa-solid: fa-ban, fa-house, fa-caret-down */
+
+/* Uvoz fonta – koristi se CDN lokacija za fa-solid */
+@font-face {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-style: normal;
+    font-display: block;
+    src: url("../fonts/fa-solid-subset.woff2") format("woff2")
+  }
+  
+  /* Osnovne deklaracije za font awesome */
+  .fa, .fa-solid {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-style: normal;
+    display: inline-block;
+    text-decoration: inherit;
+    text-align: center;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Ikonice koje želimo */
+  
+  /* fa-ban – Unicode: \f05e */
+  .fa-ban:before {
+    content: "\f05e";
+  }
+  
+  /* fa-home – Unicode: \f015  */
+  .fa-home:before {
+    content: "\f015";
+  }
+  
+  /* fa-caret-down – Unicode: \f0d7 */
+  .fa-caret-down:before {
+    content: "\f0d7";
+  }

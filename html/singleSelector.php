@@ -7,15 +7,16 @@ function displayProduct(
     $altText,
     $buttonLink = null,
     $priceText = null,
-    $showTipRama = null): void {
-    
+    $showTipRama = null
+): void {
+
     $titleHTML = '';
     if ($title) {
         $titleHTML = <<<HTML
             <h2>{$altText}</h2>
         HTML;
     }
-    
+
     $tipRamaHtml = '';
     if ($showTipRama) {
         $tipRamaHtml = <<<HTML
@@ -24,6 +25,8 @@ function displayProduct(
                 <ul>
                     <li>
                         <img
+                            width='40'
+                            height='40'
                             class='hoverHighlight'
                             src='{$basePath}img/other/Both.webp?{$version}'
                             alt='{$altText} dvostrani'
@@ -31,6 +34,8 @@ function displayProduct(
                     </li>
                     <li>
                         <img
+                            width='40'
+                            height='40'
                             class='hoverHighlight'
                             src='{$basePath}img/other/One.webp?{$version}'
                             alt='{$altText} jednostrani'
@@ -58,66 +63,101 @@ function displayProduct(
     }
 
     echo <<<HTML
-    <span class="promo">
-        {$titleHTML}
-        <ul class='selectFrame'>
-            <li>
-                <strong><i class='fa-solid fa-ban'></i></strong>
-            </li>
-            <li>
-                <h3><strong>Boja rama</strong></h3>
-                <ul>
-                    <li>
-                        <img
-                            class='hoverHighlight'
-                            src='{$basePath}img/other/White.webp?{$version}'
-                            alt='{$altText} bele boje'
-                        />
-                    </li>
-                    <li>
-                        <img
-                            class='hoverHighlight'
-                            src='{$basePath}img/other/Antracite.webp?{$version}'
-                            alt='{$altText} antracit boje'
-                        />
-                    </li>
-                    <li>
-                        <img
-                            class='hoverHighlight'
-                            src='{$basePath}img/other/Brown.webp?{$version}'
-                            alt='{$altText} braon boje'
-                        />
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <h3><strong>Boja mreže</strong></h3>
-                <ul>
-                    <li>
-                        <img
-                            class='hoverHighlight'
-                            src='{$basePath}img/other/Light.webp?{$version}'
-                            alt='{$altText} tamnije (crne) mreže'
-                        />
-                    </li>
-                    <li>
-                        <img
-                            class='hoverHighlight'
-                            src='{$basePath}img/other/Dark.webp?{$version}'
-                            alt='{$altText} tamnije (crne) mreže'
-                        />
-                    </li>
-                </ul>
-            </li>
-            {$tipRamaHtml}
-        </ul>
-        <img
-            class='promoImage hoverHighlight'
-            src='{$basePath}img/items/product/{$imgLink}'
-            alt='{$altText} slika'
-        />
-        {$cenaHtml}
-        {$saznajVišeHtml}
-    </span>
+    <div class='promoContainer'>
+        <span class="promo">
+            {$titleHTML}
+            <ul class='selectFrame'>
+                <li>
+                    <strong>
+                        <i
+                            class='fa-solid fa-ban'
+                            width='45'
+                            height='45'>
+                        </i>
+                    </strong>
+                </li>
+                <li>
+                    <h3><strong>Boja rama</strong></h3>
+                    <ul>
+                        <li>
+                            <img
+                                width='40'
+                                height='40'
+                                class='hoverHighlight'
+                                src='{$basePath}img/other/White.webp?{$version}'
+                                alt='{$altText} bele boje'
+                            />
+                        </li>
+                        <li>
+                            <img
+                                width='40'
+                                height='40'
+                                class='hoverHighlight'
+                                src='{$basePath}img/other/Antracite.webp?{$version}'
+                                alt='{$altText} antracit boje'
+                            />
+                        </li>
+                        <li>
+                            <img
+                                width='40'
+                                height='40'
+                                class='hoverHighlight'
+                                src='{$basePath}img/other/Brown.webp?{$version}'
+                                alt='{$altText} braon boje'
+                            />
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h3><strong>Boja mreže</strong></h3>
+                    <ul>
+                        <li>
+                            <img
+                                width='40'
+                                height='40'
+                                class='hoverHighlight'
+                                src='{$basePath}img/other/Light.webp?{$version}'
+                                alt='{$altText} tamnije (crne) mreže'
+                            />
+                        </li>
+                        <li>
+                            <img
+                                width='40'
+                                height='40'
+                                class='hoverHighlight'
+                                src='{$basePath}img/other/Dark.webp?{$version}'
+                                alt='{$altText} tamnije (crne) mreže'
+                            />
+                        </li>
+                    </ul>
+                </li>
+                {$tipRamaHtml}
+            </ul>
+            <img
+                width='500'
+                height='500'
+                class='promoImage hoverHighlight'
+                src='{$basePath}img/items/product/{$imgLink}'
+                alt='{$altText} slika'
+            />
+            {$cenaHtml}
+            {$saznajVišeHtml}
+        </span>
+        <span class="explanation">
+            <h2 class="title">{$altText}</h2>
+            <div>
+                <p class="type"></p>
+                <p class="sides"></p>
+            </div>
+            <div>
+                <h3 class="frameTitle">Boja rama</h3>
+                <p class="frame"></p>
+            </div>
+            <div>
+                <h3 class="netTitle">Boja mreže</h3>
+                <p class="net"></p>
+            </div>
+        </span>
+    </div>
     HTML;
 }

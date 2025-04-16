@@ -8,14 +8,14 @@
 
 <!DOCTYPE html>
 <html lang="sr">
-<?php include "{$basePath}includes/head.php"; ?>
+<?php include "{$basePath}html/includes/head.php"; ?>
 
 <body>
-    <?php include "{$basePath}includes/header.php"; ?>
+    <?php include "{$basePath}html/includes/header.php"; ?>
     <main>
         <?php include "{$basePath}html/plise.php"; ?>
     </main>
-    <?php include "{$basePath}includes/footer.php"; ?>
+    <?php include "{$basePath}html/includes/footer.php"; ?>
 
     <script type="module">
         const basePath = '<?php echo $basePath ?>';

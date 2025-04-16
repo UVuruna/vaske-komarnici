@@ -1,19 +1,14 @@
 @font-face {
   font-family: 'Poppins';
-  src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+  src: url('../fonts/Poppins-Regular-subset.woff2') format('truetype');
   font-weight: 400;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'Poppins';
-  src: url('../fonts/Poppins-Bold.ttf') format('truetype');
+  src: url('../fonts/Poppins-Bold-subset.woff2') format('truetype');
   font-weight: 700;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Poppins';
-  src: url('../fonts/Poppins-ExtraBold.ttf') format('truetype');
-  font-weight: 800;
   font-style: normal;
 }
 
@@ -33,6 +28,7 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  gap: 3rem;
 }
 
 button {
@@ -48,7 +44,6 @@ li,
 i,
 img {
   cursor: pointer;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 }
 
@@ -71,7 +66,7 @@ img:active {
 h1 {
   margin: 0.5em 0 0.2em 0;
   font-size: 1.8rem;
-  font-weight: 800;
+  font-weight: 700;
   text-align: center;
 }
 
@@ -154,21 +149,23 @@ a {
   text-decoration: none;
   background: none;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
 }
 
+/* Animacija za uvozenje teksta sa leve strane */
+@keyframes slide-in {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0); }
+}
+
+/* Animacija za osvetljivanje slike */
 .hoverHighlight {
   cursor: pointer;
-  -webkit-transition: all 0.5s;
   transition: all 0.5s;
 
   &:hover {
-    filter: hue-rotate(18deg) contrast(75%) brightness(135%) saturate(150%);
-    -webkit-filter: hue-rotate(18deg) contrast(75%) brightness(135%)
-      saturate(150%);
-    -moz-filter: hue-rotate(18deg) contrast(75%) brightness(135%)
-      saturate(150%);
-    -webkit-transition: all 0.5s;
+    filter: hue-rotate(12deg) contrast(70%) brightness(130%) saturate(150%);
     transition: all 0.5s;
   }
 }

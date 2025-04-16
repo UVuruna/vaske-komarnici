@@ -54,26 +54,25 @@ function findElements (imageStringList, imageLink) {
   return returningDict
 }
 
-export function selectModel (presentation) {
+// <<<------------->>> MAIN FUNCTION <<<------------->>>
+
+export function selectModel () {
   const version = localStorage.getItem('version')
-  const seenPromos = new Set();
+  const seenPromos = new Set()
 
   // 42 Combination of text ( Rolled: 6, PliseDoor:12, PliseWindow:12, Fixed:12 )
 
   document
     .querySelectorAll('.selectFrame img, .selectFrame i')
     .forEach(selector => {
-
       // INITIALIZATION Configuring Interactive Text elements
-      if (presentation === true) {
-        const promo = selector.closest('.promo')
-        if (!seenPromos.has(promo)) {
-          const image = promo.querySelector('.promoImage');
-          const imageSRC = image.getAttribute('src');
-          const nameList = getParts(imageSRC);
-          catalogueText(findElements(nameList, selector));
-          seenPromos.add(promo);
-        }
+      const promo = selector.closest('.promo')
+      if (!seenPromos.has(promo)) {
+        const image = promo.querySelector('.promoImage')
+        const imageSRC = image.getAttribute('src')
+        const nameList = getParts(imageSRC)
+        catalogueText(findElements(nameList, selector))
+        seenPromos.add(promo)
       }
 
       selector.onclick = function () {
@@ -103,10 +102,8 @@ export function selectModel (presentation) {
                 image.src = newName
 
                 // Configuring Interactive Text elements
-                if (presentation === true) {
-                  let nameList = getParts(newName)
-                  catalogueText(findElements(nameList, this))
-                }
+                let nameList = getParts(newName)
+                catalogueText(findElements(nameList, this))
               }
             }
             // Open Window PHOTO
@@ -125,10 +122,8 @@ export function selectModel (presentation) {
             image.src = newName
 
             // Configuring Interactive Text elements
-            if (presentation === true) {
-              let nameList = getParts(newName)
-              catalogueText(findElements(nameList, this))
-            }
+            let nameList = getParts(newName)
+            catalogueText(findElements(nameList, this))
           }
 
           setTimeout(() => {

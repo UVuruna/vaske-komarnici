@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Filter Tester</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f0f0f0;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+    canvas, img {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      cursor: crosshair;
+      /* Ako želiš dodatni CSS filter efekat prilikom renderovanja u browseru: */
+      /* filter: drop-shadow(0 0 5px rgba(0,0,0,0.2)); */
+    }
+    .controls {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 360px;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      font-weight: bold;
+    }
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    input[type=range] {
+      flex: 1;
+    }
+    input[type=number] {
+      width: 60px;
+      padding: 3px;
+    }
+    #colorDisplay {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>CSS Filter Tester</h1>
+
+  <div class="container">
+    <img id="preview" width="600" height="600" src="logo.svg" alt="Preview" />
+    <div class="controls">
+      <label>Invert (%)
+        <div class="slider-row">
+          <input type="range" min="0" max="100" value="50" id="invert">
+          <input type="number" min="0" max="100" value="50" id="invertNum">
+        </div>
+      </label>
+      <label>Sepia (%)
+        <div class="slider-row">
+          <input type="range" min="0" max="100" value="4" id="sepia">
+          <input type="number" min="0" max="100" value="4" id="sepiaNum">
+        </div>
+      </label>
+      <label>Saturate (%)
+        <div class="slider-row">
+          <input type="range" min="0" max="6000" value="5800" step="50" id="saturate">
+          <input type="number" min="0" max="6000" value="5800" step="50" id="saturateNum">
+        </div>
+      </label>
+      <label>Hue Rotate (deg)
+        <div class="slider-row">
+          <input type="range" min="0" max="360" value="292" id="hue">
+          <input type="number" min="0" max="360" value="292" id="hueNum">
+        </div>
+      </label>
+      <label>Brightness (%)
+        <div class="slider-row">
+          <input type="range" min="0" max="400" value="54" id="brightness">
+          <input type="number" min="0" max="400" value="54" id="brightnessNum">
+        </div>
+      </label>
+      <label>Contrast (%)
+        <div class="slider-row">
+          <input type="range" min="0" max="400" value="189" id="contrast">
+          <input type="number" min="0" max="400" value="189" id="contrastNum">
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <!-- Prikaz izabranog hex koda -->
+  <div id="colorDisplay">Klikni na sliku da vidiš hex kod boje</div>
+
+  <script>
+    const filters = ['invert', 'sepia', 'saturate', 'hue', 'brightness', 'contrast'];
+    const img = document.getElementById('preview');
+    img.crossOrigin = "anonymous"
+
+    filters.forEach(id => {
+      const rangeInput = document.getElementById(id);
+      const numberInput = document.getElementById(id + 'Num');
+
+      // Kad vučeš slider
+      rangeInput.addEventListener('input', () => {
+        numberInput.value = rangeInput.value;
+        updateFilter();
+      });
+
+      // Kad uneseš broj
+      numberInput.addEventListener('input', () => {
+        rangeInput.value = numberInput.value;
+        updateFilter();
+      });
+    });
+
+    function updateFilter() {
+      const values = {
+        invert: document.getElementById('invert').value,
+        sepia: document.getElementById('sepia').value,
+        saturate: document.getElementById('saturate').value,
+        hue: document.getElementById('hue').value,
+        brightness: document.getElementById('brightness').value,
+        contrast: document.getElementById('contrast').value,
+      };
+      img.style.filter = `
+        invert(${values.invert}%)
+        sepia(${values.sepia}%)
+        saturate(${values.saturate}%)
+        hue-rotate(${values.hue}deg)
+        brightness(${values.brightness}%)
+        contrast(${values.contrast}%)
+      `;
+    }
+
+    updateFilter();
+
+    // Dodatak: Klikom na sliku se ispisuje hex kod boje na toj tački
+    img.addEventListener('click', function(e) {
+      // Kreiramo privremeni canvas
+      const offCanvas = document.createElement('canvas');
+      const offCtx = offCanvas.getContext('2d');
+      offCanvas.width = img.naturalWidth;
+      offCanvas.height = img.naturalHeight;
+      // Primeni filter koji je trenutno na slici
+      offCtx.filter = img.style.filter;
+      // Iscrtaj sliku u punoj veličini
+      offCtx.drawImage(img, 0, 0);
+
+      // Izračunaj poziciju klika u odnosu na originalnu sliku
+      const rect = img.getBoundingClientRect();
+      const scaleX = img.naturalWidth / rect.width;
+      const scaleY = img.naturalHeight / rect.height;
+      const x = (e.clientX - rect.left) * scaleX;
+      const y = (e.clientY - rect.top) * scaleY;
+
+      // Uzimanje podataka piksela
+      const pixel = offCtx.getImageData(x, y, 1, 1).data;
+      const hex = "#" + [pixel[0], pixel[1], pixel[2]]
+        .map(c => {
+          const hex = c.toString(16);
+          return hex.length == 1 ? "0" + hex : hex;
+        })
+        .join('');
+      document.getElementById('colorDisplay').textContent = hex;
+    });
+  </script>
+</body>
+</html>

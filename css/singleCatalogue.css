@@ -16,31 +16,10 @@
     border-radius: 50px;
 }
 
-.singleCatalogue .promoContainer {
-  gap: 1rem
-}
-
 
 .singleCatalogue  .promo {
     border: none;
     border-radius: 0;
     padding: 0;
   }
-
-.explanation {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.explanation h3 {
-  margin: 0;
-  text-align: left;
-  margin-left: 2rem;
-}
-
-.explanation p {
-  margin: 1rem 0;
-}
 

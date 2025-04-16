@@ -3,24 +3,19 @@
 ?>
 
 <div class="catalogue">
-  <header>
-    <h1>Katalog komarnika</h1>
-    <p>
-      Izaberite idealan model za vaš prostor.
-      Pronađite komarnike svih vrsta i boja, sve na jednom mestu.
-    </p>
-  </header>
+    <header>
+        <h1>Katalog komarnika</h1>
+        <p>
+            Izaberite idealan model za vaš prostor.
+            Pronađite komarnike svih vrsta i boja, sve na jednom mestu.
+        </p>
+    </header>
 
-  <section class="media-container">
-      <video 
-        title="Prezentacija komarnika" 
-        class="video-loop" 
-        autoplay muted loop playsinline 
-        id="showcase">
-      </video>
-  </section>
+    <section class="media-container">
+        <video title="Prezentacija komarnika" class="video-loop" autoplay muted loop playsinline id="showcase">
+        </video>
+    </section>
 
-  <div class="promoContainer">
     <?php
         displayProduct(
             version: $version,
@@ -62,5 +57,4 @@
             showTipRama: true
         );
     ?>
-  </div>
 </div>

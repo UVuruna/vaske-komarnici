@@ -73,7 +73,14 @@ export function catalogueText(parts) {
                 if (getComputedStyle(element).display === 'none') {
                     element.style.display = ''
                 }
-                element.innerHTML = textDict[text]
+                let oldText = element.innerHTML
+                let newText = textDict[text]
+                if (oldText !== newText) {
+                    element.innerHTML = textDict[text]
+                    element.style.animation = 'none';
+                    element.offsetHeight; // Trik da resetuje animaciju
+                    element.style.animation = 'slide-in 0.5s ease-out forwards';
+                    }
             } else {
                 element.forEach(el => {
                     el.style.display = ''
