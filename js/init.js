@@ -22,7 +22,7 @@ export async function init(basePath, presentation) {
 
   const globals = await loadGlobals()
   
-  settingThemeOnload(globals, basePath)
+  settingThemeOnload(globals)
   mouseHoverDropdown()
 
   if (presentation) { 

@@ -29,9 +29,9 @@ export async function loadGlobals () {
       primary: '#6f4e37',
       secondary: '#fff4e5',
       primaryElement: '#6d0016',
-      secondaryElement: '#8c2f39',
-      filterPrimary: 'invert(65%) sepia(4%) saturate(5800%) hue-rotate(292deg) brightness(54%) contrast(189%)',
-      filterSecondary: 'invert(65%) sepia(4%) saturate(5800%) hue-rotate(312deg) brightness(60%) contrast(260%)'
+      secondaryElement: '#8c2f3c',
+      filterPrimary: 'invert(66%) sepia(22%) saturate(900%) hue-rotate(324deg) brightness(68%) contrast(150%)',
+      filterSecondary: 'invert(80%) sepia(35%) saturate(650%) hue-rotate(324deg) brightness(88%) contrast(93%)'
     },
     night: {
       primary: '#524e53',
@@ -43,8 +43,8 @@ export async function loadGlobals () {
     }
   }
   return {
-    LOGO: document.getElementById('logo'),
-    MENU: document.getElementById('menu-icon'),
+    LOGO: document.getElementById('LOGO'),
+    MENU: document.getElementById('MENU'),
     BUTTONS: document.querySelectorAll('button'),
     LightFrames: document.querySelectorAll(`
       #about_us,

@@ -1,5 +1,5 @@
 export function mouseHoverDropdown () {
-  const menuIcon = document.getElementById('menu-icon')
+  const menuIcon = document.getElementById('MENU')
   const pagesSpans = document.querySelector('.menu')
 
   menuIcon.addEventListener('click', e => {

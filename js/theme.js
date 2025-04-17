@@ -1,43 +1,36 @@
 const version = localStorage.getItem('version')
 
-let ThemeList,
-  ThemeColors,
-  LOGO,
-  MENU,
-  LightFrames,
-  BUTTONS,
-  ListItems
+const colorizeSVGModule = await import(`./colorizeSVG.js?v=${version}`)
+const { colorizeSVG } = colorizeSVGModule
 
-export function colorChange(element, primaryColor, secondaryColor) {
-  console.log(primaryColor)
-  console.log(secondaryColor)
-  element.style.filter = primaryColor;
+let GLOBALS
 
-  element.addEventListener('mouseover', () => {
-    element.style.filter = secondaryColor;
+function colorChange(element, primaryColor, secondaryColor) {
+  console.log(element)
+  colorizeSVG(element, primaryColor)
+
+  element.addEventListener('mouseenter', () => {
+    colorizeSVG(element, secondaryColor)
+    console.log('mouseenter')
   })
-  element.addEventListener('mouseout', () => {
-    element.style.filter = primaryColor;
+
+  element.addEventListener('mouseleave', () => {
+    colorizeSVG(element, primaryColor)
+    console.log('mouseleave')
   })
 }
 
-export function themeCycle (basePath) {
+export function themeCycle() {
   const THEME = localStorage.getItem('theme')
-  let currentIndex = ThemeList.indexOf(THEME)
-  let newIndex = (currentIndex + 1) % ThemeList.length
-  localStorage.setItem('theme', ThemeList[newIndex])
+  let currentIndex = GLOBALS.ThemeList.indexOf(THEME)
+  let newIndex = (currentIndex + 1) % GLOBALS.ThemeList.length
+  localStorage.setItem('theme', GLOBALS.ThemeList[newIndex])
 
-  settingTheme(basePath)
+  settingTheme()
 }
 
-export function settingThemeOnload (globals, basePath, mouseHoverMenu) {
-  ThemeColors = globals.ThemeColors
-  ThemeList = globals.ThemeList
-  LOGO = globals.LOGO
-  MENU = globals.MENU
-  LightFrames = globals.LightFrames
-  BUTTONS = globals.BUTTONS
-  ListItems = globals.ListItems
+export function settingThemeOnload (globals) {
+  GLOBALS = globals
 
   const Time = localStorage.getItem('Time')
 
@@ -52,20 +45,22 @@ export function settingThemeOnload (globals, basePath, mouseHoverMenu) {
   }
 
   localStorage.setItem('theme', 'afternoon') // TESTING PURPOSES
-  settingTheme(basePath)
+  settingTheme()
 }
 
-export function settingTheme (basePath) {
+export function settingTheme() {
   let currentTheme = localStorage.getItem('theme')
-  let PresetColors = ThemeColors[currentTheme]
+  let PresetColors = GLOBALS.ThemeColors[currentTheme]
+
+  colorChange(GLOBALS.LOGO, PresetColors.primaryElement, PresetColors.secondaryElement)
+  colorChange(GLOBALS.MENU, PresetColors.primaryElement, PresetColors.secondaryElement)
+
   const dropdownMenus = document.querySelectorAll('#header ul')
-
-
   // ----------> SINGS <----------
   document.body.style.backgroundColor = PresetColors.primary
 
   // ----------> LIGHT BG <----------
-  LightFrames.forEach(frame => {
+  GLOBALS.LightFrames.forEach(frame => {
     frame.style.backgroundColor = PresetColors.secondary
 
     if (frame.tagName === 'LI' || frame.tagName === 'I') {
@@ -90,8 +85,8 @@ export function settingTheme (basePath) {
     }
   })
 
-  // ----------> BUTTONS <----------
-  BUTTONS.forEach(link => {
+  // ----------> GLOBALS.BUTTONS <----------
+  GLOBALS.BUTTONS.forEach(link => {
     link.style.backgroundColor = PresetColors.primaryElement
     if (link.classList.contains('cta-button')) {
       link.style.boxShadow = `5px 5px 20px ${PresetColors.primaryElement}, -5px -5px 20px ${PresetColors.primaryElement}`
@@ -115,7 +110,7 @@ export function settingTheme (basePath) {
   })
 
   // ----------> LIST strong Items <----------
-  ListItems.forEach(item => {
+  GLOBALS.ListItems.forEach(item => {
     item.style.color = PresetColors.primaryElement
     item.style.cursor = 'pointer'
     if (!item.closest('.selectFrame')) {
@@ -136,9 +131,6 @@ export function settingTheme (basePath) {
       PresetColors.primaryElement
     )
   })
-
-  colorChange(LOGO, PresetColors.filterPrimary, PresetColors.filterSecondary)
-  MENU.src = `${basePath}img/other/dropdown-menu-${currentTheme}.svg?v=${version}`
 }
 
 export function configDropdown (dropdownMenus, primaryColor, secondaryColor) {

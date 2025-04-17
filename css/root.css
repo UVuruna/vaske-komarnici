@@ -42,7 +42,8 @@ button {
 button,
 li,
 i,
-img {
+img,
+svg {
   cursor: pointer;
   transition: all 0.5s;
 }
@@ -59,7 +60,9 @@ button:active {
   }
 }
 img:hover,
-img:active {
+img:active,
+svg:hover,
+svg:active {
   transform: scale(1.1);
 }
 

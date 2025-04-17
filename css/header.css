@@ -19,7 +19,7 @@
 }
 
 /* Logo */
-#logo {
+#LOGO {
     cursor: pointer;
     height: 100%;
     width: auto;
@@ -36,7 +36,7 @@
     display: flex;
 }
 
-#menu-icon {
+#MENU {
     display: none;
 }
 
@@ -58,7 +58,7 @@
     margin: 0;
 }
 
-#menu-icon {
+#MENU {
     width: 60px;
 }
 
@@ -117,7 +117,7 @@
 
     /* -- DROPDOWN Primary -- */
 
-    #menu-icon {
+    #MENU {
         cursor: pointer;
         display: flex;
         height: 90%;
