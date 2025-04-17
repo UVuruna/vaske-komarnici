@@ -132,17 +132,11 @@ export function settingTheme() {
         PresetColors.primary,
         PresetColors.primaryElement
     )
-    window.addEventListener('resize', () => {
-        configDropdown(
-            dropdownMenus,
-            PresetColors.primary,
-            PresetColors.primaryElement
-        )
-    })
 }
 
 export function configDropdown(dropdownMenus, primaryColor, secondaryColor) {
     dropdownMenus.forEach(menu => {
+        console.log(menu)
         if (
             !menu.classList.contains('menu') ||
             window.matchMedia('(max-width: 800px)').matches

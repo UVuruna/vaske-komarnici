@@ -3,13 +3,13 @@ const version = localStorage.getItem('version')
 export async function init(basePath, presentation) {
     const globalsModule = await import(`./globals.js?v=${version}`)
     const themeModule = await import(`./theme.js?v=${version}`)
-    const hoverLogoMenuModule = await import(`./hoverLogoMenu.js?v=${version}`)
+    const logoMenuModule = await import(`./logoMenu.js?v=${version}`)
     const videoModule = await import(`./video.js?v=${version}`)
     const selectModelModule = await import(`./selectModel.js?v=${version}`)
     const promoWidthModule = await import(`./promoWidth.js?v=${version}`)
 
     const { themeCycle, settingThemeOnload } = themeModule
-    const { mouseHoverDropdown } = hoverLogoMenuModule
+    const { logoMenu } = logoMenuModule
     const { loadGlobals } = globalsModule
     const { videoLoop, videoPlay, loadVideo } = videoModule
     const { selectModel } = selectModelModule
@@ -21,7 +21,7 @@ export async function init(basePath, presentation) {
     const globals = await loadGlobals()
 
     settingThemeOnload(globals)
-    mouseHoverDropdown()
+    logoMenu()
 
     if (presentation) {
         selectModel()

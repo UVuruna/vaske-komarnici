@@ -1,4 +1,4 @@
-export function mouseHoverDropdown() {
+export function logoMenu() {
     const menuIcon = document.getElementById('MENU')
     const pagesSpans = document.querySelector('.menu')
 

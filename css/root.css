@@ -142,7 +142,7 @@ a {
 
 @media (max-width: 750px) {
   html {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
@@ -154,6 +154,19 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-tap-highlight-color: transparent;
+}
+
+/* Call To Action Buttons */
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 5vw;
+}
+.cta button {
+  margin: 1rem 0;
+  display: flex;
 }
 
 /* Animacija za uvozenje teksta sa leve strane */

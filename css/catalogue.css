@@ -83,11 +83,11 @@
     padding-inline-start: 0;
 }
 
-.selectFrame> :hover {
+.selectFrame > :hover {
     transform: scale(1.1);
 }
 
-.selectFrame>* {
+.selectFrame > * {
     padding: 0.25rem;
     border-radius: 20px;
     transition: all 0.3s ease-in-out;
@@ -143,12 +143,8 @@
         gap: 0.5rem;
     }
 
-    .selectFrame>* {
+    .selectFrame > * {
         border-radius: 15px;
-    }
-
-    .fa-ban {
-        margin-right: 0.5rem;
     }
 
     .selectFrame ul {
@@ -160,22 +156,27 @@
     }
 }
 
-@media (max-width: 430px) {
+@media (max-width: 400px) {
     .selectFrame {
-        gap: 0.35rem;
+        gap: 0;
     }
 
     .fa-ban {
-        margin-right: 0;
-        font-size: 2rem;
+        margin: 0;
+        padding: 0;
+        font-size: 2.5rem;
+    }
+
+    .selectFrame > :nth-child(1) {
+        padding: 0;
     }
 
     .selectFrame ul {
-        gap: 0.15rem;
+        gap: 0.1rem;
     }
 
     .selectFrame img {
-        height: 1.8rem;
+        height: 2rem;
     }
 
     .selectFrame h3,

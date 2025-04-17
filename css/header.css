@@ -135,7 +135,7 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        top: 5vh;
+        top: 7vh;
         box-shadow: 0.75em 0.5em 5px rgba(80, 80, 80, 0.8);
         border-radius: 2em;
         gap: 0;
@@ -143,15 +143,20 @@
         flex-direction: column;
         padding: 0;
         margin: 0;
-        min-width: 40vw;
+        min-width: 60vw;
     }
 
-    .menu>* {
+    .menu > * {
         padding: 1em 2em;
         width: 100%;
         text-align: center;
         padding: 1em 2em;
         border-radius: 1.5rem;
+        font-size: 1.2rem;
+    }
+
+    .dropdownTrigger * {
+        font-size: 1.2rem;
     }
 
     .menu.show {

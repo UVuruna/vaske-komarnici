@@ -1,7 +1,7 @@
 <?php
     $basePath = '../';
     $page     = 'kontakt';
-    $styles   = [];
+    $styles   = ["css/contact_us.css"];
     $presentation = null;
 ?>
 
@@ -12,8 +12,11 @@
 <body>
     <?php include "{$basePath}html/includes/header.php"; ?>
     <main>
+        <?php include "{$basePath}html/contact_us.php"; ?>
     </main>
     <?php include "{$basePath}html/includes/footer.php"; ?>
+
+    <script src="<?php echo $basePath ?>js/changeQuantity.js?v=<?php echo $version ?>"></script>
 </body>
 
 </html>
