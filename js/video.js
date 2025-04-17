@@ -15,7 +15,7 @@ export function videoPlay(videos) {
             entries.forEach(entry => {
                 const video = entry.target
                 if (entry.isIntersecting) {
-                    console.log('Pušta video: '+video.title)
+                    console.log('Pušta video: ' + video.title)
                     video.play()
                 } else {
                     video.pause()
@@ -34,11 +34,10 @@ export function videoPlay(videos) {
 }
 
 export function loadVideo(basePath, videoID) {
-    
     const checkElementInterval = setInterval(() => {
         const videoElement = document.getElementById(videoID)
         const version = localStorage.getItem('version')
-        
+
         if (videoElement) {
             clearInterval(checkElementInterval)
 
@@ -49,7 +48,7 @@ export function loadVideo(basePath, videoID) {
                     videoID = videoID + '_Mobile'
                 }
             }
-            
+
             videoElement.innerHTML = `
                     <source src="${basePath}img/items/showroom/${videoID}.webm?v=${version}" type="video/webm" />
                     <source src="${basePath}img/items/showroom/${videoID}.mp4?v=${version}" type="video/mp4" />

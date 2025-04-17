@@ -77,10 +77,10 @@ export function catalogueText(parts) {
                 let newText = textDict[text]
                 if (oldText !== newText) {
                     element.innerHTML = textDict[text]
-                    element.style.animation = 'none';
-                    element.offsetHeight; // Trik da resetuje animaciju
-                    element.style.animation = 'slide-in 0.5s ease-out forwards';
-                    }
+                    element.style.animation = 'none'
+                    element.offsetHeight // Trik da resetuje animaciju
+                    element.style.animation = 'slide-in 0.5s ease-out forwards'
+                }
             } else {
                 element.forEach(el => {
                     el.style.display = ''

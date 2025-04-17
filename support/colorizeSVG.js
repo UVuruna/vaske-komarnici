@@ -49,79 +49,78 @@ function changeBrightness(color, gradient) {
     return rgbToHEX(colorRGB)
 }
 
+function getBrightness(color) {
+
+}
+
 // Function for CREATING COLORED PALLETE from 2 COLORS and GRADIENT number
-function createColoredPallete(color, gradients, range) {
+function createColoredPallete(color, gradients, colorFrequency) {
     let Pallete = []
-    const min = 1-range
+
+    const minBrightness = hexToSUM(gradients[0])
+    const maxBrightness = hexToSUM(gradients[gradients.length - 1])
+    let midBrightness = 0
+    let count = colorFrequency.sum
+    gradients.forEach(gradient => {
+        midBrightness += hexToSUM(gradient)*colorFrequency[gradient] / count
+    })
+
+    const MIN = minBrightness/midBrightness
+    const MAX = maxBrightness/midBrightness
 
     if (gradients==1) {
         return (Pallete.push(color))
     }
 
-    for (let i = 0; i<gradients; i++) {
-        let increment = i*(2*range) / (gradients-1)
-        Pallete.push(changeBrightness(color,min+increment))
+    const range = gradients.length
+    const increment = (MAX-MIN) / (range-1)
+    for (let i = 0; i<range; i++) {
+        Pallete.push(changeBrightness(color,MIN+increment*i))
     }
-
     return Pallete
 }
 
 // Function for Extracting GRAY Pallete from SVG
 function exctractColorSVG(element) {
-    const elements = document.querySelectorAll(
-        `${element} linearGradient, ${element} radialGradient`
+    const elements = element.querySelectorAll(
+        'linearGradient, radialGradient'
     )
     const colorOrder = new Set()
-    const foundColors = {}
+    const Stops = []
+    const colorFrequency = {sum:0}
 
     elements.forEach(element => {
         const stops = element.querySelectorAll('stop')
-        const ID = element.getAttribute('id')
-        foundColors[ID] = {}
         stops.forEach(stop => {
-            const offset = stop.getAttribute('offset')
+            Stops.push(stop)
             const color = stop.getAttribute('stop-color')
-            if (offset === '0' || offset === '1') {
-                colorOrder.add(color)
-                foundColors[ID][offset] = color
+            colorOrder.add(color)
+            if (color in colorFrequency) {
+                colorFrequency[color] ++
+                
+            } else {
+                colorFrequency[color] = 1
             }
+            colorFrequency.sum ++
         })
     })
     const sortedColors = [...colorOrder].sort((a, b) => hexToSUM(a) - hexToSUM(b))
-    return [sortedColors, foundColors]
+    return [Stops, sortedColors, colorFrequency]
 }
 
 // MAIN Function that changes from GRAY to COLORED
-function colorizeSVG(SVG, color, range=0.5) {
+function colorizeSVG(SVG, color) {
     const t0 = performance.now()
-    const [grayPalette, elements] = exctractColorSVG(`#${SVG.getAttribute('id')}`)
+    const [stopElements, grayPalette, colorFrequency] = exctractColorSVG(SVG)
 
-    const colorPallete = createColoredPallete(color, grayPalette.length, range)
-    console.log(`Gradients: \n\tmin: ${1-range}; \n\tmax: ${1+range}; \n\tcount: ${grayPalette.length}`)
-    console.log(colorPallete)
-    
+    const colorPallete = createColoredPallete(color, grayPalette, colorFrequency)  
 
-    for (let id in elements) {
-        const stops = SVG.querySelectorAll(`#${id} stop`)
-        stops.forEach(stop => {
-            const offset = stop.getAttribute('offset')
-            const grayToColor = {}
-            grayPalette.forEach((color, i) => grayToColor[color] = colorPallete[i])
-            
-            if (offset==='0' || offset==='1') {
-                const NewColor = grayToColor[elements[id][offset]]
-                stop.setAttribute('stop-color', NewColor)
-            } else {
-                const midColor = interpolateColor(
-                    grayToColor[elements[id]['0']],
-                    grayToColor[elements[id]['1']],
-                    parseFloat(offset),
-                )
-                stop.setAttribute('stop-color', midColor)
-            }
-        })
-    }
-    console.log(`Executed in ${performance.now()-t0} ms`)
+    stopElements.forEach(element => {
+        const newColor = colorPallete[grayPalette.indexOf(element.getAttribute('stop-color'))]
+        element.setAttribute('stop-color', newColor)
+    })
+ 
+    console.log(`Colorize SVG executed in ${performance.now()-t0} ms`)
 }
 
 window.colorizeSVG = colorizeSVG

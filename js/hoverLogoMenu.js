@@ -1,17 +1,17 @@
-export function mouseHoverDropdown () {
-  const menuIcon = document.getElementById('MENU')
-  const pagesSpans = document.querySelector('.menu')
+export function mouseHoverDropdown() {
+    const menuIcon = document.getElementById('MENU')
+    const pagesSpans = document.querySelector('.menu')
 
-  menuIcon.addEventListener('click', e => {
-    e.stopPropagation()
-    pagesSpans.classList.toggle('show')
-  })
+    menuIcon.addEventListener('click', e => {
+        e.stopPropagation()
+        pagesSpans.classList.toggle('show')
+    })
 
-  document.body.addEventListener('click', () => {
-    pagesSpans.classList.remove('show')
-  })
+    document.body.addEventListener('click', () => {
+        pagesSpans.classList.remove('show')
+    })
 
-  document.querySelector('nav').addEventListener('click', e => {
-    e.stopPropagation()
-  })
+    document.querySelector('nav').addEventListener('click', e => {
+        e.stopPropagation()
+    })
 }
