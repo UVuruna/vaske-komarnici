@@ -1,5 +1,5 @@
 <?php
-    $logoSVG = file_get_contents("{$basePath}img/logo/logoGray.svg");
+    $logoSVG = file_get_contents("{$basePath}img/logo/logo.svg");
     $dropdownMenu = file_get_contents("{$basePath}img/other/dropdown-menu.svg");
 
     $gradients = ['linear-gradient', 'radial-gradient', '.st', 'class="st'];

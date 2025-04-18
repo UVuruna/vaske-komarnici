@@ -1,28 +1,35 @@
 const version = localStorage.getItem('version')
 
-export async function init(basePath, presentation) {
+export async function init(presentation) {
+    const t0 = performance.now()
+
+    // MAIN COMPONENTS
     const globalsModule = await import(`./globals.js?v=${version}`)
-    const themeModule = await import(`./theme.js?v=${version}`)
-    const logoMenuModule = await import(`./logoMenu.js?v=${version}`)
-    const videoModule = await import(`./video.js?v=${version}`)
-    const selectModelModule = await import(`./selectModel.js?v=${version}`)
-    const promoWidthModule = await import(`./promoWidth.js?v=${version}`)
-
-    const { themeCycle, settingThemeOnload } = themeModule
-    const { logoMenu } = logoMenuModule
     const { loadGlobals } = globalsModule
-    const { videoLoop, videoPlay, loadVideo } = videoModule
-    const { selectModel } = selectModelModule
-    const { promoWidth } = promoWidthModule
-
-    window.themeCycle = themeCycle
-    window.loadVideo = loadVideo
-
     const globals = await loadGlobals()
 
-    settingThemeOnload(globals)
-    logoMenu()
+    const themeModule = await import(`./theme.js?v=${version}`)
+    const { themeCycle, settingThemeOnload } = themeModule
 
+    const promoWidthModule = await import(`./promoWidth.js?v=${version}`)
+    const { promoWidth } = promoWidthModule
+    
+    const videoModule = await import(`./video.js?v=${version}`)
+    const { videoLoop, videoPlay, loadVideo } = videoModule
+    window.loadVideo = loadVideo
+
+    // USER INTERACTION
+    const clickHoverModule = await import(`./clickHover.js?v=${version}`)
+    const { mobileMenu } = clickHoverModule
+
+    const selectModelModule = await import(`./selectModel.js?v=${version}`)
+    const { selectModel } = selectModelModule
+
+
+    settingThemeOnload(globals) // LOADING SCREEN
+
+    window.themeCycle = themeCycle // Logo Interaction
+    mobileMenu()
     if (presentation) {
         selectModel()
 
@@ -32,4 +39,5 @@ export async function init(basePath, presentation) {
             videoLoop(globals.videos)
         }, 100)
     }
+    console.log(`Loading Page: ${performance.now()-t0} ms`)
 }

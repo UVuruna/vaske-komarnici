@@ -3,18 +3,10 @@ const version = localStorage.getItem('version')
 const colorizeSVGModule = await import(`./colorizeSVG.js?v=${version}`)
 const { colorizeSVG } = colorizeSVGModule
 
+const clickHoverModule = await import(`./clickHover.js?v=${version}`)
+const { colorChange, hoverTxtColor, configDropdownMenu } = clickHoverModule
+
 let GLOBALS
-
-function colorChange(element, primaryColor, secondaryColor) {
-    const activate = () => colorizeSVG(element, secondaryColor)
-    const deactivate = () => colorizeSVG(element, primaryColor)
-
-    element.addEventListener('mouseenter', activate) // desktop hover
-    element.addEventListener('mouseleave', deactivate)
-
-    element.addEventListener('touchstart', activate) // mobile touch
-    element.addEventListener('touchend', deactivate)
-}
 
 export function themeCycle() {
     const THEME = localStorage.getItem('theme')
@@ -29,18 +21,9 @@ export function settingThemeOnload(globals) {
     GLOBALS = globals
 
     const Time = localStorage.getItem('Time')
+    GLOBALS.chooseTheme(Time)
 
-    if (Time >= 4 && Time < 9) {
-        localStorage.setItem('theme', 'morning')
-    } else if (Time >= 9 && Time < 16) {
-        localStorage.setItem('theme', 'noon')
-    } else if (Time >= 16 && Time < 21) {
-        localStorage.setItem('theme', 'afternoon')
-    } else {
-        localStorage.setItem('theme', 'night')
-    }
-
-    localStorage.setItem('theme', 'noon') // TESTING PURPOSES
+    //localStorage.setItem('theme', 'noon') // TESTING PURPOSES
     settingTheme()
 }
 
@@ -62,12 +45,14 @@ export function settingTheme() {
     colorChange(
         GLOBALS.LOGO,
         PresetColors.primaryElement,
-        PresetColors.secondaryElement
+        PresetColors.secondaryElement,
+        colorizeSVG
     )
     colorChange(
         GLOBALS.MENU,
         PresetColors.primaryElement,
-        PresetColors.secondaryElement
+        PresetColors.secondaryElement,
+        colorizeSVG
     )
 
     const dropdownMenus = document.querySelectorAll('#header ul')
@@ -121,66 +106,32 @@ export function settingTheme() {
     GLOBALS.ListItems.forEach(item => {
         item.style.cursor = 'pointer'
         const theme = localStorage.getItem('theme')
-        if (theme!=='afternoon'){
+        if (theme !== 'afternoon') {
             item.style.color = PresetColors.primaryElement
-            hoverTxtColor(item, PresetColors.secondaryElement, PresetColors.primaryElement)
+            hoverTxtColor(
+                item,
+                PresetColors.secondaryElement,
+                PresetColors.primaryElement
+            )
         } else {
             item.style.color = PresetColors.secondaryElement
-            hoverTxtColor(item, PresetColors.primaryElement, PresetColors.secondaryElement)
+            hoverTxtColor(
+                item,
+                PresetColors.primaryElement,
+                PresetColors.secondaryElement
+            )
         }
-        item.style.textShadow = `
-            -0.5px -0.5px 0 black,
-             0.5px -0.5px 0 black,
-            -0.5px  0.5px 0 black,
-             0.5px  0.5px 0 black
-        `
+        item.style.webkitTextStroke = `0.5px black`
+
         if (!item.closest('.selectFrame')) {
             item.style.fontSize = '1.2rem'
         }
     })
 
     // ----------> Navigation Dropdown Menu <----------
-    configDropdown(
+    configDropdownMenu(
         dropdownMenus,
         PresetColors.primary,
         PresetColors.primaryElement
     )
-}
-
-export function configDropdown(dropdownMenus, primaryColor, secondaryColor) {
-    dropdownMenus.forEach(menu => {
-        console.log(menu)
-        if (
-            !menu.classList.contains('menu') ||
-            window.matchMedia('(max-width: 800px)').matches
-        ) {
-            menu.style.border = `3px solid ${secondaryColor}`
-            menu.style.backgroundColor = primaryColor
-
-            const menuElements = Array.from(menu.children)
-            menuElements.forEach(element => {
-                hoverBgColor(element, secondaryColor)
-            })
-        } else {
-            menu.style.border = 'none'
-        }
-    })
-}
-
-export function hoverBgColor(element, color) {
-    element.addEventListener('mouseenter', () => {
-        element.style.backgroundColor = color
-    })
-    element.addEventListener('mouseleave', () => {
-        element.style.backgroundColor = ''
-    })
-}
-
-function hoverTxtColor(element, colorIN, colorOUT) {
-    element.addEventListener('mouseenter', () => {
-        element.style.color = colorIN
-    })
-    element.addEventListener('mouseleave', () => {
-        element.style.color = colorOUT
-    })
 }

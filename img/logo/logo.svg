@@ -58,7 +58,7 @@
       }
 
       .st12 {
-        fill: url(#radial-gradient);
+        fill: #646464;
       }
 
       .st13 {
@@ -69,10 +69,6 @@
         fill: url(#linear-gradient10);
       }
     </style>
-    <radialGradient id="radial-gradient" cx="299.99" cy="300" fx="299.99" fy="300" r="287.06" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ccc"/>
-      <stop offset="1" stop-color="#444"/>
-    </radialGradient>
     <linearGradient id="linear-gradient" x1="467.51" y1="918.86" x2="429.26" y2="896.78" gradientTransform="translate(0 -608.2)" gradientUnits="userSpaceOnUse">
       <stop offset="0" stop-color="#c4c4c4"/>
       <stop offset=".23" stop-color="#bbb"/>
