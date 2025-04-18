@@ -31,18 +31,16 @@ $alts = [
                         <button onclick="changeQuantity('<?php echo $id ?>', 1)">+</button>
                         <button onclick="changeQuantity('<?php echo $id ?>', -1)">-</button>
                     </div>
+                    <input type="number" class="m2-input" value="0" min="0" step="0.1" placeholder="m²">
+                    <button class="add">Dodaj</button>
             </div>
         <?php endforeach; ?>
     </section>
     <section class="cta">
         <h2>Spremni za besplatno merenje?</h2>
         <p>
-            Kontaktirajte nas odmah i rezervišite besplatno merenje za komarnike po
-            vašoj meri!
+            Kontaktirajte nas odmah i rezervišite besplatno merenje za komarnike po vašoj meri!
         </p>
-        <button type="submit" class="cta-button" onclick="window.location.href='<?php echo $basePath ?>kontakt/'">
-            Kontaktirajte nas
-        </button>
 
         <form action method="post">
             <input type="text" id="name" name="name" placeholder="Ime" required autocomplete="on" />

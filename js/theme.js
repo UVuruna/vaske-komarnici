@@ -40,7 +40,7 @@ export function settingThemeOnload(globals) {
         localStorage.setItem('theme', 'night')
     }
 
-    //localStorage.setItem('theme', 'afternoon') // TESTING PURPOSES
+    localStorage.setItem('theme', 'noon') // TESTING PURPOSES
     settingTheme()
 }
 
@@ -119,10 +119,23 @@ export function settingTheme() {
 
     // ----------> LIST strong Items <----------
     GLOBALS.ListItems.forEach(item => {
-        item.style.color = PresetColors.primaryElement
         item.style.cursor = 'pointer'
+        const theme = localStorage.getItem('theme')
+        if (theme!=='afternoon'){
+            item.style.color = PresetColors.primaryElement
+            hoverTxtColor(item, PresetColors.secondaryElement, PresetColors.primaryElement)
+        } else {
+            item.style.color = PresetColors.secondaryElement
+            hoverTxtColor(item, PresetColors.primaryElement, PresetColors.secondaryElement)
+        }
+        item.style.textShadow = `
+            -0.5px -0.5px 0 black,
+             0.5px -0.5px 0 black,
+            -0.5px  0.5px 0 black,
+             0.5px  0.5px 0 black
+        `
         if (!item.closest('.selectFrame')) {
-            item.style.fontSize = '1.15rem'
+            item.style.fontSize = '1.2rem'
         }
     })
 
@@ -146,7 +159,7 @@ export function configDropdown(dropdownMenus, primaryColor, secondaryColor) {
 
             const menuElements = Array.from(menu.children)
             menuElements.forEach(element => {
-                dropdownEleHoverColor(element, secondaryColor)
+                hoverBgColor(element, secondaryColor)
             })
         } else {
             menu.style.border = 'none'
@@ -154,11 +167,20 @@ export function configDropdown(dropdownMenus, primaryColor, secondaryColor) {
     })
 }
 
-export function dropdownEleHoverColor(element, color) {
+export function hoverBgColor(element, color) {
     element.addEventListener('mouseenter', () => {
         element.style.backgroundColor = color
     })
     element.addEventListener('mouseleave', () => {
         element.style.backgroundColor = ''
+    })
+}
+
+function hoverTxtColor(element, colorIN, colorOUT) {
+    element.addEventListener('mouseenter', () => {
+        element.style.color = colorIN
+    })
+    element.addEventListener('mouseleave', () => {
+        element.style.color = colorOUT
     })
 }

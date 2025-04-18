@@ -21,7 +21,7 @@ function displayProduct(
     if ($showTipRama) {
         $tipRamaHtml = <<<HTML
             <li>
-                <h3><strong>Tip rama</strong></h3>
+                <h3><strong>Tip</strong></h3>
                 <ul>
                     <li>
                         <img
@@ -77,7 +77,7 @@ function displayProduct(
                     </strong>
                 </li>
                 <li>
-                    <h3><strong>Boja rama</strong></h3>
+                    <h3><strong>Ram</strong></h3>
                     <ul>
                         <li>
                             <img
@@ -109,7 +109,7 @@ function displayProduct(
                     </ul>
                 </li>
                 <li>
-                    <h3><strong>Boja mreže</strong></h3>
+                    <h3><strong>Mreža</strong></h3>
                     <ul>
                         <li>
                             <img

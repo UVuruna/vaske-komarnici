@@ -156,9 +156,9 @@
     }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 430px) {
     .selectFrame {
-        gap: 0;
+        gap: 0.25rem;
     }
 
     .fa-ban {
@@ -182,5 +182,28 @@
     .selectFrame h3,
     .selectFrame ul {
         margin: 0 0.25rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .selectFrame {
+        gap: 0;
+    }
+
+    .fa-ban {
+        font-size: 2.2rem;
+    }
+
+    .selectFrame ul {
+        gap: 0;
+    }
+
+    .selectFrame img {
+        height: 2rem;
+    }
+
+    .selectFrame h3,
+    .selectFrame ul {
+        margin: 0 0.1rem;
     }
 }
