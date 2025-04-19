@@ -26,18 +26,6 @@
         </p>
     </section>
 
-    <section class="media-container">
-        <video 
-            id="PliseDoor_Both" 
-            title="Prezentacija obostranih plise (harmonika) komarnika za vrata" 
-            class="video-loop lazy-media"
-            autoplay muted loop playsinline
-            preload="none" 
-            loading="lazy"
-        >
-        </video>
-    </section>
-
     <?php
         displayProduct(
             version: $version,
@@ -47,12 +35,11 @@
             altText: "Obostrani Plise komarnik za vrata"
         );
     ?>
-
     <section class="media-container">
         <video 
-            id="PliseDoor_One" 
-            title="Prezentacija jednostranih plise (harmonika) komarnika za vrata" 
-            class="video-loop lazy-media"
+            id="PliseDoor_Both" 
+            title="Prezentacija obostranih plise (harmonika) komarnika za vrata" 
+            class="video-loop"
             autoplay muted loop playsinline
             preload="none" 
             loading="lazy"
@@ -69,12 +56,11 @@
             altText: "Jednostrani Plise komarnik za vrata"
         );
     ?>
-
     <section class="media-container">
         <video 
-            id="PliseWindow_Both" 
-            title="Prezentacija obostranih plise (harmonika) komarnika za prozor"
-            class="video-loop lazy-media" 
+            id="PliseDoor_One" 
+            title="Prezentacija jednostranih plise (harmonika) komarnika za vrata" 
+            class="video-loop"
             autoplay muted loop playsinline
             preload="none" 
             loading="lazy"
@@ -91,12 +77,11 @@
             altText: "Obostrani Plise komarnik za prozor"
         );
     ?>
-
     <section class="media-container">
         <video 
-            id="PliseWindow_One" 
-            title="Prezentacija jednostranih plise (harmonika) komarnika za prozor"
-            class="video-loop lazy-media" 
+            id="PliseWindow_Both" 
+            title="Prezentacija obostranih plise (harmonika) komarnika za prozor"
+            class="video-loop" 
             autoplay muted loop playsinline
             preload="none" 
             loading="lazy"
@@ -113,5 +98,15 @@
             altText: "Jednostrani Plise komarnik za prozor"
         );
     ?>
-
+    <section class="media-container">
+        <video 
+            id="PliseWindow_One" 
+            title="Prezentacija jednostranih plise (harmonika) komarnika za prozor"
+            class="video-loop" 
+            autoplay muted loop playsinline
+            preload="none" 
+            loading="lazy"
+        >
+        </video>
+    </section>
 </div>

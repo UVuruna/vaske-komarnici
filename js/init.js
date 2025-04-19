@@ -17,7 +17,6 @@ export async function init(path, presentation) {
     promoWidth()
     
     // Interaction
-    // Interaction
     await (async () => {
         const clickHoverModule = await import(`./clickHover.js?v=${version}`)
         const { mobileMenu } = clickHoverModule
@@ -28,11 +27,11 @@ export async function init(path, presentation) {
         if (presentation) { 
             const selectModelModule = await import(`./selectModel.js?v=${version}`)
             const { selectModel } = selectModelModule
-            selectModel() 
+            const videoModule = await import(`./media.js?v=${version}`)
+            const { videoLoop, videoPlay, loadVideo, intersection } = videoModule
 
-            const videoModule = await import(`./video.js?v=${version}`)
-            const { videoLoop, videoPlay, loadVideo, intersection } = videoModule 
-            await intersection()
+            loadDelay()
+            selectModel() 
 
             presentation.forEach(video => {
                 loadVideo(path, video)

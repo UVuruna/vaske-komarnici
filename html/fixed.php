@@ -26,18 +26,6 @@
         </p>
     </section>
 
-    <section class="media-container">
-        <video 
-            title="Prezentacija obostranih fiksnih komarnika" 
-            class="video-loop lazy-media" 
-            autoplay muted loop playsinline
-            id="Fixed_Both"
-            preload="none" 
-            loading="lazy"
-        >
-        </video>
-    </section>
-
     <?php
         displayProduct(
             version: $version,
@@ -47,13 +35,12 @@
             altText: "Obostrani Fiksni komarnik"
         );
     ?>
-
     <section class="media-container">
         <video 
-            title="Prezentacija jednostranih fiksnih komarnika" 
-            class="video-loop lazy-media" 
+            title="Prezentacija obostranih fiksnih komarnika" 
+            class="video-loop" 
             autoplay muted loop playsinline
-            id="Fixed_One"
+            id="Fixed_Both"
             preload="none" 
             loading="lazy"
         >
@@ -69,5 +56,16 @@
             altText: "Jednostrani Fiksni komarnik"
         );
     ?>
+    <section class="media-container">
+        <video 
+            title="Prezentacija jednostrani fiksnih komarnika" 
+            class="video-loop" 
+            autoplay muted loop playsinline
+            id="Fixed_One"
+            preload="none" 
+            loading="lazy"
+        >
+        </video>
+    </section>
 
 </div>

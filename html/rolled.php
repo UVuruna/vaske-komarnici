@@ -26,18 +26,6 @@
         </p>
     </section>
 
-    <section class="media-container">
-        <video 
-            title="Prezentacija rolo komarnika" 
-            class="video-loop lazy-media" 
-            autoplay muted loop playsinline 
-            id="Rolled"
-            preload="none" 
-            loading="lazy"
-        >
-        </video>
-    </section>
-
     <?php
         displayProduct(
             version: $version,
@@ -47,5 +35,15 @@
             altText: "Rolo komarnik"
         );
     ?>
-
+    <section class="media-container">
+        <video 
+            title="Prezentacija rolo komarnika" 
+            class="video-loop" 
+            autoplay muted loop playsinline 
+            id="Rolled"
+            preload="none" 
+            loading="lazy"
+        >
+        </video>
+    </section>
 </div>

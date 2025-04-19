@@ -17,7 +17,6 @@ export function videoPlay() {
             entries.forEach(entry => {
                 const video = entry.target
                 if (entry.isIntersecting) {
-                    console.log('Pušta video: ' + video.title)
                     video.play()
                 } else {
                     video.pause()
@@ -54,35 +53,24 @@ export async function loadVideo(basePath, videoID) {
     videoElement.load()
 }
 
-export async function intersection() {
-    document.addEventListener('DOMContentLoaded', () => {
-        const lazyElements = document.querySelectorAll('.lazy-media')
+export async function loadDelay() {
+    const lazyElements = document.querySelectorAll('.lazy-media')
 
-        const observer = new IntersectionObserver(
-            (entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const el = entry.target
-
-                        if (el.tagName === 'IMG') {
-                            el.src = el.dataset.src
-                        }
-                        if (el.tagName === 'VIDEO') {
-                            const sources = el.querySelectorAll('source')
-                            sources.forEach(source => {
-                                source.src = source.dataset.src
-                            })
-                            el.load()
-                        }
-                        obs.unobserve(el)
-                    }
-                })
-            },
-            {
-                rootMargin: '100px',
-                threshold: 0.1
-            }
-        )
-        lazyElements.forEach(el => observer.observe(el))
-    })
+    const observer = new IntersectionObserver(
+        (entries, obs) => {
+            entries.forEach(entry => {
+                console.log(entry)
+                if (entry.isIntersecting) {
+                    const el = entry.target
+                    el.src = el.dataset.src
+                    obs.unobserve(el)
+                }
+            })
+        },
+        {
+            rootMargin: '100px',
+            threshold: 0.1
+        }
+    )
+    lazyElements.forEach(el => observer.observe(el))
 }
