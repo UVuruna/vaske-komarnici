@@ -33,8 +33,14 @@
     </section>
 
     <section class="media-container">
-        <video title="Prezentacija obostranih fiksnih komarnika" class="video-loop" autoplay muted loop playsinline
-            id="Fixed_Both">
+        <video 
+            title="Prezentacija obostranih fiksnih komarnika" 
+            class="video-loop" 
+            autoplay muted loop playsinline
+            id="Fixed_Both"
+            preload="none" 
+            loading="lazy"
+        >
         </video>
     </section>
 
@@ -49,8 +55,14 @@
     ?>
 
     <section class="media-container">
-        <video title="Prezentacija jednostranih fiksnih komarnika" class="video-loop" autoplay muted loop playsinline
-            id="Fixed_One">
+        <video 
+            title="Prezentacija jednostranih fiksnih komarnika" 
+            class="video-loop" 
+            autoplay muted loop playsinline
+            id="Fixed_One"
+            preload="none" 
+            loading="lazy"
+        >
         </video>
     </section>
 

@@ -33,7 +33,14 @@
     </section>
 
     <section class="media-container">
-        <video title="Prezentacija rolo komarnika" class="video-loop" autoplay muted loop playsinline id="Rolled">
+        <video 
+            title="Prezentacija rolo komarnika" 
+            class="video-loop" 
+            autoplay muted loop playsinline 
+            id="Rolled"
+            preload="none" 
+            loading="lazy"
+        >
         </video>
     </section>
 

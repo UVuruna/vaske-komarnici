@@ -30,6 +30,7 @@ function displayProduct(
                             class='hoverHighlight'
                             src='{$basePath}img/other/Both.webp?{$version}'
                             alt='{$altText} dvostrani'
+                            loading='lazy'
                         />
                     </li>
                     <li>
@@ -39,6 +40,7 @@ function displayProduct(
                             class='hoverHighlight'
                             src='{$basePath}img/other/One.webp?{$version}'
                             alt='{$altText} jednostrani'
+                            loading='lazy'
                         />
                     </li>
                 </ul>
@@ -86,6 +88,7 @@ function displayProduct(
                                 class='hoverHighlight'
                                 src='{$basePath}img/other/White.webp?{$version}'
                                 alt='{$altText} bele boje'
+                                loading='lazy'
                             />
                         </li>
                         <li>
@@ -95,6 +98,7 @@ function displayProduct(
                                 class='hoverHighlight'
                                 src='{$basePath}img/other/Antracite.webp?{$version}'
                                 alt='{$altText} antracit boje'
+                                loading='lazy'
                             />
                         </li>
                         <li>
@@ -104,6 +108,7 @@ function displayProduct(
                                 class='hoverHighlight'
                                 src='{$basePath}img/other/Brown.webp?{$version}'
                                 alt='{$altText} braon boje'
+                                loading='lazy'
                             />
                         </li>
                     </ul>
@@ -118,6 +123,7 @@ function displayProduct(
                                 class='hoverHighlight'
                                 src='{$basePath}img/other/Light.webp?{$version}'
                                 alt='{$altText} tamnije (crne) mreže'
+                                loading='lazy'
                             />
                         </li>
                         <li>
@@ -127,6 +133,7 @@ function displayProduct(
                                 class='hoverHighlight'
                                 src='{$basePath}img/other/Dark.webp?{$version}'
                                 alt='{$altText} tamnije (crne) mreže'
+                                loading='lazy'
                             />
                         </li>
                     </ul>
@@ -139,6 +146,7 @@ function displayProduct(
                 class='promoImage hoverHighlight'
                 src='{$basePath}img/items/product/{$imgLink}'
                 alt='{$altText} slika'
+                loading='lazy'
             />
             {$cenaHtml}
             {$saznajVišeHtml}

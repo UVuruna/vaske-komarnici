@@ -12,7 +12,13 @@
     </header>
 
     <section class="media-container">
-        <video title="Prezentacija komarnika" class="video-loop" autoplay muted loop playsinline id="showcase">
+        <video 
+            title="Prezentacija komarnika" 
+            class="video-loop" 
+            autoplay muted loop playsinline 
+            id="showcase"
+            preload="none" 
+            loading="lazy">
         </video>
     </section>
 
