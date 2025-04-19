@@ -28,7 +28,7 @@ export async function init(path, presentation) {
             const selectModelModule = await import(`./selectModel.js?v=${version}`)
             const { selectModel } = selectModelModule
             const videoModule = await import(`./media.js?v=${version}`)
-            const { videoLoop, videoPlay, loadVideo, intersection } = videoModule
+            const { videoLoop, videoPlay, loadVideo, loadDelay } = videoModule
 
             loadDelay()
             selectModel() 
