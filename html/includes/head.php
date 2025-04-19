@@ -99,7 +99,7 @@
         const presentation =  <?php echo json_encode($presentation) ?>
 
         import(`${path}js/init.js?v=<?php echo $version ?>`).then(module => {
-            module.init(presentation)
+            module.init(path, presentation)
         });
 
         let resizeTimeout;

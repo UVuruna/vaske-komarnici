@@ -1,9 +1,13 @@
 <?php
     $basePath = '../../';
     $page     = 'plise';
-    $styles   = ["css/catalogue.css", "css/singleCatalogue.css"];
-    $genericTitle = true;
-    $presentation = true;
+    $styles   = [ 'css/catalogue.css', 'css/singleCatalogue.css' ];
+    $presentation = [
+        'PliseDoor_Both',
+        'PliseDoor_One',
+        'PliseWindow_Both',
+        'PliseWindow_One'
+    ];
 ?>
 
 <!DOCTYPE html>
@@ -16,22 +20,6 @@
         <?php include "{$basePath}html/plise.php"; ?>
     </main>
     <?php include "{$basePath}html/includes/footer.php"; ?>
-
-    <script type="module">
-        const basePath = '<?php echo $basePath ?>';
-        const version = '<?php echo $version ?>';
-
-        import {
-            loadVideo
-        } from '<?php echo $basePath ?>js/video.js?v=<?php echo $version ?>'
-
-        window.onload = event => {
-            loadVideo(basePath, 'PliseDoor_Both');
-            loadVideo(basePath, 'PliseDoor_One');
-            loadVideo(basePath, 'PliseWindow_Both');
-            loadVideo(basePath, 'PliseWindow_One')
-        }
-    </script>
 </body>
 
 </html>

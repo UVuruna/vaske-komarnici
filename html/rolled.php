@@ -6,13 +6,7 @@
 <div class="catalogue singleCatalogue">
     <header>
         <h1>
-            <?php
-                if ($genericTitle) {
-                    echo $Title;
-                } else {
-                    echo "Rolo Komarnici";
-                }
-            ?>
+            <?= $page === 'katalog' ? $Title : 'Rolo Komarnici' ?>
         </h1>
         <p>
             <strong>Već od 35€ po kvadratnom metru</strong>
@@ -35,7 +29,7 @@
     <section class="media-container">
         <video 
             title="Prezentacija rolo komarnika" 
-            class="video-loop" 
+            class="video-loop lazy-media" 
             autoplay muted loop playsinline 
             id="Rolled"
             preload="none" 

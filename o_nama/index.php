@@ -1,7 +1,7 @@
 <?php
     $basePath = '../';
     $page     = 'o_nama';
-    $styles   = ["css/about_us.css"];
+    $styles   = [ 'css/about_us.css' ];
     $presentation = null;
 ?>
 

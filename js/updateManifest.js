@@ -32,5 +32,5 @@ export async function updateManifest(themeColor, bgColor) {
     }
     link.href = manifestURL;
 
-    console.log("Custom manifest applied!");
+    console.log(`Custom Manifest Applied!\n\ttheme_color: ${themeColor};\n\ttheme_color: ${bgColor}; `);
 }

@@ -6,13 +6,7 @@
 <div class="catalogue singleCatalogue">
     <header>
         <h1>
-            <?php
-                if ($genericTitle) {
-                    echo $Title;
-                } else {
-                    echo "Plise Komarnici";
-                }
-            ?>
+            <?= $page === 'katalog' ? $Title : 'Plise (harmonika) Komarnici' ?>
         </h1>
         <p>
             <strong>Već od 40€ po kvadratnom metru</strong>
@@ -36,7 +30,7 @@
         <video 
             id="PliseDoor_Both" 
             title="Prezentacija obostranih plise (harmonika) komarnika za vrata" 
-            class="video-loop"
+            class="video-loop lazy-media"
             autoplay muted loop playsinline
             preload="none" 
             loading="lazy"
@@ -58,7 +52,7 @@
         <video 
             id="PliseDoor_One" 
             title="Prezentacija jednostranih plise (harmonika) komarnika za vrata" 
-            class="video-loop"
+            class="video-loop lazy-media"
             autoplay muted loop playsinline
             preload="none" 
             loading="lazy"
@@ -80,7 +74,7 @@
         <video 
             id="PliseWindow_Both" 
             title="Prezentacija obostranih plise (harmonika) komarnika za prozor"
-            class="video-loop" 
+            class="video-loop lazy-media" 
             autoplay muted loop playsinline
             preload="none" 
             loading="lazy"
@@ -102,7 +96,7 @@
         <video 
             id="PliseWindow_One" 
             title="Prezentacija jednostranih plise (harmonika) komarnika za prozor"
-            class="video-loop" 
+            class="video-loop lazy-media" 
             autoplay muted loop playsinline
             preload="none" 
             loading="lazy"

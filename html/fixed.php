@@ -6,13 +6,7 @@
 <div class="catalogue singleCatalogue">
     <header>
         <h1>
-            <?php
-                if ($genericTitle) {
-                    echo $Title;
-                } else {
-                    echo "Fiksni Komarnici";
-                }
-            ?>
+            <?= $page === 'katalog' ? $Title : 'Fiksni Komarnici' ?>
         </h1>
         <p>
             <strong>Već od 25€ po kvadratnom metru</strong>
@@ -35,7 +29,7 @@
     <section class="media-container">
         <video 
             title="Prezentacija obostranih fiksnih komarnika" 
-            class="video-loop" 
+            class="video-loop lazy-media" 
             autoplay muted loop playsinline
             id="Fixed_Both"
             preload="none" 
@@ -57,7 +51,7 @@
     <section class="media-container">
         <video 
             title="Prezentacija jednostranih fiksnih komarnika" 
-            class="video-loop" 
+            class="video-loop lazy-media" 
             autoplay muted loop playsinline
             id="Fixed_One"
             preload="none" 

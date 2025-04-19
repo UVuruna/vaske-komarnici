@@ -14,7 +14,7 @@
     <section class="media-container">
         <video 
             title="Prezentacija komarnika" 
-            class="video-loop" 
+            class="video-loop lazy-media"
             autoplay muted loop playsinline 
             id="showcase"
             preload="none" 

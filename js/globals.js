@@ -63,11 +63,8 @@ export async function loadGlobals() {
 
         sessionStorage.setItem('Time', Time)
         sessionStorage.setItem('start', true)
-
-        console.log('First Login: ' + Time)
     } else {
         theme = sessionStorage.getItem('theme')
-        console.log(theme)
     }
 
     const bodyColor = ThemeColors[theme]['primary']

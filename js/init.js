@@ -1,43 +1,45 @@
-const version = localStorage.getItem('version')
-
-export async function init(presentation) {
+export async function init(path, presentation) {
     const t0 = performance.now()
+    const version = localStorage.getItem('version')
 
     // MAIN COMPONENTS
     const globalsModule = await import(`./globals.js?v=${version}`)
     const { loadGlobals } = globalsModule
-    const GLOBALS = await loadGlobals()
+    const globals = await loadGlobals()
 
+    // LOADING Theme
     const themeModule = await import(`./theme.js?v=${version}`)
     const { themeCycle, settingThemeOnload } = themeModule
+    settingThemeOnload(globals) 
 
     const promoWidthModule = await import(`./promoWidth.js?v=${version}`)
     const { promoWidth } = promoWidthModule
+    promoWidth()
     
-    const videoModule = await import(`./video.js?v=${version}`)
-    const { videoLoop, videoPlay, loadVideo } = videoModule
+    // Interaction
+    // Interaction
+    await (async () => {
+        const clickHoverModule = await import(`./clickHover.js?v=${version}`)
+        const { mobileMenu } = clickHoverModule
 
-    // USER INTERACTION
-    const clickHoverModule = await import(`./clickHover.js?v=${version}`)
-    const { mobileMenu } = clickHoverModule
+        window.themeCycle = themeCycle
+        mobileMenu()
 
-    const selectModelModule = await import(`./selectModel.js?v=${version}`)
-    const { selectModel } = selectModelModule
+        if (presentation) { 
+            const selectModelModule = await import(`./selectModel.js?v=${version}`)
+            const { selectModel } = selectModelModule
+            selectModel() 
 
-    settingThemeOnload(GLOBALS)
+            const videoModule = await import(`./video.js?v=${version}`)
+            const { videoLoop, videoPlay, loadVideo, intersection } = videoModule 
+            await intersection()
 
-
-    window.themeCycle = themeCycle // Logo Interaction
-    mobileMenu()
-
-    if (presentation) {
-        selectModel()
-
-        setTimeout(() => {
-            promoWidth()
-            videoPlay()
-            videoLoop()
-        }, 0)
-    }
+            presentation.forEach(video => {
+                loadVideo(path, video)
+            })
+            videoPlay(globals.videos)
+            videoLoop(globals.videos)
+        }
+    })()
     console.log(`Loading Page: ${performance.now()-t0} ms`)
 }
