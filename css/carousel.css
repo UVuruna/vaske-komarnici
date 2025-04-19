@@ -47,7 +47,7 @@
         z-index: 1;
         display: block;
         user-select: none;
-        -webkit-appearance: none;
+        /*-webkit-appearance: none;*/
         padding: 0;
         border: none;
         outline: none;

@@ -52,13 +52,8 @@
                     </a>
                 </li>
                 <li role="menuitem">
-                    <a href="<?php echo $basePath ?>naručivanje/">
-                        Naručivanje
-                    </a>
-                </li>
-                <li role="menuitem">
                     <a href="<?php echo $basePath ?>kontakt/">
-                        Kontakt
+                        Poručite Odmah
                     </a>
                 </li>
             </ul>

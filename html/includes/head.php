@@ -15,12 +15,11 @@
 
     $title = match ($page) {
         'o_nama' => "Ko smo mi? | {$baseTitle}",
-        'kontakt' => "Kontakt | {$baseTitle}",
         'katalog' => "Katalog proizvoda (Tipovi komarnika) | {$baseTitle}",
         'fiksni' => "Fiksni komarnici | {$baseTitle}",
         'rolo' => "Rolo komarnici | {$baseTitle}",
         'plise' => "Plise komarnici | {$baseTitle}",
-        'naručivanje' => "Poručite komarnike i zakažite montiranje | {$baseTitle}",
+        'kontakt' => "Poručite komarnike i zakažite montiranje | {$baseTitle}",
         default => $baseTitle,
     };
 

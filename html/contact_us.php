@@ -46,7 +46,7 @@ $alts = [
             <input type="text" id="name" name="name" placeholder="Ime" required autocomplete="on" />
             <input type="text" id="email" name="email" placeholder="Email" required autocomplete="on" />
             <input type="text" id="text" name="email" placeholder="Opis" required autocomplete="on" />
-            <button type="submit" class="cta-button" onclick="window.location.href='<?php echo $basePath ?>kontakt/'">
+            <button type="submit" class="cta-button">
                 Kontaktirajte nas
             </button>
         </form>
