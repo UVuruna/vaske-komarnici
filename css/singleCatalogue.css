@@ -10,10 +10,10 @@
 }
 
 .singleCatalogue .video-loop {
-    width: 100%;
-    max-width: 500px;
+    max-height: 50vh;
+    width: fit-content;
     border: 3px solid white;
-    border-radius: 50px;
+    border-radius: 35px;
 }
 
 

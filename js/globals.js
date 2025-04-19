@@ -1,16 +1,16 @@
-export function chooseTheme(Time) {
+function chooseTheme(Time) {
     switch (true) {
-        case (Time >= 4 && Time < 10):
-            localStorage.setItem('theme', 'morning');
+        case (Time >= 6 && Time < 10):
+            sessionStorage.setItem('theme', 'morning');
             return 'morning'
-        case (Time >= 10 && Time < 16):
-            localStorage.setItem('theme', 'noon');
+        case (Time >= 10 && Time < 18):
+            sessionStorage.setItem('theme', 'noon');
             return 'noon'
-        case (Time >= 16 && Time < 22):
-            localStorage.setItem('theme', 'afternoon');
+        case (Time >= 18 && Time < 22):
+            sessionStorage.setItem('theme', 'afternoon');
             return 'afternoon'
         default:
-            localStorage.setItem('theme', 'night');
+            sessionStorage.setItem('theme', 'night');
             return 'night'
     }
 }
@@ -20,6 +20,8 @@ function getTime() {
     return currentDate.getHours() + currentDate.getMinutes() / 60
 }
 
+
+const ThemeList = ['morning', 'noon', 'afternoon', 'night']
 const ThemeColors = {
     morning: {
         primary: '#36597c',
@@ -47,38 +49,37 @@ const ThemeColors = {
     }
 }
 
-const ThemeList = [
-    'morning', 
-    'noon', 
-    'afternoon', 
-    'night'
-]
 
 export async function loadGlobals() {
     const updateManifestModule = await import(`./updateManifest.js?v=${version}`)
     const { updateManifest } = updateManifestModule
 
-    const Time = getTime()
-    localStorage.setItem('Time', Time)
-    console.log(Time)
+    
 
-    const theme = chooseTheme(Time)
-    updateManifest( ThemeColors[theme]['primary'], ThemeColors[theme]['primaryElement'] )
+    let theme
+    if (!sessionStorage.getItem('start')) {
+        const Time = getTime()   
+        theme = chooseTheme(Time)
+
+        sessionStorage.setItem('Time', Time)
+        sessionStorage.setItem('start', true)
+
+        console.log('First Login: ' + Time)
+    } else {
+        theme = sessionStorage.getItem('theme')
+        console.log(theme)
+    }
+
+    const bodyColor = ThemeColors[theme]['primary']
+    document.body.style.backgroundColor = bodyColor
+    updateManifest(
+        bodyColor,
+        ThemeColors[theme]['primaryElement']
+    )
 
     return {
-        LOGO: document.getElementById('LOGO'),
-        MENU: document.getElementById('MENU'),
-        BUTTONS: document.querySelectorAll('button'),
-        LightFrames: document.querySelectorAll(`
-            #about_us,
-            .selectFrame > *:not(:first-child),
-            #footer,
-            .fa-ban
-        `),
-        ListItems: document.querySelectorAll('li strong'),
-        videos: document.querySelectorAll('.video-loop'),
-        ThemeList: ThemeList,
-        ThemeColors: ThemeColors,
-        chooseTheme: chooseTheme
+        ThemeList : ThemeList,
+        ThemeColors : ThemeColors,
+        updateManifest : updateManifest
     }
 }

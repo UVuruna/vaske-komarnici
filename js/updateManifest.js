@@ -1,4 +1,4 @@
-export function updateManifest(themeColor, bgColor) {
+export async function updateManifest(themeColor, bgColor) {
     const manifest = {
         name: "Vaske Komarnici",
         short_name: "Komarnici",

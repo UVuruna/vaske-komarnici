@@ -1,14 +1,3 @@
-
-  body {
-    height: 100vh;
-    overflow: hidden;
-    background: #000;
-    color: #fff;  
-    font-family: 'Playfair Display', cursive;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
   
   .menu {
     overflow: hidden;

@@ -17,12 +17,15 @@
 
 /* --- Promo Image Part --- */
 
-.promoContainer {
-    width: 100%;
+.promoContainer { 
     display: grid;
-    grid-template-columns: calc(50%) calc(50%);
-    max-width: 1300px;
+    grid-template-columns: calc(50%) calc(50%); 
     margin: 0 auto;
+
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    
 }
 
 .explanation {
@@ -54,6 +57,7 @@
     border-radius: 50px;
     padding: 1rem;
     margin: 0 auto;
+    max-height: 75vh;
 }
 
 .catalogue h2 {
@@ -65,11 +69,9 @@
 }
 
 .promoImage {
-    flex-grow: 1;
-    object-fit: contain;
-    width: 90%;
-    height: auto;
-    max-height: 50vh;
+    object-fit: contain;   
+    width: 90%;  
+    overflow: hidden;
 }
 
 /* --- Selecting Models Part --- */
@@ -126,7 +128,7 @@
 
 @media (max-width: 1000px) {
     .promoContainer {
-        width: 95%;
+        width: 100%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -135,6 +137,9 @@
 
     .promo {
         width: 100%;
+    }
+    .promoImage {
+        height: auto;
     }
 }
 
@@ -185,25 +190,3 @@
     }
 }
 
-@media (max-width: 350px) {
-    .selectFrame {
-        gap: 0;
-    }
-
-    .fa-ban {
-        font-size: 2.2rem;
-    }
-
-    .selectFrame ul {
-        gap: 0;
-    }
-
-    .selectFrame img {
-        height: 2rem;
-    }
-
-    .selectFrame h3,
-    .selectFrame ul {
-        margin: 0 0.1rem;
-    }
-}

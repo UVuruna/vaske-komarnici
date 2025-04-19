@@ -6,7 +6,7 @@ export async function init(presentation) {
     // MAIN COMPONENTS
     const globalsModule = await import(`./globals.js?v=${version}`)
     const { loadGlobals } = globalsModule
-    const globals = await loadGlobals()
+    const GLOBALS = await loadGlobals()
 
     const themeModule = await import(`./theme.js?v=${version}`)
     const { themeCycle, settingThemeOnload } = themeModule
@@ -16,7 +16,6 @@ export async function init(presentation) {
     
     const videoModule = await import(`./video.js?v=${version}`)
     const { videoLoop, videoPlay, loadVideo } = videoModule
-    window.loadVideo = loadVideo
 
     // USER INTERACTION
     const clickHoverModule = await import(`./clickHover.js?v=${version}`)
@@ -25,19 +24,20 @@ export async function init(presentation) {
     const selectModelModule = await import(`./selectModel.js?v=${version}`)
     const { selectModel } = selectModelModule
 
+    settingThemeOnload(GLOBALS)
 
-    settingThemeOnload(globals) // LOADING SCREEN
 
     window.themeCycle = themeCycle // Logo Interaction
     mobileMenu()
+
     if (presentation) {
         selectModel()
 
         setTimeout(() => {
             promoWidth()
-            videoPlay(globals.videos)
-            videoLoop(globals.videos)
-        }, 100)
+            videoPlay()
+            videoLoop()
+        }, 0)
     }
     console.log(`Loading Page: ${performance.now()-t0} ms`)
 }

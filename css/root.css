@@ -18,6 +18,7 @@ html {
 }
 
 body {
+  background-color: none;
   font-weight: 400;
   cursor: default;
   display: flex;

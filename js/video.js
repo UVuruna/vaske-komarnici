@@ -1,4 +1,6 @@
-export function videoLoop(videos) {
+const videos = document.querySelectorAll('.video-loop')
+
+export function videoLoop() {
     videos.forEach(video => {
         video.addEventListener('timeupdate', () => {
             if (video.currentTime >= 9.13) {
@@ -9,7 +11,7 @@ export function videoLoop(videos) {
     })
 }
 
-export function videoPlay(videos) {
+export function videoPlay() {
     const observer = new IntersectionObserver(
         entries => {
             entries.forEach(entry => {
@@ -33,7 +35,7 @@ export function videoPlay(videos) {
     })
 }
 
-export function loadVideo(basePath, videoID) {
+export async function loadVideo(basePath, videoID) {
     const checkElementInterval = setInterval(() => {
         const videoElement = document.getElementById(videoID)
         const version = localStorage.getItem('version')
