@@ -59,5 +59,5 @@ export async function loadVideo(basePath, videoID) {
                 `
             videoElement.load()
         }
-    }, 20) // Mora interval jer nekada ne stigne da napravi taj DIV i onda ne moze da ucita
+    }, 0) // Mora interval jer nekada ne stigne da napravi taj DIV i onda ne moze da ucita
 }

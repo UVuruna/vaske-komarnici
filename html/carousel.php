@@ -1,30 +1,44 @@
+<?php
+    $files = glob("{$basePath}/img/slideshow*.{jpg,jpeg,png,webp,mp4}", GLOB_BRACE);
+
+    function is_video($filename) {
+        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+        $video_extensions = ['mp4'];
+        return in_array($ext, $video_extensions);
+    }
+?>
+
 <div class="menu">
-  <div class="menu--wrapper">
-    <div class="menu--item">
-      <figure><img src="https://images.unsplash.com/photo-1595265677860-9a3168007dc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" /></figure>
+    <div class="menu--wrapper">
+        <div class="menu--item">
+            <figure>
+                <?php foreach ($files as $file): ?>
+                    <?php
+                        $isVideo = is_video($file);
+                        $filename = pathinfo($file, PATHINFO_FILENAME);
+                    ?>
+                    <?php if ($isVideo): ?>
+                        <video
+                            class="lazy-media"
+                            data-src="<?= $file ?>"
+                            style="max-width: 200px"
+                            autoplay muted loop playsinline
+                            preload="none"
+                            controls>
+                            <source data-src="<?= $file ?>">
+                            <source data-src="<?= $basePath ?>/img/slideshow/backup/<?= $filename ?>.webp">
+                            <source data-src="<?= $basePath ?>/img/slideshow/backup/<?= $filename ?>_h264.mp4">
+                        </video>
+                    <?php else: ?>
+                        <img
+                            class="lazy-media"
+                            data-src="<?= $file ?>"
+                            alt="Fotografija sa terena"
+                            style="max-width: 200px"
+                            loading="lazy">
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </figure>
+        </div>
     </div>
-
-    <div class="menu--item">
-      <figure><img src="https://images.unsplash.com/photo-1594786118579-95ba90c801ec?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" /></figure>
-    </div>
-
-    <div class="menu--item">
-      <figure><img src="https://images.unsplash.com/photo-1509339022327-1e1e25360a41?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" /></figure>
-    </div>
-
-    <div class="menu--item">
-      <figure><img src="https://images.unsplash.com/photo-1525417071002-5ee4e6bb44f7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" /></figure>
-    </div>
-
-    <div class="menu--item">
-      <figure><img src="https://images.unsplash.com/photo-1594072702031-f0e2a602dd2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" /></figure>
-    </div>
-
-    <div class="menu--item">
-      <figure><img src="https://images.unsplash.com/photo-1592989819277-a3aafa40c66a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" /></figure>
-    </div>
-  </div>
 </div>
-
-
-<a class="version" href="https://codepen.io/supah/pen/xxZMdNW" target="_parent">Vertical version</a>

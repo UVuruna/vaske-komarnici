@@ -29,7 +29,7 @@
         </p>
         <p>
             Autor:
-            <a href="<?php echo $developerSite ?>" target="_blank">
+            <a href="<?php echo $developerWebsite ?>" target="_blank">
                 <?php echo $developerName ?>
             </a>
         </p>

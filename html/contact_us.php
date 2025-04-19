@@ -1,20 +1,20 @@
 <?php
-$ids = [
-    "Fixed_Both",
-    "Rolled",
-    "PliseDoor_Both",
-    "PliseDoor_One",
-    "PliseWindow_Both",
-    "PliseWindow_One",
-];
-$alts = [
-    "Fiksni komarnik porudžbina",
-    "Rolo komarnik porudžbina",
-    "Dvodelni Plise komarnik za vrata porudžbina",
-    "Jednodelni Plise komarnik za vrata porudžbina",
-    "Dvodelni komarnik za prozor porudžbina",
-    "Jednodelni komarnik za prozor porudžbina",
-];
+    $ids = [
+        "Fixed_Both",
+        "Rolled",
+        "PliseDoor_Both",
+        "PliseDoor_One",
+        "PliseWindow_Both",
+        "PliseWindow_One",
+    ];
+    $alts = [
+        "Fiksni komarnik porudžbina",
+        "Rolo komarnik porudžbina",
+        "Dvodelni Plise komarnik za vrata porudžbina",
+        "Jednodelni Plise komarnik za vrata porudžbina",
+        "Dvodelni komarnik za prozor porudžbina",
+        "Jednodelni komarnik za prozor porudžbina",
+    ];
 ?>
 
 <div id="contact_us">
