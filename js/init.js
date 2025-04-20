@@ -31,14 +31,14 @@ export async function init(path, presentation) {
             const { videoLoop, videoPlay, loadVideo, loadDelay } = videoModule
 
             loadDelay()
-            selectModel() 
+            selectModel(version) 
 
             presentation.forEach(video => {
-                loadVideo(path, video)
+                loadVideo(version, path, video)
             })
             videoPlay(globals.videos)
             videoLoop(globals.videos)
         }
     })()
-    console.log(`Loading Page: ${performance.now()-t0} ms`)
+    console.log(`Loading Page: ${Math.floor(performance.now()-t0)} ms`)
 }

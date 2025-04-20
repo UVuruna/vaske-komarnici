@@ -56,8 +56,7 @@ function findElements(imageStringList, imageLink) {
 
 // <<<------------->>> MAIN FUNCTION <<<------------->>>
 
-export function selectModel() {
-    const version = localStorage.getItem('version')
+export function selectModel(version) {
     const seenPromos = new Set()
 
     // 42 Combination of text ( Rolled: 6, PliseDoor:12, PliseWindow:12, Fixed:12 )

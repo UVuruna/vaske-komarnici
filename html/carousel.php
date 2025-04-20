@@ -31,7 +31,6 @@
                         </video>
                     <?php else: ?>
                         <img
-                            class="lazy-media"
                             data-src="<?= $file ?>"
                             alt="Fotografija sa terena"
                             style="max-width: 200px"

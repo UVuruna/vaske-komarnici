@@ -36,12 +36,11 @@
         );
     ?>
     <video 
-        title="Prezentacija rolo komarnika" 
-        class="video-loop" 
-        autoplay muted loop playsinline 
+        title="Prezentacija rolo komarnika"
+        class="video-loop"
+        autoplay muted loop playsinline
         id="Rolled"
-        preload="none" 
-        loading="lazy"
+        preload="none"
     >
     </video>
 </div>

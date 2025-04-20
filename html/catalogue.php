@@ -16,8 +16,7 @@
         class="video-loop"
         autoplay muted loop playsinline 
         id="showcase"
-        preload="none" 
-        loading="lazy">
+        preload="none">
     </video>
 
     <?php

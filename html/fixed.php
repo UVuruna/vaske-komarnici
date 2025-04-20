@@ -36,12 +36,11 @@
         );
     ?>
     <video 
-        title="Prezentacija obostranih fiksnih komarnika" 
-        class="video-loop" 
+        title="Prezentacija obostranih fiksnih komarnika"
+        class="video-loop"
         autoplay muted loop playsinline
         id="Fixed_Both"
-        preload="none" 
-        loading="lazy"
+        preload="none"
     >
     </video>
 
@@ -55,12 +54,11 @@
         );
     ?>
     <video 
-        title="Prezentacija jednostrani fiksnih komarnika" 
-        class="video-loop" 
+        title="Prezentacija jednostrani fiksnih komarnika"
+        class="video-loop"
         autoplay muted loop playsinline
         id="Fixed_One"
-        preload="none" 
-        loading="lazy"
+        preload="none"
     >
     </video>
 

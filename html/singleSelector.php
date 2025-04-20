@@ -147,7 +147,6 @@ function displayProduct(
                 src='{$basePath}img/items/product/{$imgLink}'
                 alt='{$altText} slika'
                 loading='lazy'
-                class='lazy-media'
             />
             {$cenaHtml}
             {$saznajVišeHtml}

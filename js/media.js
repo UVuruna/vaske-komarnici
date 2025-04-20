@@ -37,10 +37,8 @@ export async function videoPlay() {
     })
 }
 
-export async function loadVideo(basePath, videoID) {
+export async function loadVideo(version, basePath, videoID) {
     const videoElement = document.getElementById(videoID)
-    const version = localStorage.getItem('version')
-
     if (videoID === 'showcase') {
         if (window.innerWidth >= 750) {
             videoID = videoID + '_PC'
@@ -54,12 +52,6 @@ export async function loadVideo(basePath, videoID) {
             <source data-src=".${basePath}img/items/showroom/${videoID}_H264.mp4?v=${version}" type="video/mp4" />
         `
     loadDelay(videoElement)
-    /*videoElement.innerHTML = `
-            <source src="${basePath}img/items/showroom/${videoID}.mp4?v=${version}" type="video/mp4" />
-            <source src="${basePath}img/items/showroom/${videoID}.webm?v=${version}" type="video/webm" />
-            <source src=".${basePath}img/items/showroom/${videoID}_H264.mp4?v=${version}" type="video/mp4" />
-        `
-    videoElement.load()*/
 }
 
 export async function loadDelay(target = null) {
@@ -68,35 +60,26 @@ export async function loadDelay(target = null) {
             entries.forEach(entry => {
                 
                 if (entry.isIntersecting) {
-                    const el = entry.target
-                    if (el.tagName === 'IMG') {
-                        console.log(el)
-                        el.src = el.dataset.src
-                    }
-                    if (el.tagName === 'VIDEO') {
-                        console.log(el)
-                        const sources = el.querySelectorAll('source')
-                        sources.forEach(source => {
-                            if (source.dataset.src) {
-                                source.src = source.dataset.src
-                            }
-                        })
-                        el.load()
-                    }
-                    obs.unobserve(el)
+                    const element = entry.target
+                    const sources = element.querySelectorAll('source')
+                    sources.forEach(source => {
+                        if (source.dataset.src) {
+                            source.src = source.dataset.src
+                        }
+                    })
+                    element.load()
+                    obs.unobserve(element)
                 }
             })
         },
         {
-            rootMargin: '1200px',
+            rootMargin: '200px',
             threshold: 0.1
         }
     )
-
     if (target) {
         observer.observe(target)
     } else {
-        const lazyElements = document.querySelectorAll('.lazy-media')
-        lazyElements.forEach(el => observer.observe(el))
+        document.querySelectorAll('.lazy-media').forEach(el => observer.observe(el))
     }
 }

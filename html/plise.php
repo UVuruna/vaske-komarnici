@@ -36,12 +36,11 @@
         );
     ?>
     <video 
-        id="PliseDoor_Both" 
-        title="Prezentacija obostranih plise (harmonika) komarnika za vrata" 
+        id="PliseDoor_Both"
+        title="Prezentacija obostranih plise (harmonika) komarnika za vrata"
         class="video-loop"
         autoplay muted loop playsinline
-        preload="none" 
-        loading="lazy"
+        preload="none"
     >
     </video>
 
@@ -55,12 +54,11 @@
         );
     ?>
     <video 
-        id="PliseDoor_One" 
-        title="Prezentacija jednostranih plise (harmonika) komarnika za vrata" 
+        id="PliseDoor_One"
+        title="Prezentacija jednostranih plise (harmonika) komarnika za vrata"
         class="video-loop"
         autoplay muted loop playsinline
-        preload="none" 
-        loading="lazy"
+        preload="none"
     >
     </video>
 
@@ -74,12 +72,11 @@
         );
     ?>
     <video 
-        id="PliseWindow_Both" 
+        id="PliseWindow_Both"
         title="Prezentacija obostranih plise (harmonika) komarnika za prozor"
-        class="video-loop" 
+        class="video-loop"
         autoplay muted loop playsinline
-        preload="none" 
-        loading="lazy"
+        preload="none"
     >
     </video>
 
@@ -93,12 +90,11 @@
         );
     ?>
     <video 
-        id="PliseWindow_One" 
+        id="PliseWindow_One"
         title="Prezentacija jednostranih plise (harmonika) komarnika za prozor"
-        class="video-loop" 
+        class="video-loop"
         autoplay muted loop playsinline
-        preload="none" 
-        loading="lazy"
+        preload="none"
     >
     </video>
 </div>
