@@ -11,16 +11,14 @@
         </p>
     </header>
 
-    <section class="media-container">
-        <video 
-            title="Prezentacija komarnika" 
-            class="video-loop"
-            autoplay muted loop playsinline 
-            id="showcase"
-            preload="none" 
-            loading="lazy">
-        </video>
-    </section>
+    <video 
+        title="Prezentacija komarnika" 
+        class="video-loop"
+        autoplay muted loop playsinline 
+        id="showcase"
+        preload="none" 
+        loading="lazy">
+    </video>
 
     <?php
         displayProduct(

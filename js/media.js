@@ -11,15 +11,19 @@ export function videoLoop() {
     })
 }
 
-export function videoPlay() {
+export async function videoPlay() {
     const observer = new IntersectionObserver(
         entries => {
             entries.forEach(entry => {
                 const video = entry.target
                 if (entry.isIntersecting) {
-                    video.play()
+                    if (video.paused) {
+                        setTimeout(() => video.play().catch(() => {}), 0)
+                    }
                 } else {
-                    video.pause()
+                    if (!video.paused) {
+                        setTimeout(() => video.pause(), 0)
+                    }
                 }
             })
         },
@@ -45,32 +49,54 @@ export async function loadVideo(basePath, videoID) {
         }
     }
     videoElement.innerHTML = `
-            <source src="${basePath}img/items/showroom/${videoID}.webm?v=${version}" type="video/webm" />
-            <source src="${basePath}img/items/showroom/${videoID}.mp4?v=${version}" type="video/mp4" />
-            <source src=".${basePath}img/items/showroom/${videoID}_H264.mp4?v=${version}" type="video/mp4" />
-            <source src="${basePath}img/items/showroom/${videoID}.mov?v=${version}" type="video/quicktime" />
+            <source data-src="${basePath}img/items/showroom/${videoID}.mp4?v=${version}" type="video/mp4" />
+            <source data-src="${basePath}img/items/showroom/${videoID}.webm?v=${version}" type="video/webm" />
+            <source data-src=".${basePath}img/items/showroom/${videoID}_H264.mp4?v=${version}" type="video/mp4" />
         `
-    videoElement.load()
+    loadDelay(videoElement)
+    /*videoElement.innerHTML = `
+            <source src="${basePath}img/items/showroom/${videoID}.mp4?v=${version}" type="video/mp4" />
+            <source src="${basePath}img/items/showroom/${videoID}.webm?v=${version}" type="video/webm" />
+            <source src=".${basePath}img/items/showroom/${videoID}_H264.mp4?v=${version}" type="video/mp4" />
+        `
+    videoElement.load()*/
 }
 
-export async function loadDelay() {
-    const lazyElements = document.querySelectorAll('.lazy-media')
-
+export async function loadDelay(target = null) {
     const observer = new IntersectionObserver(
         (entries, obs) => {
             entries.forEach(entry => {
-                console.log(entry)
+                
                 if (entry.isIntersecting) {
                     const el = entry.target
-                    el.src = el.dataset.src
+                    if (el.tagName === 'IMG') {
+                        console.log(el)
+                        el.src = el.dataset.src
+                    }
+                    if (el.tagName === 'VIDEO') {
+                        console.log(el)
+                        const sources = el.querySelectorAll('source')
+                        sources.forEach(source => {
+                            if (source.dataset.src) {
+                                source.src = source.dataset.src
+                            }
+                        })
+                        el.load()
+                    }
                     obs.unobserve(el)
                 }
             })
         },
         {
-            rootMargin: '100px',
+            rootMargin: '1200px',
             threshold: 0.1
         }
     )
-    lazyElements.forEach(el => observer.observe(el))
+
+    if (target) {
+        observer.observe(target)
+    } else {
+        const lazyElements = document.querySelectorAll('.lazy-media')
+        lazyElements.forEach(el => observer.observe(el))
+    }
 }

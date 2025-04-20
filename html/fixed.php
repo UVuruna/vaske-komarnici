@@ -6,7 +6,7 @@
 <div class="catalogue singleCatalogue">
     <header>
         <h1>
-            <?= $page === 'katalog' ? $Title : 'Fiksni Komarnici' ?>
+            <?= $page !== 'katalog' ? $Title : 'Fiksni Komarnici' ?>
         </h1>
         <p>
             <strong>Već od 25€ po kvadratnom metru</strong>
@@ -35,17 +35,15 @@
             altText: "Obostrani Fiksni komarnik"
         );
     ?>
-    <section class="media-container">
-        <video 
-            title="Prezentacija obostranih fiksnih komarnika" 
-            class="video-loop" 
-            autoplay muted loop playsinline
-            id="Fixed_Both"
-            preload="none" 
-            loading="lazy"
-        >
-        </video>
-    </section>
+    <video 
+        title="Prezentacija obostranih fiksnih komarnika" 
+        class="video-loop" 
+        autoplay muted loop playsinline
+        id="Fixed_Both"
+        preload="none" 
+        loading="lazy"
+    >
+    </video>
 
     <?php
         displayProduct(
@@ -56,16 +54,14 @@
             altText: "Jednostrani Fiksni komarnik"
         );
     ?>
-    <section class="media-container">
-        <video 
-            title="Prezentacija jednostrani fiksnih komarnika" 
-            class="video-loop" 
-            autoplay muted loop playsinline
-            id="Fixed_One"
-            preload="none" 
-            loading="lazy"
-        >
-        </video>
-    </section>
+    <video 
+        title="Prezentacija jednostrani fiksnih komarnika" 
+        class="video-loop" 
+        autoplay muted loop playsinline
+        id="Fixed_One"
+        preload="none" 
+        loading="lazy"
+    >
+    </video>
 
 </div>

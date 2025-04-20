@@ -101,14 +101,5 @@
         import(`${path}js/init.js?v=<?php echo $version ?>`).then(module => {
             module.init(path, presentation)
         });
-
-        let resizeTimeout;
-        let t0 = performance.now()
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimeout)
-            resizeTimeout = setTimeout(() => {
-                location.reload()
-            }, 50)
-        })
     </script>
 </head>

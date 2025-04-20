@@ -6,20 +6,16 @@
 }
 
 .singleCatalogue header p {
-  text-align: center;
+    text-align: center;
 }
 
-.singleCatalogue .video-loop {
-    max-height: 50vh;
-    width: fit-content;
-    border: 3px solid white;
-    border-radius: 35px;
-}
-
-
-.singleCatalogue  .promo {
+.singleCatalogue .promo {
     border: none;
     border-radius: 0;
     padding: 0;
-  }
+}
 
+.singleCatalogue .video-loop {
+    border: 3px solid white;
+    border-radius: 30px;
+}

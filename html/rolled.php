@@ -6,7 +6,7 @@
 <div class="catalogue singleCatalogue">
     <header>
         <h1>
-            <?= $page === 'katalog' ? $Title : 'Rolo Komarnici' ?>
+            <?= $page !== 'katalog' ? $Title : 'Rolo Komarnici' ?>
         </h1>
         <p>
             <strong>Već od 35€ po kvadratnom metru</strong>
@@ -35,15 +35,13 @@
             altText: "Rolo komarnik"
         );
     ?>
-    <section class="media-container">
-        <video 
-            title="Prezentacija rolo komarnika" 
-            class="video-loop" 
-            autoplay muted loop playsinline 
-            id="Rolled"
-            preload="none" 
-            loading="lazy"
-        >
-        </video>
-    </section>
+    <video 
+        title="Prezentacija rolo komarnika" 
+        class="video-loop" 
+        autoplay muted loop playsinline 
+        id="Rolled"
+        preload="none" 
+        loading="lazy"
+    >
+    </video>
 </div>
