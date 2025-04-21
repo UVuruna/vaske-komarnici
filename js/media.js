@@ -18,7 +18,7 @@ export async function videoPlay() {
                 const video = entry.target
                 if (entry.isIntersecting) {
                     if (video.paused) {
-                        setTimeout(() => video.play().catch(() => {}), 0)
+                        setTimeout(() => video.play().catch(() => { }), 0)
                     }
                 } else {
                     if (!video.paused) {
@@ -58,7 +58,6 @@ export async function loadDelay(target = null) {
     const observer = new IntersectionObserver(
         (entries, obs) => {
             entries.forEach(entry => {
-                
                 if (entry.isIntersecting) {
                     const element = entry.target
                     const sources = element.querySelectorAll('source')

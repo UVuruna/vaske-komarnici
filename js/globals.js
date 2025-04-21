@@ -1,16 +1,41 @@
+export async function loadGlobals(updateManifest) {
+    let theme
+
+    if (!sessionStorage.getItem('start')) {
+        const Time = getTime()
+        theme = chooseTheme(Time)
+
+        updateManifest(
+            ThemeColors[theme]['primary'],
+            ThemeColors[theme]['primaryElement']
+        )
+        sessionStorage.setItem('Time', Time)
+        sessionStorage.setItem('start', true)
+
+    } else {
+        theme = sessionStorage.getItem('theme')
+    }
+    document.body.style.backgroundColor = ThemeColors[theme]['primary']
+
+    return {
+        ThemeList: ThemeList,
+        ThemeColors: ThemeColors
+    }
+}
+
 function chooseTheme(Time) {
     switch (true) {
-        case (Time >= 6 && Time < 10):
-            sessionStorage.setItem('theme', 'morning');
+        case Time >= 6 && Time < 10:
+            sessionStorage.setItem('theme', 'morning')
             return 'morning'
-        case (Time >= 10 && Time < 18):
-            sessionStorage.setItem('theme', 'noon');
+        case Time >= 10 && Time < 18:
+            sessionStorage.setItem('theme', 'noon')
             return 'noon'
-        case (Time >= 18 && Time < 22):
-            sessionStorage.setItem('theme', 'afternoon');
+        case Time >= 18 && Time < 22:
+            sessionStorage.setItem('theme', 'afternoon')
             return 'afternoon'
         default:
-            sessionStorage.setItem('theme', 'night');
+            sessionStorage.setItem('theme', 'night')
             return 'night'
     }
 }
@@ -20,8 +45,8 @@ function getTime() {
     return currentDate.getHours() + currentDate.getMinutes() / 60
 }
 
-
 const ThemeList = ['morning', 'noon', 'afternoon', 'night']
+
 const ThemeColors = {
     morning: {
         primary: '#36597c',
@@ -46,37 +71,5 @@ const ThemeColors = {
         secondary: '#d5d3e1',
         primaryElement: '#7151a9',
         secondaryElement: '#8e83aa'
-    }
-}
-
-
-export async function loadGlobals() {
-    const updateManifestModule = await import(`./updateManifest.js?v=${version}`)
-    const { updateManifest } = updateManifestModule
-
-    
-
-    let theme
-    if (!sessionStorage.getItem('start')) {
-        const Time = getTime()   
-        theme = chooseTheme(Time)
-
-        sessionStorage.setItem('Time', Time)
-        sessionStorage.setItem('start', true)
-    } else {
-        theme = sessionStorage.getItem('theme')
-    }
-
-    const bodyColor = ThemeColors[theme]['primary']
-    document.body.style.backgroundColor = bodyColor
-    updateManifest(
-        bodyColor,
-        ThemeColors[theme]['primaryElement']
-    )
-
-    return {
-        ThemeList : ThemeList,
-        ThemeColors : ThemeColors,
-        updateManifest : updateManifest
     }
 }

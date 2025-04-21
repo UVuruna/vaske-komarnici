@@ -16,9 +16,12 @@ export async function mobileMenu() {
     })
 }
 
-
-
-export async function colorChange(element, primaryColor, secondaryColor, colorizeSVG) {
+export async function colorChange(
+    element,
+    primaryColor,
+    secondaryColor,
+    colorizeSVG
+) {
     const activate = () => colorizeSVG(element, secondaryColor)
     const deactivate = () => colorizeSVG(element, primaryColor)
 
@@ -28,7 +31,6 @@ export async function colorChange(element, primaryColor, secondaryColor, coloriz
     element.addEventListener('touchstart', activate) // mobile touch
     element.addEventListener('touchend', deactivate)
 }
-
 
 export function hoverBgColor(element, color) {
     element.addEventListener('mouseenter', () => {

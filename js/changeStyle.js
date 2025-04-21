@@ -1,5 +1,3 @@
-
-
 // ----------> LIGHT BG <----------
 export async function lightFrame(LightFrames, PresetColors) {
     LightFrames.forEach(frame => {
@@ -46,7 +44,12 @@ export async function buttonsStyle(BUTTONS, PresetColors) {
     })
 }
 // ----------> LIST strong Items <----------
-export async function listItemsStyle(theme, ListItems, hoverTxtColor, PresetColors) {
+export async function listItemsStyle(
+    theme,
+    ListItems,
+    hoverTxtColor,
+    PresetColors
+) {
     ListItems.forEach(item => {
         item.style.cursor = 'pointer'
         if (theme !== 'afternoon') {
@@ -73,7 +76,12 @@ export async function listItemsStyle(theme, ListItems, hoverTxtColor, PresetColo
 }
 
 // ----------> DROPDOWN MENU <----------
-export async function menuStyle(dropdownMenus, primaryColor, secondaryColor, hoverBgColor) {
+export async function menuStyle(
+    dropdownMenus,
+    primaryColor,
+    secondaryColor,
+    hoverBgColor
+) {
     dropdownMenus.forEach(menu => {
         if (
             !menu.classList.contains('menu') ||

@@ -1,5 +1,8 @@
-const catalogueTextModule = await import(`./catalogueText.js?v=${version}`)
-const { catalogueText } = catalogueTextModule
+let catalogueText
+
+import { catalogueText as catalogueTextDelay } from './catalogueText.js'
+
+catalogueText = catalogueTextDelay
 
 const type = ['Rolled', 'PliseDoor', 'PliseWindow', 'Fixed']
 const sides = ['Both', 'One']
@@ -12,51 +15,14 @@ const TYPES = {
     net: net
 }
 
-function getParts(imageStr) {
-    return new Set(imageStr.split('/').pop().split('.')[0].split('_'))
-}
-
-function findElements(imageStringList, imageLink) {
-    const containter = imageLink.closest('.promoContainer')
-    let returningDict = {}
-    let mainType
-
-    imageStringList.forEach(str => {
-        for (const [element, strFinder] of Object.entries(TYPES)) {
-            if (strFinder.includes(str)) {
-                if (element === 'type') {
-                    mainType = str
-                }
-
-                if (element !== 'sides') {
-                    returningDict[str] = containter.querySelector(`.${element}`)
-                } else {
-                    let extendedStr = [mainType, str].join('_')
-                    returningDict[extendedStr] = containter.querySelector(`.${element}`)
-                }
-            }
-        }
-    })
-
-    if (Object.keys(returningDict).length <= 2) {
-        returningDict['empty'] = [
-            containter.querySelector(`.frame`),
-            containter.querySelector(`.net`),
-            containter.querySelector(`.frameTitle`),
-            containter.querySelector(`.netTitle`)
-        ]
-    } else {
-        returningDict['titles'] = [
-            containter.querySelector(`.frameTitle`),
-            containter.querySelector(`.netTitle`)
-        ]
-    }
-    return returningDict
-}
-
 // <<<------------->>> MAIN FUNCTION <<<------------->>>
 
-export function selectModel(version) {
+export async function selectModel(version, updateTrue, updateJS) {
+    if (updateTrue) {
+        const modules = await updateJS(['catalogueText'], version)
+        catalogueText = modules.catalogueText.catalogueText
+    }
+
     const seenPromos = new Set()
 
     // 42 Combination of text ( Rolled: 6, PliseDoor:12, PliseWindow:12, Fixed:12 )
@@ -131,4 +97,46 @@ export function selectModel(version) {
                 }, 500)
             }
         })
+}
+
+function getParts(imageStr) {
+    return new Set(imageStr.split('/').pop().split('.')[0].split('_'))
+}
+
+function findElements(imageStringList, imageLink) {
+    const containter = imageLink.closest('.promoContainer')
+    let returningDict = {}
+    let mainType
+
+    imageStringList.forEach(str => {
+        for (const [element, strFinder] of Object.entries(TYPES)) {
+            if (strFinder.includes(str)) {
+                if (element === 'type') {
+                    mainType = str
+                }
+
+                if (element !== 'sides') {
+                    returningDict[str] = containter.querySelector(`.${element}`)
+                } else {
+                    let extendedStr = [mainType, str].join('_')
+                    returningDict[extendedStr] = containter.querySelector(`.${element}`)
+                }
+            }
+        }
+    })
+
+    if (Object.keys(returningDict).length <= 2) {
+        returningDict['empty'] = [
+            containter.querySelector(`.frame`),
+            containter.querySelector(`.net`),
+            containter.querySelector(`.frameTitle`),
+            containter.querySelector(`.netTitle`)
+        ]
+    } else {
+        returningDict['titles'] = [
+            containter.querySelector(`.frameTitle`),
+            containter.querySelector(`.netTitle`)
+        ]
+    }
+    return returningDict
 }

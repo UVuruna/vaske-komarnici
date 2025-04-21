@@ -11,7 +11,7 @@
     $companyPhoneLocal  = "063 105-1331";
     $companyPhoneGlobal = "+381 63 105 1331";
 
-    $version = "1.000";
+    $version = "1.005";
 
     $title = match ($page) {
         'o_nama' => "Ko smo mi? | {$baseTitle}",
@@ -84,22 +84,14 @@
     }?>
     <link rel="stylesheet" href="<?php echo $basePath ?>css/footer.css?v=<?php echo $version ?>" />
 
-    <!-- Setting localStorage Version -->
-    <script>
-        const version = '<?php echo $version; ?>'
-        if (localStorage.getItem('version') !== version) {
-            localStorage.setItem('version', version)
-            console.log(version)
-        }
-    </script>
-
     <!-- Loading INIT JavaScript -->
     <script type="module">
+        const version = '<?php echo $version; ?>'
         const path = '<?php echo $basePath ?>'
         const presentation =  <?php echo json_encode($presentation) ?>
 
         import(`${path}js/init.js?v=<?php echo $version ?>`).then(module => {
-            module.init(path, presentation)
+            module.init(version, path, presentation)
         });
     </script>
 </head>
