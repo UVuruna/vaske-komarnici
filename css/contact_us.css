@@ -6,102 +6,120 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  padding: 40px 80px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  gap: 3rem;
 }
 
-#contact_us .text {
-  width: 50%;
-  display: block;
+.order table {
+  width: auto;
+  border-collapse: separate;
 }
 
-#contact_us form {
-  width: 50%;
-  position: relative;
+.order th, .order td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 0.5rem;
+  white-space: nowrap;
+}
+
+/* Tabela se centrira */
+.order {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Unutrašnji elementi u redovima */
+.tableColumn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Za povecavanje kolicine */
+.controls,
+.color {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.controls > button {
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+}
+
+.quantity {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Za unos dimenzija */
+.measureDimension {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.width,
+.height {
+  font-size: 1.2rem;
+  width: 5rem;
+  text-align: center;
+  border-radius: 0.75rem;
+}
+.width::placeholder,
+.height::placeholder {
+  font-size: 0.75rem;
+}
+.Area,
+.Price {
+  font-size: 1.2rem;
+  text-align: center;
+  min-width: 5rem;
+}
+
+/* FORM */
+.form {
+  color: #ffffff;
+  gap: 1rem;
+}
+form {
+  gap: 0.5rem;
+  padding-bottom: 1rem;
+}
+.form, form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
-#contact_us .logo {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
+form input,
+form textarea {
+  width: 500px;
+  max-width: 90vw;
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+#orderDetail {
+  height: 30vh;
+  max-height: 300px;
+  resize: none
 }
 
-/* Text */
 
-#contact_us h1 {
-  color: #ffffff;
-}
 
-#contact_us p {
-  padding: 30px 0;
-  color: #ffffff;
-  text-align: justify;
-  max-width: 550px;
-}
-
-#contact_us h3 {
-  padding: 20px 0;
-  color: #ffffff;
-}
-
-/* Images */
-
-#contact_us .logo img {
-  height: 36px;
-  object-fit: cover;
-}
-
-/* --- TABLET Devices --- */
-
-@media (min-width: 768px) and (max-width: 1300px) {
-  /* Frames */
+@media (max-width: 1300px) {
   #contact_us {
-    padding: 20px 40px;
-  }
-
-  /* Text */
-
-  #contact_us h1 {
-    font-size: 30px;
-  }
-
-  #contact_us p {
-    font-size: 13px;
-  }
-
-  #contact_us h3 {
-    font-size: 20px;
-  }
-}
-
-/* --- MOBILE Devices --- */
-
-@media (max-width: 768px) {
-  /* Frames */
-  #contact_us {
-    padding: 10px 20px;
     flex-direction: column;
-  }
-
-  #contact_us form,
-  #contact_us .text {
-    width: 100%;
-  }
-
-  /* Text */
-
-  #contact_us h1 {
-    font-size: 30px;
-  }
-
-  #contact_us p {
-    font-size: 13px;
-  }
-
-  #contact_us h3 {
-    font-size: 20px;
+    gap: 2rem
   }
 }

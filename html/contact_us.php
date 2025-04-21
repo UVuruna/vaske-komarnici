@@ -1,51 +1,125 @@
 <?php
-    $ids = [
-        "Fixed_Both",
-        "Rolled",
-        "PliseDoor_Both",
-        "PliseDoor_One",
-        "PliseWindow_Both",
-        "PliseWindow_One",
-    ];
-    $alts = [
-        "Fiksni komarnik porudžbina",
-        "Rolo komarnik porudžbina",
-        "Dvodelni Plise komarnik za vrata porudžbina",
-        "Jednodelni Plise komarnik za vrata porudžbina",
-        "Dvodelni komarnik za prozor porudžbina",
-        "Jednodelni komarnik za prozor porudžbina",
-    ];
+$ids = [
+    "Fixed_Both",
+    "Rolled",
+    "PliseDoor_Both",
+    "PliseDoor_One",
+    "PliseWindow_Both",
+    "PliseWindow_One",
+];
+$alts = [
+    "Fiksni komarnik porudžbina",
+    "Rolo komarnik porudžbina",
+    "Dvodelni Plise komarnik za vrata porudžbina",
+    "Jednodelni Plise komarnik za vrata porudžbina",
+    "Dvodelni komarnik za prozor porudžbina",
+    "Jednodelni komarnik za prozor porudžbina",
+];
 ?>
 
 <div id="contact_us">
     <section class="order">
-        <?php foreach ($ids as $index => $id): ?>
-            <div id="<?php echo $id ?>">
-                <img src="<?php echo $basePath ?>img/items/product/<?php echo $id ?>_White_Light.webp"
-                    alt="<?php echo $alts[$index] ?>"
-                    width="80"
-                    height="80"
-                    >
-                    <span class="quantity" id="quantity-<?php echo $id ?>">0</span>
-                    <div class="controls">
-                        <button onclick="changeQuantity('<?php echo $id ?>', 1)">+</button>
-                        <button onclick="changeQuantity('<?php echo $id ?>', -1)">-</button>
-                    </div>
-                    <input type="number" class="m2-input" value="0" min="0" step="0.1" placeholder="m²">
-                    <button class="add">Dodaj</button>
-            </div>
-        <?php endforeach; ?>
+        <table>
+            <thead>
+                <tr>
+                    <th>Tip</th>
+                    <th>Količina</th>
+                    <th>Dimenzije</th>
+                    <th>Cena</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($ids as $index => $id): ?>
+                    <tr id="<?php echo $id ?>">
+                        <td>
+                            <div class="tableColumn">
+                                <img src="<?php echo $basePath ?>img/items/product/<?php echo $id ?>_White_Light.webp"
+                                    class="category" alt="<?php echo $alts[$index] ?>" width="80" height="80"
+                                    onclick="swapType(this)">
+                                <div class="color">
+                                    <img src="<?php echo $basePath ?>img/other/White.webp" class="frame" alt="Boja rama"
+                                        width="30" height="30" onclick="swapType(this)">
+                                    <img src="<?php echo $basePath ?>img/other/Light.webp" class="net" alt="Boja rama"
+                                        width="30" height="30" onclick="swapType(this)">
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tableColumn">
+                                <span class="quantity">0</span>
+                                <div class="controls">
+                                    <button onclick="changeQuantity(this, 1); calculatePrice(this)">
+                                        +
+                                    </button>
+                                    <button onclick="changeQuantity(this, -1); calculatePrice(this)">
+                                        -
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tableColumn">
+                                <div class="measureDimension">
+                                    <div>
+                                        <input class="width" type="number" min="0" step="0.1" placeholder="širina (m)"
+                                            oninput="calculateArea(this); calculatePrice(this)">
+                                        <span>m</span>
+                                    </div>
+                                    <div>
+                                        <input class="height" type="number" min="0" step="0.1" placeholder="visina (m)"
+                                            oninput="calculateArea(this); calculatePrice(this)">
+                                        <span>m</span>
+                                    </div>
+                                </div>
+                                <span class="Area">0 m²</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="tableColumn">
+                                <span class="Price">0 € </span>
+                                <button class="Add" onclick="addOrder(this)">Dodaj</button>
+                            </div>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     </section>
-    <section class="cta">
+    <section class="form">
         <h2>Spremni za besplatno merenje?</h2>
         <p>
             Kontaktirajte nas odmah i rezervišite besplatno merenje za komarnike po vašoj meri!
         </p>
 
         <form action method="post">
-            <input type="text" id="name" name="name" placeholder="Ime" required autocomplete="on" />
-            <input type="text" id="email" name="email" placeholder="Email" required autocomplete="on" />
-            <input type="text" id="text" name="email" placeholder="Opis" required autocomplete="on" />
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Ime"
+                required
+                autocomplete="on" />
+            <input
+                type="text"
+                id="email"
+                name="email"
+                placeholder="Email"
+                pattern="[^@]+@[^@]+\.[^@]+"
+                required
+                autocomplete="on" />
+            <input
+                type="text"
+                id="phone"
+                name="phone"
+                placeholder="Broj telefona"
+                pattern="^\+?[0-9]{10,15}$"
+                required
+                autocomplete="on" />
+                <textarea
+                    id="orderDetail"
+                    name="orderDetail"
+                    placeholder="Detalji Porudžbine"
+                ></textarea>
             <button type="submit" class="cta-button">
                 Kontaktirajte nas
             </button>

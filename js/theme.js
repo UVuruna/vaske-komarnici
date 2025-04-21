@@ -7,7 +7,9 @@ let GLOBALS,
     lightFrame,
     buttonsStyle,
     listItemsStyle,
-    menuStyle
+    menuStyle,
+    tableStyle,
+    formStyle
 
 import { colorizeSVG as colorizeSVGDelay } from './colorizeSVG.js'
 import {
@@ -19,7 +21,9 @@ import {
     lightFrame as lightFrameDelay,
     buttonsStyle as buttonsStyleDelay,
     listItemsStyle as listItemsStyleDelay,
-    menuStyle as menuStyleDelay
+    menuStyle as menuStyleDelay,
+    tableStyle as tableStyleDelay,
+    formStyle as formStyleDelay
 } from './changeStyle.js'
 
 colorizeSVG = colorizeSVGDelay
@@ -30,6 +34,8 @@ lightFrame = lightFrameDelay
 buttonsStyle = buttonsStyleDelay
 listItemsStyle = listItemsStyleDelay
 menuStyle = menuStyleDelay
+tableStyle = tableStyleDelay
+formStyle = formStyleDelay
 
 export async function settingThemeOnload(
     version,
@@ -52,6 +58,8 @@ export async function settingThemeOnload(
         buttonsStyle = modules.changeStyle.buttonsStyle
         listItemsStyle = modules.changeStyle.listItemsStyle
         menuStyle = modules.changeStyle.menuStyle
+        tableStyle = modules.changeStyle.tableStyle
+        formStyle = modules.changeStyle.formStyle
     }
     GLOBALS = globals
     updateMANIFEST = updateManifest
@@ -131,6 +139,11 @@ export async function settingTheme(currentTheme) {
             PresetColors.primary,
             PresetColors.primaryElement,
             hoverBgColor
-        )
+        ),
+
+        // ----------> Table & Form <----------
+        tableStyle(PresetColors.secondary, PresetColors.primaryElement),
+
+        formStyle(PresetColors.secondary, PresetColors.primaryElement)
     ])
 }

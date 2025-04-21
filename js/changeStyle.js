@@ -78,7 +78,7 @@ export async function listItemsStyle(
 // ----------> DROPDOWN MENU <----------
 export async function menuStyle(
     dropdownMenus,
-    primaryColor,
+    bgColor,
     secondaryColor,
     hoverBgColor
 ) {
@@ -88,7 +88,7 @@ export async function menuStyle(
             window.matchMedia('(max-width: 800px)').matches
         ) {
             menu.style.border = `3px solid ${secondaryColor}`
-            menu.style.backgroundColor = primaryColor
+            menu.style.backgroundColor = bgColor
 
             const menuElements = Array.from(menu.children)
             menuElements.forEach(element => {
@@ -97,5 +97,40 @@ export async function menuStyle(
         } else {
             menu.style.border = 'none'
         }
+    })
+}
+
+export async function tableStyle(bgColor, elementColor) {
+    const TABLE = document.querySelector('table')
+    if (!TABLE) return
+
+    TABLE.style.border = `2px solid ${elementColor}`
+    TABLE.style.borderRadius = '1.5rem'
+    TABLE.style.backgroundColor = bgColor
+    TABLE.style.overflow = 'hidden'
+
+    const headers = document.querySelectorAll('th')
+    const borderFrames = document.querySelectorAll('.width, .height')
+
+    headers.forEach(header => {
+        header.style.backgroundColor = elementColor
+        header.style.color = '#ffffff'
+    })
+    borderFrames.forEach(borderFrame => {
+        borderFrame.style.border = `2px solid ${elementColor}`
+    })
+    
+}
+
+export async function formStyle(bgColor, elementColor) {
+    const FORM = document.querySelector('form')
+    if (!FORM) return
+
+    const Inputs = FORM.querySelectorAll('input, textarea')
+
+    Inputs.forEach(input => {
+        input.style.backgroundColor = bgColor
+        input.style.border = `2px solid ${elementColor}`
+        input.style.borderRadius = '1.5rem'
     })
 }
