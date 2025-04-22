@@ -1,4 +1,4 @@
-head<?php
+<?php
     $baseTitle = "Komarnici po meri Beograd - Izrada, Montaža, Servis";
 
     $developerName    = "UVS | Uroš Vuruna";

@@ -1,37 +1,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<url>
-<loc>https://vaske-komarnici.com/</loc>
-<lastmod>2025-04-22T14:55:59+00:00</lastmod>
-<priority>1.00</priority>
-</url>
-<url>
-<loc>https://vaske-komarnici.com/o_nama/</loc>
-<lastmod>2025-04-22T14:55:59+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://vaske-komarnici.com/katalog/</loc>
-<lastmod>2025-04-22T14:55:59+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://vaske-komarnici.com/kontakt/</loc>
-<lastmod>2025-04-22T14:55:59+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://vaske-komarnici.com/katalog/fiksni-komarnici/</loc>
-<lastmod>2025-04-22T14:55:59+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://vaske-komarnici.com/katalog/rolo-komarnici/</loc>
-<lastmod>2025-04-22T14:55:59+00:00</lastmod>
-<priority>0.80</priority>
-</url>
-<url>
-<loc>https://vaske-komarnici.com/katalog/plise/</loc>
-<lastmod>2025-04-22T14:55:59+00:00</lastmod>
-<priority>0.80</priority>
-</url>
+    <url>
+        <loc>https://vaske-komarnici.com/</loc>
+        <lastmod>2025-04-22T14:55:59+00:00</lastmod>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://vaske-komarnici.com/o_nama/</loc>
+        <lastmod>2025-04-22T14:55:59+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://vaske-komarnici.com/katalog/</loc>
+        <lastmod>2025-04-22T14:55:59+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://vaske-komarnici.com/kontakt/</loc>
+        <lastmod>2025-04-22T14:55:59+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://vaske-komarnici.com/katalog/fiksni-komarnici/</loc>
+        <lastmod>2025-04-22T14:55:59+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://vaske-komarnici.com/katalog/rolo-komarnici/</loc>
+        <lastmod>2025-04-22T14:55:59+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://vaske-komarnici.com/katalog/plise/</loc>
+        <lastmod>2025-04-22T14:55:59+00:00</lastmod>
+        <priority>0.80</priority>
+    </url>
 </urlset>
