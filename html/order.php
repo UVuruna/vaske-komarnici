@@ -1,10 +1,12 @@
 <?php
+$basePath = __DIR__ . '/';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require "{$basePath}PHPMailer/src/PHPMailer.php";
-require "{$basePath}PHPMailer/src/SMTP.php";
-require "{$basePath}PHPMailer/src/Exception.php";
+require $_SERVER['DOCUMENT_ROOT'] . '/PHPMailer/src/PHPMailer.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/PHPMailer/src/SMTP.php';
+require $_SERVER['DOCUMENT_ROOT'] . '/PHPMailer/src/Exception.php';
 
 
 switch ($_SERVER["REQUEST_METHOD"]) {
@@ -22,7 +24,7 @@ switch ($_SERVER["REQUEST_METHOD"]) {
             $mail->Host       = 'smtp.hostinger.com';
             $mail->SMTPAuth   = true;
             $mail->Username   = 'ponuda@vaske-komarnici.com';
-            $mail->Password   = 'TvojaLozinka';
+            $mail->Password   = 'MBUV1990flokS!M!mjlp++';
             $mail->SMTPSecure = 'ssl';
             $mail->Port       = 465;
 

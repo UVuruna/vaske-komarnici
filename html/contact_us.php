@@ -77,7 +77,7 @@ $alts = [
     <section class="form">
         <h2>Spremni za besplatno merenje?</h2>
         <p>Kontaktirajte nas odmah i rezervišite besplatno merenje za komarnike po vašoj meri!</p>
-        <form id="order" name="order" action="./order.php" method="post">
+        <form id="order" name="order" action="<?php echo $basePath ?>html/order.php" method="post">
             <input id="name" class="light" type="text" name="name" placeholder="Ime" required autocomplete="on"/>
             <input id="email" class="light" type="text" name="email" placeholder="Email" pattern="[^@]+@[^@]+\.[^@]+" required autocomplete="on"/>
             <input id="phone" class="light" type="text" name="phone" placeholder="Broj telefona" pattern="^\+?[0-9]{10,15}$" required autocomplete="on"/>
