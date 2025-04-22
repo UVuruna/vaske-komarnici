@@ -71,7 +71,7 @@ $alts = [
                                         <span>m</span>
                                     </div>
                                 </div>
-                                <span class="Area">0 m²</span>
+                                <div class="Area">0 m²</div>
                             </div>
                         </td>
                         <td>
@@ -91,14 +91,14 @@ $alts = [
             Kontaktirajte nas odmah i rezervišite besplatno merenje za komarnike po vašoj meri!
         </p>
 
-        <form action method="post">
+        <form id="order" name="order" action method="post">
             <input
                 type="text"
                 id="name"
                 name="name"
                 placeholder="Ime"
                 required
-                autocomplete="on" />
+                autocomplete="on"/>
             <input
                 type="text"
                 id="email"
@@ -106,7 +106,7 @@ $alts = [
                 placeholder="Email"
                 pattern="[^@]+@[^@]+\.[^@]+"
                 required
-                autocomplete="on" />
+                autocomplete="on"/>
             <input
                 type="text"
                 id="phone"
@@ -114,14 +114,15 @@ $alts = [
                 placeholder="Broj telefona"
                 pattern="^\+?[0-9]{10,15}$"
                 required
-                autocomplete="on" />
+                autocomplete="on"/>
                 <textarea
                     id="orderDetail"
                     name="orderDetail"
                     placeholder="Detalji Porudžbine"
-                ></textarea>
+                    required>
+                </textarea>
             <button type="submit" class="cta-button">
-                Kontaktirajte nas
+                Pošaljite zahtev
             </button>
         </form>
     </section>

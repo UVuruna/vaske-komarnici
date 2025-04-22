@@ -91,6 +91,7 @@ function calculatePrice(element) {
 function addOrder(element) {
     const tableRow = element.closest('tr');
     const id = tableRow.id
+    const TextArea = document.querySelector('textarea')
 
     const elements = ['quantity', 'width', 'height', 'Area', 'Price', 'frame', 'net']
     const elementDict = {}
@@ -109,10 +110,12 @@ function addOrder(element) {
         `${netTranslate[getID(elementDict.net.src)]} |`,
         `${quantityValue} kom ×`,
         `${areaValue} m²`,
-        `(${elementDict.width.value}m × ${elementDict.height.value}m) |`,
-        `${priceValue} €`
+        `(${elementDict.width.value}m × ${elementDict.height.value}m)`,
+        `\n >>> Okvirno ${priceValue} € <<<`
     ].join(' ')
     console.log(order)
+
+    TextArea.value += order + '\n\n'
 
     elementDict.quantity.textContent = '0'
     elementDict.Price.textContent = '0 €'

@@ -10,6 +10,7 @@
   align-items: center;
   margin: 0 auto;
   gap: 3rem;
+  padding: 0 5vw;
 }
 
 .order table {
@@ -72,7 +73,7 @@
 .width,
 .height {
   font-size: 1.2rem;
-  width: 5rem;
+  width: 6rem;
   text-align: center;
   border-radius: 0.75rem;
 }
@@ -89,13 +90,17 @@
 
 /* FORM */
 .form {
+  width: 100%; /* <- nedostajalo */
+  max-width: 100%;
   color: #ffffff;
   gap: 1rem;
 }
+
 form {
+  width: 100%; /* <- dodaj i ovde */
   gap: 0.5rem;
-  padding-bottom: 1rem;
 }
+
 .form, form {
   display: flex;
   flex-direction: column;
@@ -104,10 +109,11 @@ form {
 }
 form input,
 form textarea {
-  width: 500px;
-  max-width: 90vw;
+  width: 100%; /* <- umesto 800px */
+  max-width: 800px; /* <- ako želiš neki maksimum */
   padding: 1rem;
   border-radius: 0.75rem;
+  box-sizing: border-box; /* <- obavezno da padding ne pređe širinu */
 }
 #orderDetail {
   height: 30vh;
@@ -117,9 +123,92 @@ form textarea {
 
 
 
-@media (max-width: 1300px) {
+@media (max-width: 1200px) {
   #contact_us {
     flex-direction: column;
     gap: 2rem
+  }
+}
+
+@media (max-width: 800px) {
+  .order {
+    width: 100%;
+  }
+  .order table {
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  #contact_us {
+    padding: 0;
+  }
+  .category {
+    width: 60px;
+    height: 60px;
+  }
+  .order th {
+    padding: 1rem 0.25rem;
+  }
+  .order td {
+    padding: 0.25rem 0;
+  }
+  .frame,
+  .net {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Unutrašnji elementi u redovima */
+  .tableColumn:not(:has(.measureDimension)) {
+    flex-direction: column-reverse;
+  }
+  .tableColumn {
+    gap: 0.25rem;
+  }
+  .controls {
+    flex-direction: row-reverse;
+  }
+  .color {
+    flex-direction: row;
+  }
+
+  .tableColumn > :nth-child(2) {
+    flex-grow: 1;
+  }
+
+  .width,
+  .height {
+    width: 4rem;
+  }
+  .width::placeholder,
+  .height::placeholder {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 410px) {
+  .controls button {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .measureDimension {
+    font-size: 0.75rem;
+  }
+  .measureDimension input {
+    font-size: 1rem
+  }
+  .Area {
+    font-size: 1rem;
+    min-width: 0px;
+    width: 2rem;
+    transform: rotate(-60deg);
+  }
+}
+
+@media (max-width: 380px) {
+  .Add {
+    padding: 1rem;
   }
 }

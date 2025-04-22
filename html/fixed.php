@@ -40,8 +40,7 @@
         class="video-loop"
         autoplay muted loop playsinline
         id="Fixed_Both"
-        preload="none"
-    >
+        preload="none">
     </video>
 
     <?php
@@ -58,8 +57,7 @@
         class="video-loop"
         autoplay muted loop playsinline
         id="Fixed_One"
-        preload="none"
-    >
+        preload="none">
     </video>
 
 </div>

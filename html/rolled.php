@@ -40,7 +40,6 @@
         class="video-loop"
         autoplay muted loop playsinline
         id="Rolled"
-        preload="none"
-    >
+        preload="none">
     </video>
 </div>

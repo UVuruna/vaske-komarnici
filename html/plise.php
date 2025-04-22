@@ -40,8 +40,7 @@
         title="Prezentacija obostranih plise (harmonika) komarnika za vrata"
         class="video-loop"
         autoplay muted loop playsinline
-        preload="none"
-    >
+        preload="none">
     </video>
 
     <?php
@@ -58,8 +57,7 @@
         title="Prezentacija jednostranih plise (harmonika) komarnika za vrata"
         class="video-loop"
         autoplay muted loop playsinline
-        preload="none"
-    >
+        preload="none">
     </video>
 
     <?php
@@ -76,8 +74,7 @@
         title="Prezentacija obostranih plise (harmonika) komarnika za prozor"
         class="video-loop"
         autoplay muted loop playsinline
-        preload="none"
-    >
+        preload="none">
     </video>
 
     <?php
@@ -94,7 +91,6 @@
         title="Prezentacija jednostranih plise (harmonika) komarnika za prozor"
         class="video-loop"
         autoplay muted loop playsinline
-        preload="none"
-    >
+        preload="none">
     </video>
 </div>
