@@ -20,46 +20,19 @@
         ?>
         <nav>
             <ul class="menu" role="menu">
-                <li role="menuitem">
-                    <a href="<?php echo $basePath ?>" aria-label="Početna strana">
-                        <i class="fa-solid fa-home"></i>
-                    </a>
-                </li>
-
-                <li class="dropdownTrigger" role="menuitem">
-                    Tip Komarnika
-                    <i class="fa-solid fa-caret-down"></i>
+                <li role="menuitem"><a href="<?php echo $basePath ?>" aria-label="Početna strana"><i class="fa-solid fa-home"></i></a></li>
+                <li class="dropdownTrigger" role="menuitem">Tip Komarnika<i class="fa-solid fa-caret-down"></i>
                     <ul role="menu">
-                        <li onclick="location.href='<?php echo $basePath ?>katalog/fiksni-komarnici'" role="menuitem">
-                            Fiksni
-                        </li>
-                        <li onclick="location.href='<?php echo $basePath ?>katalog/rolo-komarnici'" role="menuitem">
-                            Rolo
-                        </li>
-                        <li onclick="location.href='<?php echo $basePath ?>katalog/plise'" role="menuitem">
-                            Plise
-                        </li>
+                        <li role="menuitem"><a href="<?php echo $basePath ?>katalog/fiksni-komarnici">Fiksni</a></li>
+                        <li role="menuitem"><a href="<?php echo $basePath ?>katalog/rolo-komarnici">Rolo</a></li>
+                        <li role="menuitem"><a href="<?php echo $basePath ?>katalog/plise-komarnici">Plise</a></li>
                     </ul>
                 </li>
-                <li role="menuitem">
-                    <a href="<?php echo $basePath ?>o_nama">
-                        O nama
-                    </a>
-                </li>
-                <li role="menuitem">
-                    <a href="<?php echo $basePath ?>katalog/">
-                        Katalog
-                    </a>
-                </li>
-                <li role="menuitem">
-                    <a href="<?php echo $basePath ?>kontakt/">
-                        Poručite Odmah
-                    </a>
-                </li>
+                <li role="menuitem"><a href="<?php echo $basePath ?>o_nama">O nama</a></li>
+                <li role="menuitem"><a href="<?php echo $basePath ?>katalog/">Katalog</a></li>
+                <li role="menuitem"><a href="<?php echo $basePath ?>kontakt/">Poručite Odmah</a></li>
             </ul>
         </nav>
-        <button onclick="window.location.href='tel:<?php echo $companyPhone ?>'">
-            <?php echo $companyPhoneLocal ?>
-        </button>
+        <button onclick="window.location.href='tel:<?php echo $companyPhone ?>'"><?php echo $companyPhoneLocal ?></button>
     </div>
 </div>

@@ -20,7 +20,7 @@ $Title = str_replace(" | ", "<br>", $title);
         praktični za korišćenje.
       </li>
       <li>
-        <strong><a href="<?php echo $basePath ?>katalog/plise/">Plise (harmonika)</a></strong> – Savršeni za
+        <strong><a href="<?php echo $basePath ?>katalog/plise-komarnici/">Plise (harmonika)</a></strong> – Savršeni za
         vrata i prozore većih dimenzija.
       </li>
     </ul>

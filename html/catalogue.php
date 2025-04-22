@@ -45,7 +45,7 @@
             title: true,
             imgLink: "PliseDoor_Both_Brown_Light.webp?{$version}",
             altText: "Plise komarnik za vrata",
-            buttonLink: "{$basePath}katalog/plise",
+            buttonLink: "{$basePath}katalog/plise-komarnici",
             priceText: "Već od 40 €",
             showTipRama: true
         );
@@ -55,7 +55,7 @@
             title: true,
             imgLink: "PliseWindow_One_Antracite_Dark.webp?{$version}",
             altText: "Plise komarnik za prozor",
-            buttonLink: "{$basePath}katalog/plise",
+            buttonLink: "{$basePath}katalog/plise-komarnici",
             priceText: "Već od 40 €",
             showTipRama: true
         );
