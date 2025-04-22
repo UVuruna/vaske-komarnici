@@ -5,7 +5,7 @@
         <?php 
             $logoSVG = str_replace(
                 '<svg ', 
-                "<svg width='70' height='70' alt='logo {$companyName}'", 
+                "<svg width='70' height='70' ", 
                 $logoSVG);
             echo $logoSVG;
         ?>
@@ -14,7 +14,7 @@
         <?php
             $dropdownMenu = str_replace(
                 '<svg ', 
-                "<svg width='70' height='70' alt='Navigacioni meni'", 
+                "<svg width='70' height='70' ", 
                 $dropdownMenu);
             echo $dropdownMenu
         ?>

@@ -26,14 +26,14 @@
     $fullUrl = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 ?>
 
-<meta property="og:url" content="<?php echo htmlspecialchars($fullUrl); ?>"/>
-
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta property="og:url" content="<?php echo htmlspecialchars($fullUrl); ?>"/>
 
     <title><?php echo htmlspecialchars($title); ?></title>
+
     <meta name="description" content="Izrada i montaža rolo, plisiranih i fiksnih komarnika po meri u Beogradu. Brza ugradnja i servis komarnika - zamena mreže i kanapa."/>
     <meta name="keywords" content="komarnici po meri, izrada komarnika, montaža komarnika, rolo komarnici, plise komarnici, fiksni komarnici, komarnici Beograd, ugradnja komarnika, popravka komarnika, zamena kanapa, zamena mreže, servis komarnika Beograd"/>
     <link rel="canonical" href="<?php echo htmlspecialchars($fullUrl); ?>"/>
@@ -46,20 +46,20 @@
     <meta property="og:image" content="https://vaske-komarnici.com/img/logo/preview.jpg"/>
     <meta property="og:url" content="<?php echo htmlspecialchars($fullUrl); ?>"/>
     <meta property="og:type" content="website"/>
+    <link rel="manifest" href="<?php echo $basePath ?>site.webmanifest" id="manifest-link">
 
     <!-- Za Google da ne ignoriše -->
     <meta name="robots" content="index, follow">
 
+    <!-- ICONS -->
     <link rel="icon" href="<?php echo $basePath ?>img/logo/favicon.ico?v=<?php echo $version ?>" type="image/icon"/>
     <link rel="icon" href="<?php echo $basePath ?>img/logo/favicon.svg?v=<?php echo $version ?>" type="image/svg+xml"/>
-    <link rel="icon" href="<?php echo $basePath ?>img/logo/favicon-32x32.png?v=<?php echo $version ?>" sizes="32x32"
-        type="image/png"/>
-    <link rel="icon" href="<?php echo $basePath ?>img/logo/favicon-16x16.png?v=<?php echo $version ?>" sizes="16x16"
-        type="image/png"/>
-    <link rel="apple-touch-icon" href="<?php echo $basePath ?>img/logo/apple-touch-icon.png?v=<?php echo $version ?>"/>
-    <link rel="manifest" href="<?php echo $basePath ?>site.webmanifest" id="manifest-link">
-
-    <meta name="theme-color" content="#ffffff"/>
+    <link rel="icon" href="<?php echo $basePath ?>img/logo/favicon-32x32.png?v=<?php echo $version ?>" sizes="32x32" type="image/png"/>
+    <link rel="icon" href="<?php echo $basePath ?>img/logo/favicon-16x16.png?v=<?php echo $version ?>" sizes="16x16" type="image/png"/>
+    <link rel="apple-touch-icon" href="<?php echo $basePath ?>img/logo/apple-touch-icon.png?v=<?php echo $version ?>"  type="image/png"/>
+    
+    <!-- Other META -->
+    <meta name="theme-color" content="#808080"/>
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -87,5 +87,16 @@
         import(`${path}js/init.js?v=<?php echo $version ?>`).then(module => {
             module.init(version, path, presentation)
         });
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVMXHKYSD3">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-GVMXHKYSD3');
     </script>
 </head>
