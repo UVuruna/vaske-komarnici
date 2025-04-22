@@ -18,23 +18,13 @@
                         $filename = pathinfo($file, PATHINFO_FILENAME);
                     ?>
                     <?php if ($isVideo): ?>
-                        <video
-                            class="lazy-media"
-                            data-src="<?= $file ?>"
-                            style="max-width: 200px"
-                            autoplay muted loop playsinline
-                            preload="none"
-                            controls>
+                        <video class="lazy-media" data-src="<?= $file ?>" style="max-width: 200px" autoplay muted loop playsinline controls preload="none">
                             <source data-src="<?= $file ?>">
                             <source data-src="<?= $basePath ?>/img/slideshow/backup/<?= $filename ?>.webp">
                             <source data-src="<?= $basePath ?>/img/slideshow/backup/<?= $filename ?>_h264.mp4">
                         </video>
                     <?php else: ?>
-                        <img
-                            data-src="<?= $file ?>"
-                            alt="Fotografija sa terena"
-                            style="max-width: 200px"
-                            loading="lazy">
+                        <img data-src="<?= $file ?>" alt="Fotografija sa terena" style="max-width: 200px" loading="lazy">
                     <?php endif; ?>
                 <?php endforeach; ?>
             </figure>

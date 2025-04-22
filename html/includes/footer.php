@@ -1,4 +1,4 @@
-<div id="footer">
+<div id="footer" class="light">
     <section id="contact">
         <h2>Kontaktirajte nas</h2>
         <p>Za više informacija o našim proizvodima i uslugama, ili da rezervišete termin za merenje, slobodno nas kontaktirajte putem sledećih kanala:</p>

@@ -91,12 +91,11 @@ export async function settingTheme(currentTheme) {
     const MENU = document.getElementById('MENU')
     const BUTTONS = document.querySelectorAll('button')
     const ListItems = document.querySelectorAll('li strong')
-    const LightFrames = document.querySelectorAll(`
-        #about_us,
-        .selectFrame > *:not(:first-child),
-        #footer,
-        .fa-ban
-    `)
+    const LightFrames = document.querySelectorAll('.light')
+
+
+    document.body.style.color = (currentTheme === 'afternoon')? '#222222' : '#ffffff'
+
 
     await Promise.all([
         // ----------> Set Color LOGO & MENU <----------

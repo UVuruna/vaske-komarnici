@@ -61,10 +61,10 @@ const ThemeColors = {
         secondaryElement: '#f0c42d'
     },
     afternoon: {
-        primary: '#6f4e37',
+        primary: '#d3b392',
         secondary: '#fff4e5',
-        primaryElement: '#6d0016',
-        secondaryElement: '#8c2f3c'
+        primaryElement: '#840000',
+        secondaryElement: '#ba4c5b'
     },
     night: {
         primary: '#524e53',

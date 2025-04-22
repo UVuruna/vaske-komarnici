@@ -10,7 +10,7 @@
   align-items: center;
   margin: 0 auto;
   gap: 3rem;
-  padding: 0 5vw;
+  padding: 1rem 5vw;
 }
 
 .order table {
@@ -23,6 +23,12 @@
   vertical-align: middle;
   padding: 0.5rem;
   white-space: nowrap;
+}
+th:nth-child(1) {
+  border-radius: 1.2rem 0 0 0;
+}
+th:nth-child(4) {
+  border-radius: 0 1.2rem 0 0;
 }
 
 /* Tabela se centrira */
@@ -90,14 +96,13 @@
 
 /* FORM */
 .form {
-  width: 100%; /* <- nedostajalo */
+  width: 100%;
   max-width: 100%;
-  color: #ffffff;
   gap: 1rem;
 }
 
 form {
-  width: 100%; /* <- dodaj i ovde */
+  width: 100%;
   gap: 0.5rem;
 }
 
@@ -121,7 +126,9 @@ form textarea {
   resize: none
 }
 
-
+form button {
+  margin-top: 1rem;
+}
 
 @media (max-width: 1200px) {
   #contact_us {
@@ -141,7 +148,7 @@ form textarea {
 
 @media (max-width: 600px) {
   #contact_us {
-    padding: 0;
+    padding: 1rem 0;
   }
   .category {
     width: 60px;

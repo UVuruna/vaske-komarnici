@@ -5,19 +5,10 @@
 <div class="catalogue">
     <header>
         <h1>Katalog komarnika</h1>
-        <p>
-            Izaberite idealan model za vaš prostor.
-            Pronađite komarnike svih vrsta i boja, sve na jednom mestu.
-        </p>
+        <p>Izaberite idealan model za vaš prostor. Pronađite komarnike svih vrsta i boja, sve na jednom mestu.</p>
     </header>
 
-    <video 
-        title="Prezentacija komarnika" 
-        class="video-loop"
-        autoplay muted loop playsinline 
-        id="showcase"
-        preload="none">
-    </video>
+    <video id="showcase" title="Prezentacija komarnika" class="video-loop" autoplay muted loop playsinline preload="none"></video>
 
     <?php
         displayProduct(

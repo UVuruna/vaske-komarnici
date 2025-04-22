@@ -2,8 +2,12 @@
 export async function lightFrame(LightFrames, PresetColors) {
     LightFrames.forEach(frame => {
         frame.style.backgroundColor = PresetColors.secondary
+        frame.style.color = '#222222'
 
-        if (frame.tagName !== 'DIV') {
+        if (frame.tagName !== 'DIV' || frame.classList.contains('border')) {
+            if (frame.classList.contains('border')) {
+                frame.style.color = PresetColors.primaryElement
+            }
             frame.style.border = `2px solid ${PresetColors.primary}`
 
             frame.addEventListener('mouseenter', () => {

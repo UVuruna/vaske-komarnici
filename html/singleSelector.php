@@ -20,29 +20,13 @@ function displayProduct(
     $tipRamaHtml = '';
     if ($showTipRama) {
         $tipRamaHtml = <<<HTML
-            <li>
+            <div class='light border'>
                 <h3><strong>Tip</strong></h3>
                 <ul>
-                    <li>
-                        <img
-                            width='40'
-                            height='40'
-                            class='hoverHighlight'
-                            src='{$basePath}img/other/Both.webp?{$version}'
-                            alt='{$altText} dvostrani'
-                            loading='lazy'/>
-                    </li>
-                    <li>
-                        <img
-                            width='40'
-                            height='40'
-                            class='hoverHighlight'
-                            src='{$basePath}img/other/One.webp?{$version}'
-                            alt='{$altText} jednostrani'
-                            loading='lazy'/>
-                    </li>
+                    <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/Both.webp?{$version}' alt='{$altText} dvostrani' loading='lazy'/></li>
+                    <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/One.webp?{$version}' alt='{$altText} jednostrani' loading='lazy'/></li>
                 </ul>
-            </li>
+            </div>
         HTML;
     }
 
@@ -64,85 +48,32 @@ function displayProduct(
 
     echo <<<HTML
     <div class='promoContainer'>
-        <span class="promo">
+        <section class="promo">
             {$titleHTML}
-            <ul class='selectFrame'>
-                <li>
-                    <strong>
-                        <i
-                            class='fa-solid fa-ban'
-                            width='45'
-                            height='45'>
-                        </i>
-                    </strong>
-                </li>
-                <li>
+            <div class='selectFrame'>
+                <i class='light border fa-solid fa-ban' width='45' height='45'></i>
+                <div class='light border'>
                     <h3><strong>Ram</strong></h3>
                     <ul>
-                        <li>
-                            <img
-                                width='40'
-                                height='40'
-                                class='hoverHighlight'
-                                src='{$basePath}img/other/White.webp?{$version}'
-                                alt='{$altText} bele boje'
-                                loading='lazy'/>
-                        </li>
-                        <li>
-                            <img
-                                width='40'
-                                height='40'
-                                class='hoverHighlight'
-                                src='{$basePath}img/other/Antracite.webp?{$version}'
-                                alt='{$altText} antracit boje'
-                                loading='lazy'/>
-                        </li>
-                        <li>
-                            <img
-                                width='40'
-                                height='40'
-                                class='hoverHighlight'
-                                src='{$basePath}img/other/Brown.webp?{$version}'
-                                alt='{$altText} braon boje'/>
-                        </li>
+                        <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/White.webp?{$version}' alt='{$altText} bele boje' loading='lazy'/></li>
+                        <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/Antracite.webp?{$version}' alt='{$altText} antracit boje' loading='lazy'/></li>
+                        <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/Brown.webp?{$version}' alt='{$altText} braon boje'/></li>
                     </ul>
-                </li>
-                <li>
+                </div>
+                <div class='light border'>
                     <h3><strong>Mreža</strong></h3>
                     <ul>
-                        <li>
-                            <img
-                                width='40'
-                                height='40'
-                                class='hoverHighlight'
-                                src='{$basePath}img/other/Light.webp?{$version}'
-                                alt='{$altText} tamnije (crne) mreže'
-                                loading='lazy'/>
-                        </li>
-                        <li>
-                            <img
-                                width='40'
-                                height='40'
-                                class='hoverHighlight'
-                                src='{$basePath}img/other/Dark.webp?{$version}'
-                                alt='{$altText} tamnije (crne) mreže'
-                                loading='lazy'/>
-                        </li>
+                        <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/Light.webp?{$version}' alt='{$altText} tamnije (crne) mreže' loading='lazy'/></li>
+                        <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/Dark.webp?{$version}' alt='{$altText} tamnije (crne) mreže' loading='lazy'/></li>
                     </ul>
-                </li>
+                </div>
                 {$tipRamaHtml}
-            </ul>
-            <img
-                width='500'
-                height='500'
-                class='promoImage hoverHighlight'
-                src='{$basePath}img/items/product/{$imgLink}'
-                alt='{$altText} slika'
-                loading='lazy'/>
+            </div>
+            <img width='500' height='500' class='promoImage hoverHighlight' src='{$basePath}img/items/product/{$imgLink}' alt='{$altText} slika' loading='lazy'/>
             {$cenaHtml}
             {$saznajVišeHtml}
-        </span>
-        <span class="explanation">
+        </section>
+        <section class="explanation">
             <h2 class="title">{$altText}</h2>
             <div>
                 <p class="type"></p>
@@ -156,7 +87,7 @@ function displayProduct(
                 <h3 class="netTitle">Boja mreže</h3>
                 <p class="net"></p>
             </div>
-        </span>
+        </section>
     </div>
     HTML;
 }

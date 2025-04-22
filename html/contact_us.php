@@ -17,9 +17,8 @@ $alts = [
 ];
 ?>
 
-<div id="contact_us">
-    <section class="order">
-        <table>
+<div id="contact_us" class="order">
+        <table class="light">
             <thead>
                 <tr>
                     <th>Tip</th>
@@ -78,11 +77,11 @@ $alts = [
     <section class="form">
         <h2>Spremni za besplatno merenje?</h2>
         <p>Kontaktirajte nas odmah i rezervišite besplatno merenje za komarnike po vašoj meri!</p>
-        <form id="order" name="order" action method="post">
-            <input type="text" id="name" name="name" placeholder="Ime" required autocomplete="on"/>
-            <input type="text" id="email" name="email" placeholder="Email" pattern="[^@]+@[^@]+\.[^@]+" required autocomplete="on"/>
-            <input type="text" id="phone" name="phone" placeholder="Broj telefona" pattern="^\+?[0-9]{10,15}$" required autocomplete="on"/>
-            <textarea id="orderDetail" name="orderDetail" placeholder="Detalji Porudžbine" required></textarea>
+        <form id="order" name="order" action="./order.php" method="post">
+            <input id="name" class="light" type="text" name="name" placeholder="Ime" required autocomplete="on"/>
+            <input id="email" class="light" type="text" name="email" placeholder="Email" pattern="[^@]+@[^@]+\.[^@]+" required autocomplete="on"/>
+            <input id="phone" class="light" type="text" name="phone" placeholder="Broj telefona" pattern="^\+?[0-9]{10,15}$" required autocomplete="on"/>
+            <textarea id="orderDetail" class="light" name="orderDetail" placeholder="Detalji Porudžbine" required></textarea>
             <button type="submit" class="cta-button">Pošaljite zahtev</button>
         </form>
     </section>

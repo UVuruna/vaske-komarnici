@@ -2,7 +2,7 @@
   <defs>
     <style>
       .st0 {
-        fill: #d6d6d6;
+        fill: #c3c3c3;
       }
 
       .st0, .st1, .st2 {
@@ -10,7 +10,7 @@
       }
 
       .st0, .st2 {
-        stroke: #616e7c;
+        stroke: #353535;
         stroke-width: 3px;
       }
 
