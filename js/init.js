@@ -1,88 +1,32 @@
-const t0 = performance.now()
-
-let loadGlobals,
-    themeCycle,
-    settingThemeOnload,
-    promoWidth,
-    mobileMenu,
-    selectModel,
-    videoLoop,
-    videoPlay,
-    loadVideo,
-    loadDelay,
-    updateManifest
-
-// Import modules initially
-import { updateJS } from './updateJS.js'
-import { loadGlobals as importedLoadGlobals } from './globals.js'
-import {
-    themeCycle as importedThemeCycle,
-    settingThemeOnload as importedSettingThemeOnload
-} from './theme.js'
-import { mobileMenu as importedMobileMenu } from './clickHover.js'
-import { promoWidth as importedPromoWidth } from './promoWidth.js'
-import { selectModel as importedSelectModel } from './selectModel.js'
-import {
-    videoLoop as importedVideoLoop,
-    videoPlay as importedVideoPlay,
-    loadVideo as importedLoadVideo,
-    loadDelay as importedLoadDelay
-} from './media.js'
-import { updateManifest as updateManifestDelay } from './updateManifest.js'
-
-// Initially assign the imported functions to variables
-loadGlobals = importedLoadGlobals
-themeCycle = importedThemeCycle
-settingThemeOnload = importedSettingThemeOnload
-mobileMenu = importedMobileMenu
-promoWidth = importedPromoWidth
-selectModel = importedSelectModel
-videoLoop = importedVideoLoop
-videoPlay = importedVideoPlay
-loadVideo = importedLoadVideo
-loadDelay = importedLoadDelay
-updateManifest = updateManifestDelay
-
 export async function init(version, path, presentation) {
-    const update = localStorage.getItem('version') !== version
+    const t0 = performance.now()
+    let loadGlobals, themeCycle, settingThemeOnload, updateManifest
 
-    if (update) {
-        const modules = await updateJS(
-            ['globals', 'theme', 'updateManifest'],
-            version
-        )
+    await import('./globals.js?v=' + version).then(module => {loadGlobals = module.loadGlobals})
+    await import('./updateManifest.js?v=' + version).then(module => {updateManifest = module.updateManifest})
+    await import('./theme.js?v=' + version).then(module => {
+        themeCycle = module.themeCycle,
+        settingThemeOnload = module.settingThemeOnload
+    })
 
-        loadGlobals = modules.globals.loadGlobals
-        themeCycle = modules.theme.themeCycle
-        settingThemeOnload = modules.theme.settingThemeOnload
-        updateManifest = modules.updateManifest.updateManifest
-    }
-
-    const globals = await loadGlobals(updateManifest)
-    settingThemeOnload(version, update, updateManifest, updateJS, globals)
+    const globals = await loadGlobals(updateManifest) // LOADING GLOBALS
+    settingThemeOnload(version, updateManifest, globals, t0) // SETTING THEME ONLOAD
 
     await (async () => {
-        if (update) {
-            const modules = await updateJS(['promoWidth', 'clickHover'], version)
-
-            promoWidth = modules.promoWidth.promoWidth
-            mobileMenu = modules.clickHover.mobileMenu
-        }
-        mobileMenu()
-        promoWidth()
-
         if (presentation) {
-            if (update) {
-                const modules = await updateJS(['selectModel', 'media'], version)
+            let promoWidth, selectModel, videoLoop, videoPlay, loadVideo, loadDelay
 
-                selectModel = modules.selectModel.selectModel
-                videoLoop = modules.media.videoLoop
-                videoPlay = modules.media.videoPlay
-                loadVideo = modules.media.loadVideo
-                loadDelay = modules.media.loadDelay
-            }
+            await import('./promoWidth.js?v=' + version).then(module => {promoWidth = module.promoWidth})
+            await import('./selectModel.js?v=' + version).then(module => {selectModel = module.selectModel})
+            await import('./media.js?v=' + version).then(module => {
+                videoLoop = module.videoLoop,
+                videoPlay = module.videoPlay,
+                loadVideo = module.loadVideo,
+                loadDelay = module.loadDelay
+            })
+            promoWidth()
             loadDelay()
-            selectModel(version, update, updateJS)
+            selectModel(version)
 
             presentation.forEach(video => {
                 loadVideo(version, path, video)
@@ -90,12 +34,12 @@ export async function init(version, path, presentation) {
             videoPlay(globals.videos)
             videoLoop(globals.videos)
         }
+
+        if (window.screen.width > 800) {
+            let mobileMenu
+            await import('./clickHover.js?v=' + version).then(module => {mobileMenu = module.mobileMenu})
+            mobileMenu()
+        }
         window.themeCycle = themeCycle
     })()
-    localStorage.setItem('version', version)
-    console.log(
-        `Version:${version} | Loading Page: ${Math.floor(
-            performance.now() - t0
-        )} ms`
-    )
 }

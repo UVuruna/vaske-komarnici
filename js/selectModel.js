@@ -1,9 +1,5 @@
 let catalogueText
 
-import { catalogueText as catalogueTextDelay } from './catalogueText.js'
-
-catalogueText = catalogueTextDelay
-
 const type = ['Rolled', 'PliseDoor', 'PliseWindow', 'Fixed']
 const sides = ['Both', 'One']
 const frame = ['White', 'Brown', 'Antracite']
@@ -17,11 +13,8 @@ const TYPES = {
 
 // <<<------------->>> MAIN FUNCTION <<<------------->>>
 
-export async function selectModel(version, updateTrue, updateJS) {
-    if (updateTrue) {
-        const modules = await updateJS(['catalogueText'], version)
-        catalogueText = modules.catalogueText.catalogueText
-    }
+export async function selectModel(version) {
+    await import('./catalogueText.js?v=' + version).then(module => {catalogueText = module.catalogueText})
 
     const seenPromos = new Set()
 

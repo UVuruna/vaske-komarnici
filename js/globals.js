@@ -61,7 +61,7 @@ const ThemeColors = {
         secondaryElement: '#f0c42d'
     },
     afternoon: {
-        primary: '#d3b392',
+        primary: '#5c462d',
         secondary: '#fff4e5',
         primaryElement: '#840000',
         secondaryElement: '#ba4c5b'

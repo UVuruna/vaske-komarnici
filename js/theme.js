@@ -11,59 +11,29 @@ let GLOBALS,
     tableStyle,
     formStyle
 
-import { colorizeSVG as colorizeSVGDelay } from './colorizeSVG.js'
-import {
-    colorChange as colorChangeDelay,
-    hoverTxtColor as hoverTxtColorDelay,
-    hoverBgColor as hoverBgColorDelay
-} from './clickHover.js'
-import {
-    lightFrame as lightFrameDelay,
-    buttonsStyle as buttonsStyleDelay,
-    listItemsStyle as listItemsStyleDelay,
-    menuStyle as menuStyleDelay,
-    tableStyle as tableStyleDelay,
-    formStyle as formStyleDelay
-} from './changeStyle.js'
+export async function settingThemeOnload(version, updateManifest, globals, t0) {
+    await import('./colorizeSVG.js?v=' + version).then(module => {colorizeSVG = module.colorizeSVG})
+    await import('./clickHover.js?v=' + version).then(module => {
+        colorChange = module.colorChange
+        hoverTxtColor = module.hoverTxtColor,
+        hoverBgColor = module.hoverBgColor
+    })
+    await import('./changeStyle.js?v=' + version).then(module => {
+        lightFrame = module.lightFrame,
+        buttonsStyle = module.buttonsStyle,
+        listItemsStyle = module.listItemsStyle,
+        menuStyle = module.menuStyle,
+        tableStyle = module.tableStyle,
+        formStyle = module.formStyle
+    })
 
-colorizeSVG = colorizeSVGDelay
-colorChange = colorChangeDelay
-hoverTxtColor = hoverTxtColorDelay
-hoverBgColor = hoverBgColorDelay
-lightFrame = lightFrameDelay
-buttonsStyle = buttonsStyleDelay
-listItemsStyle = listItemsStyleDelay
-menuStyle = menuStyleDelay
-tableStyle = tableStyleDelay
-formStyle = formStyleDelay
-
-export async function settingThemeOnload(
-    version,
-    updateTrue,
-    updateManifest,
-    updateJS,
-    globals
-) {
-    if (updateTrue) {
-        const modules = await updateJS(
-            ['colorizeSVG', 'clickHover', 'changeStyle'],
-            version
-        )
-
-        colorizeSVG = modules.colorizeSVG.colorizeSVG
-        colorChange = modules.clickHover.colorChange
-        hoverTxtColor = modules.clickHover.hoverTxtColor
-        hoverBgColor = modules.clickHover.hoverBgColor
-        lightFrame = modules.changeStyle.lightFrame
-        buttonsStyle = modules.changeStyle.buttonsStyle
-        listItemsStyle = modules.changeStyle.listItemsStyle
-        menuStyle = modules.changeStyle.menuStyle
-        tableStyle = modules.changeStyle.tableStyle
-        formStyle = modules.changeStyle.formStyle
-    }
     GLOBALS = globals
     updateMANIFEST = updateManifest
     settingTheme(sessionStorage.getItem('theme'))
+
+    const oldVersion = localStorage.getItem('version')
+    console.log(`Version:${version} update:${!(version===oldVersion)} | Loading Page: ${Math.floor(performance.now() - t0)} ms`)
+    if (oldVersion !== version) localStorage.setItem('version', version)
 }
 
 export async function themeCycle() {
@@ -87,8 +57,6 @@ export async function settingTheme(currentTheme) {
     let PresetColors = GLOBALS.ThemeColors[currentTheme]
     const LOGO = document.getElementById('LOGO')
     const MENU = document.getElementById('MENU')
-
-    document.body.style.color = (currentTheme === 'afternoon')? '#222222' : '#ffffff'
 
     await Promise.all([
         // ----------> Set Color LOGO & MENU <----------
