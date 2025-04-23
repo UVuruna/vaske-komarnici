@@ -18,4 +18,5 @@
 .singleCatalogue .video-loop {
     border: 3px solid #ffffff;
     border-radius: 30px;
+    height: 500px;
 }

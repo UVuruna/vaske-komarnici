@@ -25,13 +25,13 @@ export async function loadGlobals(updateManifest) {
 
 function chooseTheme(Time) {
     switch (true) {
-        case Time >= 6 && Time < 10:
+        case Time >= 4 && Time < 11:
             sessionStorage.setItem('theme', 'morning')
             return 'morning'
-        case Time >= 10 && Time < 18:
+        case Time >= 11 && Time < 18:
             sessionStorage.setItem('theme', 'noon')
             return 'noon'
-        case Time >= 18 && Time < 22:
+        case Time >= 18 && Time < 21:
             sessionStorage.setItem('theme', 'afternoon')
             return 'afternoon'
         default:

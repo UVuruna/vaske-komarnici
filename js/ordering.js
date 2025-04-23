@@ -88,10 +88,29 @@ function calculatePrice(element) {
     }
 }
 
+function deleteOrder(tableRow) {
+    const Table = document.getElementById('orderList')
+    console.log(Table)
+
+    if (tableRow) {
+        tableRow.remove()
+    }
+    const rows = Table.querySelectorAll('tr')
+    console.log(rows)
+    if (rows.length === 0) {
+        const newRow = document.createElement('tr')
+        newRow.classList.add('empty')
+        newRow.innerHTML = `<td colspan="6" class="empty">Nema porudžbina</td>`
+        Table.appendChild(newRow)
+    }
+}
+
 function addOrder(element) {
     const tableRow = element.closest('tr');
     const id = tableRow.id
-    const TextArea = document.querySelector('textarea')
+    const Table = document.getElementById('orderList')
+    const newRow = document.createElement('tr')
+    const emptyTable = Table.querySelector('.empty')
 
     const elements = ['quantity', 'width', 'height', 'Area', 'Price', 'frame', 'net']
     const elementDict = {}
@@ -105,23 +124,31 @@ function addOrder(element) {
     const priceValue = elementDict.Price.textContent.split(' ')[0]
 
     order = [
-        `${categoryTranslate[id]},`, 
-        `${frameTranslate[getID(elementDict.frame.src)]},`,
-        `${netTranslate[getID(elementDict.net.src)]} |`,
-        `${quantityValue} kom ×`,
+        `${quantityValue}`,
+        `${categoryTranslate[id]}, ${frameTranslate[getID(elementDict.frame.src)]}, ${netTranslate[getID(elementDict.net.src)]}`, 
+        `${elementDict.width.value} m`,
+        `${elementDict.height.value} m`,
         `${areaValue} m²`,
-        `(${elementDict.width.value}m × ${elementDict.height.value}m)`,
-        `\n >>> Okvirno ${priceValue} € <<<`
-    ].join(' ')
-    console.log(order)
-
-    TextArea.value += order + '\n\n'
-
-    elementDict.quantity.textContent = '0'
-    elementDict.Price.textContent = '0 €'
-    elementDict.Area.textContent = '0 m²'
-    elementDict.width.value = null
-    elementDict.height.value = null
+        `${priceValue} €`
+    ]
+    
+    
+    order.forEach((item, index) => {
+        const newCell = document.createElement('td')
+        if (index === 0) {
+            newCell.innerHTML = `
+                <i onclick="deleteOrder(this.closest('tr'))" style="margin:0 0.15rem 0 0; cursor: pointer" class="fa-solid fa-ban"></i>
+                ${item}
+            `
+        } else {
+            newCell.textContent = item
+        }
+        newRow.appendChild(newCell)
+    })
+    if (emptyTable) {
+        emptyTable.remove()
+    }
+    Table.appendChild(newRow)
 }
 
 function getID(src) {

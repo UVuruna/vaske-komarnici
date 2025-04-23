@@ -17,6 +17,12 @@ $alts = [
 ];
 ?>
 
+<header>
+    <h1><?= $title ?></h1>
+    <h3>Spremni za besplatno merenje?</h3>
+    <p><strong>Napomena</strong>: Prikazane cene su okvirne i informativne prirode. Konačna cena može se razlikovati u zavisnosti od specifičnih zahteva i dimenzija. Prilagođavanje proizvoda je moguće u dogovoru sa kupcem.</p>
+</header>
+
 <div id="contact_us" class="order">
         <table class="light">
             <thead>
@@ -75,14 +81,42 @@ $alts = [
         </table>
     </section>
     <section class="form">
-        <h2>Spremni za besplatno merenje?</h2>
-        <p>Kontaktirajte nas odmah i rezervišite besplatno merenje za komarnike po vašoj meri!</p>
         <form id="order" name="order" action="<?php echo $basePath ?>html/order.php" method="post">
-            <input id="name" class="light" type="text" name="name" placeholder="Ime" required autocomplete="on"/>
-            <input id="email" class="light" type="text" name="email" placeholder="Email" pattern="[^@]+@[^@]+\.[^@]+" required autocomplete="on"/>
-            <input id="phone" class="light" type="text" name="phone" placeholder="Broj telefona" pattern="^\+?[0-9]{10,15}$" required autocomplete="on"/>
-            <textarea id="orderDetail" class="light" name="orderDetail" placeholder="Detalji Porudžbine" required></textarea>
+            <table class="light">
+                <thead>
+                <colgroup>
+                    <col style="width: 10%;">
+                    <col style="width: 36%;">
+                    <col style="width: 12%;">
+                    <col style="width: 12%;">
+                    <col style="width: 15%;">
+                    <col style="width: 15%;">
+                </colgroup>
+                    <tr>
+                        <th>Kol</th>
+                        <th>Proizvod</th>
+                        <th><span class="rotated-text">Širina</span></th>
+                        <th><span class="rotated-text">Visina</span></th>
+                        <th><span class="rotated-text">Površina</span></th>
+                        <th><span class="rotated-text">Cena</span></th>
+                    </tr>
+                </thead>
+                <tbody id="orderList">
+                    <tr class="empty">
+                        <td colspan="6">Nema porudžbina</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="separator">
+                <input id="name" class="light" type="text" name="name" placeholder="Ime" required autocomplete="on"/>
+                <input id="email" class="light" type="text" name="email" placeholder="Email" pattern="[^@]+@[^@]+\.[^@]+" required autocomplete="on"/>
+                <input id="phone" class="light" type="text" name="phone" placeholder="Broj telefona" pattern="^\+?[0-9]{10,15}$" required autocomplete="on"/>
+                <input id="address" class="light" type="text" name="address" placeholder="Adresa (opciono)" autocomplete="on"/>
+            </div>
+            <textarea id="orderDetail" class="light" name="orderDetail" placeholder="Detalji Porudžbine (opciono)" rows="3"></textarea>
+            
             <button type="submit" class="cta-button">Pošaljite zahtev</button>
         </form>
     </section>
 </div>
+

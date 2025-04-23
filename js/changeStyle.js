@@ -27,55 +27,41 @@ export async function lightFrame(LightFrames, PresetColors) {
 }
 // ----------> GLOBALS.BUTTONS <----------
 export async function buttonsStyle(BUTTONS, PresetColors) {
-    BUTTONS.forEach(link => {
-        link.style.backgroundColor = PresetColors.primaryElement
-        if (link.classList.contains('cta-button')) {
-            link.style.boxShadow = `5px 5px 20px ${PresetColors.primaryElement}, -5px -5px 20px ${PresetColors.primaryElement}`
+    BUTTONS.forEach(button => {
+        button.style.backgroundColor = PresetColors.primaryElement
+        if (button.classList.contains('cta-button')) {
+            button.style.boxShadow = `5px 5px 20px ${PresetColors.primaryElement}, -5px -5px 20px ${PresetColors.primaryElement}`
 
-            link.addEventListener('mouseenter', () => {
-                link.style.boxShadow = `0 0 25px ${PresetColors.secondaryElement}, 0 0 50px ${PresetColors.secondaryElement}`
+            button.addEventListener('mouseenter', () => {
+                button.style.boxShadow = `0 0 25px ${PresetColors.secondaryElement}, 0 0 50px ${PresetColors.secondaryElement}`
             })
-            link.addEventListener('mouseleave', () => {
-                link.style.boxShadow = `5px 5px 20px ${PresetColors.primaryElement}, -5px -5px 20px ${PresetColors.primaryElement}`
+            button.addEventListener('mouseleave', () => {
+                button.style.boxShadow = `5px 5px 20px ${PresetColors.primaryElement}, -5px -5px 20px ${PresetColors.primaryElement}`
             })
         }
-        link.addEventListener('mouseenter', () => {
-            link.style.backgroundColor = PresetColors.secondaryElement
+        button.addEventListener('mouseenter', () => {
+            button.style.backgroundColor = PresetColors.secondaryElement
         })
-        link.addEventListener('mouseleave', () => {
-            link.style.backgroundColor = PresetColors.primaryElement
+        button.addEventListener('mouseleave', () => {
+            button.style.backgroundColor = PresetColors.primaryElement
         })
     })
 }
 // ----------> LIST strong Items <----------
 export async function listItemsStyle(
-    theme,
     ListItems,
     hoverTxtColor,
     PresetColors
 ) {
     ListItems.forEach(item => {
-        item.style.cursor = 'pointer'
-        if (theme !== 'afternoon') {
-            item.style.color = PresetColors.primaryElement
-            hoverTxtColor(
-                item,
-                PresetColors.secondaryElement,
-                PresetColors.primaryElement
-            )
-        } else {
-            item.style.color = PresetColors.secondaryElement
-            hoverTxtColor(
-                item,
-                PresetColors.primaryElement,
-                PresetColors.secondaryElement
-            )
-        }
-        item.style.webkitTextStroke = `0.5px black`
-
-        if (!item.closest('.selectFrame')) {
-            item.style.fontSize = '1.2rem'
-        }
+        item.style.color = PresetColors.primaryElement
+        item.style.fontSize = '1.2rem'
+        item.style.webkitTextStroke = `0.025em #222222`
+        hoverTxtColor(
+            item,
+            PresetColors.secondaryElement,
+            PresetColors.primaryElement
+        )
     })
 }
 
@@ -105,13 +91,15 @@ export async function menuStyle(
 }
 
 export async function tableStyle(bgColor, elementColor) {
-    const TABLE = document.querySelector('table')
-    if (!TABLE) return
+    const tables = document.querySelectorAll('table')
+    if (!tables.length) return
 
-    TABLE.style.border = `2px solid ${elementColor}`
-    TABLE.style.borderRadius = '1.5rem'
-    TABLE.style.backgroundColor = bgColor
-    TABLE.style.overflow = 'hidden'
+    tables.forEach(TABLE => {
+        TABLE.style.border = `2px solid ${elementColor}`
+        TABLE.style.borderRadius = '1.5rem'
+        TABLE.style.backgroundColor = bgColor
+        TABLE.style.overflow = 'hidden'
+    })
 
     const headers = document.querySelectorAll('th')
     const borderFrames = document.querySelectorAll('.width, .height')
@@ -135,6 +123,6 @@ export async function formStyle(bgColor, elementColor) {
     Inputs.forEach(input => {
         input.style.backgroundColor = bgColor
         input.style.border = `2px solid ${elementColor}`
-        input.style.borderRadius = '1.5rem'
+        input.style.borderRadius = '1rem'
     })
 }

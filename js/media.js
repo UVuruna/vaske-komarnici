@@ -40,7 +40,7 @@ export async function videoPlay() {
 export async function loadVideo(version, basePath, videoID) {
     const videoElement = document.getElementById(videoID)
     if (videoID === 'showcase') {
-        if (window.innerWidth >= 750) {
+        if (window.innerWidth >= 1000) {
             videoID = videoID + '_PC'
         } else {
             videoID = videoID + '_Mobile'

@@ -11,15 +11,15 @@
     $companyPhoneLocal  = "063 105-1331";
     $companyPhoneGlobal = "+381 63 105 1331";
 
-    $version = "1.005";
+    $version = "1.006";
 
     $title = match ($page) {
-        'o_nama' => "Ko smo mi? | {$baseTitle}",
-        'katalog' => "Katalog proizvoda (Tipovi komarnika) | {$baseTitle}",
-        'fiksni' => "Fiksni komarnici | {$baseTitle}",
-        'rolo' => "Rolo komarnici | {$baseTitle}",
-        'plise' => "Plise komarnici | {$baseTitle}",
-        'kontakt' => "Poručite komarnike i zakažite montiranje | {$baseTitle}",
+        'o_nama' => "Ko smo mi?",
+        'katalog' => "Katalog proizvoda<br>(Tipovi komarnika)",
+        'fiksni' => "Fiksni komarnici",
+        'rolo' => "Rolo komarnici",
+        'plise' => "Plise komarnici",
+        'kontakt' => "Poručite komarnike i zakažite montiranje",
         default => $baseTitle,
     };
 

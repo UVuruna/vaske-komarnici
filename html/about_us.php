@@ -1,15 +1,11 @@
-<?php
-$Title = str_replace(" | ", "<br>", $title);
-?>
-
 <div id="about_us" class="light">
   <header>
-    <h1><?php echo $Title ?></h1>
+    <h1><?php echo $title ?></h1>
     <p>Profesionalna usluga izrade i montaže komarnika po meri za vaš prostor!</p>
   </header>
 
   <section>
-    <h2>Vrste komarnika koje nudimo</h2>
+    <h3>Vrste komarnika koje nudimo</h3>
     <ul>
       <li><a href="<?php echo $basePath ?>katalog/fiksni-komarnici/"><strong>Fiksni komarnici</strong></a> – Ekonomična varijanta za prozore i vrata kroz koja se ne prolazi.</li>
       <li><a href="<?php echo $basePath ?>katalog/rolo-komarnici/"><strong>Rolo komarnici</strong></a> – Kompaktni i praktični za korišćenje.</li>
@@ -18,7 +14,7 @@ $Title = str_replace(" | ", "<br>", $title);
   </section>
 
   <section>
-    <h2>Zašto odabrati naše komarnike?</h2>
+    <h3>Zašto odabrati naše komarnike?</h3>
     <p>Naša firma koristi <strong>visokokvalitetne materijale</strong> i pruža proizvode koji su <strong>dugotrajni</strong> i poseduju <strong>otpornosti na različite vremenske uslove</strong>.</p>
     <p>Komarnici su izrađeni od <strong>fiberglass mreže</strong> koja je presvučena teflonom, čineći ih veoma <strong>otpornim na habanje</strong>.</p>
     <p>Naša usluga uključuje <strong>besplatno merenje i savetovanje</strong> sa profesionalnom montažom koja je obično završena u roku od <strong>sat-dva</strong>.</p>
@@ -27,13 +23,13 @@ $Title = str_replace(" | ", "<br>", $title);
   </section>
 
   <section>
-    <h2>Naš proces izrade i montaže</h2>
+    <h3>Naš proces izrade i montaže</h3>
     <p>U samo <strong>48 sati</strong> naš stručni tim dolazi kod vas, uzima tačne mere i pomaže u odabiru komarnika.</p>
     <p>Ugradnja komarnika vrši se brzo i bez stresa, uz minimalnu buku i prašinu.</p>
   </section>
 
   <section>
-    <h2>Servis i Održavanje Komarnika</h2>
+    <h3>Servis i Održavanje Komarnika</h3>
     <p>Pored prodaje novih komarnika, pružamo i usluge <strong>remonta</strong>, <strong>popravke</strong> i <strong>zamene kanapa i mreže</strong> na postojećim komarnicima.</p>
     <ul>
       <li><strong>Remont komarnika</strong> – Popravka oštećenih ili nefunkcionalnih komarnika sa brzim i efikasnim rešenjem.</li>
@@ -45,7 +41,7 @@ $Title = str_replace(" | ", "<br>", $title);
   </section>
 
   <section class="cta">
-    <h2>Spremni za besplatno merenje?</h2>
+    <h3>Spremni za besplatno merenje?</h3>
     <p>Kontaktirajte nas odmah i rezervišite besplatno merenje za komarnike po vašoj meri!</p>
     <button class="cta-button" onclick="window.location.href='<?php echo $basePath ?>kontakt/'">Kontaktirajte nas</button>
   </section>

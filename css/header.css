@@ -19,7 +19,6 @@
 
 /* Logo */
 #LOGO {
-    cursor: pointer;
     height: 100%;
     width: auto;
     object-fit: contain;
@@ -117,7 +116,6 @@
     /* -- DROPDOWN Primary -- */
 
     #MENU {
-        cursor: pointer;
         display: flex;
         height: 90%;
         width: auto;

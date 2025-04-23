@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   margin: 0 auto;
   gap: 3rem;
   padding: 1rem 5vw;
@@ -24,10 +24,10 @@
   padding: 0.5rem;
   white-space: nowrap;
 }
-th:nth-child(1) {
+th:first-child {
   border-radius: 1.2rem 0 0 0;
 }
-th:nth-child(4) {
+th:last-child {
   border-radius: 0 1.2rem 0 0;
 }
 
@@ -112,17 +112,22 @@ form {
   justify-content: center;
   align-items: center;
 }
+
+.separator {
+  width: 100%;
+  max-width: 800px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+
 form input,
 form textarea {
-  width: 100%; /* <- umesto 800px */
-  max-width: 800px; /* <- ako želiš neki maksimum */
-  padding: 1rem;
-  border-radius: 0.75rem;
-  box-sizing: border-box; /* <- obavezno da padding ne pređe širinu */
+  width: 100%;
+  max-width: 800px;
+  padding: 0.5rem;
 }
 #orderDetail {
-  height: 30vh;
-  max-height: 300px;
   resize: none
 }
 
@@ -130,29 +135,94 @@ form button {
   margin-top: 1rem;
 }
 
-@media (max-width: 1200px) {
+form table {
+  margin-bottom: 1rem;
+  width: 100% !important;
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+#orderList td {
+  white-space: normal;
+  word-break: break-word;
+}
+
+@media (max-width: 1500px) {
   #contact_us {
-    flex-direction: column;
-    gap: 2rem
+    padding: 1rem 0;
+    gap: 1rem;
   }
 }
 
-@media (max-width: 800px) {
-  .order {
-    width: 100%;
+@media (max-width: 1200px) {
+  #contact_us {
+    flex-direction: column;
+    align-items: center;
   }
+}
+
+@media (min-width: 800px) and (max-width: 1200px) {
+  .order table {
+    width: 90%;
+  }
+  .category {
+    width: 100px;
+    height: 100px;
+  }
+  .frame,
+  .net {
+    width: 45px;
+    height: 45px;
+  }
+  .controls button {
+    width: 3rem;
+    height: 3rem;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 800px) {
   .order table {
     width: 100%;
+  }
+  .category {
+    width: 80px;
+    height: 80px;
+  }
+  .frame,
+  .net {
+    width: 35px;
+    height: 35px;
+  }
+  .controls button {
+    width: 2.5rem;
+    height: 2.5rem;
   }
 }
 
 @media (max-width: 600px) {
+  .order table {
+    width: 100%;
+  }
+  .separator {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+  }
+  .rotated-text {
+    display: inline-block;
+    transform: rotate(-30deg);
+  }
+  form table th {
+    padding: 0;
+  }
+
   #contact_us {
     padding: 1rem 0;
   }
   .category {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
   }
   .order th {
     padding: 1rem 0.25rem;
@@ -162,11 +232,15 @@ form button {
   }
   .frame,
   .net {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
   }
 
-  /* Unutrašnji elementi u redovima */
+  .controls button {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
   .tableColumn:not(:has(.measureDimension)) {
     flex-direction: column-reverse;
   }
@@ -195,11 +269,6 @@ form button {
 }
 
 @media (max-width: 410px) {
-  .controls button {
-    width: 1.75rem;
-    height: 1.75rem;
-  }
-
   .measureDimension {
     font-size: 0.75rem;
   }
@@ -215,6 +284,19 @@ form button {
 }
 
 @media (max-width: 380px) {
+  .category {
+    width: 60px;
+    height: 60px;
+  }
+  .frame,
+  .net {
+    width: 28px;
+    height: 28px;
+  }
+  .controls button {
+    width: 2rem;
+    height: 2rem;
+  }
   .Add {
     padding: 1rem;
   }

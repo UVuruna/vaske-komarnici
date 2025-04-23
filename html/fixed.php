@@ -5,11 +5,11 @@
 
 <div class="catalogue singleCatalogue">
     <header>
-        <h1><?= $page !== 'katalog' ? $Title : 'Fiksni Komarnici' ?></h1>
+        <h2><?= $page !== 'katalog' ? $Title : 'Fiksni Komarnici' ?></h2>
         <p><strong>Već od 25€ po kvadratnom metru</strong> – pristupačna i efikasna zaštita od insekata, bez dodatnih troškova i komplikovane montaže.</p>
     </header>
     <section class="text">
-        <h2>Zaštita bez kompromisa – diskretni, pouzdani i dugotrajni.</h2>
+        <h3>Zaštita bez kompromisa – diskretni, pouzdani i dugotrajni.</h3>
         <p>Fiksni komarnici su idealno rešenje za prozore koji se ne otvaraju često. Montiraju se lako, ne remete izgled fasade, i predstavljaju trajnu zaštitu od insekata tokom cele godine. Bilo da tražite jednostavno rešenje za stan, kuću ili poslovni prostor, naši fiksni komarnici dolaze u različitim dimenzijama, bojama i vrstama mreža – savršeno uklopljeni uz vaš stil i potrebe.</p>
     </section>
     <?php

@@ -17,6 +17,7 @@
     <?php include "{$basePath}html/includes/footer.php"; ?>
 
     <script src="<?php echo $basePath ?>js/ordering.js?v=<?php echo $version ?>"></script>
+    <script src="<?php echo $basePath ?>js/savingOrder.js?v=<?php echo $version ?>"></script>
 </body>
 
 </html>

@@ -20,6 +20,7 @@
 <body>
     <?php include "{$basePath}html/includes/header.php"; ?>
     <main>
+        <?php include "{$basePath}html/catalogue.php"; ?>
         <?php include "{$basePath}html/fixed.php"; ?>
         <?php include "{$basePath}html/rolled.php"; ?>
         <?php include "{$basePath}html/plise.php"; ?>

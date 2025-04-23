@@ -85,17 +85,10 @@ export async function themeCycle() {
 
 export async function settingTheme(currentTheme) {
     let PresetColors = GLOBALS.ThemeColors[currentTheme]
-
-    const dropdownMenus = document.querySelectorAll('#header ul')
     const LOGO = document.getElementById('LOGO')
     const MENU = document.getElementById('MENU')
-    const BUTTONS = document.querySelectorAll('button')
-    const ListItems = document.querySelectorAll('li strong')
-    const LightFrames = document.querySelectorAll('.light')
-
 
     document.body.style.color = (currentTheme === 'afternoon')? '#222222' : '#ffffff'
-
 
     await Promise.all([
         // ----------> Set Color LOGO & MENU <----------
@@ -124,17 +117,17 @@ export async function settingTheme(currentTheme) {
             colorizeSVG
         ),
         // ----------> Configure LIGHT BG frames <----------
-        lightFrame(LightFrames, PresetColors),
+        lightFrame(document.querySelectorAll('.light'), PresetColors),
 
         // ----------> Configure all BUTTONS <----------
-        buttonsStyle(BUTTONS, PresetColors),
+        buttonsStyle(document.querySelectorAll('button'), PresetColors),
 
         // ----------> Configure all LIST STRONG Items <----------
-        listItemsStyle(currentTheme, ListItems, hoverTxtColor, PresetColors),
+        listItemsStyle(document.querySelectorAll('li strong'), hoverTxtColor, PresetColors),
 
         // ----------> Navigation Dropdown Menu <----------
         menuStyle(
-            dropdownMenus,
+            document.querySelectorAll('#header ul'),
             PresetColors.primary,
             PresetColors.primaryElement,
             hoverBgColor

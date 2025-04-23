@@ -36,21 +36,19 @@ body {
 main {
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 button {
-  padding: 0.75em 1.5em;
-  text-align: center;
-  border-radius: 1.5em;
+  padding: 0.5em 1.25em;
+  border-radius: 1.25em;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
-button,
-li,
-i,
+svg,
 img,
-svg {
+i {
   cursor: pointer;
   transition: all 0.5s;
 }
@@ -61,6 +59,10 @@ button:active {
 }
 
 @media (min-width: 800px) {
+  .menu > * {
+    transition: all 0.5s;
+  }
+
   .menu > *:hover,
   .menu > *:active {
     transform: scale(1.2);
@@ -74,12 +76,19 @@ svg:active {
 }
 
 h1 {
-  margin: 0.5em 0 0.2em 0;
-  font-size: 1.8rem;
-  font-weight: 700;
-  text-align: center;
+  font-size: 2rem;
+  margin-block-start: 0;
+}
+h2 {
+  margin-block-start: 0;
+  font-size: 1.5rem;
+}
+h3 {
+  font-size: 1.3rem;
+  margin-block-end: 0;
 }
 
+h1,
 h2,
 h3,
 button {
@@ -91,13 +100,7 @@ strong {
   font-weight: 700;
 }
 
-h2 {
-  margin: 0.25em 0;
-  font-size: 1.35rem;
-}
-h3 {
-  font-size: 1.1rem;
-}
+
 
 ul {
   margin: 0;
@@ -135,6 +138,13 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+header {
+  margin: 0 auto;
+}
+header * {
+  text-align: center;
 }
 
 @media (min-width: 2560px) {
@@ -186,11 +196,7 @@ a {
 
 /* Animacija za osvetljivanje slike */
 .hoverHighlight {
-  cursor: pointer;
-  transition: all 0.5s;
-
   &:hover {
     filter: hue-rotate(12deg) contrast(70%) brightness(130%) saturate(150%);
-    transition: all 0.5s;
   }
 }
