@@ -11,7 +11,7 @@
     $companyPhoneLocal  = "063 105-1331";
     $companyPhoneGlobal = "+381 63 105 1331";
 
-    $version = "1.013";
+    $version = "1.015";
 
     $title = match ($page) {
         'o_nama' => "Ko smo mi?",
@@ -36,9 +36,9 @@
 
     <meta name="description" content="Izrada i montaža rolo, plisiranih i fiksnih komarnika po meri u Beogradu. Brza ugradnja i servis komarnika - zamena mreže i kanapa."/>
     <meta name="keywords" content="komarnici po meri, izrada komarnika, montaža komarnika, rolo komarnici, plise komarnici, fiksni komarnici, komarnici Beograd, ugradnja komarnika, popravka komarnika, zamena kanapa, zamena mreže, servis komarnika Beograd"/>
-    <link rel="canonical" href="<?php echo htmlspecialchars($fullUrl); ?>"/>
     <meta name="author" content="<?php echo $developerName ?>"/>
 
+    <link rel="canonical" href="<?php echo htmlspecialchars($fullUrl); ?>"/>
 
     <!-- Open Graph za Google i društvene mreže -->
     <meta property="og:title" content="<?php echo htmlspecialchars($title); ?>"/>

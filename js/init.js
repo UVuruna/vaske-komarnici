@@ -1,5 +1,7 @@
 export async function init(version, path, presentation) {
     const t0 = performance.now()
+    console.log(`${window.screen.width}x${window.screen.height} | ${window.innerWidth}x${window.innerHeight}`)
+
     let loadGlobals, themeCycle, settingThemeOnload, updateManifest
 
     await import('./globals.js?v=' + version).then(module => {loadGlobals = module.loadGlobals})
@@ -8,11 +10,16 @@ export async function init(version, path, presentation) {
         themeCycle = module.themeCycle,
         settingThemeOnload = module.settingThemeOnload
     })
-
     const globals = await loadGlobals(updateManifest) // LOADING GLOBALS
-    settingThemeOnload(version, updateManifest, globals, t0) // SETTING THEME ONLOAD
-
+    
     await (async () => {
+        settingThemeOnload(version, updateManifest, globals, t0) // SETTING THEME ONLOAD
+
+        if (window.innerWidth < 800) {
+            let mobileMenu
+            await import('./clickHover.js?v=' + version).then(module => {mobileMenu = module.mobileMenu})
+            mobileMenu()
+        }
         if (presentation) {
             let promoWidth, selectModel, videoLoop, videoPlay, loadVideo, loadDelay
 
@@ -34,12 +41,6 @@ export async function init(version, path, presentation) {
             videoPlay(globals.videos)
             videoLoop(globals.videos)
         }
-
-        if (window.screen.width > 800) {
-            let mobileMenu
-            await import('./clickHover.js?v=' + version).then(module => {mobileMenu = module.mobileMenu})
-            mobileMenu()
-        }
         window.themeCycle = themeCycle
-    })()
+    })() 
 }
