@@ -114,7 +114,7 @@ $alts = [
                 <input id="address" class="light" type="text" name="address" placeholder="Adresa (opciono)" autocomplete="on"/>
             </div>
             <textarea id="orderDetail" class="light" name="orderDetail" placeholder="Detalji Porudžbine (opciono)" rows="3"></textarea>
-            
+            <input type="hidden" name="orderList" id="orderListInput">
             <button type="submit" class="cta-button">Pošaljite zahtev</button>
         </form>
     </section>

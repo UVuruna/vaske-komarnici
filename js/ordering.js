@@ -181,3 +181,25 @@ window.changeQuantity = changeQuantity
 window.calculateArea = calculateArea
 window.calculatePrice = calculatePrice
 window.addOrder = addOrder
+
+
+document.getElementById('order').addEventListener('submit', function (e) {
+    const tbody = document.getElementById('orderList');
+    const rows = tbody.querySelectorAll('tr');
+    let htmlTable = '<table border="1" cellpadding="5" cellspacing="0" style="border-collapse: collapse;">';
+
+    rows.forEach(row => {
+        const cells = row.querySelectorAll('td');
+        if (cells.length === 0) return;
+
+        htmlTable += '<tr>';
+        cells.forEach(cell => {
+            htmlTable += `<td>${cell.textContent.trim()}</td>`;
+        });
+        htmlTable += '</tr>';
+    });
+
+    htmlTable += '</table>';
+
+    document.getElementById('orderListInput').value = htmlTable;
+});
