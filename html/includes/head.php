@@ -11,7 +11,7 @@
     $companyPhoneLocal  = "063 105-1331";
     $companyPhoneGlobal = "+381 63 105 1331";
 
-    $version = "1.015";
+    $version = "1.018";
 
     $title = match ($page) {
         'o_nama' => "Ko smo mi?",
@@ -97,4 +97,6 @@
 
         gtag('config', 'G-GVMXHKYSD3');
     </script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5692012727130730"
+        crossorigin="anonymous"></script>
 </head>
