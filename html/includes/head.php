@@ -11,7 +11,7 @@
     $companyPhoneLocal  = "063 105-1331";
     $companyPhoneGlobal = "+381 63 105 1331";
 
-    $version = "1.018";
+    $version = "1.019";
 
     $title = match ($page) {
         'o_nama' => "Ko smo mi?",
@@ -65,6 +65,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta itemprop="priceCurrency" content="EUR"/>
 
+    <!-- ADSense -->
+    <meta name="google-adsense-account" content="ca-pub-5692012727130730">
+
     <!-- CSS Styles -->
     <link rel="stylesheet" href="<?php echo $basePath ?>css/root.css?v=<?php echo $version ?>"/>
     <link rel="stylesheet" href="<?php echo $basePath ?>css/fa.css?v=<?php echo $version ?>"/>
@@ -87,16 +90,7 @@
         });
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVMXHKYSD3">
-    </script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-GVMXHKYSD3');
-    </script>
+    <!-- Google Ads -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5692012727130730"
         crossorigin="anonymous"></script>
 </head>

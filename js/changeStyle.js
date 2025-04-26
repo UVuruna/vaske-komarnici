@@ -48,21 +48,28 @@ export async function buttonsStyle(BUTTONS, PresetColors) {
     })
 }
 // ----------> LIST strong Items <----------
-export async function listItemsStyle(
-    ListItems,
+export async function coloredTextStyle(
+    coloredTextItems,
     hoverTxtColor,
-    PresetColors
+    PresetColors,
+    currentTheme
 ) {
-    ListItems.forEach(item => {
+    for (const item of coloredTextItems) {
         item.style.color = PresetColors.primaryElement
-        item.style.fontSize = '1.2rem'
-        item.style.webkitTextStroke = `0.025em #222222`
+        item.style.fontSize = '1.25rem'
+        if (currentTheme === 'afternoon') {
+            item.style.webkitTextStroke = `0.025em ${PresetColors.primaryElement}`;
+        } else if (currentTheme === 'noon') {
+            item.style.webkitTextStroke = '0.04em #222222';
+        } else {
+            item.style.webkitTextStroke = '0.06em #222222';
+        }
         hoverTxtColor(
             item,
             PresetColors.secondaryElement,
             PresetColors.primaryElement
         )
-    })
+    }
 }
 
 // ----------> DROPDOWN MENU <----------
@@ -92,6 +99,7 @@ export async function menuStyle(
 
 export async function tableStyle(bgColor, elementColor) {
     const tables = document.querySelectorAll('table')
+
     if (!tables.length) return
 
     tables.forEach(TABLE => {
@@ -110,8 +118,7 @@ export async function tableStyle(bgColor, elementColor) {
     })
     borderFrames.forEach(borderFrame => {
         borderFrame.style.border = `2px solid ${elementColor}`
-    })
-    
+    }) 
 }
 
 export async function formStyle(bgColor, elementColor) {

@@ -35,10 +35,23 @@ $alts = [
             </thead>
             <tbody>
                 <?php foreach ($ids as $index => $id): ?>
+                    <?php
+                        $typeText = '';
+                        if (strpos($id, 'Fixed') !== false) {
+                            $typeText = 'Fiksni';
+                        } elseif (strpos($id, 'Rolled') !== false) {
+                            $typeText = 'Rolo';
+                        } elseif (strpos($id, 'Plise') !== false) {
+                            $typeText = 'Plise';
+                        }
+                    ?>
                     <tr id="<?php echo $id ?>">
                         <td>
                             <div class="tableColumn">
-                                <img class="category" onclick="swapType(this)" src="<?php echo $basePath ?>img/items/product/<?php echo $id ?>_White_Light.webp" alt="<?php echo $alts[$index] ?>" width="80" height="80">
+                                <div class="orderCategory" onclick="swapType(this); calculatePrice(this)" >
+                                    <img class="category" src="<?php echo $basePath ?>img/items/product/<?php echo $id ?>_White_Light.webp" alt="<?php echo $alts[$index] ?>" width="80" height="80">
+                                    <p class="categoryText"><?php echo $typeText; ?></p>
+                                </div>
                                 <div class="color">
                                     <img class="frame" onclick="swapType(this)" src="<?php echo $basePath ?>img/other/White.webp" alt="Boja rama" width="30" height="30">
                                     <img class="net" onclick="swapType(this)" src="<?php echo $basePath ?>img/other/Light.webp" alt="Boja rama" width="30" height="30">

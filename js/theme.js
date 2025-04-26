@@ -6,7 +6,7 @@ let GLOBALS,
     hoverBgColor,
     lightFrame,
     buttonsStyle,
-    listItemsStyle,
+    coloredTextStyle,
     menuStyle,
     tableStyle,
     formStyle
@@ -21,7 +21,7 @@ export async function settingThemeOnload(version, updateManifest, globals, t0) {
     await import('./changeStyle.js?v=' + version).then(module => {
         lightFrame = module.lightFrame,
         buttonsStyle = module.buttonsStyle,
-        listItemsStyle = module.listItemsStyle,
+        coloredTextStyle = module.coloredTextStyle,
         menuStyle = module.menuStyle,
         tableStyle = module.tableStyle,
         formStyle = module.formStyle
@@ -91,7 +91,12 @@ export async function settingTheme(currentTheme) {
         buttonsStyle(document.querySelectorAll('button'), PresetColors),
 
         // ----------> Configure all LIST STRONG Items <----------
-        listItemsStyle(document.querySelectorAll('li strong'), hoverTxtColor, PresetColors),
+        coloredTextStyle(
+            document.querySelectorAll('li strong, .categoryText'),
+            hoverTxtColor,
+            PresetColors,
+            currentTheme
+        ),
 
         // ----------> Navigation Dropdown Menu <----------
         menuStyle(

@@ -40,6 +40,7 @@ th:last-child {
 
 /* Unutrašnji elementi u redovima */
 .tableColumn {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -146,6 +147,18 @@ form table {
 #orderList td {
   white-space: normal;
   word-break: break-word;
+}
+
+.orderCategory {
+  position: relative;
+}
+.categoryText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 1500px) {

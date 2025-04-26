@@ -1,20 +1,33 @@
 function swapType(element) {
     const tableRow = element.closest('tr'); 
-    const imageSRC = element.src
-
-    let TYPE = getID(imageSRC)
     let newTYPE
 
-    if (element.classList.contains('category')) {
+    if (element.classList.contains('orderCategory')) {
+        const text = element.querySelector('p')
+        const image = element.querySelector('img')
+        const imageSRC = image.src
+
+        let TYPE = getID(imageSRC)
         let typeList = TYPE.split('_');
         TYPE = typeList.slice(0, typeList.length - 2).join('_')
+
         newTYPE = swappingCategory[(swappingCategory.indexOf(TYPE) + 1) % swappingCategory.length]
 
-        element.src = imageSRC.replace(TYPE, newTYPE)
-        element.alt = `${categoryTranslate[newTYPE]} porudžbina`
+        image.src = imageSRC.replace(TYPE, newTYPE)
+        image.alt = `${categoryTranslate[newTYPE]} porudžbina`
         tableRow.id = newTYPE
 
+        for (const item of swappingMainCategory) {
+            if (newTYPE.includes(item)) {
+                text.textContent = `${mainCategory[item]}`
+                break
+            }
+        }
+
     } else {
+        const imageSRC = element.src
+        const TYPE = getID(imageSRC)
+
         if (element.classList.contains('net')) {
             newTYPE = swappingNet[(swappingNet.indexOf(TYPE) + 1) % swappingNet.length]
             element.src = imageSRC.replace(TYPE, newTYPE)
@@ -90,19 +103,20 @@ function calculatePrice(element) {
 
 function deleteOrder(tableRow) {
     const Table = document.getElementById('orderList')
-    console.log(Table)
-
     if (tableRow) {
         tableRow.remove()
     }
     const rows = Table.querySelectorAll('tr')
-    console.log(rows)
-    if (rows.length === 0) {
+    if (rows.length === 1) {
+        const totalRow = Table.querySelector('.total')
+        totalRow.remove()
+
         const newRow = document.createElement('tr')
         newRow.classList.add('empty')
         newRow.innerHTML = `<td colspan="6" class="empty">Nema porudžbina</td>`
         Table.appendChild(newRow)
     }
+    totalPrice() // Racuna ukupnu cenu
 }
 
 function addOrder(element) {
@@ -140,15 +154,50 @@ function addOrder(element) {
                 <i onclick="deleteOrder(this.closest('tr'))" style="margin:0 0.15rem 0 0; cursor: pointer" class="fa-solid fa-ban"></i>
                 ${item}
             `
+        } else if (index === order.length - 1) {
+            newCell.classList.add('orderValue')
+            newCell.textContent = item
         } else {
             newCell.textContent = item
         }
         newRow.appendChild(newCell)
     })
+
     if (emptyTable) {
         emptyTable.remove()
+        addTotalRow(Table)
     }
-    Table.appendChild(newRow)
+    const lastRow = Table.querySelector('tr:last-child')
+    Table.insertBefore(newRow, lastRow)
+    totalPrice() // Racuna ukupnu cenu
+}
+
+function addTotalRow(Table) {
+    const totalRow = document.createElement('tr');
+    totalRow.classList.add('total');
+    totalRow.innerHTML = `
+        <td colspan="4" style="text-align: right; font-size:1rem">Ukupno:</td>
+        <td id="totalRSD" style="font-size:1rem"></td>
+        <td id="totalEUR" style="font-size:1rem"></td>
+    `;
+    Table.appendChild(totalRow);
+}
+
+function totalPrice() {
+    const Table = document.getElementById('orderList')
+    const rows = Table.querySelectorAll('tr')
+    let total = 0
+    for (const row of rows) {
+        const priceCell = row.querySelector('.orderValue')
+        if (priceCell) {
+            const priceValue = parseInt(priceCell.textContent.split(' ')[0])
+            if (!isNaN(priceValue)) {
+                total += priceValue
+            }
+        }
+    }
+    document.getElementById('totalRSD').textContent = `${(parseInt(117.52*total)).toLocaleString()} RSD`
+    document.getElementById('totalEUR').textContent = `${total.toLocaleString()} €`
 }
 
 function getID(src) {
@@ -172,6 +221,13 @@ const netTranslate = {
     Light: 'Svetla mreža',
     Dark: 'Tamna mreža'
 }
+const mainCategory = {
+    Fixed: 'Fiksni',
+    Rolled: 'Rolo',
+    Plise: 'Plise'
+}
+
+const swappingMainCategory = Object.keys(mainCategory)
 const swappingCategory = Object.keys(categoryTranslate)
 const swappingFrame = Object.keys(frameTranslate)
 const swappingNet = Object.keys(netTranslate)
