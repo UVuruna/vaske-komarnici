@@ -11,6 +11,24 @@ const TYPES = {
     net: net
 }
 
+// Make equal width of promo containers
+// This function is used to set the width of all promo containers to the maximum width found among them.
+export async function promoWidth() {
+    const promoContainers = document.querySelectorAll('.promo')
+    let maxWidth = 0
+
+    promoContainers.forEach(container => {
+        const width = container.offsetWidth
+        if (width > maxWidth) {
+            maxWidth = width
+        }
+    })
+
+    promoContainers.forEach(container => {
+        container.style.width = `${maxWidth}px`
+    })
+}
+
 // <<<------------->>> MAIN FUNCTION <<<------------->>>
 
 export async function selectModel(version) {

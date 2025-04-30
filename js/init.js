@@ -5,8 +5,8 @@ export async function init(version, path, presentation) {
     let loadGlobals, themeCycle, settingThemeOnload, updateManifest
 
     await import('./globals.js?v=' + version).then(module => {loadGlobals = module.loadGlobals})
-    await import('./updateManifest.js?v=' + version).then(module => {updateManifest = module.updateManifest})
-    await import('./theme.js?v=' + version).then(module => {
+    await import('./style/updateManifest.js?v=' + version).then(module => {updateManifest = module.updateManifest})
+    await import('./style/theme.js?v=' + version).then(module => {
         themeCycle = module.themeCycle,
         settingThemeOnload = module.settingThemeOnload
     })
@@ -17,15 +17,17 @@ export async function init(version, path, presentation) {
 
         if (window.innerWidth < 800) {
             let mobileMenu
-            await import('./clickHover.js?v=' + version).then(module => {mobileMenu = module.mobileMenu})
+            await import('./interaction/clickHover.js?v=' + version).then(module => {mobileMenu = module.mobileMenu})
             mobileMenu()
         }
         if (presentation) {
             let promoWidth, selectModel, videoLoop, videoPlay, loadVideo, loadDelay
 
-            await import('./promoWidth.js?v=' + version).then(module => {promoWidth = module.promoWidth})
-            await import('./selectModel.js?v=' + version).then(module => {selectModel = module.selectModel})
-            await import('./media.js?v=' + version).then(module => {
+            await import('./interaction/selectModel.js?v=' + version).then(module => {
+                selectModel = module.selectModel
+                promoWidth = module.promoWidth
+            })
+            await import('./media/media.js?v=' + version).then(module => {
                 videoLoop = module.videoLoop,
                 videoPlay = module.videoPlay,
                 loadVideo = module.loadVideo,

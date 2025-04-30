@@ -13,7 +13,7 @@
     <?php include "{$basePath}html/includes/header.php"; ?>
     <main>
         <?php include "{$basePath}html/about_us.php"; ?>
-        <?php include "{$basePath}html/catalogueHome.php"; ?>
+        <?php include "{$basePath}html/catalogue_home.php"; ?>
     </main>
     <?php include "{$basePath}html/includes/footer.php"; ?>
 </body>

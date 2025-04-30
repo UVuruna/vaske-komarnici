@@ -20,7 +20,10 @@
 <body>
     <?php include "{$basePath}html/includes/header.php"; ?>
     <main>
-        <?php include "{$basePath}html/catalogue.php"; ?>
+        <header>
+            <h1><?= $title ?></h1>
+            <p>Izaberite idealan model za vaš prostor. Pronađite komarnike svih vrsta i boja, sve na jednom mestu.</p>
+        </header>
         <?php include "{$basePath}html/fixed.php"; ?>
         <?php include "{$basePath}html/rolled.php"; ?>
         <?php include "{$basePath}html/plise.php"; ?>

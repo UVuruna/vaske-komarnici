@@ -13,7 +13,7 @@ let GLOBALS,
 
 export async function settingThemeOnload(version, updateManifest, globals, t0) {
     await import('./colorizeSVG.js?v=' + version).then(module => {colorizeSVG = module.colorizeSVG})
-    await import('./clickHover.js?v=' + version).then(module => {
+    await import('../interaction/clickHover.js?v=' + version).then(module => {
         colorChange = module.colorChange
         hoverTxtColor = module.hoverTxtColor,
         hoverBgColor = module.hoverBgColor

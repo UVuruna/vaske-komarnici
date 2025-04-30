@@ -57,7 +57,6 @@ window.addEventListener('DOMContentLoaded', () => {
                     }
                 } else {
                     if (totalRow) {
-                        console.log(orderItem)
                         if (orderItem.includes('RSD')) {
                             newCell.id = 'totalRSD'
                         } else if (orderItem.includes('€')) {
