@@ -85,12 +85,20 @@
         const path = '<?php echo $basePath ?>'
         const presentation =  <?php echo json_encode($presentation) ?>
 
-        import(`${path}js/init.js?v=<?php echo $version ?>`).then(module => {
+        import(`${path}js/init.js?v=${version}`).then(module => {
             module.init(version, path, presentation)
         });
     </script>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WV3X5ZL398"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-WV3X5ZL398');
+    </script>
     <!-- Google Ads -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5692012727130730"
-        crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5692012727130730" crossorigin="anonymous"></script>
 </head>

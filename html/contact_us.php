@@ -94,7 +94,7 @@ $alts = [
         </table>
     </section>
     <section class="form">
-        <form id="order" name="order" action="<?php echo $basePath ?>html/order.php" method="post">
+        <form id="order" name="order" action="<?php echo $basePath ?>html/ordering.php" method="post">
             <table class="light">
                 <thead>
                 <colgroup>
@@ -130,6 +130,11 @@ $alts = [
             <input type="hidden" name="orderList" id="orderListInput">
             <button type="submit" class="cta-button">Pošaljite zahtev</button>
         </form>
+
+        <div id="popupMessage" class="light">
+            <span id="popupText"></span><br>
+            <button onclick="closePopup()">Zatvori</button>
+        </div>
     </section>
 </div>
 

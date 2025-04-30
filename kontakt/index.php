@@ -16,8 +16,14 @@
     </main>
     <?php include "{$basePath}html/includes/footer.php"; ?>
 
-    <script src="<?php echo $basePath ?>js/ordering.js?v=<?php echo $version ?>"></script>
-    <script src="<?php echo $basePath ?>js/savingOrder.js?v=<?php echo $version ?>"></script>
+    <script src="<?php echo $basePath ?>js/ordering/orderTable.js?v=<?php echo $version ?>"></script>
+    <script src="<?php echo $basePath ?>js/ordering/orderMemory.js?v=<?php echo $version ?>"></script>
+    <script type="module">
+        const path = '<?php echo $basePath ?>'
+        import(`${path}js/ordering/showPopup.js?v=<?php echo $version; ?>`).then(module => {
+            module.showPopup(path)
+        });
+    </script>
 </body>
 
 </html>

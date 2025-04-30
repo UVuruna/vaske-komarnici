@@ -161,6 +161,22 @@ form table {
   transform: translate(-50%, -50%);
 }
 
+/* POPUP */
+#popupMessage {
+  display: none;
+  position: fixed;
+  top: 28%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid black;
+  border-radius: 2rem;
+  z-index: 9999;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 @media (max-width: 1500px) {
   #contact_us {
     padding: 1rem 0;

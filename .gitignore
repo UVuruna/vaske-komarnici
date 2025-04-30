@@ -1,3 +1,7 @@
 support/
-html/order.php
+html/ordering.php
 PHPMailer/
+.env
+vendor/
+composer.lock
+composer.json
