@@ -1,6 +1,8 @@
+
 <div id="about_us" class="light">
   <header>
     <h1><?php echo $title ?></h1>
+    <h2>Vaš Partner za Komarnike po Meri</h2>
     <p>Profesionalna usluga izrade i montaže komarnika po meri za vaš prostor!</p>
   </header>
 

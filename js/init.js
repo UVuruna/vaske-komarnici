@@ -1,4 +1,4 @@
-export async function init(version, path, presentation) {
+export async function init(version, path, presentation, carousel) {
     const t0 = performance.now()
     console.log(`${window.screen.width}x${window.screen.height} | ${window.innerWidth}x${window.innerHeight}`)
 
@@ -42,6 +42,12 @@ export async function init(version, path, presentation) {
             })
             videoPlay(globals.videos)
             videoLoop(globals.videos)
+        }
+        if (carousel) {
+            setTimeout(() => {
+                import('./media/carousel.js?v=' + version)
+                import('./media/imagePreview.js?v=' + version)
+            }, 0)
         }
         window.themeCycle = themeCycle
     })() 

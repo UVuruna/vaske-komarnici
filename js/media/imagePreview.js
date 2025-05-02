@@ -50,5 +50,5 @@ function showLightboxMedia(src) {
       img.src = src;
     }
   
-    document.getElementById('lightbox').style.display = 'block';
+    document.getElementById('lightbox').style.display = 'flex';
   }

@@ -17,9 +17,6 @@ function updateMaxTranslate() {
     const totalWidth = itemWidth * track.children.length
     maxTranslateX = totalWidth - carouselWidth // the maximum translate value based on total content width
 }
-// Initialize maxTranslateX when the page loads or window resizes
-updateMaxTranslate()
-window.addEventListener('resize', updateMaxTranslate)
 
 // Function to get the current mouse/touch position on X-axis
 function getX(e) {
@@ -85,7 +82,7 @@ function end() {
     }, 500);
 }
 
-
+updateMaxTranslate()
 
 // Mouse
 track.addEventListener('mousedown', start)

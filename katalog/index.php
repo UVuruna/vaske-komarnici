@@ -1,7 +1,7 @@
 <?php
     $basePath = '../';
     $page     = 'katalog';
-    $styles   = [ 'css/catalogue.css', 'css/singleCatalogue.css' ];
+    $styles   = [ 'css/catalogue.css', 'css/singleCatalogue.css', 'css/carousel.css' ];
     $presentation = [
         'Fixed_Both',
         'Fixed_One',
@@ -11,6 +11,7 @@
         'PliseWindow_Both',
         'PliseWindow_One'
     ];
+    $carousel = ['Rolo', 'Plise', 'Fiksni'];
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +28,7 @@
         <?php include "{$basePath}html/fixed.php"; ?>
         <?php include "{$basePath}html/rolled.php"; ?>
         <?php include "{$basePath}html/plise.php"; ?>
+        <?php include "{$basePath}html/carousel.php"; ?>
     </main>
     <?php include "{$basePath}html/includes/footer.php"; ?>
 </body>

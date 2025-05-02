@@ -3,6 +3,7 @@
     $page     = 'kontakt';
     $styles   = [ 'css/contact_us.css' ];
     $presentation = null;
+    $carousel = null;
 ?>
 
 <!DOCTYPE html>

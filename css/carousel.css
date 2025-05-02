@@ -20,7 +20,7 @@
   cursor: grab;
   display: block;
   border-radius: 8px;
-  max-height: 25vh;
+  max-height: 35vh;
   aspect-ratio: 1/1;
   user-select: none;
   -webkit-user-drag: none;  /* Sprečava prevlačenje slike */

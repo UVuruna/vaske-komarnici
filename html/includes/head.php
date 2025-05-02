@@ -83,12 +83,13 @@
 
     <!-- Loading INIT JavaScript -->
     <script type="module">
-        const version = '<?php echo $version; ?>'
-        const path = '<?php echo $basePath ?>'
-        const presentation =  <?php echo json_encode($presentation) ?>
+        const version = '<?php echo $version; ?>';
+        const path = '<?php echo $basePath ?>';
+        const presentation =  <?php echo json_encode($presentation) ?>;
+        const carousel = <?php echo !empty($carousel) ? 'true' : 'false'; ?>;
 
         import(`${path}js/init.js?v=${version}`).then(module => {
-            module.init(version, path, presentation)
+            module.init(version, path, presentation, carousel)
         });
     </script>
 

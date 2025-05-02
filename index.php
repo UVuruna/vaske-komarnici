@@ -3,6 +3,7 @@
     $page     = null;
     $styles   = [ 'css/about_us.css', 'css/catalogue.css', 'css/carousel.css' ];
     $presentation = [ 'showcase' ];
+    $carousel = ['Rolo', 'Plise', 'Fiksni'];
 ?>
 
 <!DOCTYPE html>
@@ -17,9 +18,5 @@
             <?php include "{$basePath}html/catalogue_home.php"; ?>
         </main>
         <?php include "{$basePath}html/includes/footer.php"; ?>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
-        <script src="<?php echo $basePath ?>js/media/carousel.js?v=<?php echo $version ?>"></script>
-        <script src="<?php echo $basePath ?>js/media/imagePreview.js?v=<?php echo $version ?>"></script>
     </body>
 </html>
