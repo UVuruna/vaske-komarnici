@@ -2,11 +2,13 @@ const videos = document.querySelectorAll('.video-loop')
 
 export function videoLoop() {
     videos.forEach(video => {
-        video.addEventListener('timeupdate', () => {
-            if (video.currentTime >= 9.13) {
-                video.currentTime = 0
-                video.play()
-            }
+        video.addEventListener("loadedmetadata", () => {
+            video.addEventListener('timeupdate', () => {
+                if (video.currentTime >= video.duration - 0.1) {
+                    video.currentTime = 0
+                    video.play()
+                }
+            })
         })
     })
 }
@@ -79,6 +81,8 @@ export async function loadDelay(target = null) {
     if (target) {
         observer.observe(target)
     } else {
-        document.querySelectorAll('.lazy-media').forEach(el => observer.observe(el))
+        const carouselVideo = document.querySelectorAll('.lazy-media')
+        carouselVideo.forEach(el => observer.observe(el))
+
     }
 }

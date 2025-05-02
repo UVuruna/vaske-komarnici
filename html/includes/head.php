@@ -11,7 +11,7 @@
     $companyPhoneLocal  = "063 105-1331";
     $companyPhoneGlobal = "+381 63 105 1331";
 
-    $version = "1.019";
+    $version = "1.021";
 
     $title = match ($page) {
         'o_nama' => "Ko smo mi?",
@@ -29,6 +29,8 @@
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="theme-color" content="#646464">
+    <meta name="background-color" content="#646464">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta property="og:url" content="<?php echo htmlspecialchars($fullUrl); ?>"/>
 

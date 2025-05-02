@@ -1,11 +1,17 @@
 export async function updateManifest(themeColor, bgColor) {
+    const metaTheme = document.querySelector('meta[name="theme-color"]')
+    const metaBG = document.querySelector('meta[name="background-color"]')
+    metaTheme.setAttribute('content', themeColor + '00')
+    metaBG.setAttribute('content', bgColor + '00')
+
+
     const manifest = {
         name: 'Vaske Komarnici',
         short_name: 'Komarnici',
         start_url: window.location.origin + '/',
         display: 'standalone',
-        background_color: bgColor,
-        theme_color: themeColor,
+        background_color: bgColor + '00',
+        theme_color: themeColor + '00',
         icons: [
             {
                 src: window.location.origin + '/img/logo/android-chrome-192x192.png',

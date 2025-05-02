@@ -23,8 +23,8 @@ function displayProduct(
             <div class='light border'>
                 <h3><strong>Tip</strong></h3>
                 <ul>
-                    <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/Both.webp?{$version}' alt='{$altText} dvostrani' loading='lazy'/></li>
-                    <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/One.webp?{$version}' alt='{$altText} jednostrani' loading='lazy'/></li>
+                    <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Both.webp?{$version}' alt='{$altText} dvostrani' loading='lazy'/></li>
+                    <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/One.webp?{$version}' alt='{$altText} jednostrani' loading='lazy'/></li>
                 </ul>
             </div>
         HTML;
@@ -55,21 +55,21 @@ function displayProduct(
                 <div class='light border'>
                     <h3><strong>Ram</strong></h3>
                     <ul>
-                        <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/White.webp?{$version}' alt='{$altText} bele boje' loading='lazy'/></li>
-                        <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/Antracite.webp?{$version}' alt='{$altText} antracit boje' loading='lazy'/></li>
-                        <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/Brown.webp?{$version}' alt='{$altText} braon boje'/></li>
+                        <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/White.webp?{$version}' alt='{$altText} bele boje' loading='lazy'/></li>
+                        <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Antracite.webp?{$version}' alt='{$altText} antracit boje' loading='lazy'/></li>
+                        <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Brown.webp?{$version}' alt='{$altText} braon boje'/></li>
                     </ul>
                 </div>
                 <div class='light border'>
                     <h3><strong>Mreža</strong></h3>
                     <ul>
-                        <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/Light.webp?{$version}' alt='{$altText} tamnije (crne) mreže' loading='lazy'/></li>
-                        <li><img width='40' height='40' class='hoverHighlight' src='{$basePath}img/other/Dark.webp?{$version}' alt='{$altText} tamnije (crne) mreže' loading='lazy'/></li>
+                        <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Light.webp?{$version}' alt='{$altText} tamnije (crne) mreže' loading='lazy'/></li>
+                        <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Dark.webp?{$version}' alt='{$altText} tamnije (crne) mreže' loading='lazy'/></li>
                     </ul>
                 </div>
                 {$tipRamaHtml}
             </div>
-            <img width='500' height='500' class='promoImage hoverHighlight' src='{$basePath}img/items/product/{$imgLink}' alt='{$altText} slika' loading='lazy'/>
+            <img width='500' height='500' class='promoImage hoverHighlight hoverable' src='{$basePath}img/items/product/{$imgLink}' alt='{$altText} slika' loading='lazy'/>
             {$cenaHtml}
             {$saznajVišeHtml}
         </section>

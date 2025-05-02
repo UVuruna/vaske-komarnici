@@ -58,11 +58,11 @@ export async function coloredTextStyle(
         item.style.color = PresetColors.primaryElement
         item.style.fontSize = '1.25rem'
         if (currentTheme === 'afternoon') {
-            item.style.webkitTextStroke = `0.025em ${PresetColors.primaryElement}`;
+            item.style.webkitTextStroke = `0.25px ${PresetColors.primaryElement}`;
         } else if (currentTheme === 'noon') {
-            item.style.webkitTextStroke = '0.04em #222222';
+            item.style.webkitTextStroke = '0.5px #222222';
         } else {
-            item.style.webkitTextStroke = '0.06em #222222';
+            item.style.webkitTextStroke = '0.75px #222222';
         }
         hoverTxtColor(
             item,
@@ -97,6 +97,7 @@ export async function menuStyle(
     })
 }
 
+// ----------> TABLE STYLE <----------
 export async function tableStyle(bgColor, elementColor) {
     const tables = document.querySelectorAll('table')
 
@@ -121,6 +122,7 @@ export async function tableStyle(bgColor, elementColor) {
     }) 
 }
 
+// ----------> FORM STYLE <----------
 export async function formStyle(bgColor, elementColor) {
     const FORM = document.querySelector('form')
     if (!FORM) return

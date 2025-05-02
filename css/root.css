@@ -68,8 +68,8 @@ button:active {
     transform: scale(1.2);
   }
 }
-img:hover,
-img:active,
+.hoverable:hover,
+.hoverable:active,
 svg:hover,
 svg:active {
   transform: scale(1.1);
