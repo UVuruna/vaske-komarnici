@@ -11,7 +11,7 @@
     $companyPhoneLocal  = "063 105-1331";
     $companyPhoneGlobal = "+381 63 105 1331";
 
-    $version = "1.021";
+    $version = "1.028";
 
     $title = match ($page) {
         'o_nama' => "Ko smo mi?",
@@ -24,6 +24,12 @@
     };
 
     $fullUrl = 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+    $cenovnik = [
+        'Fixed' => 25,
+        'Rolled' => 35,
+        'Plise' => 40,
+    ];
 ?>
 
 <head>

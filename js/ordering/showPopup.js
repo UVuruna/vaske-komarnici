@@ -12,8 +12,10 @@ export async function showPopup(basePath) {
             });
 
             const text = await response.text();
+            const table = document.getElementById('orderListInput').value;
 
             document.getElementById('popupText').innerHTML = text;
+            document.getElementById('popupTable').innerHTML = table;
             document.getElementById('popupMessage').style.display = 'flex';
         } catch (error) {
             document.getElementById('popupText').innerHTML = '❌ Greška pri slanju.';

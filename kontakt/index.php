@@ -17,14 +17,19 @@
     </main>
     <?php include "{$basePath}html/includes/footer.php"; ?>
 
-    <script src="<?php echo $basePath ?>js/ordering/orderTable.js?v=<?php echo $version ?>"></script>
-    <script src="<?php echo $basePath ?>js/ordering/orderMemory.js?v=<?php echo $version ?>"></script>
-    <script type="module">
+    <script defer type="module">
+        const priceDict = <?php echo json_encode($cenovnik) ?>;
+        import(`<?php echo $basePath ?>js/ordering/orderTable.js?v=<?php echo $version; ?>`).then(module => {
+            module.orderTableInit(priceDict)
+        });
+    </script>
+    <script defer type="module">
         const path = '<?php echo $basePath ?>'
         import(`${path}js/ordering/showPopup.js?v=<?php echo $version; ?>`).then(module => {
             module.showPopup(path)
         });
     </script>
+    <script defer src="<?php echo $basePath ?>js/ordering/orderMemory.js?v=<?php echo $version ?>"></script>
 </body>
 
 </html>

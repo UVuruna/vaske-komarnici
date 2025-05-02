@@ -33,7 +33,7 @@ $alts = [
                     <th>Cena</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="orderSelector">
                 <?php foreach ($ids as $index => $id): ?>
                     <?php
                         $typeText = '';
@@ -53,7 +53,7 @@ $alts = [
                                     <p class="categoryText"><?php echo $typeText; ?></p>
                                 </div>
                                 <div class="color">
-                                    <img class="frame" onclick="swapType(this)" src="<?php echo $basePath ?>img/other/White.webp" alt="Boja rama" width="30" height="30">
+                                    <img class="frame" onclick="swapType(this); calculatePrice(this)" src="<?php echo $basePath ?>img/other/White.webp" alt="Boja rama" width="30" height="30">
                                     <img class="net" onclick="swapType(this)" src="<?php echo $basePath ?>img/other/Light.webp" alt="Boja rama" width="30" height="30">
                                 </div>
                             </div>
@@ -132,7 +132,8 @@ $alts = [
         </form>
 
         <div id="popupMessage" class="light">
-            <span id="popupText"></span><br>
+            <div id="popupText"></div><br>
+            <div id="popupTable"></div><br>
             <button onclick="closePopup()">Zatvori</button>
         </div>
     </section>

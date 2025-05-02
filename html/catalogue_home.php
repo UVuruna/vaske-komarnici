@@ -18,7 +18,7 @@
             imgLink: "Fixed_Both_White_Light.webp?{$version}",
             altText: "Fiksni komarnik",
             buttonLink: "{$basePath}katalog/fiksni-komarnici",
-            priceText: "Samo 25 €",
+            priceText: "Samo {$cenovnik['Fixed']} €",
             showTipRama: true
         );
         displayProduct(
@@ -28,7 +28,7 @@
             imgLink: "Rolled_White_Dark.webp?{$version}",
             altText: "Rolo komarnik",
             buttonLink: "{$basePath}katalog/rolo-komarnici",
-            priceText: "Već od 35 €"
+            priceText: "Već od {$cenovnik['Rolled']} €"
         );
         displayProduct(
             version: $version,
@@ -37,7 +37,7 @@
             imgLink: "PliseDoor_Both_Brown_Light.webp?{$version}",
             altText: "Plise komarnik za vrata",
             buttonLink: "{$basePath}katalog/plise-komarnici",
-            priceText: "Već od 40 €",
+            priceText: "Već od {$cenovnik['Plise']} €",
             showTipRama: true
         );
         displayProduct(
@@ -47,7 +47,7 @@
             imgLink: "PliseWindow_One_Antracite_Dark.webp?{$version}",
             altText: "Plise komarnik za prozor",
             buttonLink: "{$basePath}katalog/plise-komarnici",
-            priceText: "Već od 40 €",
+            priceText: "Već od {$cenovnik['Plise']} €",
             showTipRama: true
         );
     ?>

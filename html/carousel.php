@@ -46,10 +46,10 @@
 </div>
 
 <div id="lightbox" class="lightbox">
-  <button class="close">&times;</button>
-  <button class="next">&gt;</button>
-  <button class="prev">&lt;</button>
-  <img id="lightbox-image" src="" alt="">
-  <video id="lightbox-video" src=""></video>
+    <img id="lightbox-image" src="" alt="">
+    <video id="lightbox-video" src=""></video>
+    <button class="close">&times;</button>
+    <button class="next">&gt;</button>
+    <button class="prev">&lt;</button>
 </div>
 

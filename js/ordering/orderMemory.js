@@ -44,8 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     if (orderItem ==='Ukupno:') {
                         newRow.classList.add('total')
                         totalRow = true
-                        newCell.colSpan = 4
-                        newCell.style.textAlign = 'right'
+                        newCell.colSpan = 2
                         newCell.style.fontSize = '1rem'
                         newCell.textContent = orderItem
                         
@@ -62,6 +61,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         } else if (orderItem.includes('€')) {
                             newCell.id = 'totalEUR'
                         }
+                        newCell.colSpan = 2
                         newCell.style.fontSize = '1rem'
                     } else {
                         if (index === orderRow.length - 1) {

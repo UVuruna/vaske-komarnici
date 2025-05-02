@@ -165,7 +165,9 @@ form table {
 #popupMessage {
   display: none;
   position: fixed;
-  top: 28%;
+  max-width: 90vw;
+  max-height: 90vh;
+  top: 5%;
   left: 50%;
   transform: translateX(-50%);
   border: 1px solid black;
@@ -175,6 +177,38 @@ form table {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  word-wrap: break-word;
+  overflow: auto;
+  overflow-y: auto;
+}
+
+#popupTable {
+  max-height: 50vh;
+  overflow-y: auto;
+  overflow-x: auto;
+  width: 100%;
+  display: block;
+}
+
+#popupText {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  white-space: pre-wrap;
+}
+
+#popupTable th, #popupTable td {
+  border: 1px solid #aaa;
+  padding: 0.5rem;
+  text-align: center;
+  white-space: normal;
+}
+
+
+@media (max-width: 800px) {
+  #orderSelector tr:not(:first-child) {
+    display: none;
+  }
 }
 
 @media (max-width: 1500px) {
