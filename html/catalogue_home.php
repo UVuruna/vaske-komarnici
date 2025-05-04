@@ -19,7 +19,7 @@
             altText: "Fiksni komarnik",
             buttonLink: "{$basePath}katalog/fiksni-komarnici",
             priceText: "Samo {$cenovnik['Fixed']} €",
-            showTipRama: true
+            showType: true
         );
         displayProduct(
             version: $version,
@@ -38,7 +38,7 @@
             altText: "Plise komarnik za vrata",
             buttonLink: "{$basePath}katalog/plise-komarnici",
             priceText: "Već od {$cenovnik['Plise']} €",
-            showTipRama: true
+            showType: true
         );
         displayProduct(
             version: $version,
@@ -48,7 +48,7 @@
             altText: "Plise komarnik za prozor",
             buttonLink: "{$basePath}katalog/plise-komarnici",
             priceText: "Već od {$cenovnik['Plise']} €",
-            showTipRama: true
+            showType: true
         );
     ?>
 </div>

@@ -3,364 +3,387 @@
 /* Frames */
 
 #contact_us {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  margin: 0 auto;
-  gap: 3rem;
-  padding: 1rem 5vw;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 0 auto;
+    gap: 3rem;
+    padding: 0 5vw;
+}
+
+#orderSelectorTable {
+    width: 100%;
 }
 
 .order table {
-  width: auto;
-  border-collapse: separate;
+    width: 100%;
+    border-collapse: separate;
 }
 
-.order th, .order td {
-  text-align: center;
-  vertical-align: middle;
-  padding: 0.5rem;
-  white-space: nowrap;
+.order th,
+.order td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.5rem;
+    white-space: nowrap;
 }
+
 th:first-child {
-  border-radius: 1.2rem 0 0 0;
+    border-radius: 1.2rem 0 0 0;
 }
+
 th:last-child {
-  border-radius: 0 1.2rem 0 0;
+    border-radius: 0 1.2rem 0 0;
 }
 
 /* Tabela se centrira */
 .order {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Unutrašnji elementi u redovima */
 .tableColumn {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 /* Za povecavanje kolicine */
 .controls,
 .color {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
 }
 
-.controls > button {
-  padding: 0;
-  width: 2rem;
-  height: 2rem;
+.controls>button {
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
 }
 
 .quantity {
-  font-size: 1.5rem;
-  font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 /* Za unos dimenzija */
 .measureDimension {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
+
 .width,
 .height {
-  font-size: 1.2rem;
-  width: 6rem;
-  text-align: center;
-  border-radius: 0.75rem;
+    font-size: 1.2rem;
+    width: 6rem;
+    text-align: center;
+    border-radius: 0.75rem;
 }
+
 .width::placeholder,
 .height::placeholder {
-  font-size: 0.75rem;
+    font-size: 0.75rem;
 }
+
 .Area,
 .Price {
-  font-size: 1.2rem;
-  text-align: center;
-  min-width: 5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    min-width: 5rem;
 }
 
 /* FORM */
-.form {
-  width: 100%;
-  max-width: 100%;
-  gap: 1rem;
+#orderForm {
+    width: 100%;
+    max-width: 100%;
+    gap: 1rem;
 }
 
 form {
-  width: 100%;
-  gap: 0.5rem;
+    width: 100%;
+    gap: 0.5rem;
 }
 
-.form, form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+#orderForm,
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .separator {
-  width: 100%;
-  max-width: 800px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+    width: 100%;
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
 }
 
 form input,
 form textarea {
-  width: 100%;
-  max-width: 800px;
-  padding: 0.5rem;
+    width: 100%;
+    max-width: 800px;
+    padding: 0.5rem;
 }
+
 #orderDetail {
-  resize: none
+    resize: none;
 }
 
 form button {
-  margin-top: 1rem;
+    margin-top: 1rem;
 }
 
 form table {
-  margin-bottom: 1rem;
-  width: 100% !important;
-  table-layout: fixed;
-  border-collapse: collapse;
-  font-size: 0.8rem;
+    margin-bottom: 1rem;
+    width: 100% !important;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-size: 0.8rem;
 }
 
 #orderList td {
-  white-space: normal;
-  word-break: break-word;
+    white-space: normal;
+    word-break: break-word;
 }
 
 .orderCategory {
-  position: relative;
+    position: relative;
 }
+
 .categoryText {
-  font-size: 1.25rem;
-  font-weight: 700;
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+    font-size: 1.25rem;
+    font-weight: 700;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 /* POPUP */
 #popupMessage {
-  display: none;
-  position: fixed;
-  max-width: 90vw;
-  max-height: 90vh;
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 1px solid black;
-  border-radius: 2rem;
-  z-index: 9999;
-  padding: 1rem;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  word-wrap: break-word;
-  overflow: auto;
-  overflow-y: auto;
+    display: none;
+    position: fixed;
+    max-width: 90vw;
+    max-height: 90vh;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid black;
+    border-radius: 2rem;
+    z-index: 9999;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    word-wrap: break-word;
+    overflow: auto;
+    overflow-y: auto;
 }
 
 #popupTable {
-  max-height: 50vh;
-  overflow-y: auto;
-  overflow-x: auto;
-  width: 100%;
-  display: block;
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: auto;
+    width: 100%;
+    display: block;
 }
 
 #popupText {
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  max-width: 100%;
-  white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    white-space: pre-wrap;
 }
 
-#popupTable th, #popupTable td {
-  border: 1px solid #aaa;
-  padding: 0.5rem;
-  text-align: center;
-  white-space: normal;
+#popupTable th,
+#popupTable td {
+    border: 1px solid #aaa;
+    padding: 0.5rem;
+    text-align: center;
+    white-space: normal;
 }
-
 
 @media (max-width: 800px) {
-  #orderSelector tr:not(:first-child) {
-    display: none;
-  }
+    #orderSelector tr:not(:first-child) {
+        display: none;
+    }
 }
 
 @media (max-width: 1500px) {
-  #contact_us {
-    padding: 1rem 0;
-    gap: 1rem;
-  }
+    #contact_us {
+        padding: 0;
+        gap: 1rem;
+    }
 }
 
 @media (max-width: 1200px) {
-  #contact_us {
-    flex-direction: column;
-    align-items: center;
-  }
+    #contact_us {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media (min-width: 800px) and (max-width: 1200px) {
-  .order table {
-    width: 90%;
-  }
-  .category {
-    width: 100px;
-    height: 100px;
-  }
-  .frame,
-  .net {
-    width: 45px;
-    height: 45px;
-  }
-  .controls button {
-    width: 3rem;
-    height: 3rem;
-  }
+    .category {
+        width: 100px;
+        height: 100px;
+    }
+
+    .frame,
+    .net {
+        width: 45px;
+        height: 45px;
+    }
+
+    .controls button {
+        width: 3rem;
+        height: 3rem;
+    }
 }
 
 @media (min-width: 600px) and (max-width: 800px) {
-  .order table {
-    width: 100%;
-  }
-  .category {
-    width: 80px;
-    height: 80px;
-  }
-  .frame,
-  .net {
-    width: 35px;
-    height: 35px;
-  }
-  .controls button {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
+    .category {
+        width: 80px;
+        height: 80px;
+    }
+
+    .frame,
+    .net {
+        width: 35px;
+        height: 35px;
+    }
+
+    .controls button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
 }
 
 @media (max-width: 600px) {
-  .order table {
-    width: 100%;
-  }
-  .separator {
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-  }
-  .rotated-text {
-    display: inline-block;
-    transform: rotate(-30deg);
-  }
-  form table th {
-    padding: 0;
-  }
+    .order table {
+        width: 100%;
+    }
 
-  #contact_us {
-    padding: 1rem 0;
-  }
-  .category {
-    width: 70px;
-    height: 70px;
-  }
-  .order th {
-    padding: 1rem 0.25rem;
-  }
-  .order td {
-    padding: 0.25rem 0;
-  }
-  .frame,
-  .net {
-    width: 30px;
-    height: 30px;
-  }
+    .separator {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
 
-  .controls button {
-    width: 2.5rem;
-    height: 2.5rem;
-  }
+    .rotated-text {
+        display: inline-block;
+        transform: rotate(-30deg);
+    }
 
-  .tableColumn:not(:has(.measureDimension)) {
-    flex-direction: column-reverse;
-  }
-  .tableColumn {
-    gap: 0.25rem;
-  }
-  .controls {
-    flex-direction: row-reverse;
-  }
-  .color {
-    flex-direction: row;
-  }
+    form table th {
+        padding: 0;
+    }
 
-  .tableColumn > :nth-child(2) {
-    flex-grow: 1;
-  }
+    .category {
+        width: 70px;
+        height: 70px;
+    }
 
-  .width,
-  .height {
-    width: 4rem;
-  }
-  .width::placeholder,
-  .height::placeholder {
-    font-size: 0.65rem;
-  }
+    .order th {
+        padding: 1rem 0.25rem;
+    }
+
+    .order td {
+        padding: 0.25rem 0;
+    }
+
+    .frame,
+    .net {
+        width: 30px;
+        height: 30px;
+    }
+
+    .controls button {
+        width: 2.5rem;
+        height: 2.5rem;
+    }
+
+    .tableColumn:not(:has(.measureDimension)) {
+        flex-direction: column-reverse;
+    }
+
+    .tableColumn {
+        gap: 0.25rem;
+    }
+
+    .controls {
+        flex-direction: row-reverse;
+    }
+
+    .color {
+        flex-direction: row;
+    }
+
+    .tableColumn> :nth-child(2) {
+        flex-grow: 1;
+    }
+
+    .width,
+    .height {
+        width: 4rem;
+    }
+
+    .width::placeholder,
+    .height::placeholder {
+        font-size: 0.65rem;
+    }
 }
 
 @media (max-width: 410px) {
-  .measureDimension {
-    font-size: 0.75rem;
-  }
-  .measureDimension input {
-    font-size: 1rem
-  }
-  .Area {
-    font-size: 1rem;
-    min-width: 0px;
-    width: 2rem;
-    transform: rotate(-60deg);
-  }
+    .measureDimension {
+        font-size: 0.75rem;
+    }
+
+    .measureDimension input {
+        font-size: 1rem;
+    }
+
+    .Area {
+        font-size: 1rem;
+        min-width: 0px;
+        width: 2rem;
+        transform: rotate(-60deg);
+    }
 }
 
 @media (max-width: 380px) {
-  .category {
-    width: 60px;
-    height: 60px;
-  }
-  .frame,
-  .net {
-    width: 28px;
-    height: 28px;
-  }
-  .controls button {
-    width: 2rem;
-    height: 2rem;
-  }
-  .Add {
-    padding: 1rem;
-  }
+    .category {
+        width: 60px;
+        height: 60px;
+    }
+
+    .frame,
+    .net {
+        width: 28px;
+        height: 28px;
+    }
+
+    .controls button {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .Add {
+        padding: 0.75rem 0.5rem;
+    }
 }

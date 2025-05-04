@@ -37,8 +37,4 @@ export async function updateManifest(themeColor, bgColor) {
         document.head.appendChild(link)
     }
     link.href = manifestURL
-
-    console.log(
-        `Custom Manifest Applied!\n\ttheme_color: ${themeColor};\n\ttheme_color: ${bgColor}; `
-    )
 }

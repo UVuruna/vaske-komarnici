@@ -1,14 +1,14 @@
 <?php
     $basePath = '../../';
     $page     = 'plise';
+    include "{$basePath}html/includes/variables.php";
+    
     $styles   = [ 'css/catalogue.css', 'css/singleCatalogue.css', 'css/carousel.css' ];
-    $presentation = [
-        'PliseDoor_Both',
-        'PliseDoor_One',
-        'PliseWindow_Both',
-        'PliseWindow_One'
+    $init = [
+        'presentation' => ['PliseDoor_Both', 'PliseDoor_One', 'PliseWindow_Both', 'PliseWindow_One'],
+        'carousel' => ['Plise'],
+        'order' => null
     ];
-    $carousel = ['Plise'];
 ?>
 
 <!DOCTYPE html>

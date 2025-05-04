@@ -35,7 +35,6 @@ prevBtn.addEventListener('click', () => {
 function showLightboxMedia(src) {
     const img = document.getElementById('lightbox-image');
     const video = document.getElementById('lightbox-video');
-    console.log(img, video)
   
     if (src.endsWith('.mp4') || src.endsWith('.webm')) {
       img.style.display = 'none';

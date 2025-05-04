@@ -57,7 +57,7 @@ export async function coloredTextStyle(
     for (const item of coloredTextItems) {
         item.style.color = PresetColors.primaryElement
         item.style.fontSize = '1.25rem'
-        if (currentTheme === 'afternoon') {
+        if (currentTheme === 'night') {
             item.style.webkitTextStroke = `0.25px ${PresetColors.primaryElement}`;
         } else if (currentTheme === 'noon') {
             item.style.webkitTextStroke = '0.5px #222222';
@@ -82,7 +82,7 @@ export async function menuStyle(
     dropdownMenus.forEach(menu => {
         if (
             !menu.classList.contains('menu') ||
-            window.matchMedia('(max-width: 800px)').matches
+            window.innerWidth <= 800
         ) {
             menu.style.border = `3px solid ${secondaryColor}`
             menu.style.backgroundColor = bgColor

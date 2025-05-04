@@ -1,4 +1,4 @@
-/*! Font Awesome Minimal 6.5.0 – Only fa-solid: fa-ban, fa-house, fa-caret-down */
+/*! Font Awesome Minimal 6.5.0 – Only fa-solid: fa-ban, fa-house, fa-caret-down, fa-circle-question */
 
 /* Uvoz fonta – koristi se CDN lokacija za fa-solid */
 @font-face {
@@ -26,16 +26,21 @@
   /* Ikonice koje želimo */
   
   /* fa-ban – Unicode: \f05e */
-  .fa-ban:before {
+  .ban:before {
     content: "\f05e";
   }
   
-  /* fa-home – Unicode: \f015  */
-  .fa-home:before {
+  /* fa-house – Unicode: \f015  */
+  .home:before {
     content: "\f015";
   }
   
   /* fa-caret-down – Unicode: \f0d7 */
-  .fa-caret-down:before {
+  .down-arrow:before {
     content: "\f0d7";
+  }
+
+   /* fa-circle-question – Unicode: \f059 */
+   .guide:before {
+    content: "\f059";
   }

@@ -51,7 +51,7 @@
 }
 
 .menu {
-    gap: 2rem;
+    gap: 3rem;
     padding: 0;
     margin: 0;
 }
@@ -94,9 +94,9 @@
 }
 
 /* --- TABLET Devices --- */
-@media (min-width: 800px) and (max-width: 1080px) {
+@media (min-width: 801px) and (max-width: 1080px) {
     #header {
-        padding: 5px 2vw;
+        padding: 5px 4vw;
     }
 
     .pages_frame {
@@ -104,7 +104,7 @@
     }
 
     .menu {
-        gap: 1.5rem;
+        gap: 2rem;
     }
 }
 

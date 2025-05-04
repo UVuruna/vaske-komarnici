@@ -1,17 +1,14 @@
 <?php
     $basePath = '../';
     $page     = 'katalog';
+    include "{$basePath}html/includes/variables.php";
+
     $styles   = [ 'css/catalogue.css', 'css/singleCatalogue.css', 'css/carousel.css' ];
-    $presentation = [
-        'Fixed_Both',
-        'Fixed_One',
-        'Rolled',
-        'PliseDoor_Both',
-        'PliseDoor_One',
-        'PliseWindow_Both',
-        'PliseWindow_One'
+    $init = [
+        'presentation' => ['Fixed_Both', 'Fixed_One', 'Rolled', 'PliseDoor_Both', 'PliseDoor_One', 'PliseWindow_Both', 'PliseWindow_One'],
+        'carousel' => ['Rolo', 'Plise', 'Fiksni'],
+        'order' => null
     ];
-    $carousel = ['Rolo', 'Plise', 'Fiksni'];
 ?>
 
 <!DOCTYPE html>

@@ -4,14 +4,14 @@ export async function loadGlobals(updateManifest) {
     if (!sessionStorage.getItem('start')) {
         const Time = getTime()
         theme = chooseTheme(Time)
-
+       
         updateManifest(
             ThemeColors[theme]['primary'],
             ThemeColors[theme]['primaryElement']
         )
+        sessionStorage.setItem('theme',theme)
         sessionStorage.setItem('Time', Time)
         sessionStorage.setItem('start', true)
-
     } else {
         theme = sessionStorage.getItem('theme')
     }
@@ -25,17 +25,13 @@ export async function loadGlobals(updateManifest) {
 
 function chooseTheme(Time) {
     switch (true) {
-        case Time >= 4 && Time < 11:
-            sessionStorage.setItem('theme', 'morning')
+        case Time >= 4 && Time < 12:
             return 'morning'
-        case Time >= 11 && Time < 18:
-            sessionStorage.setItem('theme', 'noon')
+        case Time >= 12 && Time < 20:
             return 'noon'
-        case Time >= 18 && Time < 21:
-            sessionStorage.setItem('theme', 'afternoon')
+        case Time >= 20 && Time < 24:
             return 'afternoon'
         default:
-            sessionStorage.setItem('theme', 'night')
             return 'night'
     }
 }
@@ -60,13 +56,13 @@ const ThemeColors = {
         primaryElement: '#b28d34',
         secondaryElement: '#f0c42d'
     },
-    afternoon: {
+    night: {
         primary: '#5c462d',
         secondary: '#fff4e5',
         primaryElement: '#840000',
         secondaryElement: '#ba4c5b'
     },
-    night: {
+    afternoon: {
         primary: '#524e53',
         secondary: '#d5d3e1',
         primaryElement: '#7151a9',

@@ -1,9 +1,14 @@
 <?php
     $basePath = './';
     $page     = null;
+    include "{$basePath}html/includes/variables.php";
+
     $styles   = [ 'css/about_us.css', 'css/catalogue.css', 'css/carousel.css' ];
-    $presentation = [ 'showcase' ];
-    $carousel = ['Rolo', 'Plise', 'Fiksni'];
+    $init = [
+        'presentation' => ['showcase'],
+        'carousel' => ['Rolo', 'Plise', 'Fiksni'],
+        'order' => null
+    ];
 ?>
 
 <!DOCTYPE html>

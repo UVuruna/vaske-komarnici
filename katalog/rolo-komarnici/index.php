@@ -1,9 +1,16 @@
 <?php
     $basePath = '../../';
     $page     = 'rolo';
+    include "{$basePath}html/includes/variables.php";
+
     $styles   = [ 'css/catalogue.css', 'css/singleCatalogue.css', 'css/carousel.css' ];
     $presentation = [ 'Rolled' ];
     $carousel = ['Rolo'];
+    $init = [
+        'presentation' => ['Rolled'],
+        'carousel' => ['Rolo'],
+        'order' => null
+    ];
 ?>
 
 <!DOCTYPE html>

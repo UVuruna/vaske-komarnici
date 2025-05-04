@@ -7,8 +7,18 @@ function displayProduct(
     $altText,
     $buttonLink = null,
     $priceText = null,
-    $showTipRama = null
+    $showType = null
 ): void {
+    $guide = '';
+    if (!$priceText) {
+        $guide = <<<HTML
+            <i class="fa-solid guide"></i>
+        HTML;
+    } else {
+        $guide = <<<HTML
+            <i class="fa-solid guide" style="right: 2rem; top: 1.2rem"></i>
+        HTML;
+    }
 
     $titleHTML = '';
     if ($title) {
@@ -18,7 +28,7 @@ function displayProduct(
     }
 
     $tipRamaHtml = '';
-    if ($showTipRama) {
+    if ($showType) {
         $tipRamaHtml = <<<HTML
             <div class='light border'>
                 <h3><strong>Tip</strong></h3>
@@ -48,10 +58,11 @@ function displayProduct(
 
     echo <<<HTML
     <div class='promoContainer'>
-        <section class="promo">
+        <section class="promo" style="position: relative">
+            {$guide}
             {$titleHTML}
             <div class='selectFrame'>
-                <i class='light border fa-solid fa-ban' width='45' height='45'></i>
+                <i class='light border fa-solid ban' width='45' height='45'></i>
                 <div class='light border'>
                     <h3><strong>Ram</strong></h3>
                     <ul>

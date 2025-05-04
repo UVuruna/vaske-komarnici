@@ -50,7 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
                         
                     } else {
                         newCell.innerHTML = `
-                            <i onclick="deleteOrder(this.closest('tr'))" style="margin:0 0.15rem 0 0; cursor: pointer" class="fa-solid fa-ban"></i>
+                            <i onclick="deleteOrder(this.closest('tr'))" style="margin:0 0.15rem 0 0; cursor: pointer" class="fa-solid ban"></i>
                             ${orderItem}
                         `
                     }

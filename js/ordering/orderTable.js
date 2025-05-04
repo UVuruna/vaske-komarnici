@@ -202,7 +202,7 @@ function addOrder(element) {
         const newCell = document.createElement('td')
         if (index === 0) {
             newCell.innerHTML = `
-                <i onclick="deleteOrder(this.closest('tr'))" style="margin:0 0.15rem 0 0; cursor: pointer" class="fa-solid fa-ban"></i>
+                <i onclick="deleteOrder(this.closest('tr'))" style="margin:0 0.15rem 0 0; cursor: pointer" class="fa-solid ban"></i>
                 ${item}
             `
         } else if (index === order.length - 1) {
@@ -274,7 +274,6 @@ export async function orderTableInit(pricedict) {
         rows.forEach(row => {
             const cells = row.querySelectorAll('td')
             const isTotalRow = row.classList.contains('total')
-            console.log(isTotalRow, row.classList)
             if (cells.length === 0) return
 
             htmlTable += isTotalRow ? '<tr style="background-color: #d6d6d6;">' : '<tr>'

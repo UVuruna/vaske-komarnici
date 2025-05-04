@@ -10,6 +10,13 @@ let lastX = 0
 let lastTime = 0
 let maxTranslateX
 
+// Function to Prevent dragging if it's at the leftmost or rightmost position
+function translateBorder(distance) {
+    if (distance > 0) distance = 0 // prevent dragging left beyond the first item
+    if (distance < -maxTranslateX) distance = -maxTranslateX // prevent dragging right beyond the last item
+    return distance
+}
+
 // Set the maxTranslateX based on the width of the carousel items
 function updateMaxTranslate() {
     const carouselWidth = carousel.clientWidth
@@ -43,10 +50,7 @@ function move(e) {
 
     currentX = getX(e)
     translateX = prevTranslate + currentX - startX
-
-    // Prevent dragging if it's at the leftmost or rightmost position
-    if (translateX > 0) translateX = 0 // prevent dragging left beyond the first item
-    if (translateX < -maxTranslateX) translateX = -maxTranslateX // prevent dragging right beyond the last item
+    translateX = translateBorder(translateX)
 
     const deltaTime = currentTime - lastTime
     if (deltaTime > 0) {
@@ -65,12 +69,9 @@ function end() {
     prevTranslate = translateX;
 
     // Add inertia effect and move the carousel further based on the velocity
-    const momentumDistance = velocity * 200; // Adjust the multiplier for more or less momentum
+    const momentumDistance = velocity * 200; // multiplier for more or less momentum
     let target = translateX + momentumDistance;
-
-    // Prevent dragging if it's at the leftmost or rightmost position
-    if (target > 0) target = 0;
-    if (target < -maxTranslateX) target = -maxTranslateX;
+    target = translateBorder(target)
 
     track.style.transition = 'transform 0.5s ease-out';
     track.style.transform = `translateX(${target}px)`;
@@ -82,7 +83,20 @@ function end() {
     }, 500);
 }
 
+// Function for moving CAROUSEL with Mouse Wheel
+function onWheel(e) {
+    e.preventDefault();
+    translateX -= e.deltaY;
+    translateX = translateBorder(translateX)
+
+    prevTranslate = translateX;
+    track.style.transform = `translateX(${translateX}px)`;
+}
+
 updateMaxTranslate()
+
+// Mouse Wheel
+track.addEventListener('wheel', onWheel, { passive: false })
 
 // Mouse
 track.addEventListener('mousedown', start)

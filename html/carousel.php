@@ -7,7 +7,7 @@
         if ($file === '.' || $file === '..') {
             continue;
         }
-        foreach ($carousel as $item) {
+        foreach ($init['carousel'] as $item) {
             if (strpos($file, $item) !== false) {
                 $files[] = "{$folder}{$file}";
                 break;
@@ -22,7 +22,8 @@
     }
 ?>
 
-<header>
+<header style="position: relative;">
+    <i class="fa-solid guide"></i>
     <h2>Naši Radovi na Terenu</h2>
     <p>Pogledajte primere ugradnje komarnika kod naših zadovoljnih klijenata. Svaki projekat je pažljivo izveden uz precizno merenje i profesionalnu montažu, kako bismo obezbedili maksimalnu zaštitu i dugotrajnost. Bilo da se radi o prozorima, balkonskim vratima ili specifičnim dimenzijama, naš tim izlazi na teren i pruža rešenja po meri.</p>
 </header>

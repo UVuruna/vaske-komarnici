@@ -1,9 +1,14 @@
 <?php
     $basePath = '../../';
     $page     = 'fiksni';
+    include "{$basePath}html/includes/variables.php";
+    
     $styles   = [ 'css/catalogue.css', 'css/singleCatalogue.css', 'css/carousel.css' ];
-    $presentation = [ 'Fixed_Both', 'Fixed_One' ];
-    $carousel = null;
+    $init = [
+        'presentation' => ['Fixed_Both', 'Fixed_One'],
+        'carousel' => null,
+        'order' => null
+    ];
 ?>
 
 <!DOCTYPE html>

@@ -1,5 +1,5 @@
 <div id="header">
-    <?php include "{$basePath}html/includes/svg.php";?>
+    <i class="fa-solid guide"></i>
 
     <span class="logo-frame" onclick="themeCycle('<?php echo $basePath ?>')">  
         <?php 
@@ -20,8 +20,8 @@
         ?>
         <nav>
             <ul class="menu" role="menu">
-                <li role="menuitem"><a href="<?php echo $basePath ?>" aria-label="Početna strana"><i class="fa-solid fa-home"></i></a></li>
-                <li class="dropdownTrigger" role="menuitem">Tip Komarnika<i class="fa-solid fa-caret-down"></i>
+                <li role="menuitem"><a href="<?php echo $basePath ?>" aria-label="Početna strana"><i class="fa-solid home" style="transform: scale(1.5);"></i></a></li>
+                <li class="dropdownTrigger" role="menuitem">Tip Komarnika<i class="fa-solid down-arrow"></i>
                     <ul role="menu">
                         <li role="menuitem"><a href="<?php echo $basePath ?>katalog/fiksni-komarnici">Fiksni</a></li>
                         <li role="menuitem"><a href="<?php echo $basePath ?>katalog/rolo-komarnici">Rolo</a></li>
