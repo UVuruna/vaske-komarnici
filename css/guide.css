@@ -1,0 +1,29 @@
+#guide {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 9999;
+    padding-bottom: 2.5vh;
+}
+#guide video {
+    max-width: 95vw;
+    max-height: 95vh;
+    object-fit: contain;
+    border-radius: 1rem;
+}
+#guide button {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 1rem;
+    line-height: 0.5em;
+    opacity: 0.6;
+    font-size: 2.5rem;
+    &:hover {
+        opacity: 1;
+    }
+}

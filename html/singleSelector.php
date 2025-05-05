@@ -12,11 +12,11 @@ function displayProduct(
     $guide = '';
     if (!$priceText) {
         $guide = <<<HTML
-            <i class="fa-solid guide"></i>
+            <i onclick="showGuide('{$version}', '{$basePath}', 'catalogue', 'slika kataloga')" class="fa-solid guide" style="right: 0;"></i>
         HTML;
     } else {
         $guide = <<<HTML
-            <i class="fa-solid guide" style="right: 2rem; top: 1.2rem"></i>
+            <i onclick="showGuide('{$version}', '{$basePath}', 'catalogue', 'slika kataloga')" class="fa-solid guide" style="right: 2rem; top: 1.2rem"></i>
         HTML;
     }
 
@@ -59,6 +59,9 @@ function displayProduct(
     echo <<<HTML
     <div class='promoContainer'>
         <section class="promo" style="position: relative">
+            <div id="guide">
+                <button onclick="closeBtn();">&times;</button>
+            </div>
             {$guide}
             {$titleHTML}
             <div class='selectFrame'>

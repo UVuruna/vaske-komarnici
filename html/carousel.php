@@ -23,7 +23,11 @@
 ?>
 
 <header style="position: relative;">
-    <i class="fa-solid guide"></i>
+    <div id="guide">
+        <button onclick="closeBtn();">&times;</button>
+    </div>
+    <i onclick="showGuide('<?php echo $version ?>', '<?php echo $basePath ?>', 'slideshow', 'tabela za naručivanje komarnika')" class="fa-solid guide"></i>
+
     <h2>Naši Radovi na Terenu</h2>
     <p>Pogledajte primere ugradnje komarnika kod naših zadovoljnih klijenata. Svaki projekat je pažljivo izveden uz precizno merenje i profesionalnu montažu, kako bismo obezbedili maksimalnu zaštitu i dugotrajnost. Bilo da se radi o prozorima, balkonskim vratima ili specifičnim dimenzijama, naš tim izlazi na teren i pruža rešenja po meri.</p>
 </header>
@@ -49,7 +53,7 @@
 <div id="lightbox" class="lightbox">
     <img id="lightbox-image" src="" alt="">
     <video id="lightbox-video" src=""></video>
-    <button class="close">&times;</button>
+    <button onclick="this.parentElement.style.display='none'" style="position: absolute; top: 20px; right: 30px;">&times;</button>
     <button class="next">&gt;</button>
     <button class="prev">&lt;</button>
 </div>

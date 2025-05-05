@@ -1,5 +1,4 @@
 const lightbox = document.getElementById('lightbox')
-const closeBtn = document.querySelector('.lightbox .close')
 const nextBtn = document.querySelector('.lightbox .next')
 const prevBtn = document.querySelector('.lightbox .prev')
 let currentSRC
@@ -12,10 +11,6 @@ document.querySelectorAll('.clickable').forEach(media => {
         currentSRC = media.src
         showLightboxMedia(currentSRC)
     })
-})
-
-closeBtn.addEventListener('click', () => {
-    lightbox.style.display = 'none'
 })
 
 nextBtn.addEventListener('click', () => {

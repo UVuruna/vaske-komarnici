@@ -15,6 +15,3 @@
         <p>Kontakt: <a href="mailto:<?php echo $developerEmail ?>"><?php echo $developerEmail ?></a></p>
     </footer>
 </div>
-
-<!-- Google AdSense -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5692012727130730" crossorigin="anonymous"></script>

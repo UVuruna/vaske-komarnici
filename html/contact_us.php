@@ -24,7 +24,11 @@ $alts = [
 </header>
 
 <div id="contact_us" class="order" style="position: relative;">
-    <i class="fa-solid guide" style="top: -2rem;"></i>
+    <div id="guide">
+        <button onclick="closeBtn();">&times;</button>
+    </div>
+    <i onclick="showGuide('<?php echo $version ?>', '<?php echo $basePath ?>', 'order', 'prezentacija slika sa terena')" class="fa-solid guide" style="top: -2rem;"></i>
+
     <section id="orderSelectorTable">
         <table class="light">
             <thead>
@@ -136,7 +140,7 @@ $alts = [
         <div id="popupMessage" class="light">
             <div id="popupText"></div><br>
             <div id="popupTable"></div><br>
-            <button onclick="closePopup()">Zatvori</button>
+            <button onclick="this.parentElement.style.display='none'">Zatvori</button>
         </div>
     </section>
 </div>

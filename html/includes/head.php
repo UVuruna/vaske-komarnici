@@ -54,7 +54,8 @@
                 echo "<link rel='stylesheet' href='{$basePath}{$css}?v={$version}'/>";
             }
     }?>
-    <link rel="stylesheet" href="<?php echo $basePath ?>css/footer.css?v=<?php echo $version ?>"/>
+    <link rel="stylesheet" href="<?php echo $basePath ?>css/footer.css?v=<?php echo $version ?>" media="print" onload="this.media='all'"/>
+    <link rel="stylesheet" href="<?php echo $basePath ?>css/guide.css?v=<?php echo $version ?>" media="print" onload="this.media='all'"/>
 
     <!-- Loading INIT JavaScript -->
     <script type="module">
@@ -67,16 +68,6 @@
         });
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WV3X5ZL398"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-WV3X5ZL398');
-    </script>
-    
     <!-- Structured Data (JSON‑LD) -->
     <script type="application/ld+json">
     {
@@ -106,4 +97,17 @@
         ]
     }
     </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WV3X5ZL398"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-WV3X5ZL398');
+    </script>
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5692012727130730" crossorigin="anonymous"></script>
 </head>
