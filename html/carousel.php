@@ -26,7 +26,7 @@
     <div id="guide">
         <button onclick="closeBtn();">&times;</button>
     </div>
-    <i onclick="showGuide('<?php echo $version ?>', '<?php echo $basePath ?>', 'slideshow', 'tabela za naručivanje komarnika')" class="fa-solid guide"></i>
+    <i onclick="showGuide('slideshow', 'tabela za naručivanje komarnika')" class="fa-solid guide"></i>
 
     <h2>Naši Radovi na Terenu</h2>
     <p>Pogledajte primere ugradnje komarnika kod naših zadovoljnih klijenata. Svaki projekat je pažljivo izveden uz precizno merenje i profesionalnu montažu, kako bismo obezbedili maksimalnu zaštitu i dugotrajnost. Bilo da se radi o prozorima, balkonskim vratima ili specifičnim dimenzijama, naš tim izlazi na teren i pruža rešenja po meri.</p>

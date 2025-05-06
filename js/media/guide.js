@@ -1,13 +1,16 @@
-let version = null
-let path = null
+let path,
+    version,
+    colorDict
 
+export async function initGuide(Path, Version, ColorDict) {
+    path = Path;
+    version = Version;
+    colorDict = ColorDict;
+}
 
-export function showGuide(Version, Path, videoSRC, videoALT = '') {
-    if (!version) {
-        version = Version
-        path = Path
+export function showGuide(videoSRC, videoALT = '') {
+    const colors = colorDict[sessionStorage.getItem('theme')]
 
-    }
     const guideDiv = document.getElementById('guide');
     guideDiv.style.display = 'flex'
     guideDiv.insertAdjacentHTML('afterbegin', `
@@ -17,9 +20,11 @@ export function showGuide(Version, Path, videoSRC, videoALT = '') {
             <source src="${path}img/guide/${videoSRC}_H264.mp4?v=${version}" type="video/mp4">
         </video>
     `);
+    const video = guideDiv.querySelector('#guideVideo');
+    video.style.border = `0.75rem ridge ${colors.primaryElement}`
+    video.style.boxShadow = `0.5rem 0.5rem 1rem ${colors.secondaryElement},-0.5rem -0.5rem 1rem ${colors.secondaryElement},0.5rem -0.5rem 1rem ${colors.secondaryElement},-0.5rem 0.5rem 1rem ${colors.secondaryElement}`
 
     // Auto close on end
-    const video = guideDiv.querySelector('#guideVideo');
     video.onended = () => {
         if (video) {
             video.remove();

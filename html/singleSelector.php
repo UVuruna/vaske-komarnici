@@ -12,11 +12,11 @@ function displayProduct(
     $guide = '';
     if (!$priceText) {
         $guide = <<<HTML
-            <i onclick="showGuide('{$version}', '{$basePath}', 'catalogue', 'slika kataloga')" class="fa-solid guide" style="right: 0;"></i>
+            <i onclick="showGuide('catalogue', 'slika kataloga')" class="fa-solid guide" style="right: 0;"></i>
         HTML;
     } else {
         $guide = <<<HTML
-            <i onclick="showGuide('{$version}', '{$basePath}', 'catalogue', 'slika kataloga')" class="fa-solid guide" style="right: 2rem; top: 1.2rem"></i>
+            <i onclick="showGuide('catalogue', 'slika kataloga')" class="fa-solid guide" style="right: 2rem; top: 1.2rem"></i>
         HTML;
     }
 

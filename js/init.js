@@ -31,7 +31,7 @@ export async function init(version, path, initDict) {
     const t0 = performance.now()
     console.log(`Screen => Width: ${window.innerWidth}px | Height: ${window.innerHeight}px`)
 
-    let loadGlobals, themeCycle, settingThemeOnload, updateManifest, showGuide, closeBtn
+    let loadGlobals, themeCycle, settingThemeOnload, updateManifest, initGuide, showGuide, closeBtn
 
     await import('./globals.js?v=' + version).then(module => {loadGlobals = module.loadGlobals})
     await import('./style/updateManifest.js?v=' + version).then(module => {updateManifest = module.updateManifest})
@@ -40,12 +40,6 @@ export async function init(version, path, initDict) {
         settingThemeOnload = module.settingThemeOnload
     })
     const globals = await loadGlobals(updateManifest) // LOADING GLOBALS
-    await import('./media/guide.js?v=' + version).then(module => {
-        showGuide = module.showGuide,
-        closeBtn = module.closeBtn
-    })
-    window.showGuide = showGuide
-    window.closeBtn = closeBtn
 
     await (async () => {
         settingThemeOnload(version, updateManifest, globals, t0) // SETTING THEME ONLOAD
@@ -55,6 +49,17 @@ export async function init(version, path, initDict) {
             await import('./interaction/clickHover.js?v=' + version).then(module => {mobileMenu = module.mobileMenu})
             mobileMenu()
         }
+        import('./media/guide.js?v=' + version).then(module => {
+            initGuide = module.initGuide,
+            initGuide(path,version,globals.ThemeColors)
+
+            showGuide = module.showGuide,
+            window.showGuide = showGuide
+
+            closeBtn = module.closeBtn
+            window.closeBtn = closeBtn
+            
+        })
         window.themeCycle = themeCycle
     })()
 

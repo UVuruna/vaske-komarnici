@@ -131,7 +131,7 @@ p {
 }
 
 button {
-  border: 2px solid #ffffff;
+  border: 2px outset #ffffff;
   color: #ffffff;
 }
 
@@ -225,15 +225,6 @@ header * {
   &:hover {
     filter: hue-rotate(12deg) contrast(70%) brightness(130%) saturate(150%);
   }
-}
-
-/* Google Agression */
-.adsbygoogle,
-.ad-container {
-  max-width: 100% !important;
-  overflow: hidden !important;
-  display: block !important;
-  position: relative !important;
 }
 
 p,

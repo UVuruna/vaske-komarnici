@@ -11,16 +11,10 @@ export async function lightFrame(LightFrames, PresetColors) {
             frame.style.border = `2px solid ${PresetColors.primary}`
 
             frame.addEventListener('mouseenter', () => {
-                frame.style.boxShadow = `4px 4px 7px ${PresetColors.secondaryElement},
-                                -4px -4px 7px ${PresetColors.secondaryElement},
-                                    4px -4px 7px ${PresetColors.secondaryElement},
-                                    -4px 4px 7px ${PresetColors.secondaryElement}`
+                frame.style.boxShadow = `4px 4px 7px ${PresetColors.secondaryElement},-4px -4px 7px ${PresetColors.secondaryElement},4px -4px 7px ${PresetColors.secondaryElement},-4px 4px 7px ${PresetColors.secondaryElement}`
             })
             frame.addEventListener('mouseleave', () => {
-                frame.style.boxShadow = `2px 2px 4px ${PresetColors.primaryElement},
-                                -2px -2px 4px ${PresetColors.primaryElement},
-                                    2px -2px 4px ${PresetColors.primaryElement},
-                                    -2px 2px 4px ${PresetColors.primaryElement}`
+                frame.style.boxShadow = `2px 2px 4px ${PresetColors.primaryElement},-2px -2px 4px ${PresetColors.primaryElement},2px -2px 4px ${PresetColors.primaryElement},-2px 2px 4px ${PresetColors.primaryElement}`
             })
         }
     })

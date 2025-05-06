@@ -5,21 +5,20 @@
     background: rgba(0, 0, 0, 0.7);
     display: none;
     justify-content: center;
-    align-items: flex-end;
+    align-items: center;
     z-index: 9999;
-    padding-bottom: 2.5vh;
 }
 #guide video {
     max-width: 95vw;
     max-height: 95vh;
     object-fit: contain;
-    border-radius: 1rem;
+    border-radius: 1.25rem;
 }
 #guide button {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
-    padding: 1rem;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.5rem;
     line-height: 0.5em;
     opacity: 0.6;
     font-size: 2.5rem;
