@@ -3,6 +3,7 @@
 /* Frames */
 
 #contact_us {
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -11,6 +12,10 @@
     margin: 0 auto;
     gap: 3rem;
     padding: 0 5vw;
+}
+
+#contact_us .guide {
+    top: -2rem;
 }
 
 #orderSelectorTable {
@@ -166,6 +171,7 @@ form table {
 }
 
 .categoryText {
+    cursor: pointer;
     font-size: 1.25rem;
     font-weight: 700;
     position: absolute;

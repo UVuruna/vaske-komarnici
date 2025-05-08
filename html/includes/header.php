@@ -33,7 +33,7 @@
                 </li>
                 <li role="menuitem"><a href="<?php echo $basePath ?>o_nama">O nama</a></li>
                 <li role="menuitem"><a href="<?php echo $basePath ?>katalog/">Katalog</a></li>
-                <li role="menuitem"><a href="<?php echo $basePath ?>kontakt/">Poručite Odmah</a></li>
+                <li role="menuitem" class="pulse"><a href="<?php echo $basePath ?>kontakt/">Poručite Odmah</a></li>
             </ul>
         </nav>
         <button class="pulse" onclick="window.location.href='tel:<?php echo $companyPhone ?>'"><?php echo $companyPhoneLocal ?></button>

@@ -23,11 +23,11 @@ $alts = [
     <p><strong>Napomena</strong>: Prikazane cene su okvirne i informativne prirode. Konačna cena može se razlikovati u zavisnosti od specifičnih zahteva i dimenzija. Prilagođavanje proizvoda je moguće u dogovoru sa kupcem.</p>
 </header>
 
-<div id="contact_us" class="order" style="position: relative;">
+<div id="contact_us" class="order">
     <div id="guide">
         <button onclick="closeBtn();">&times;</button>
     </div>
-    <i onclick="showGuide('order', 'prezentacija slika sa terena')" class="fa-solid guide pulse" style="top: -2rem;"></i>
+    <i onclick="showGuide('order', 'prezentacija slika sa terena')" class="fa-solid guide pulse"></i>
 
     <section id="orderSelectorTable">
         <table class="light">
@@ -56,7 +56,7 @@ $alts = [
                             <div class="tableColumn">
                                 <div class="orderCategory" onclick="swapType(this); calculatePrice(this)" >
                                     <img class="category" src="<?php echo $basePath ?>img/items/product/<?php echo $id ?>_White_Light.webp" alt="<?php echo $alts[$index] ?>" width="80" height="80">
-                                    <p class="categoryText" style="cursor: pointer;"><?php echo $typeText; ?></p>
+                                    <p class="categoryText"><?php echo $typeText; ?></p>
                                 </div>
                                 <div class="color">
                                     <img class="frame" onclick="swapType(this); calculatePrice(this)" src="<?php echo $basePath ?>img/other/White.webp" alt="Boja rama" width="30" height="30">

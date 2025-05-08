@@ -9,17 +9,6 @@ function displayProduct(
     $price = null,
     $showType = null
 ): void {
-    $guide = '';
-    if (!$price) {
-        $guide = <<<HTML
-            <i onclick="showGuide('catalogue', 'slika kataloga')" class="fa-solid guide pulse" style="right: 0;"></i>
-        HTML;
-    } else {
-        $guide = <<<HTML
-            <i onclick="showGuide('catalogue', 'slika kataloga')" class="fa-solid guide pulse" style="right: 2rem; top: 1.2rem"></i>
-        HTML;
-    }
-
     $titleHTML = '';
     if ($title) {
         $titleHTML = <<<HTML
@@ -42,7 +31,7 @@ function displayProduct(
 
     $cenaHtml = '';
     if ($price) {
-        $oldPrice = round($price * 1.15, 0);
+        $oldPrice = floor($price /0.85);
         
         $cenaHtml = <<<HTML
             <div class="priceFrame">
@@ -52,7 +41,7 @@ function displayProduct(
                 </div>
                 <div>
                     <strong class="price">Cena:</strong>
-                    <span class="old-price">{$oldPrice} €/m²</span>
+                    <span class="old-price">{$oldPrice}.99 €/m²</span>
                     <strong class="price" itemprop="price" content="{$price}">{$price} € / m²</strong>
                 </div>
             </div>
@@ -62,7 +51,10 @@ function displayProduct(
     $saznajVišeHtml = '';
     if ($buttonLink) {
         $saznajVišeHtml = <<<HTML
-            <button onclick="window.location.href='{$buttonLink}';">Saznaj više</button>
+            <div class="catalogueAction">
+                <button onclick="window.location.href='{$buttonLink}';">Saznaj više</button>
+                <button class="pulse" onclick="window.location.href='{$basePath}/kontakt';">Naručite Odmah</button>
+            <div>
         HTML;
     }
 
@@ -72,7 +64,7 @@ function displayProduct(
             <div id="guide">
                 <button onclick="closeBtn();">&times;</button>
             </div>
-            {$guide}
+            <i onclick="showGuide('catalogue', 'slika kataloga')" class="fa-solid guide pulse"></i>
             {$titleHTML}
             <div class='selectFrame'>
                 <i class='light border fa-solid ban' width='45' height='45'></i>
