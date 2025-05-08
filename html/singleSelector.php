@@ -45,14 +45,14 @@ function displayProduct(
         $oldPrice = round($price * 1.15, 0);
         
         $cenaHtml = <<<HTML
-            <div style="display:flex; gap:0; flex-direction:column; align-items:center; justify-content:center;">
-                <div style="display: inline-flex; align-items: center;">
-                    <strong style="font-size:1.2rem; line-height: 1;">AKCIJA</strong>
-                    <small style="font-size:1rem; margin-left: 8px;">(popust 15%)</small>
+            <div class="priceFrame">
+                <div>
+                    <strong class="price">AKCIJA&nbsp;&nbsp;</strong>
+                    <small>(popust 15%)</small>
                 </div>
-                <div style="display: inline-flex; align-items: center;">
+                <div>
                     <strong class="price">Cena:</strong>
-                    <span style="text-decoration:line-through; color: #cdcdcd; font-size:1.1rem; margin:0 1rem;">{$oldPrice} €/m²</span>
+                    <span class="old-price">{$oldPrice} €/m²</span>
                     <strong class="price" itemprop="price" content="{$price}">{$price} € / m²</strong>
                 </div>
             </div>

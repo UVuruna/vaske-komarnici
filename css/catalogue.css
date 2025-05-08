@@ -64,6 +64,23 @@
 .price {
     font-size: 1.5rem;
 }
+.old-price {
+    text-decoration:line-through;
+    color: #cdcdcd;
+    font-size:1.1rem;
+    margin:0 1rem;
+}
+.priceFrame {
+    display:flex;
+    gap:0;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+}
+.priceFrame > div {
+    display: inline-flex;
+    align-items: center;
+}
 
 .promoImage {
     object-fit: contain;   
