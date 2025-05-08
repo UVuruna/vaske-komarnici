@@ -1,131 +1,160 @@
 // ----------> LIGHT BG <----------
-export async function lightFrame(LightFrames, PresetColors) {
-    LightFrames.forEach(frame => {
-        frame.style.backgroundColor = PresetColors.secondary
+export async function lightFrame(LightFrames, elementMain, elementSec, bodyMain, bodySec) {
+
+    function borderFrames(frame) {
+        if (frame.classList.contains('border')) {
+            frame.style.color = elementMain
+        }
+        frame.style.border = `2px solid ${elementMain}`
+
+        frame.addEventListener('mouseenter', () => {
+            frame.style.boxShadow = `4px 4px 7px ${elementSec},-4px -4px 7px ${elementSec},4px -4px 7px ${elementSec},-4px 4px 7px ${elementSec}`
+        })
+        frame.addEventListener('mouseleave', () => {
+            frame.style.boxShadow = 'none'
+        })
+    }
+
+    for (const frame of LightFrames) {
+        frame.style.backgroundColor = bodySec
         frame.style.color = '#222222'
 
-        if (frame.tagName !== 'DIV' || frame.classList.contains('border')) {
-            if (frame.classList.contains('border')) {
-                frame.style.color = PresetColors.primaryElement
-            }
-            frame.style.border = `2px solid ${PresetColors.primary}`
-
-            frame.addEventListener('mouseenter', () => {
-                frame.style.boxShadow = `4px 4px 7px ${PresetColors.secondaryElement},-4px -4px 7px ${PresetColors.secondaryElement},4px -4px 7px ${PresetColors.secondaryElement},-4px 4px 7px ${PresetColors.secondaryElement}`
-            })
-            frame.addEventListener('mouseleave', () => {
-                frame.style.boxShadow = `2px 2px 4px ${PresetColors.primaryElement},-2px -2px 4px ${PresetColors.primaryElement},2px -2px 4px ${PresetColors.primaryElement},-2px 2px 4px ${PresetColors.primaryElement}`
-            })
-        }
-    })
+        if (frame.tagName !== 'DIV' || frame.classList.contains('border')) borderFrames(frame)
+    }
 }
 // ----------> GLOBALS.BUTTONS <----------
-export async function buttonsStyle(BUTTONS, PresetColors) {
-    BUTTONS.forEach(button => {
-        button.style.backgroundColor = PresetColors.primaryElement
-        if (button.classList.contains('cta-button')) {
-            button.style.boxShadow = `5px 5px 20px ${PresetColors.primaryElement}, -5px -5px 20px ${PresetColors.primaryElement}`
+export async function buttonsStyle(BUTTONS, elementMain, elementSec, bodyMain) {
 
-            button.addEventListener('mouseenter', () => {
-                button.style.boxShadow = `0 0 25px ${PresetColors.secondaryElement}, 0 0 50px ${PresetColors.secondaryElement}`
-            })
-            button.addEventListener('mouseleave', () => {
-                button.style.boxShadow = `5px 5px 20px ${PresetColors.primaryElement}, -5px -5px 20px ${PresetColors.primaryElement}`
-            })
+    function buttonStyle(button) {
+        if (button.tagName === 'BUTTON') {
+            button.style.backgroundColor = elementMain
+            button.style.color = '#ffffff'
+            if (button.classList.contains('cta-button')) {
+                button.style.boxShadow = `5px 5px 20px ${elementMain}, -5px -5px 20px ${elementMain}`
+            }
+        } else {
+            button.style.color = elementMain
+            button.style.backgroundColor = '#ffffff'
         }
+    }
+    function buttoneHover(button) {
+        if (button.tagName === 'BUTTON') {
+            button.style.backgroundColor = elementSec
+            button.style.color = bodyMain
+        } else {
+            button.style.color = elementSec
+            button.style.backgroundColor = bodyMain
+        }
+    }
+
+    for (const button of BUTTONS) {
+        const pulsing = button.classList.contains('pulse')
+
+        buttonStyle(button)
+        
         button.addEventListener('mouseenter', () => {
-            button.style.backgroundColor = PresetColors.secondaryElement
+            if (pulsing) button.classList.remove('pulse')
+            buttoneHover(button)
         })
         button.addEventListener('mouseleave', () => {
-            button.style.backgroundColor = PresetColors.primaryElement
+            if (pulsing) button.classList.add('pulse')
+            buttonStyle(button)
         })
-    })
+    }
 }
 // ----------> LIST strong Items <----------
-export async function coloredTextStyle(
-    coloredTextItems,
-    hoverTxtColor,
-    PresetColors,
-    currentTheme
-) {
-    for (const item of coloredTextItems) {
-        item.style.color = PresetColors.primaryElement
+export async function coloredTextStyle(coloredTextItems, hoverTxtColor, elementMain, elementSec, currentTheme) {
+
+    function coloredText(item) {
+        item.style.color = elementMain
         item.style.fontSize = '1.25rem'
         if (currentTheme === 'night') {
-            item.style.webkitTextStroke = `0.25px ${PresetColors.primaryElement}`;
+            item.style.webkitTextStroke = `0.25px ${elementMain}`
         } else if (currentTheme === 'noon') {
-            item.style.webkitTextStroke = '0.5px #222222';
+            item.style.webkitTextStroke = '0.5px #222222'
         } else {
-            item.style.webkitTextStroke = '0.75px #222222';
+            item.style.webkitTextStroke = '0.75px #222222'
         }
-        hoverTxtColor(
-            item,
-            PresetColors.secondaryElement,
-            PresetColors.primaryElement
-        )
+    }
+
+    for (const item of coloredTextItems) {
+        coloredText(item)
+        hoverTxtColor(item, elementSec, elementMain)
     }
 }
 
 // ----------> DROPDOWN MENU <----------
-export async function menuStyle(
-    dropdownMenus,
-    bgColor,
-    secondaryColor,
-    hoverBgColor
-) {
-    dropdownMenus.forEach(menu => {
-        if (
-            !menu.classList.contains('menu') ||
-            window.innerWidth <= 800
-        ) {
-            menu.style.border = `3px solid ${secondaryColor}`
-            menu.style.backgroundColor = bgColor
+export async function menuStyle(dropdownMenus, bgColor, secondaryColor, hoverBgColor) {
 
-            const menuElements = Array.from(menu.children)
-            menuElements.forEach(element => {
-                hoverBgColor(element, secondaryColor)
-            })
+    function androidMenu(menu) {
+        menu.style.border = `3px solid ${secondaryColor}`
+        menu.style.backgroundColor = bgColor
+
+        for (const element of Array.from(menu.children)) hoverBgColor(element, secondaryColor)
+    }
+    
+    for (const menuItem of dropdownMenus) {
+        if (!menuItem.classList.contains('menu') || window.innerWidth <= 800) {
+            androidMenu(menuItem)
         } else {
-            menu.style.border = 'none'
+            menuItem.style.border = 'none'
         }
-    })
+    }
 }
 
 // ----------> TABLE STYLE <----------
-export async function tableStyle(bgColor, elementColor) {
-    const tables = document.querySelectorAll('table')
+export async function tablesStyle(bgColor, elementMain) {
 
+    const tables = document.querySelectorAll('table')
     if (!tables.length) return
 
-    tables.forEach(TABLE => {
-        TABLE.style.border = `2px solid ${elementColor}`
-        TABLE.style.borderRadius = '1.5rem'
-        TABLE.style.backgroundColor = bgColor
-        TABLE.style.overflow = 'hidden'
-    })
+    function tableStyle(table) {
+        table.style.border = `2px solid ${elementMain}`
+        table.style.borderRadius = '1.5rem'
+        table.style.backgroundColor = bgColor
+        table.style.overflow = 'hidden'
+    }
 
-    const headers = document.querySelectorAll('th')
-    const borderFrames = document.querySelectorAll('.width, .height')
-
-    headers.forEach(header => {
-        header.style.backgroundColor = elementColor
+    for (const table of tables) tableStyle(table)
+    for (const header of document.querySelectorAll('th')) {
+        header.style.backgroundColor = elementMain
         header.style.color = '#ffffff'
-    })
-    borderFrames.forEach(borderFrame => {
-        borderFrame.style.border = `2px solid ${elementColor}`
-    }) 
+    }
+    for (const borderFrame of document.querySelectorAll('.width, .height'))  borderFrame.style.border = `2px solid ${elementMain}`
 }
 
 // ----------> FORM STYLE <----------
-export async function formStyle(bgColor, elementColor) {
+export async function formStyle(bgColor, elementMain) {
+
     const FORM = document.querySelector('form')
     if (!FORM) return
 
-    const Inputs = FORM.querySelectorAll('input, textarea')
-
-    Inputs.forEach(input => {
+    function inputStyle(input) {
         input.style.backgroundColor = bgColor
-        input.style.border = `2px solid ${elementColor}`
+        input.style.border = `2px solid ${elementMain}`
         input.style.borderRadius = '1rem'
-    })
+    }
+
+    for (const input of FORM.querySelectorAll('input, textarea')) inputStyle(input)
+}
+
+// ----------> Call to ACTION <----------
+export function pulsingAnimation(time=2) {
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.13);
+            }
+        }
+  
+        .pulse {
+            animation: pulse ${time}s infinite;
+            transition: transform 0.5s;
+        }
+    `;
+    document.head.appendChild(style);
 }

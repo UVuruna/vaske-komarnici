@@ -6,9 +6,7 @@ async function presentation(path, version, videoTitles, globals) {
     loadDelay()
     selectModel(version)
 
-    videoTitles.forEach(video => {
-        loadVideo(version, path, video)
-    })
+    for (const video of videoTitles) loadVideo(version, path, video)
     videoPlay(globals.videos)
     videoLoop(globals.videos)
 }

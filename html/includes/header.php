@@ -2,7 +2,7 @@
     <div id="guide">
         <button onclick="closeBtn();">&times;</button>
     </div>
-    <i onclick="showGuide('header', 'prezentacija slika sa terena')" class="fa-solid guide"></i>
+    <i onclick="showGuide('header', 'prezentacija slika sa terena')" class="fa-solid guide pulse"></i>
 
     <span class="logo-frame" onclick="themeCycle('<?php echo $basePath ?>')">  
         <?php 
@@ -36,6 +36,6 @@
                 <li role="menuitem"><a href="<?php echo $basePath ?>kontakt/">Poručite Odmah</a></li>
             </ul>
         </nav>
-        <button onclick="window.location.href='tel:<?php echo $companyPhone ?>'"><?php echo $companyPhoneLocal ?></button>
+        <button class="pulse" onclick="window.location.href='tel:<?php echo $companyPhone ?>'"><?php echo $companyPhoneLocal ?></button>
     </div>
 </div>

@@ -6,17 +6,17 @@ function displayProduct(
     $imgLink,
     $altText,
     $buttonLink = null,
-    $priceText = null,
+    $price = null,
     $showType = null
 ): void {
     $guide = '';
-    if (!$priceText) {
+    if (!$price) {
         $guide = <<<HTML
-            <i onclick="showGuide('catalogue', 'slika kataloga')" class="fa-solid guide" style="right: 0;"></i>
+            <i onclick="showGuide('catalogue', 'slika kataloga')" class="fa-solid guide pulse" style="right: 0;"></i>
         HTML;
     } else {
         $guide = <<<HTML
-            <i onclick="showGuide('catalogue', 'slika kataloga')" class="fa-solid guide" style="right: 2rem; top: 1.2rem"></i>
+            <i onclick="showGuide('catalogue', 'slika kataloga')" class="fa-solid guide pulse" style="right: 2rem; top: 1.2rem"></i>
         HTML;
     }
 
@@ -41,12 +41,22 @@ function displayProduct(
     }
 
     $cenaHtml = '';
-    if ($priceText) {
-        preg_match('/\d+/', $priceText, $matches);
-        $priceNumber = $matches[0] ?? null;
-
+    if ($price) {
+        $oldPrice = round($price * 1.15, 0);
+        
         $cenaHtml = <<<HTML
-            <strong class="price" itemprop="price" content="{$priceNumber}">{$priceText}</strong>
+            <div style="display:flex; gap:0; flex-direction:column; align-items:center; justify-content:center;">
+                <div style="display: inline-flex; align-items: center;">
+                    <strong style="font-size:1.2rem; line-height: 1;">AKCIJA</strong>
+                    <small style="font-size:1rem; margin-left: 8px;">(popust 15%)</small>
+                </div>
+                <div style="display: inline-flex; align-items: center;">
+                    <strong class="price">Cena:</strong>
+                    <span style="text-decoration:line-through; color: #cdcdcd; font-size:1.1rem; margin:0 1rem;">{$oldPrice} €/m²</span>
+                    <strong class="price" itemprop="price" content="{$price}">{$price} € / m²</strong>
+                </div>
+            </div>
+            
         HTML;
     }
     $saznajVišeHtml = '';

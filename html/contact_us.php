@@ -27,7 +27,7 @@ $alts = [
     <div id="guide">
         <button onclick="closeBtn();">&times;</button>
     </div>
-    <i onclick="showGuide('order', 'prezentacija slika sa terena')" class="fa-solid guide" style="top: -2rem;"></i>
+    <i onclick="showGuide('order', 'prezentacija slika sa terena')" class="fa-solid guide pulse" style="top: -2rem;"></i>
 
     <section id="orderSelectorTable">
         <table class="light">
@@ -134,7 +134,7 @@ $alts = [
             </div>
             <textarea id="orderDetail" class="light" name="orderDetail" placeholder="Detalji Porudžbine (opciono)" rows="3"></textarea>
             <input type="hidden" name="orderList" id="orderListInput">
-            <button type="submit" class="cta-button">Pošaljite zahtev</button>
+            <button type="submit" class="cta-button pulse">Pošaljite zahtev</button>
         </form>
 
         <div id="popupMessage" class="light">

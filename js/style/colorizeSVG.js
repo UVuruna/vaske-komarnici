@@ -205,9 +205,7 @@ function rgbToHEX({ r, g, b }) {
 function strToRGB(rgb) {
     let rgbDict = {}
     let RGB = rgb.slice(4, -1).split(',')
-    RGB.forEach((color, index) => {
-        rgbDict[rgb[index]] = parseInt(color.trim())
-    })
+    RGB.forEach((color, index) => {rgbDict[rgb[index]] = parseInt(color.trim())})
     return rgbDict
 }
 
@@ -228,10 +226,10 @@ function createColoredPalette(color, grayPalette) {
     let len = grayPalette.length
     let GRADIENTS = []
 
-    grayPalette.forEach(gradient => {
+    for (const gradient of grayPalette) {
         GRADIENTS.push(hexToSUM(gradient))
         midBrightness += hexToSUM(gradient) / len
-    })
+    }
     if (grayPalette == 1) {
         return Palette.push(color)
     }
@@ -251,9 +249,9 @@ function findStyles(SVG) {
     )
     let uniqueColors = new Set()
     let elementsDict = {}
-
     let style, stroke, fill, color
-    elements.forEach((element, index) => {
+
+    function getStyles(element, index) {
         style = getComputedStyle(element)
         stroke = style.getPropertyValue('stroke')
         fill = style.getPropertyValue('fill')
@@ -271,26 +269,31 @@ function findStyles(SVG) {
             uniqueColors.add(color)
         }
         elementsDict[`element-${index}`]['element'] = element
-    })
+    }
+    elements.forEach((element, index) => getStyles(element, index))
+
     return [elementsDict, uniqueColors]
 }
 
 // Get color-stop from STOP elements
 function findGradients(SVG, elementsDict, uniqueColors) {
-    const gradients = SVG.querySelectorAll('linearGradient, radialGradient')
     let color
     let index = 0
-    gradients.forEach(grad => {
-        const stops = grad.querySelectorAll('stop')
-        stops.forEach(stop => {
-            color = convertToHEX(stop.getAttribute('stop-color'))
-            uniqueColors.add(color)
-            if (!elementsDict[`stop-${index}`]) elementsDict[`stop-${index}`] = {}
-            elementsDict[`stop-${index}`]['element'] = stop
-            elementsDict[`stop-${index}`]['stop-color'] = color
-            index++
-        })
-    })
+    
+    function getGradient(stop) {
+        color = convertToHEX(stop.getAttribute('stop-color'))
+        uniqueColors.add(color)
+        if (!elementsDict[`stop-${index}`]) elementsDict[`stop-${index}`] = {}
+        elementsDict[`stop-${index}`]['element'] = stop
+        elementsDict[`stop-${index}`]['stop-color'] = color
+        index++
+    }
+    function iterateElements(gradient) {
+        for (const stop of gradient.querySelectorAll('stop')) getGradient(stop)
+    }
+
+    for (const gradient of SVG.querySelectorAll('linearGradient, radialGradient')) iterateElements(gradient)
+
     return [elementsDict, [...uniqueColors]]
 }
 
@@ -318,7 +321,7 @@ export function colorizeSVG(SVG, color) {
         var colorPalette = svgDICT[ID][color]
     }
 
-    Object.entries(elements).forEach(([key, element]) => {
+    function colorizeElement(element) {
         if ('stop-color' in element) {
             const oldColor = element['stop-color']
             const newColor = colorPalette[grayPalette.indexOf(oldColor)]
@@ -333,7 +336,8 @@ export function colorizeSVG(SVG, color) {
                 element.element.style.stroke = colorPalette[grayPalette.indexOf(stroke)]
             }
         }
-    })
+    }
+    for (const [key, element] of Object.entries(elements)) colorizeElement(element)
 
     //console.log(`Colorize SVG executed in ${performance.now()-t0} ms`)
 }

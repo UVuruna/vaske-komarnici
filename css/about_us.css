@@ -18,6 +18,12 @@ header p {
   text-align: center;
 }
 
+.cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 @media (min-width: 750px) and (max-width: 1080px) {
   #about_us {

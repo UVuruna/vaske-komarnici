@@ -17,7 +17,8 @@ const textDict = {
 }
 
 export function catalogueText(parts) {
-    for (const [text, element] of Object.entries(parts)) {
+
+    function changeText(text, element) {
         if (text !== 'empty') {
             if (text !== 'titles') {
                 if (getComputedStyle(element).display === 'none') {
@@ -32,14 +33,12 @@ export function catalogueText(parts) {
                     element.style.animation = 'slide-in 0.5s ease-out forwards'
                 }
             } else {
-                element.forEach(el => {
-                    el.style.display = ''
-                })
+                element.forEach(el => {el.style.display = ''})
             }
         } else {
-            element.forEach(el => {
-                el.style.display = 'none'
-            })
+            element.forEach(el => {el.style.display = 'none'})
         }
     }
+
+    for (const [text, element] of Object.entries(parts)) changeText(text,element)
 }

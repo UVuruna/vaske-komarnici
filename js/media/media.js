@@ -1,42 +1,46 @@
 const videos = document.querySelectorAll('.video-loop')
 
-export function videoLoop() {
-    videos.forEach(video => {
-        video.addEventListener("loadedmetadata", () => {
-            video.addEventListener('timeupdate', () => {
-                if (video.currentTime >= video.duration - 0.1) {
-                    video.currentTime = 0
-                    video.play()
-                }
-            })
+function videoLoopSetup(video) {
+    video.addEventListener("loadedmetadata", () => {
+        video.addEventListener('timeupdate', () => {
+            if (video.currentTime >= video.duration - 0.1) {
+                video.currentTime = 0
+                video.play()
+            }
         })
     })
 }
+export function videoLoop() {
+    for (const video of videos) {
+        videoLoopSetup(video)
+    }
+}
 
+function videoPlayManipulate(entry) {
+    const video = entry.target
+    if (entry.isIntersecting) {
+        if (video.paused) {
+            setTimeout(() => video.play().catch(() => { }), 0)
+        }
+    } else {
+        if (!video.paused) {
+            setTimeout(() => video.pause(), 0)
+        }
+    }
+}
 export async function videoPlay() {
     const observer = new IntersectionObserver(
         entries => {
-            entries.forEach(entry => {
-                const video = entry.target
-                if (entry.isIntersecting) {
-                    if (video.paused) {
-                        setTimeout(() => video.play().catch(() => { }), 0)
-                    }
-                } else {
-                    if (!video.paused) {
-                        setTimeout(() => video.pause(), 0)
-                    }
-                }
-            })
+            for (const entry of entries) videoPlayManipulate(entry)
         },
         {
             threshold: 0.5
         }
     )
-    videos.forEach(video => {
+    for (const video of videos) {
         video.pause()
         observer.observe(video)
-    })
+    }
 }
 
 export async function loadVideo(version, basePath, videoID) {
@@ -56,22 +60,23 @@ export async function loadVideo(version, basePath, videoID) {
     loadDelay(videoElement)
 }
 
+function loadDelayedVideo(entry, obs) {
+    if (entry.isIntersecting) {
+        const element = entry.target
+        const sources = element.querySelectorAll('source')
+
+        for (const source of sources) {
+            if (source.dataset.src) source.src = source.dataset.src
+        }
+        element.load()
+        obs.unobserve(element)
+    }
+}
+
 export async function loadDelay(target = null) {
     const observer = new IntersectionObserver(
         (entries, obs) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const element = entry.target
-                    const sources = element.querySelectorAll('source')
-                    sources.forEach(source => {
-                        if (source.dataset.src) {
-                            source.src = source.dataset.src
-                        }
-                    })
-                    element.load()
-                    obs.unobserve(element)
-                }
-            })
+            for (const entry of entries) loadDelayedVideo(entry, obs)
         },
         {
             rootMargin: '200px',

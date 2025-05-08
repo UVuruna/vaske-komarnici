@@ -17,97 +17,97 @@ export async function promoWidth() {
     const promoContainers = document.querySelectorAll('.promo')
     let maxWidth = 0
 
-    promoContainers.forEach(container => {
+    for (const container of promoContainers) {
         const width = container.offsetWidth
         if (width > maxWidth) {
             maxWidth = width
         }
-    })
-
-    promoContainers.forEach(container => {
+    }
+    for (const container of promoContainers) {
         container.style.width = `${maxWidth}px`
-    })
+    }
 }
 
 // <<<------------->>> MAIN FUNCTION <<<------------->>>
 
 export async function selectModel(version) {
-    await import('./catalogueText.js?v=' + version).then(module => {catalogueText = module.catalogueText})
+    await import('./catalogueText.js?v=' + version).then(module => {
+        catalogueText = module.catalogueText
+    })
 
     const seenPromos = new Set()
+    function changeModel(selector) {
+        // INITIALIZATION Configuring Interactive Text elements
+        const promo = selector.closest('.promo')
+        if (!seenPromos.has(promo)) {
+            const image = promo.querySelector('.promoImage')
+            const imageSRC = image.getAttribute('src')
+            catalogueText(findElements(getParts(imageSRC), selector))
+            seenPromos.add(promo)
+        }
 
-    // 42 Combination of text ( Rolled: 6, PliseDoor:12, PliseWindow:12, Fixed:12 )
+        selector.onclick = function () {
+            // VAR declaration
+            const promo = this.closest('.promo')
+            const image = promo.querySelector('.promoImage')
+            let imageSRC = image.getAttribute('src')
+            image.style.opacity = 0
 
-    document
-        .querySelectorAll('.selectFrame img, .selectFrame i')
-        .forEach(selector => {
-            // INITIALIZATION Configuring Interactive Text elements
-            const promo = selector.closest('.promo')
-            if (!seenPromos.has(promo)) {
-                const image = promo.querySelector('.promoImage')
-                const imageSRC = image.getAttribute('src')
-                const nameList = getParts(imageSRC)
-                catalogueText(findElements(nameList, selector))
-                seenPromos.add(promo)
-            }
+            setTimeout(() => {
+                // Normal Situation ==> Changing Selected Part (net,frame,sides)
+                if (this.tagName !== 'I') {
+                    const name = this.getAttribute('src').split('/').pop().split('.')[0] // White,Brown,Antracite,Light,Dark,Both,One
 
-            selector.onclick = function () {
-                // VAR declaration
-                const promo = this.closest('.promo')
-                const image = promo.querySelector('.promoImage')
-                let imageSRC = image.getAttribute('src')
-                image.style.opacity = 0
-
-                setTimeout(() => {
-                    // Normal Situation ==> Changing Selected Part (net,frame,sides)
-                    if (this.tagName !== 'I') {
-                        const name = this.getAttribute('src').split('/').pop().split('.')[0] // White,Brown,Antracite,Light,Dark,Both,One
-
-                        // This is if actual photo is without INSECT SCREEN
-                        if (!(imageSRC.includes('Light') || imageSRC.includes('Dark'))) {
-                            imageSRC =
-                                imageSRC.replace(`.webp?v=${version}`, '') +
-                                `_White_Light.webp?v=${version}`
-                        }
-
-                        const list = [sides, frame, net].find(list => list.includes(name))
-                        if (list) {
-                            const change = list.find(item => imageSRC.includes(item))
-                            if (change) {
-                                const newName = imageSRC.replace(change, name)
-                                image.src = newName
-
-                                // Configuring Interactive Text elements
-                                let nameList = getParts(newName)
-                                catalogueText(findElements(nameList, this))
-                            }
-                        }
-                        // Open Window PHOTO
-                    } else {
-                        const parts = imageSRC.split('/')
-                        const pop = parts.pop().split('.')[0].split('_')
-                        let change
-                        if (pop.includes('Rolled')) {
-                            change = pop[0]
-                        } else {
-                            change = pop.slice(0, 2).join('_')
-                        }
-                        const newSRC = parts.join('/')
-
-                        const newName = `${newSRC}/${change}.webp?v=${version}`
-                        image.src = newName
-
-                        // Configuring Interactive Text elements
-                        let nameList = getParts(newName)
-                        catalogueText(findElements(nameList, this))
+                    // This is if actual photo is without INSECT SCREEN
+                    if (!(imageSRC.includes('Light') || imageSRC.includes('Dark'))) {
+                        imageSRC =
+                            imageSRC.replace(`.webp?v=${version}`, '') +
+                            `_White_Light.webp?v=${version}`
                     }
 
-                    setTimeout(() => {
-                        image.style.opacity = 1
-                    }, 100)
-                }, 500)
-            }
-        })
+                    const list = [sides, frame, net].find(list => list.includes(name))
+                    if (list) {
+                        const change = list.find(item => imageSRC.includes(item))
+                        if (change) {
+                            const newName = imageSRC.replace(change, name)
+                            image.src = newName
+
+                            // Configuring Interactive Text elements
+                            catalogueText(findElements(getParts(newName), this))
+                        }
+                    }
+                    // Open Window PHOTO
+                } else {
+                    const parts = imageSRC.split('/')
+                    const pop = parts.pop().split('.')[0].split('_')
+                    let change
+                    if (pop.includes('Rolled')) {
+                        change = pop[0]
+                    } else {
+                        change = pop.slice(0, 2).join('_')
+                    }
+                    const newSRC = parts.join('/')
+
+                    const newName = `${newSRC}/${change}.webp?v=${version}`
+                    image.src = newName
+
+                    // Configuring Interactive Text elements
+                    catalogueText(findElements(getParts(newName), this))
+                }
+
+                setTimeout(() => {
+                    image.style.opacity = 1
+                }, 100)
+            }, 500)
+        }
+    }
+
+    // 42 Combination of text ( Rolled: 6, PliseDoor:12, PliseWindow:12, Fixed:12 )
+    for (const selector of document.querySelectorAll(
+        '.selectFrame img, .selectFrame i'
+    )) {
+        changeModel(selector)
+    }
 }
 
 function getParts(imageStr) {
@@ -119,22 +119,22 @@ function findElements(imageStringList, imageLink) {
     let returningDict = {}
     let mainType
 
-    imageStringList.forEach(str => {
-        for (const [element, strFinder] of Object.entries(TYPES)) {
-            if (strFinder.includes(str)) {
-                if (element === 'type') {
-                    mainType = str
-                }
+    function getImgParts(element, str) {
+        if (element === 'type') mainType = str
 
-                if (element !== 'sides') {
-                    returningDict[str] = containter.querySelector(`.${element}`)
-                } else {
-                    let extendedStr = [mainType, str].join('_')
-                    returningDict[extendedStr] = containter.querySelector(`.${element}`)
-                }
-            }
+        if (element !== 'sides') {
+            returningDict[str] = containter.querySelector(`.${element}`)
+        } else {
+            let extendedStr = [mainType, str].join('_')
+            returningDict[extendedStr] = containter.querySelector(`.${element}`)
         }
-    })
+    }
+
+    for (const str of imageStringList) {
+        for (const [element, strFinder] of Object.entries(TYPES)) {
+            if (strFinder.includes(str)) getImgParts(element, str)
+        }
+    }
 
     if (Object.keys(returningDict).length <= 2) {
         returningDict['empty'] = [
@@ -149,5 +149,6 @@ function findElements(imageStringList, imageLink) {
             containter.querySelector(`.netTitle`)
         ]
     }
+
     return returningDict
 }

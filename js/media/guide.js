@@ -22,7 +22,6 @@ export function showGuide(videoSRC, videoALT = '') {
     `);
     const video = guideDiv.querySelector('#guideVideo');
     video.style.border = `0.75rem ridge ${colors.primaryElement}`
-    video.style.boxShadow = `0.5rem 0.5rem 1rem ${colors.secondaryElement},-0.5rem -0.5rem 1rem ${colors.secondaryElement},0.5rem -0.5rem 1rem ${colors.secondaryElement},-0.5rem 0.5rem 1rem ${colors.secondaryElement}`
 
     // Auto close on end
     video.onended = () => {

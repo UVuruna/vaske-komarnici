@@ -45,6 +45,6 @@
   <section class="cta">
     <h3>Spremni za besplatno merenje?</h3>
     <p>Kontaktirajte nas odmah i rezervišite besplatno merenje za komarnike po vašoj meri!</p>
-    <button class="cta-button" onclick="window.location.href='<?php echo $basePath ?>kontakt/'">Kontaktirajte nas</button>
+    <button class="cta-button pulse" onclick="window.location.href='<?php echo $basePath ?>kontakt/'">Kontaktirajte nas</button>
   </section>
 </div>
