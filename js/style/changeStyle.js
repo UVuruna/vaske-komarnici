@@ -51,7 +51,7 @@ export async function buttonsStyle(BUTTONS, elementMain, elementSec, bodyMain) {
         const pulsing = button.classList.contains('pulse')
 
         buttonStyle(button)
-        
+
         button.addEventListener('mouseenter', () => {
             if (pulsing) button.classList.remove('pulse')
             buttoneHover(button)
@@ -92,7 +92,7 @@ export async function menuStyle(dropdownMenus, bgColor, secondaryColor, hoverBgC
 
         for (const element of Array.from(menu.children)) hoverBgColor(element, secondaryColor)
     }
-    
+
     for (const menuItem of dropdownMenus) {
         if (!menuItem.classList.contains('menu') || window.innerWidth <= 800) {
             androidMenu(menuItem)
@@ -120,7 +120,7 @@ export async function tablesStyle(bgColor, elementMain) {
         header.style.backgroundColor = elementMain
         header.style.color = '#ffffff'
     }
-    for (const borderFrame of document.querySelectorAll('.width, .height'))  borderFrame.style.border = `2px solid ${elementMain}`
+    for (const borderFrame of document.querySelectorAll('.width, .height')) borderFrame.style.border = `2px solid ${elementMain}`
 }
 
 // ----------> FORM STYLE <----------
@@ -139,8 +139,8 @@ export async function formStyle(bgColor, elementMain) {
 }
 
 // ----------> Call to ACTION <----------
-export function pulsingAnimation(time=2) {
-    const style = document.createElement('style');
+export function pulsingAnimation(time = 2) {
+    const style = document.createElement('style')
     style.innerHTML = `
         @keyframes pulse {
             0%, 100% {
@@ -155,6 +155,6 @@ export function pulsingAnimation(time=2) {
             animation: pulse ${time}s infinite;
             transition: transform 0.5s;
         }
-    `;
-    document.head.appendChild(style);
+    `
+    document.head.appendChild(style)
 }

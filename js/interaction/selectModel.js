@@ -30,7 +30,9 @@ export async function promoWidth() {
 
 // <<<------------->>> MAIN FUNCTION <<<------------->>>
 
-export async function selectModel(version) {
+export async function selectModel() {
+    const version = window.version
+
     await import('./catalogueText.js?v=' + version).then(module => {
         catalogueText = module.catalogueText
     })

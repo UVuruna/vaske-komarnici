@@ -4,6 +4,9 @@
     max-width: 100%;
     cursor: grab;
 }
+.carouselHeader {
+    position: relative;
+}
 
 .carousel-track {
     display: flex;

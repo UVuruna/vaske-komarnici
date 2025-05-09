@@ -30,7 +30,8 @@ function getX(e) {
     if (e.type.includes('mouse')) {
         return e.pageX
     } else {
-        return e.touches[0].clientX}
+        return e.touches[0].clientX
+    }
 }
 
 // Function to start dragging
@@ -65,32 +66,32 @@ function move(e) {
 // Function to end dragging
 // Reset the translateX value and apply inertia if necessary
 function end() {
-    isDragging = false;
-    prevTranslate = translateX;
+    isDragging = false
+    prevTranslate = translateX
 
     // Add inertia effect and move the carousel further based on the velocity
-    const momentumDistance = velocity * 200; // multiplier for more or less momentum
-    let target = translateX + momentumDistance;
+    const momentumDistance = velocity * 200 // multiplier for more or less momentum
+    let target = translateX + momentumDistance
     target = translateBorder(target)
 
-    track.style.transition = 'transform 0.5s ease-out';
-    track.style.transform = `translateX(${target}px)`;
-    prevTranslate = target;
+    track.style.transition = 'transform 0.5s ease-out'
+    track.style.transform = `translateX(${target}px)`
+    prevTranslate = target
 
     // Reset transition nakon animacije
     setTimeout(() => {
-        track.style.transition = 'none';
-    }, 500);
+        track.style.transition = 'none'
+    }, 500)
 }
 
 // Function for moving CAROUSEL with Mouse Wheel
 function onWheel(e) {
-    e.preventDefault();
-    translateX -= e.deltaY;
+    e.preventDefault()
+    translateX -= e.deltaY
     translateX = translateBorder(translateX)
 
-    prevTranslate = translateX;
-    track.style.transform = `translateX(${translateX}px)`;
+    prevTranslate = translateX
+    track.style.transform = `translateX(${translateX}px)`
 }
 
 updateMaxTranslate()

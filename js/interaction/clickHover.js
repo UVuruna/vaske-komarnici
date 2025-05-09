@@ -16,12 +16,7 @@ export async function mobileMenu() {
     })
 }
 
-export async function colorChange(
-    element,
-    primaryColor,
-    secondaryColor,
-    colorizeSVG
-) {
+export async function colorChange(element, primaryColor, secondaryColor, colorizeSVG) {
     const activate = () => colorizeSVG(element, secondaryColor)
     const deactivate = () => colorizeSVG(element, primaryColor)
 

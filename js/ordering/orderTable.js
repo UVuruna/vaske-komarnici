@@ -276,11 +276,13 @@ export async function orderTableInit(pricedict) {
             const isTotalRow = row.classList.contains('total')
             if (cells.length === 0) return
 
-            htmlTable += isTotalRow ? '<tr style="background-color: #d6d6d6;">' : '<tr>'
+            htmlTable += isTotalRow
+                ? '<tr style="background-color: #d6d6d6;">'
+                : '<tr>'
 
             cells.forEach(cell => {
-                htmlTable += isTotalRow 
-                    ? `<td colspan="2">${cell.textContent.trim()}</td>` 
+                htmlTable += isTotalRow
+                    ? `<td colspan="2">${cell.textContent.trim()}</td>`
                     : `<td>${cell.textContent.trim()}</td>`
             })
             htmlTable += '</tr>'

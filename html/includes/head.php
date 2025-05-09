@@ -98,6 +98,23 @@
     }
     </script>
 
+
+    <!-- Event snippet for AKCIJA - Besplatno Merenje i Montaža conversion page -->
+    <script>
+        function gtag_report_conversion(url) {
+            var callback = function () {
+                if (typeof(url) != 'undefined') {
+                window.location = url;
+                }
+            };
+            gtag('event', 'conversion', {
+                'send_to': 'AW-17002561060/SeSHCNvupcQaEKT8uas_',
+                'event_callback': callback
+            });
+            return false;
+        }
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WV3X5ZL398"></script>
     <script>

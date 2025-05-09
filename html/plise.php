@@ -6,7 +6,7 @@
 <div class="catalogue singleCatalogue">
     <header>
         <h2><?= $page !== 'katalog' ? $Title : 'Plise (harmonika) Komarnici' ?></h2>
-        <p><strong>Već od 40€ po kvadratnom metru</strong> – praktično i elegantno rešenje za zaštitu od insekata, bez kompromisa po pitanju funkcionalnosti ili izgleda.</p>
+        <p><strong>Već od <?= $cenovnik['Plise'] ?>€ po kvadratnom metru</strong> – praktično i elegantno rešenje za zaštitu od insekata, bez kompromisa po pitanju funkcionalnosti ili izgleda.</p>
     </header>
     <section class="text">
         <h3>Moderan dizajn i lako rukovanje – komarnik koji prati vaš ritam.</h3>

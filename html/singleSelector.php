@@ -60,11 +60,11 @@ function displayProduct(
 
     echo <<<HTML
     <div class='promoContainer'>
-        <section class="promo" style="position: relative">
+        <section class="promo">
             <div id="guide">
                 <button onclick="closeBtn();">&times;</button>
             </div>
-            <i onclick="showGuide('catalogue', 'slika kataloga')" class="fa-solid guide pulse"></i>
+            <i class="fa-solid guide pulse"></i>
             {$titleHTML}
             <div class='selectFrame'>
                 <i class='light border fa-solid ban' width='45' height='45'></i>

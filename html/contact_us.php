@@ -27,7 +27,7 @@ $alts = [
     <div id="guide">
         <button onclick="closeBtn();">&times;</button>
     </div>
-    <i onclick="showGuide('order', 'prezentacija slika sa terena')" class="fa-solid guide pulse"></i>
+    <i class="fa-solid guide pulse"></i>
 
     <section id="orderSelectorTable">
         <table class="light">

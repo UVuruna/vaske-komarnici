@@ -1,25 +1,31 @@
-export async function loadGlobals(updateManifest) {
+export async function loadGlobals() {
     let theme
 
     if (!sessionStorage.getItem('start')) {
         const Time = getTime()
         theme = chooseTheme(Time)
-       
-        updateManifest(
+
+        window.updateManifest(
             ThemeColors[theme]['primary'],
             ThemeColors[theme]['primaryElement']
         )
-        sessionStorage.setItem('theme',theme)
+        sessionStorage.setItem('theme', theme)
         sessionStorage.setItem('Time', Time)
         sessionStorage.setItem('start', true)
     } else {
         theme = sessionStorage.getItem('theme')
     }
     document.body.style.backgroundColor = ThemeColors[theme]['primary']
+    window.delayedCall = delayedCall
+}
 
-    return {
-        ThemeList: ThemeList,
-        ThemeColors: ThemeColors
+function delayedCall(func, args=[]) {
+    if (document.readyState !== 'loading') {
+        func(...args);
+    } else {
+        document.addEventListener('DOMContentLoaded', function () {
+            func(...args);
+        });
     }
 }
 
@@ -40,10 +46,9 @@ function getTime() {
     const currentDate = new Date()
     return currentDate.getHours() + currentDate.getMinutes() / 60
 }
+window.ThemeList = ['morning', 'noon', 'afternoon', 'night']
 
-const ThemeList = ['morning', 'noon', 'afternoon', 'night']
-
-const ThemeColors = {
+window.ThemeColors = {
     morning: {
         primary: '#36597c',
         secondary: '#cedce9',

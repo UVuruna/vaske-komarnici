@@ -205,7 +205,9 @@ function rgbToHEX({ r, g, b }) {
 function strToRGB(rgb) {
     let rgbDict = {}
     let RGB = rgb.slice(4, -1).split(',')
-    RGB.forEach((color, index) => {rgbDict[rgb[index]] = parseInt(color.trim())})
+    RGB.forEach((color, index) => {
+        rgbDict[rgb[index]] = parseInt(color.trim())
+    })
     return rgbDict
 }
 
@@ -279,7 +281,7 @@ function findStyles(SVG) {
 function findGradients(SVG, elementsDict, uniqueColors) {
     let color
     let index = 0
-    
+
     function getGradient(stop) {
         color = convertToHEX(stop.getAttribute('stop-color'))
         uniqueColors.add(color)
@@ -292,14 +294,14 @@ function findGradients(SVG, elementsDict, uniqueColors) {
         for (const stop of gradient.querySelectorAll('stop')) getGradient(stop)
     }
 
-    for (const gradient of SVG.querySelectorAll('linearGradient, radialGradient')) iterateElements(gradient)
+    for (const gradient of SVG.querySelectorAll('linearGradient, radialGradient'))
+        iterateElements(gradient)
 
     return [elementsDict, [...uniqueColors]]
 }
 
 // MAIN Function that changes from GRAY to COLORED
 export function colorizeSVG(SVG, color) {
-    let t0 = performance.now()
     const ID = SVG.id
 
     if (!(ID in svgDICT)) {
@@ -337,7 +339,6 @@ export function colorizeSVG(SVG, color) {
             }
         }
     }
-    for (const [key, element] of Object.entries(elements)) colorizeElement(element)
-
-    //console.log(`Colorize SVG executed in ${performance.now()-t0} ms`)
+    for (const [key, element] of Object.entries(elements))
+        colorizeElement(element)
 }

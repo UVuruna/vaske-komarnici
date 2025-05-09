@@ -4,7 +4,6 @@ const prevBtn = document.querySelector('.lightbox .prev')
 let currentSRC
 let mediaList = []
 
-
 nextBtn.addEventListener('click', () => {
     const currentIndex = mediaList.indexOf(currentSRC)
     const nextIndex = (currentIndex + 1) % mediaList.length

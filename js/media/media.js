@@ -1,7 +1,7 @@
 const videos = document.querySelectorAll('.video-loop')
 
 function videoLoopSetup(video) {
-    video.addEventListener("loadedmetadata", () => {
+    video.addEventListener('loadedmetadata', () => {
         video.addEventListener('timeupdate', () => {
             if (video.currentTime >= video.duration - 0.1) {
                 video.currentTime = 0
@@ -43,8 +43,11 @@ export async function videoPlay() {
     }
 }
 
-export async function loadVideo(version, basePath, videoID) {
+export async function loadVideo(videoID) {
+    const version = window.version
+    const basePath = window.path
     const videoElement = document.getElementById(videoID)
+    
     if (videoID === 'showcase') {
         if (window.innerWidth >= 1000) {
             videoID = videoID + '_PC'
@@ -88,6 +91,5 @@ export async function loadDelay(target = null) {
     } else {
         const carouselVideo = document.querySelectorAll('.lazy-media')
         carouselVideo.forEach(el => observer.observe(el))
-
     }
 }

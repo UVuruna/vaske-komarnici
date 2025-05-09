@@ -6,7 +6,7 @@
 <div class="catalogue singleCatalogue">
     <header>
         <h2><?= $page !== 'katalog' ? $Title : 'Rolo Komarnici' ?></h2>
-        <p><strong>Već od 35€ po kvadratnom metru</strong> – praktična i elegantna zaštita od insekata, bez stalnog zatvaranja ili skidanja.</p>
+        <p><strong>Već od <?= $cenovnik['Rolled'] ?>€ po kvadratnom metru</strong> – praktična i elegantna zaštita od insekata, bez stalnog zatvaranja ili skidanja.</p>
     </header>
     <section class="text">
         <h3>Funkcionalnost koja se ne vidi – rolo sistem za maksimalnu udobnost.</h3>
