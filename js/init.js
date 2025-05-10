@@ -31,19 +31,8 @@ async function order(version, priceDict) {
     showPopup()
 }
 
-function removeLoadingScreen() {
-    const loader = document.getElementById("loader");
-    loader.style.transition = "opacity 0.5s ease";
-    loader.style.opacity = "0";
-    
-    setTimeout(() => {
-        loader.style.display = "none";
-    }, 500);
-}
-
 export async function init(version, path, initDict) {
     window.time = performance.now()
-    window.removeLoadingScreen = removeLoadingScreen
     window.path = path
     window.version = version
     

@@ -30,7 +30,7 @@ export async function settingThemeOnload() {
             (formStyle = module.formStyle),
             (pulsingAnimation = module.pulsingAnimation)
     })
-    settingTheme(sessionStorage.getItem('theme'))
+    settingTheme(sessionStorage.getItem('theme'), true)
 
     if (localStorage.getItem('version') !== version)
         localStorage.setItem('version', version)
@@ -51,7 +51,7 @@ export async function themeCycle() {
     sessionStorage.setItem('theme', newTheme)
 }
 
-export async function settingTheme(currentTheme) {
+export async function settingTheme(currentTheme, load=false) {
     const {
         primaryElement: elementMain,
         secondaryElement: elementSec,
@@ -105,6 +105,19 @@ export async function settingTheme(currentTheme) {
         tablesStyle(bodySec, elementMain),
         formStyle(bodySec, elementMain)
     ])
-    console.log(`Page loaded in: ${Math.floor(performance.now()-window.time)} ms`)
-    window.removeLoadingScreen()
+    
+    if (load) {
+        console.log(`Page loaded in: ${Math.floor(performance.now()-window.time)} ms`)
+        removeLoadingScreen()  
+    }
+}
+
+function removeLoadingScreen() {
+    const loader = document.getElementById("loader");
+    loader.style.transition = "opacity 0.5s ease";
+    loader.style.opacity = "0";
+    
+    setTimeout(() => {
+        loader.remove();
+    }, 500);
 }

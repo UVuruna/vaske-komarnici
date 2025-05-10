@@ -52,18 +52,18 @@ window.ThemeColors = {
     morning: {
         primary: '#36597c',
         secondary: '#cedce9',
-        primaryElement: '#437118',
-        secondaryElement: '#90a955'
-    },
-    noon: {
-        primary: '#4a4c4a',
-        secondary: '#dfdedd',
         primaryElement: '#b28d34',
         secondaryElement: '#f0c42d'
     },
+    noon: {
+        primary: '#414833',
+        secondary: '#dfdedd',
+        primaryElement: '#437118',
+    secondaryElement: '#90a955'
+    },
     night: {
-        primary: '#5c462d',
-        secondary: '#fff4e5',
+        primary: '#17263d',
+        secondary: '#bdc4d4',
         primaryElement: '#840000',
         secondaryElement: '#ba4c5b'
     },

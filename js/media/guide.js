@@ -18,7 +18,7 @@ export async function initGuide(Theme) {
             showGuide('slideshow', 'tabela za naručivanje komarnika')
         }
     }
-    for (const guide of document.querySelectorAll('#order .guide')) {
+    for (const guide of document.querySelectorAll('#contact_us .guide')) {
         guide.onclick = function () {
             showGuide('order', 'prezentacija slika sa terena')
         }
