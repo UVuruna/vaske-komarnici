@@ -45,7 +45,19 @@
     <!-- ADSense -->
     <meta name="google-adsense-account" content="ca-pub-5692012727130730">
 
+    <!-- Preload LOADER and LOGO -->
+    <link rel="preload" href="<?php echo $basePath ?>css/loader.css?v=<?php echo $version ?>" as="style">
+    <link rel="preload" href="<?php echo $basePath ?>img/other/mosquito.svg" as="image">
+    <link rel="preload" href="<?php echo $basePath ?>img/other/fly.svg" as="image">
+    <link rel="preload" href="<?php echo $basePath ?>img/logo/logo.svg" as="image">
+    <!-- Preload FONTS -->
+    <link rel="preload" href="<?php echo $basePath ?>fonts/Poppins-Regular-subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="<?php echo $basePath ?>fonts/Poppins-Bold-subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="<?php echo $basePath ?>fonts/fa-solid-subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+
     <!-- CSS Styles -->
+    <link rel="stylesheet" href="<?php echo $basePath ?>css/loader.css?v=<?php echo $version ?>"/>
+
     <link rel="stylesheet" href="<?php echo $basePath ?>css/root.css?v=<?php echo $version ?>"/>
     <link rel="stylesheet" href="<?php echo $basePath ?>css/fa.css?v=<?php echo $version ?>"/>
     <link rel="stylesheet" href="<?php echo $basePath ?>css/header.css?v=<?php echo $version ?>"/>

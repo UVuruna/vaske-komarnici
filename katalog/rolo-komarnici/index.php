@@ -18,6 +18,7 @@
 <?php include "{$basePath}html/includes/head.php"; ?>
 
 <body>
+    <?php include "{$basePath}html/includes/loader.php"; ?>
     <?php include "{$basePath}html/includes/header.php"; ?>
     <main>
         <?php include "{$basePath}html/rolled.php"; ?>

@@ -6,7 +6,8 @@
     font-weight: 900;
     font-style: normal;
     font-display: block;
-    src: url("../fonts/fa-solid-subset.woff2") format("woff2")
+    src: url("../fonts/fa-solid-subset.woff2") format("woff2");
+    font-display: swap;
   }
   
   /* Osnovne deklaracije za font awesome */

@@ -54,14 +54,12 @@
 
 .lightbox .next {
     position: absolute;
-    top: 50%;
-    right: 30px;
+    top: 50%; right: 30px;
 }
 
 .lightbox .prev {
     position: absolute;
-    top: 50%;
-    left: 30px;
+    top: 50%; left: 30px;
 }
 
 .lightbox button {
@@ -72,4 +70,9 @@
     &:hover {
         opacity: 1;
     }
+}
+
+.lightbox .close {
+    position: absolute;
+    top: 20px; right: 30px;
 }

@@ -23,7 +23,7 @@
 ?>
 
 <header class="carouselHeader">
-    <div id="guide">
+    <div id="guide" style="display: none;">
         <button onclick="closeBtn();">&times;</button>
     </div>
     <i class="fa-solid guide pulse"></i>
@@ -53,7 +53,7 @@
 <div id="lightbox" class="lightbox">
     <img id="lightbox-image" src="" alt="">
     <video id="lightbox-video" src=""></video>
-    <button onclick="this.parentElement.style.display='none'" style="position: absolute; top: 20px; right: 30px;">&times;</button>
+    <button onclick="this.parentElement.style.display='none'">&times;</button>
     <button class="next">&gt;</button>
     <button class="prev">&lt;</button>
 </div>

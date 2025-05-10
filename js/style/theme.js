@@ -34,7 +34,6 @@ export async function settingThemeOnload() {
 
     if (localStorage.getItem('version') !== version)
         localStorage.setItem('version', version)
-    console.log(`Page loaded in: ${Math.floor(performance.now()-window.time)} ms`)
 }
 
 export async function themeCycle() {
@@ -106,4 +105,6 @@ export async function settingTheme(currentTheme) {
         tablesStyle(bodySec, elementMain),
         formStyle(bodySec, elementMain)
     ])
+    console.log(`Page loaded in: ${Math.floor(performance.now()-window.time)} ms`)
+    window.removeLoadingScreen()
 }
