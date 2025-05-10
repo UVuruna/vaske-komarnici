@@ -53,7 +53,7 @@
 <div id="lightbox" class="lightbox">
     <img id="lightbox-image" src="" alt="">
     <video id="lightbox-video" src=""></video>
-    <button onclick="this.parentElement.style.display='none'">&times;</button>
+    <button class="close" onclick="this.parentElement.style.display='none'">&times;</button>
     <button class="next">&gt;</button>
     <button class="prev">&lt;</button>
 </div>
