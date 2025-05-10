@@ -116,7 +116,7 @@
 
     #MENU {
         display: flex;
-        height: 90%;
+        height: 110%;
         width: auto;
     }
 
@@ -131,7 +131,7 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        top: 5rem;
+        top: 4rem;
         box-shadow: 0.75em 0.5em 5px rgba(80, 80, 80, 0.8);
         border-radius: 2em;
         gap: 0;
