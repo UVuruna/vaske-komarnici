@@ -48,8 +48,9 @@
 #lightbox-image,
 #lightbox-video {
     display: none;
-    height: 95vh;
-    width: auto;
+    max-height: 95vh;
+    max-width: 95vw;
+    object-fit: contain;
 }
 
 .lightbox .next {
