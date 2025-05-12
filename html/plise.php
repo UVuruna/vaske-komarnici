@@ -1,11 +1,10 @@
 <?php
     include_once 'singleSelector.php';
-    $Title = str_replace(" | ", "<br>", $title);
 ?>
 
 <div class="catalogue singleCatalogue">
     <header>
-        <h2><?= $page !== 'katalog' ? $Title : 'Plise (harmonika) Komarnici' ?></h2>
+        <h2><?= $page !== 'katalog' ? 'Najpovoljnija Ponuda' : 'Plise Komarnici' ?></h2>
         <p><strong>Već od <?= $cenovnik['Plise'] ?>€ po kvadratnom metru</strong> – praktično i elegantno rešenje za zaštitu od insekata, bez kompromisa po pitanju funkcionalnosti ili izgleda.</p>
     </header>
     <section class="text">

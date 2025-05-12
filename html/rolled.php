@@ -1,11 +1,10 @@
 <?php
     include_once 'singleSelector.php';
-    $Title = str_replace(" | ", "<br>", $title);
 ?>
 
 <div class="catalogue singleCatalogue">
     <header>
-        <h2><?= $page !== 'katalog' ? $Title : 'Rolo Komarnici' ?></h2>
+        <h2><?= $page !== 'katalog' ? 'Najpovoljnija Ponuda' : 'Rolo Komarnici' ?></h2>
         <p><strong>Već od <?= $cenovnik['Rolled'] ?>€ po kvadratnom metru</strong> – praktična i elegantna zaštita od insekata, bez stalnog zatvaranja ili skidanja.</p>
     </header>
     <section class="text">

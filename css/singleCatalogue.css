@@ -29,4 +29,7 @@
     .singleCatalogue .guide {
         right: 0;
     }
+    .promoContainer {
+        flex-direction: column-reverse;
+    }
 }

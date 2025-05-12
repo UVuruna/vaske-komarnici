@@ -31,11 +31,11 @@ function delayedCall(func, args=[]) {
 
 function chooseTheme(Time) {
     switch (true) {
-        case Time >= 4 && Time < 12:
+        case Time >= 4 && Time < 10:
             return 'morning'
-        case Time >= 12 && Time < 20:
+        case Time >= 10 && Time < 16:
             return 'noon'
-        case Time >= 20 && Time < 24:
+        case Time >= 16 && Time < 22:
             return 'afternoon'
         default:
             return 'night'
@@ -59,15 +59,15 @@ window.ThemeColors = {
         primary: '#414833',
         secondary: '#dfdedd',
         primaryElement: '#437118',
-    secondaryElement: '#90a955'
+        secondaryElement: '#90a955'
     },
-    night: {
+    afternoon: {
         primary: '#17263d',
         secondary: '#bdc4d4',
         primaryElement: '#840000',
         secondaryElement: '#ba4c5b'
     },
-    afternoon: {
+    night: {
         primary: '#524e53',
         secondary: '#d5d3e1',
         primaryElement: '#7151a9',

@@ -19,7 +19,7 @@ $alts = [
 
 <header>
     <h1><?= $title ?></h1>
-    <h3>Spremni za besplatno merenje?</h3>
+    <h2>Spremni za besplatno merenje?</h2>
     <p><strong>Napomena</strong>: Prikazane cene su okvirne i informativne prirode. Konačna cena može se razlikovati u zavisnosti od specifičnih zahteva i dimenzija. Prilagođavanje proizvoda je moguće u dogovoru sa kupcem.</p>
 </header>
 

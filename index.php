@@ -14,15 +14,14 @@
 <!DOCTYPE html>
 <html lang="sr">
     <?php include "{$basePath}html/includes/head.php"; ?>
-
     <body>
         <?php include "{$basePath}html/includes/loader.php"; ?>
-        <?php include "{$basePath}html/includes/header.php"; ?>
         <main>
+            <?php include "{$basePath}html/includes/header.php"; ?>
             <?php include "{$basePath}html/about_us.php"; ?>
             <?php include "{$basePath}html/carousel.php"; ?>
             <?php include "{$basePath}html/catalogue_home.php"; ?>
+            <?php include "{$basePath}html/includes/footer.php"; ?>
         </main>
-        <?php include "{$basePath}html/includes/footer.php"; ?>
     </body>
 </html>

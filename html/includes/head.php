@@ -110,14 +110,27 @@
     }
     </script>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17002561060"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    <!-- Event snippet for AKCIJA - Besplatno Merenje i Montaža conversion page -->
+        // Google Ads konverzije
+        gtag('config', 'AW-17002561060');
+
+        // Google Analytics
+        gtag('config', 'G-WV3X5ZL398');
+    </script>
+
+    <!-- Event snippet for AKCIJA - Besplatno Merenje i Montaža -->
     <script>
         function gtag_report_conversion(url) {
             var callback = function () {
                 if (typeof(url) != 'undefined') {
                 window.location = url;
-                }
+            }
             };
             gtag('event', 'conversion', {
                 'send_to': 'AW-17002561060/SeSHCNvupcQaEKT8uas_',
@@ -127,16 +140,6 @@
         }
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-WV3X5ZL398"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-WV3X5ZL398');
-    </script>
-    
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5692012727130730" crossorigin="anonymous"></script>
 </head>

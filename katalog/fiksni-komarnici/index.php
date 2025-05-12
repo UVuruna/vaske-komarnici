@@ -13,15 +13,17 @@
 
 <!DOCTYPE html>
 <html lang="sr">
-<?php include "{$basePath}html/includes/head.php"; ?>
-
-<body>
-    <?php include "{$basePath}html/includes/loader.php"; ?>
-    <?php include "{$basePath}html/includes/header.php"; ?>
-    <main>
-        <?php include "{$basePath}html/fixed.php"; ?>
-    </main>
-    <?php include "{$basePath}html/includes/footer.php"; ?>
-</body>
-
+    <?php include "{$basePath}html/includes/head.php"; ?>
+    <body>
+        <?php include "{$basePath}html/includes/loader.php"; ?> 
+        <main>
+            <?php include "{$basePath}html/includes/header.php"; ?>
+            <header>
+                <h1><?= $title ?></h1>
+                <p>Izaberite idealan model za vaš prostor – fiksni komarnici svih vrsta i boja, na jednom mestu. Pronađite rešenje koje odgovara vašim potrebama.</p>
+            </header>
+            <?php include "{$basePath}html/fixed.php"; ?>
+            <?php include "{$basePath}html/includes/footer.php"; ?>
+        </main> 
+    </body>
 </html>

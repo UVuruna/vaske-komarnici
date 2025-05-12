@@ -11,7 +11,7 @@
     $companyPhoneLocal  = "063 105-1331";
     $companyPhoneGlobal = "+381 63 105 1331";
 
-    $version = "1.372";
+    $version = "1.379";
 
     $title = match ($page) {
         'o_nama' => "Ko smo mi?",

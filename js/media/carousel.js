@@ -86,7 +86,6 @@ function end() {
 
 // Function for moving CAROUSEL with Mouse Wheel
 function onWheel(e) {
-    e.preventDefault()
     translateX -= e.deltaY
     translateX = translateBorder(translateX)
 

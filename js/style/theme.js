@@ -30,7 +30,7 @@ export async function settingThemeOnload() {
             (formStyle = module.formStyle),
             (pulsingAnimation = module.pulsingAnimation)
     })
-    settingTheme(sessionStorage.getItem('theme'), true)
+    settingTheme(sessionStorage.getItem('theme'))
 
     if (localStorage.getItem('version') !== version)
         localStorage.setItem('version', version)
@@ -51,73 +51,47 @@ export async function themeCycle() {
     sessionStorage.setItem('theme', newTheme)
 }
 
-export async function settingTheme(currentTheme, load=false) {
+export async function settingTheme(currentTheme) {
     const {
         primaryElement: elementMain,
         secondaryElement: elementSec,
         primary: bodyMain,
         secondary: bodySec
     } = window.ThemeColors[currentTheme]
+    window.elementMain = elementMain
 
     const LOGO = document.getElementById('LOGO')
     const MENU = document.getElementById('MENU')
 
-    await Promise.all([
-        // ----------> Pulsing Actions <----------
-        pulsingAnimation(),
-        // ----------> Set Color LOGO & MENU <----------
-        colorizeSVG(LOGO, elementMain, elementSec),
-        colorizeSVG(MENU, elementMain, elementSec),
-        // ----------> Hover effect LOGO & MENU <----------
-        colorChange(LOGO, elementMain, elementSec, colorizeSVG),
-        colorChange(MENU, elementMain, elementSec, colorizeSVG),
-        // ----------> Configure LIGHT BG frames <----------
-        lightFrame(
-            document.querySelectorAll('.light'),
-            elementMain,
-            elementSec,
-            bodyMain,
-            bodySec
-        ),
-        // ----------> Configure all BUTTONS <----------
-        buttonsStyle(
-            document.querySelectorAll('button, .guide'),
-            elementMain,
-            elementSec,
-            bodyMain
-        ),
-        // ----------> Configure all LIST STRONG Items <----------
-        coloredTextStyle(
-            document.querySelectorAll('li strong,  .categoryText'),
-            hoverTxtColor,
-            elementMain,
-            elementSec,
-            currentTheme
-        ),
-        // ----------> Navigation Dropdown Menu <----------
-        menuStyle(
-            document.querySelectorAll('#header ul'),
-            bodyMain,
-            elementMain,
-            hoverBgColor
-        ),
-        // ----------> Table & Form <----------
-        tablesStyle(bodySec, elementMain),
-        formStyle(bodySec, elementMain)
-    ])
-    
-    if (load) {
-        console.log(`Page loaded in: ${Math.floor(performance.now()-window.time)} ms`)
-        removeLoadingScreen()  
-    }
-}
+    const promises = [];
 
-function removeLoadingScreen() {
-    const loader = document.getElementById("loader");
-    loader.style.transition = "opacity 0.5s ease";
-    loader.style.opacity = "0";
-    
-    setTimeout(() => {
-        loader.remove();
-    }, 500);
+    // ----------> Pulsing Actions <----------
+    promises.push(pulsingAnimation()) ; if (window.debug) promises.push(window.operationOrder(pulsingAnimation))
+
+    // ----------> Set Color LOGO & MENU <----------
+    promises.push(colorizeSVG(LOGO, elementMain, elementSec)) ; if (window.debug) promises.push(window.operationOrder(colorizeSVG))
+    promises.push(colorizeSVG(MENU, elementMain, elementSec)) ; if (window.debug) promises.push(window.operationOrder(colorizeSVG))
+
+    // ----------> Hover effect LOGO & MENU <----------
+    promises.push(colorChange(LOGO, elementMain, elementSec, colorizeSVG)) ; if (window.debug) promises.push(window.operationOrder(colorChange))
+    promises.push(colorChange(MENU, elementMain, elementSec, colorizeSVG)) ; if (window.debug) promises.push(window.operationOrder(colorChange))
+
+    // ----------> Configure LIGHT BG frames <----------
+    promises.push(lightFrame(document.querySelectorAll('.light'),elementMain,elementSec,bodyMain,bodySec)) ; if (window.debug) promises.push(window.operationOrder(lightFrame))
+
+    // ----------> Configure all BUTTONS <----------
+    promises.push(buttonsStyle(document.querySelectorAll('button, .guide'),elementMain,elementSec,bodyMain)) ; if (window.debug) promises.push(window.operationOrder(buttonsStyle))
+
+    // ----------> Configure all LIST STRONG Items <----------
+    promises.push(coloredTextStyle(document.querySelectorAll('li strong,  .categoryText'),hoverTxtColor,elementMain,elementSec,currentTheme)) ; if (window.debug) promises.push(window.operationOrder(coloredTextStyle))
+
+    // ----------> Navigation Dropdown Menu <----------
+    promises.push(menuStyle(document.querySelectorAll('#header ul'),bodyMain,elementMain,hoverBgColor)) ; if (window.debug) promises.push(window.operationOrder(menuStyle))
+
+    // ----------> Table & Form <----------
+    promises.push(tablesStyle(bodySec, elementMain)) ; if (window.debug) promises.push(window.operationOrder(tablesStyle))
+    promises.push(formStyle(bodySec, elementMain)) ; if (window.debug) promises.push(window.operationOrder(formStyle))
+
+    // Kada su sve funkcije dodate u promises, izvrši ih pomoću Promise.all
+    await Promise.all(promises)
 }

@@ -47,6 +47,8 @@ main {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  opacity: 0;
+  background-color: inherit;
 }
 
 button {

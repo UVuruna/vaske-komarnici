@@ -96,7 +96,6 @@ export async function selectModel() {
                     // Configuring Interactive Text elements
                     catalogueText(findElements(getParts(newName), this))
                 }
-
                 setTimeout(() => {
                     image.style.opacity = 1
                 }, 100)
@@ -105,11 +104,7 @@ export async function selectModel() {
     }
 
     // 42 Combination of text ( Rolled: 6, PliseDoor:12, PliseWindow:12, Fixed:12 )
-    for (const selector of document.querySelectorAll(
-        '.selectFrame img, .selectFrame i'
-    )) {
-        changeModel(selector)
-    }
+    for (const selector of document.querySelectorAll('.selectFrame img, .selectFrame i')) changeModel(selector)
 }
 
 function getParts(imageStr) {

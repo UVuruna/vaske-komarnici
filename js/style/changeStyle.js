@@ -68,7 +68,7 @@ export async function coloredTextStyle(coloredTextItems, hoverTxtColor, elementM
     function coloredText(item) {
         item.style.color = elementMain
         item.style.fontSize = '1.25rem'
-        item.style.webkitTextStroke = (currentTheme === 'noon') ? '0.5px #222222' : '0.75px #222222'
+        item.style.webkitTextStroke = '0.75px #222222'
 
     }
 

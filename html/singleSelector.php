@@ -90,18 +90,20 @@ function displayProduct(
             {$saznajVišeHtml}
         </section>
         <section class="explanation">
-            <h2 class="title">{$altText}</h2>
-            <div>
-                <p class="type"></p>
-                <p class="sides"></p>
-            </div>
-            <div>
-                <h3 class="frameTitle">Boja rama</h3>
-                <p class="frame"></p>
-            </div>
-            <div>
-                <h3 class="netTitle">Boja mreže</h3>
-                <p class="net"></p>
+            <div class="light">
+                <h2>{$altText}</h2>
+                <div>
+                    <p class="type"></p>
+                    <p class="sides"></p>
+                </div>
+                <div>
+                    <h3 class="frameTitle">Boja rama</h3>
+                    <p class="frame"></p>
+                </div>
+                <div>
+                    <h3 class="netTitle">Boja mreže</h3>
+                    <p class="net"></p>
+                </div>
             </div>
         </section>
     </div>
