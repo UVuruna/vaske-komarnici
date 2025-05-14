@@ -23,8 +23,8 @@ export async function colorChange(element, primaryColor, secondaryColor, coloriz
     element.addEventListener('mouseenter', activate) // desktop hover
     element.addEventListener('mouseleave', deactivate)
 
-    element.addEventListener('touchstart', activate) // mobile touch
-    element.addEventListener('touchend', deactivate)
+    element.addEventListener('touchstart', activate, { passive: true }) // mobile touch
+    element.addEventListener('touchend', deactivate, { passive: true })
 }
 
 export function hoverBgColor(element, color) {

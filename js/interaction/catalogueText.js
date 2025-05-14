@@ -15,12 +15,14 @@ const textDict = {
     PliseWindow_Both: "<strong>Obostrani plise komarnik</strong> za prozor zatvara dvokrilne prozore sa obe strane. Kompaktan i moderan, omogućava lako korišćenje i potpunu zaštitu.",
     Rolled: "<strong>Rolo komarnik</strong> se spušta odozgo nadole uz jednostavan sistem pomoću kanapa. Kompaktan kada se sklopi, pruža zaštitu i uklapa se u moderne enterijere uz minimalno održavanje."
 }
+window.elementMain = window.ThemeColors[window.theme]['primaryElement']
 
-function strongStyle(strongText) {
+window.explanationStyle = async function(strongText) {
     strongText.style.fontSize = '1.1rem'
-    strongText.style.color = window.elementMain
+    strongText.style.color = elementMain
     strongText.style.webkitTextStroke = '0.5px #222222'
 }
+
 function changeText(text, element) {
     if (text !== 'empty') {
         if (text !== 'titles') {
@@ -34,7 +36,7 @@ function changeText(text, element) {
                 element.style.animation = 'none'
                 element.offsetHeight // Trik da resetuje animaciju
                 element.style.animation = 'slide-in 0.5s ease-out forwards'
-                strongStyle(element.querySelector('strong'))
+                explanationStyle(element.querySelector('strong'))
             }
         } else {
             element.forEach(el => {el.style.display = ''})

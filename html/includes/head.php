@@ -1,24 +1,24 @@
 <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="theme-color" content="#646464">
-    <meta name="background-color" content="#646464">
+    <meta name="theme-color" content="<?php echo $primaryElement ?>">
+    <meta name="background-color" content="<?php echo $primary ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta property="og:url" content="<?php echo htmlspecialchars($fullUrl); ?>"/>
+    <meta property="og:url" content="<?php echo htmlspecialchars($fullUrl) ?>"/>
     <meta name="language" content="sr" />
     <meta name="geo.region" content="RS" />
     <meta name="geo.placename" content="Beograd" />
 
-    <title><?php echo htmlspecialchars(str_replace('<br>', ' ', $title)); ?></title>
+    <title><?php echo htmlspecialchars(str_replace('<br>', ' ', $title)) ?></title>
 
     <meta name="description" content="Izrada i montaža rolo, plisiranih i fiksnih komarnika po meri u Beogradu. Brza ugradnja i servis komarnika - zamena mreže i kanapa."/>
     <meta name="keywords" content="komarnici po meri, izrada komarnika, montaža komarnika, rolo komarnici, plise komarnici, fiksni komarnici, komarnici Beograd, ugradnja komarnika, popravka komarnika, zamena kanapa, zamena mreže, servis komarnika Beograd"/>
     <meta name="author" content="<?php echo $developerName ?>"/>
 
-    <link rel="canonical" href="<?php echo htmlspecialchars($fullUrl); ?>"/>
+    <link rel="canonical" href="<?php echo htmlspecialchars($fullUrl) ?>"/>
 
     <!-- Open Graph za Google i društvene mreže -->
-    <meta property="og:title" content="<?php echo htmlspecialchars($title); ?>"/>
+    <meta property="og:title" content="<?php echo htmlspecialchars($title) ?>"/>
     <meta property="og:description" content="Izrada i montaža rolo, plisiranih i fiksnih komarnika po meri u Beogradu. Brza ugradnja i servis komarnika - zamena mreže i kanapa."/>
     <meta property="og:image" content="https://vaske-komarnici.com/img/logo/preview.jpg"/>
     <meta property="og:type" content="website"/>
@@ -36,7 +36,6 @@
     <link rel="apple-touch-icon" href="<?php echo $basePath ?>img/logo/apple-touch-icon.png?v=<?php echo $version ?>"  type="image/png"/>
     
     <!-- Other META -->
-    <meta name="theme-color" content="#808080"/>
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -45,12 +44,10 @@
     <!-- ADSense -->
     <meta name="google-adsense-account" content="ca-pub-5692012727130730">
 
-    <!-- Preload LOADER and LOGO -->
-    <link rel="preload" href="<?php echo $basePath ?>css/loader.css?v=<?php echo $version ?>" as="style">
+    <!-- Preload LOADER and FONTS -->
     <link rel="preload" href="<?php echo $basePath ?>img/other/mosquito.svg" as="image">
     <link rel="preload" href="<?php echo $basePath ?>img/other/fly.svg" as="image">
     <link rel="preload" href="<?php echo $basePath ?>img/logo/logo.svg" as="image">
-    <!-- Preload FONTS -->
     <link rel="preload" href="<?php echo $basePath ?>fonts/Poppins-Regular-subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="<?php echo $basePath ?>fonts/Poppins-Bold-subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" href="<?php echo $basePath ?>fonts/fa-solid-subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
@@ -63,7 +60,7 @@
     <link rel="stylesheet" href="<?php echo $basePath ?>css/header.css?v=<?php echo $version ?>"/>
     <?php if (! empty($styles)) {
             foreach ($styles as $css) {
-                echo "<link rel='stylesheet' href='{$basePath}{$css}?v={$version}'/>";
+                echo "<link rel='stylesheet' href='{$basePath}css/{$css}.css?v={$version}'/>";
             }
     }?>
     <link rel="stylesheet" href="<?php echo $basePath ?>css/footer.css?v=<?php echo $version ?>" media="print" onload="this.media='all'"/>
@@ -71,13 +68,14 @@
 
     <!-- Loading INIT JavaScript -->
     <script type="module">
-        const version = '<?php echo $version; ?>';
+        const version = '<?php echo $version ?>';
         const path = '<?php echo $basePath ?>';
+        const config =  <?php echo json_encode($config) ?>;
         const initDict =  <?php echo json_encode($init) ?>;
 
-        import(`${path}js/init.js?v=${version}`).then(module => {
-            module.init(version, path, initDict)
-        });
+        const {init} = await import(`${path}js/init.js?v=${version}`)
+        init(version, path, config, initDict)
+
     </script>
 
     <!-- Structured Data (JSON‑LD) -->
@@ -109,7 +107,6 @@
         ]
     }
     </script>
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17002561060"></script>
     <script>
@@ -123,7 +120,6 @@
         // Google Analytics
         gtag('config', 'G-WV3X5ZL398');
     </script>
-
     <!-- Event snippet for AKCIJA - Besplatno Merenje i Montaža -->
     <script>
         function gtag_report_conversion(url) {
@@ -139,7 +135,6 @@
             return false;
         }
     </script>
-
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5692012727130730" crossorigin="anonymous"></script>
 </head>

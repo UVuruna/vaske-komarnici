@@ -5,22 +5,10 @@
     <i class="fa-solid guide pulse"></i>
 
     <span class="logo-frame" onclick="themeCycle('<?php echo $basePath ?>')">  
-        <?php 
-            $logoSVG = str_replace(
-                '<svg ', 
-                "<svg width='70' height='70' ", 
-                $logoSVG);
-            echo $logoSVG;
-        ?>
+        <?php echo file_get_contents("{$basePath}img/logo/logo.svg") ?>
     </span>
     <div class="pages_frame">
-        <?php
-            $dropdownMenu = str_replace(
-                '<svg ', 
-                "<svg width='70' height='70' ", 
-                $dropdownMenu);
-            echo $dropdownMenu
-        ?>
+        <?php echo file_get_contents("{$basePath}img/other/dropdown-menu.svg") ?>
         <nav>
             <ul class="menu" role="menu">
                 <li role="menuitem"><a href="<?php echo $basePath ?>" aria-label="Početna strana"><i class="fa-solid home" style="transform: scale(1.5);"></i></a></li>

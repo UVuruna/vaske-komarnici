@@ -1,4 +1,4 @@
-// ----------> LIGHT BG <----------
+
 export async function lightFrame(LightFrames, elementMain, elementSec, bodyMain, bodySec) {
 
     function borderFrames(frame) {
@@ -22,7 +22,7 @@ export async function lightFrame(LightFrames, elementMain, elementSec, bodyMain,
         if (frame.tagName !== 'DIV' || frame.classList.contains('border')) borderFrames(frame)
     }
 }
-// ----------> GLOBALS.BUTTONS <----------
+
 export async function buttonsStyle(BUTTONS, elementMain, elementSec, bodyMain) {
 
     function buttonStyle(button) {
@@ -62,8 +62,8 @@ export async function buttonsStyle(BUTTONS, elementMain, elementSec, bodyMain) {
         })
     }
 }
-// ----------> LIST strong Items <----------
-export async function coloredTextStyle(coloredTextItems, hoverTxtColor, elementMain, elementSec, currentTheme) {
+
+export async function coloredTextStyle(coloredTextItems, hoverTxtColor, elementMain, elementSec) {
 
     function coloredText(item) {
         item.style.color = elementMain
@@ -78,7 +78,6 @@ export async function coloredTextStyle(coloredTextItems, hoverTxtColor, elementM
     }
 }
 
-// ----------> DROPDOWN MENU <----------
 export async function menuStyle(dropdownMenus, bgColor, secondaryColor, hoverBgColor) {
 
     function androidMenu(menu) {
@@ -97,7 +96,6 @@ export async function menuStyle(dropdownMenus, bgColor, secondaryColor, hoverBgC
     }
 }
 
-// ----------> TABLE STYLE <----------
 export async function tablesStyle(bgColor, elementMain) {
 
     const tables = document.querySelectorAll('table')
@@ -118,7 +116,6 @@ export async function tablesStyle(bgColor, elementMain) {
     for (const borderFrame of document.querySelectorAll('.width, .height')) borderFrame.style.border = `2px solid ${elementMain}`
 }
 
-// ----------> FORM STYLE <----------
 export async function formStyle(bgColor, elementMain) {
 
     const FORM = document.querySelector('form')
@@ -133,7 +130,6 @@ export async function formStyle(bgColor, elementMain) {
     for (const input of FORM.querySelectorAll('input, textarea')) inputStyle(input)
 }
 
-// ----------> Call to ACTION <----------
 export function pulsingAnimation(time = 2) {
     const style = document.createElement('style')
     style.innerHTML = `

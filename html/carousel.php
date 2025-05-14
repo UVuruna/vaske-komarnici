@@ -14,6 +14,7 @@
             }
         }
     }
+    shuffle($files);
 
     function is_video($filename) {
         $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
@@ -44,9 +45,9 @@
                     <video class="clickable lazy-media video-loop" src="<?= $file ?>" autoplay muted loop playsinline controls preload="none"></video>
                 <?php else: ?>
                     <img class="clickable" src="<?= $file ?>" alt="Fotografija sa terena" loading="lazy">
-                <?php endif; ?>
+                <?php endif ?>
             </div>
-        <?php endforeach; ?>
+        <?php endforeach ?>
     </div>
 </div>
 

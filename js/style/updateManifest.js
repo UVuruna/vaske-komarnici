@@ -1,4 +1,4 @@
-export async function updateManifest(themeColor, bgColor) {
+window.updateManifest =  async function(bgColor, themeColor) {
     const metaTheme = document.querySelector('meta[name="theme-color"]')
     const metaBG = document.querySelector('meta[name="background-color"]')
     metaTheme.setAttribute('content', themeColor)

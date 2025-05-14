@@ -14,7 +14,7 @@
     </section>
 
     <footer>
-        <p>&copy; <?php echo date("Y"); ?> <?php echo $companyName ?> | Sva prava zadržana</p>
+        <p>&copy; <?php echo date("Y") ?> <?php echo $companyName ?> | Sva prava zadržana</p>
         <p>Autor: <a href="<?php echo $developerWebsite ?>" target="_blank"><?php echo $developerName ?></a></p>
         <p>Kontakt: <a href="mailto:<?php echo $developerEmail ?>"><?php echo $developerEmail ?></a></p>
     </footer>

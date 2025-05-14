@@ -1,154 +1,150 @@
-let number = 1
 window.debug = true
-window.operationOrder =  function(func) {
-    console.log(`${number}. "${func.name}": ${Math.floor(performance.now()-window.time)} ms`)
-    number++
-}
 
 async function presentation(version, videoTitles) {
-    const { selectModel, promoWidth } = await import(
-        './interaction/selectModel.js?v=' + version
-    )
-    selectModel() ; if (debug) operationOrder(selectModel)
-    if (window.innerWidth > 700) {promoWidth() ;  if (debug) operationOrder(promoWidth)}
-       
+    const {selectModel, promoWidth} = await import('./interaction/selectModel.js?v=' + version)
+    await selectModel()
+    /*if (debug) operationOrder(selectModel)*/
+    if (window.innerWidth > 700) {
+        promoWidth()
+        /*if (debug) operationOrder(promoWidth)*/
+    }
 
-    const { videoLoop, videoPlay, loadVideo } = await import(
-        './media/media.js?v=' + version
-    )
-    for (const video of videoTitles) {loadVideo(video) ; if (debug) operationOrder(loadVideo)}
-    videoPlay() ; if (debug) operationOrder(videoPlay)
-    videoLoop() ; if (debug) operationOrder(videoLoop)
-    
+    import('./media/media.js?v=' + version).then(module => {
+        for (const video of videoTitles) {
+            module.loadVideo(video)
+            /*if (debug) operationOrder(module.loadVideo, video)*/
+        }
+        module.videoPlay()
+        /*if (debug) operationOrder(module.videoPlay)*/
+        module.videoLoop()
+        /*if (debug) operationOrder(module.videoLoop)*/
+    })
 }
 
 async function carousel(version) {
     import('./media/carousel.js?v=' + version)
     import('./media/imagePreview.js?v=' + version)
-    if (debug) operationOrder(carousel)
+    /*if (debug) operationOrder(carousel)*/
 }
 
 async function order(version, priceDict) {
-    const { orderTableInit } = await import(
-        './ordering/orderTable.js?v=' + version
-    )
-    orderTableInit(priceDict) ;  if (debug) operationOrder(orderTableInit)
-   
+    const {orderTableInit} = await import('./ordering/orderTable.js?v=' + version)
+    await orderTableInit(priceDict)
+    /*if (debug) operationOrder(orderTableInit)*/
 
-    const { showPopup } = await import('./ordering/showPopup.js?v=' + version)
+    import('./ordering/showPopup.js?v=' + version).then(module => {
+        module.showPopup()
+        /*if (debug) operationOrder(module.showPopup)*/
+    })
     import('./ordering/orderMemory.js?v=' + version)
-    showPopup() ; if (debug) operationOrder(showPopup)
-    
 }
 
-export async function init(version, path, initDict) {
-    window.time = performance.now()
+async function loadGlobals() {
+    if (!sessionStorage.getItem('start')) {
+        window.updateManifest(
+            window.ThemeColors[window.theme]['primary'],
+            window.ThemeColors[window.theme]['primaryElement']
+        )
+        sessionStorage.setItem('start', true)
+    }
+}
+
+async function removeLoadingScreen() {
+    const loader = document.getElementById("loader");
+    loader.style.transition = "opacity .35s ease";
+    loader.style.opacity = "0";
+    document.querySelector("main").style.opacity = "1";
+    setTimeout(() => {
+        loader.style.display = 'none';
+    }, 350);
+}
+
+
+export async function init(version, path, config, initDict) {
+    /*let time
+    if (debug) {
+        let number = 1
+        time = performance.now()
+        window.operationOrder =  function(func, arg=null) {
+            console.log(`${number}. "${func.name}${arg ? ' | '+arg : ''}": ${Math.floor(performance.now()-time)} ms`)
+            number++
+        }
+    }
+    */
     window.path = path
     window.version = version
+    window.ThemeColors = config['ThemeColors']
+    window.theme = config['theme']
+    window.ThemeList = config['ThemeList']
     
-    let loadGlobals,
-        themeCycle,
-        settingThemeOnload,
-        initGuide,
-        showGuide,
-        closeBtn
-
-    await import('./globals.js?v=' + version).then(module => {
-        loadGlobals = module.loadGlobals
-    })
-    await import('./style/updateManifest.js?v=' + version).then(module => {
-        window.updateManifest = module.updateManifest
-    })
-    await import('./style/theme.js?v=' + version).then(module => {
-        ; (themeCycle = module.themeCycle),
-            (settingThemeOnload = module.settingThemeOnload)
-    })
-
-    await loadGlobals() ; if (debug) operationOrder(loadGlobals)
-    
-
+    await import('./style/updateManifest.js?v=' + version)
     await (async () => {
-        await settingThemeOnload() ; if (debug) operationOrder(settingThemeOnload)
-       
+        loadGlobals()
+        /*if (debug) operationOrder(loadGlobals)*/
+
+        const {settingThemeOnload} = await import('./style/theme.js?v=' + version)
+        await settingThemeOnload()
+        /*if (debug) operationOrder(settingThemeOnload)*/
 
         if (window.innerWidth <= 800) {
-            let mobileMenu
-            await import('./interaction/clickHover.js?v=' + version).then(module => {
-                mobileMenu = module.mobileMenu
-            })
-            mobileMenu() ; if (debug) operationOrder(mobileMenu)
-            
+            import('./interaction/clickHover.js?v=' + version).then(module => {
+                module.mobileMenu()
+                /*if (debug) operationOrder(module.mobileMenu)*/
+            })   
         }
-        await import('./media/guide.js?v=' + version).then(module => {
-            initGuide = module.initGuide
-            showGuide = module.showGuide
-            closeBtn = module.closeBtn
+        import('./media/guide.js?v=' + version).then(module => {
+            module.initGuide()
+            /*if (debug) operationOrder(module.initGuide)*/
         })
-        initGuide(sessionStorage.getItem('theme')) 
-        
-        window.showGuide = showGuide
-        window.closeBtn = closeBtn
-        window.themeCycle = themeCycle
     })()
 
     const promises = []
     let showcase = false
 
-    // ----------> Showcase elements <----------
     if (initDict['presentation']) {
         promises.push(
             presentation(version, initDict['presentation'])
         )
         showcase = true
     }
-
-    // ----------> Slideshow elements <----------
     if (initDict['carousel']) {
         promises.push(carousel(version))
         if (showcase) {
             promises.push(
                 (async () => {
-                    const { loadDelay } = await import('./media/media.js?v=' + version)
-                    loadDelay() ; if (debug) operationOrder(loadDelay)
+                    import('./media/media.js?v=' + version).then(module => {
+                        module.loadDelay()
+                        /*if (debug) operationOrder(module.loadDelay)*/
+                    })
                 })()
             )
             
         } else {
             promises.push(
                 (async () => {
-                    const { loadDelay, videoLoop, videoPlay } = await import('./media/media.js?v=' + version)
-                    loadDelay() ; if (debug) operationOrder(loadDelay)
-                    videoLoop() ; if (debug) operationOrder(videoLoop)
-                    videoPlay() ; if (debug) operationOrder(videoPlay)
+                    import('./media/media.js?v=' + version).then(module => {
+                        module.loadDelay()
+                        /*if (debug) operationOrder(module.loadDelay)*/
+                        module.videoLoop()
+                        /*if (debug) operationOrder(module.videoLoop)*/
+                        module.videoPlay()
+                        /*if (debug) operationOrder(module.videoPlay)*/
+                    })
                 })()
             )
         }
     }
-
-    // ----------> Ordering table and form <----------
     if (initDict['order']) {
         promises.push(order(version, initDict['order']))  
     }
-
-    // Kada su sve funkcije dodate u promises, izvrši ih pomoću Promise.all
     await Promise.all(promises)
 
-    // ----------> Remove Loading Screen <----------
-    removeLoadingScreen() ; if (debug) promises.push(operationOrder(removeLoadingScreen))
-    console.log(`Screen => Width: ${window.innerWidth}px | Height: ${window.innerHeight}px`)
-    console.log(`>>>>\n\tPage loaded in: ${Math.floor(performance.now()-window.time)} ms`)
-    
-}
-
-function removeLoadingScreen() {
-    const main = document.querySelector("main")
-    const loader = document.getElementById("loader");
-    main.style.transition = "opacity 0.5s ease";
-    loader.style.transition = "opacity 0.5s ease";
-    main.style.opacity = "1";
-    loader.style.opacity = "0";
-    
-    setTimeout(() => {
-        loader.remove();
-    }, 500);
+    removeLoadingScreen()
+    /*
+    if (debug) {
+        operationOrder(removeLoadingScreen)
+        console.log(`>>>\n\tWidth: ${window.innerWidth}px | Height: ${window.innerHeight}px`)
+        console.log(`>>>\n\tPage loaded in: ${(performance.now() - time).toFixed(2)} ms`)
+    }
+    */
 }

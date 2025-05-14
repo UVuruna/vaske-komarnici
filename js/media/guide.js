@@ -1,8 +1,4 @@
-let theme
-
-export async function initGuide(Theme) {
-    theme = Theme
-
+export async function initGuide() {
     for (const guide of document.querySelectorAll('#header .guide')) {
         guide.onclick = function () {
             showGuide('header', 'prezentacija slika sa terena')
@@ -25,9 +21,8 @@ export async function initGuide(Theme) {
     }
 }
 
-export function showGuide(videoSRC, videoALT = '') {
-    const Theme = sessionStorage.getItem('theme')
-    const colors = window.ThemeColors[Theme ? Theme : theme]
+window.showGuide = function(videoSRC, videoALT = '') {
+    const colors = window.ThemeColors[window.theme]
     const version = window.version
     const path = window.path
 
@@ -56,7 +51,7 @@ export function showGuide(videoSRC, videoALT = '') {
 }
 
 
-export function closeBtn() {
+window.closeBtn =  function() {
     const guideDiv = document.getElementById('guide')
     const video = guideDiv.querySelector('#guideVideo')
     video.remove()

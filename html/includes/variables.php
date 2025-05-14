@@ -1,6 +1,4 @@
-<?php
-    include "{$basePath}html/includes/svg.php";
-    
+<?php  
     $developerName    = "UVS | Uroš Vuruna";
     $developerEmail   = "vurunayas@gmail.com";
     $developerWebsite = "https://github.com/UVuruna";
@@ -11,7 +9,7 @@
     $companyPhoneLocal  = "063 105-1331";
     $companyPhoneGlobal = "+381 63 105 1331";
 
-    $version = "1.383";
+    $version = "1.390";
 
     $title = match ($page) {
         'o_nama' => "Ko smo mi?",
@@ -27,6 +25,6 @@
 
     $cenovnik = [
         'Fixed' => 24.99,
-        'Rolled' => 34.99,
-        'Plise' => 39.99,
+        'Rolled' => 39.99,
+        'Plise' => 44.99,
     ];

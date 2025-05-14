@@ -18,7 +18,7 @@ window.addEventListener('beforeunload', () => {
     sessionStorage.setItem('orderList', JSON.stringify(orderData))
 })
 
-function loadSavedOrder() {
+async function loadSavedOrder() {
     for (const input of document.querySelectorAll('form input, form select, form textarea')) {
             const savedValue = sessionStorage.getItem(input.name)
             if (savedValue !== null) {
@@ -73,4 +73,8 @@ function loadSavedOrder() {
     }
 }
 
-window.delayedCall(loadSavedOrder)
+if (document.readyState !== 'loading') {
+    loadSavedOrder()
+} else {
+    document.addEventListener('DOMContentLoaded', loadSavedOrder())
+}

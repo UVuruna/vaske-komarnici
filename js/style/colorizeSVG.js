@@ -260,12 +260,12 @@ function findStyles(SVG) {
 
         if (!elementsDict[`element-${index}`]) elementsDict[`element-${index}`] = {}
 
-        if (stroke && !stroke.includes('url')) {
+        if (stroke && !stroke.includes('url') && stroke!=='none') {
             color = rgbToHEX(strToRGB(stroke))
             elementsDict[`element-${index}`]['stroke'] = color
             uniqueColors.add(color)
         }
-        if (fill && !fill.includes('url')) {
+        if (fill && !fill.includes('url') && fill!=='none') {
             color = rgbToHEX(strToRGB(fill))
             elementsDict[`element-${index}`]['fill'] = color
             uniqueColors.add(color)
@@ -301,9 +301,8 @@ function findGradients(SVG, elementsDict, uniqueColors) {
 }
 
 // MAIN Function that changes from GRAY to COLORED
-export function colorizeSVG(SVG, color) {
+export async function colorizeSVG(SVG, color) {
     const ID = SVG.id
-
     if (!(ID in svgDICT)) {
         var [elementsDict, uniqueColors] = findStyles(SVG)
         var [elements, grayPalette] = findGradients(SVG, elementsDict, uniqueColors)
