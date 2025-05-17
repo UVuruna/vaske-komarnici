@@ -1,11 +1,11 @@
-window.debug = true
+//window.debug = true
 
 async function presentation(version, videoTitles) {
     const {selectModel, promoWidth} = await import('./interaction/selectModel.js?v=' + version)
     await selectModel()
     /*if (debug) operationOrder(selectModel)*/
     if (window.innerWidth > 700) {
-        promoWidth()
+        window.addEventListener('load', promoWidth)
         /*if (debug) operationOrder(promoWidth)*/
     }
 
@@ -49,15 +49,18 @@ async function loadGlobals() {
     }
 }
 
+/*
 async function removeLoadingScreen() {
-    const loader = document.getElementById("loader");
-    loader.style.transition = "opacity .35s ease";
-    loader.style.opacity = "0";
-    document.querySelector("main").style.opacity = "1";
+    const loader = document.getElementById("loader")
+    const main = document.querySelector("main")
+    loader.style.transition = "opacity 0.6s ease"
+    loader.style.opacity = "0"
+    main.style.opacity = "1"
     setTimeout(() => {
-        loader.style.display = 'none';
-    }, 350);
+        loader.remove()
+    }, 600);
 }
+*/
 
 
 export async function init(version, path, config, initDict) {
@@ -86,12 +89,6 @@ export async function init(version, path, config, initDict) {
         await settingThemeOnload()
         /*if (debug) operationOrder(settingThemeOnload)*/
 
-        if (window.innerWidth <= 800) {
-            import('./interaction/clickHover.js?v=' + version).then(module => {
-                module.mobileMenu()
-                /*if (debug) operationOrder(module.mobileMenu)*/
-            })   
-        }
         import('./media/guide.js?v=' + version).then(module => {
             module.initGuide()
             /*if (debug) operationOrder(module.initGuide)*/
@@ -139,8 +136,12 @@ export async function init(version, path, config, initDict) {
     }
     await Promise.all(promises)
 
-    removeLoadingScreen()
+    const loader = document.getElementById("loader")
+    if (loader) loader.remove()
+    document.querySelector("main").style.display = 'flex'
     /*
+    document.querySelector("main").style.opacity = '1'
+    
     if (debug) {
         operationOrder(removeLoadingScreen)
         console.log(`>>>\n\tWidth: ${window.innerWidth}px | Height: ${window.innerHeight}px`)

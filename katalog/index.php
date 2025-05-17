@@ -16,10 +16,15 @@
 <html lang="sr">
     <?php include "{$basePath}html/includes/head.php" ?>
     <body style="background-color: <?php echo $primary ?>;">
-        <?php include "{$basePath}html/includes/loader.php" ?>
         <main>
             <header>
-                <h1><?= $title ?></h1>
+                <h1>
+                    <?php
+                        $splitted = explode(" | ", $title);
+                        $firstTwo = array_slice($splitted, 0, 2);
+                        echo implode("<br>", $firstTwo);
+                    ?>
+                </h1>
                 <p>Izaberite idealan model za vaš prostor. Pronađite komarnike svih vrsta i boja, sve na jednom mestu.</p>
             </header>
             <?php

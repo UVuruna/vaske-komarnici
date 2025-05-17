@@ -16,7 +16,6 @@
 <html lang="sr">
     <?php include "{$basePath}html/includes/head.php" ?>
     <body style="background-color: <?php echo $primary ?>;">
-        <?php include "{$basePath}html/includes/loader.php" ?>
         <main>
             <?php
             include "{$basePath}html/includes/header.php";

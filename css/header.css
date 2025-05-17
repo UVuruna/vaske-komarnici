@@ -13,6 +13,17 @@
     align-items: center;
 }
 
+.read-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 #header li {
     font-weight: 700;
 }
@@ -29,11 +40,15 @@
 
 /* Pages Span Section */
 
+.navigation.show {
+    display: flex;
+}
+
 .menu {
     display: flex;
 }
 
-#MENU {
+#dropdownMENU {
     display: none;
 }
 
@@ -55,24 +70,24 @@
     margin: 0;
 }
 
-#MENU {
+#dropdownMENU {
     width: 60px;
 }
 
 .dropdownTrigger {
-    cursor: pointer;
     position: relative;
 }
 
 /* Dropdown */
 
 .dropdownTrigger ul {
+    z-index: 3;
     display: none;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     top: 100%;
-    width: 10rem;
+    width: 100%;
     flex-direction: column;
     white-space: nowrap;
     border-radius: 1.3em;
@@ -115,7 +130,7 @@
 
     /* -- DROPDOWN Primary -- */
 
-    #MENU {
+    #dropdownMENU {
         display: flex;
         height: 110%;
         width: auto;
@@ -128,6 +143,7 @@
     }
 
     .menu {
+        overflow: hidden;
         display: none;
         position: absolute;
         left: 50%;
@@ -144,7 +160,6 @@
     }
 
     .menu > * {
-        padding: 1em 2em;
         width: 100%;
         text-align: center;
         padding: 1em 2em;
@@ -156,13 +171,9 @@
         font-size: 1.2rem;
     }
 
-    .menu.show {
-        display: flex;
-    }
-
     /* Center Button */
 
-    .pages_frame button {
+    .call-button {
         margin: auto;
     }
 }

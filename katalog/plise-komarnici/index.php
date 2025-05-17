@@ -16,10 +16,9 @@
 <html lang="sr">
     <?php include "{$basePath}html/includes/head.php" ?>
     <body style="background-color: <?php echo $primary ?>;">
-        <?php include "{$basePath}html/includes/loader.php" ?>
         <main>
             <header>
-                <h1><?= $title ?></h1>
+                <h1><?php echo explode(" | ", $title)[0] ?></h1>
                 <p>Izaberite idealan model za vaš prostor – plisirani komarnici svih vrsta i boja, na jednom mestu. Pronađite rešenje koje odgovara vašim potrebama.</p>
             </header>
             <?php

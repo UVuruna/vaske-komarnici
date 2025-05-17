@@ -64,7 +64,7 @@ function displayProduct(
             <div id="guide">
                 <button onclick="closeBtn();">&times;</button>
             </div>
-            <i class="fa-solid guide pulse"></i>
+            <button class="fa-solid guide pulse" aria-label="Instrukcije za korišćenje prezentacija slika komarnika"></button>
             {$titleHTML}
             <div class='selectFrame'>
                 <i class='light border fa-solid ban' width='45' height='45'></i>

@@ -1,22 +1,9 @@
-export async function mobileMenu() {
-    const menuIcon = document.getElementById('MENU')
-    const pagesSpans = document.querySelector('.menu')
-
-    menuIcon.addEventListener('click', e => {
-        e.stopPropagation()
-        pagesSpans.classList.toggle('show')
-    })
-
-    document.body.addEventListener('click', () => {
-        pagesSpans.classList.remove('show')
-    })
-
-    document.querySelector('nav').addEventListener('click', e => {
-        e.stopPropagation()
-    })
-}
-
-export async function colorChange(element, primaryColor, secondaryColor, colorizeSVG) {
+export async function colorChange(
+    element,
+    primaryColor,
+    secondaryColor,
+    colorizeSVG
+) {
     const activate = () => colorizeSVG(element, secondaryColor)
     const deactivate = () => colorizeSVG(element, primaryColor)
 
@@ -44,3 +31,24 @@ export function hoverTxtColor(element, colorIN, colorOUT) {
         element.style.color = colorOUT
     })
 }
+
+
+
+window.navigationMenu = function (event, button) {
+    event.stopPropagation()
+    const dropdown = button.nextElementSibling
+
+    if (window.getComputedStyle(dropdown).display === 'none') {
+        dropdown.classList.add('show')
+        button.setAttribute('aria-expanded', 'true')
+    } else {
+        dropdown.classList.remove('show')
+        button.setAttribute('aria-expanded', 'false')
+    }
+}
+
+document.body.addEventListener('click', () => {
+    document.querySelectorAll('.navigation.show').forEach(dropdown => {dropdown.classList.remove('show')})
+
+    document.querySelectorAll('[aria-expanded="true"]').forEach(btn => {btn.setAttribute('aria-expanded', 'false')})
+})

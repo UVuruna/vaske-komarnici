@@ -93,18 +93,19 @@ function onWheel(e) {
     track.style.transform = `translateX(${translateX}px)`
 }
 
-updateMaxTranslate()
+async function carouselInit() {
+    updateMaxTranslate()
+    // Mouse Wheel
+    track.addEventListener('wheel', onWheel, { passive: false })
+    // Mouse
+    track.addEventListener('mousedown', start)
+    track.addEventListener('mousemove', move)
+    track.addEventListener('mouseup', end)
+    track.addEventListener('mouseleave', end)
+    // Touch
+    track.addEventListener('touchstart', start, { passive: true })
+    track.addEventListener('touchmove', move, { passive: true })
+    track.addEventListener('touchend', end, { passive: true })
+}
 
-// Mouse Wheel
-track.addEventListener('wheel', onWheel, { passive: false })
-
-// Mouse
-track.addEventListener('mousedown', start)
-track.addEventListener('mousemove', move)
-track.addEventListener('mouseup', end)
-track.addEventListener('mouseleave', end)
-
-// Touch
-track.addEventListener('touchstart', start)
-track.addEventListener('touchmove', move)
-track.addEventListener('touchend', end)
+window.addEventListener('load', carouselInit)

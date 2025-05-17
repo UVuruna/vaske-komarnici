@@ -1,8 +1,31 @@
-const lightbox = document.getElementById('lightbox')
-const nextBtn = document.querySelector('.lightbox .next')
-const prevBtn = document.querySelector('.lightbox .prev')
+const lightbox = document.getElementById('lightbox');
+const closeBtn = lightbox.querySelector('.close');
+const nextBtn = lightbox.querySelector('.next');
+const prevBtn = lightbox.querySelector('.prev');
+
+const focusableElements = [closeBtn, nextBtn, prevBtn];
 let currentSRC
 let mediaList = []
+
+
+
+lightbox.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        lightbox.style.display = 'none';
+    }
+
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        const focusedIndex = focusableElements.indexOf(document.activeElement);
+        if (e.shiftKey) {
+            const prevIndex = (focusedIndex - 1 + focusableElements.length) % focusableElements.length;
+            focusableElements[prevIndex].focus();
+        } else {
+            const nextIndex = (focusedIndex + 1) % focusableElements.length;
+            focusableElements[nextIndex].focus();
+        }
+    }
+});
 
 nextBtn.addEventListener('click', () => {
     const currentIndex = mediaList.indexOf(currentSRC)
@@ -34,19 +57,25 @@ function showLightboxMedia(src) {
         img.src = src
     }
 
-    document.getElementById('lightbox').style.display = 'flex'
+    const lightbox = document.getElementById('lightbox');
+    lightbox.style.display = 'flex';
+    lightbox.focus();
 }
 
-function initLightbox(media) {
-    mediaList.push(media.src)
-    media.addEventListener('dblclick', () => {
-        lightbox.style.display = 'flex'
-        currentSRC = media.src
-        showLightboxMedia(currentSRC)
-    })
+function showLightbox(src) {
+    lightbox.style.display = 'flex'
+    showLightboxMedia(src)
 }
 
 // INIT
 for (const media of document.querySelectorAll('.clickable')) {
-    initLightbox(media)
+    const SRC = media.src
+    mediaList.push(SRC)
+    media.addEventListener('dblclick', () => {showLightbox(SRC)})
+    media.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            showLightboxMedia(SRC);
+        }
+    })
 }

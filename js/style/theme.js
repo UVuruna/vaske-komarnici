@@ -30,7 +30,7 @@ export async function settingThemeOnload() {
         formStyle = module.formStyle
         pulsingAnimation = module.pulsingAnimation
     })
-    settingTheme(true)
+    settingTheme()
 }
 
 window.themeCycle = async function() {
@@ -45,7 +45,7 @@ window.themeCycle = async function() {
 
     await Promise.all([
         window.updateManifest(bodyMain, elementMain),
-        settingTheme(false)
+        settingTheme()
     ])
     
     document.cookie = `theme=${newTheme}; path=/`;
@@ -54,7 +54,7 @@ window.themeCycle = async function() {
     //if (window.debug) console.log(`>>>>\nTheme swapped in: ${(performance.now() - time).toFixed(2)} ms`)
 }
 
-async function settingTheme(load) {
+async function settingTheme() {
     //window.debug = window.debug && load
     const {
         primaryElement: elementMain,
@@ -66,9 +66,6 @@ async function settingTheme(load) {
     const LOGO = document.getElementById('LOGO')
     const MENU = document.getElementById('MENU')
 
-    await tablesStyle(bodySec, elementMain)
-    await formStyle(bodySec, elementMain)
-
     const promises = [];
     promises.push(pulsingAnimation())
     promises.push(colorizeSVG(LOGO, elementMain, elementSec))
@@ -76,7 +73,7 @@ async function settingTheme(load) {
     promises.push(colorChange(LOGO, elementMain, elementSec, colorizeSVG))
     promises.push(colorChange(MENU, elementMain, elementSec, colorizeSVG))
     promises.push(lightFrame(document.querySelectorAll('.light'),elementMain,elementSec,bodyMain,bodySec))
-    promises.push(buttonsStyle(document.querySelectorAll('button, .guide'),elementMain,elementSec,bodyMain))
+    promises.push(buttonsStyle(document.querySelectorAll('button:not(.false)'),elementMain,elementSec,bodyMain))
     promises.push(coloredTextStyle(document.querySelectorAll('li strong,  .categoryText'),hoverTxtColor,elementMain,elementSec))
     promises.push(menuStyle(document.querySelectorAll('#header ul'),bodyMain,elementMain,hoverBgColor))
     promises.push(tablesStyle(bodySec, elementMain))

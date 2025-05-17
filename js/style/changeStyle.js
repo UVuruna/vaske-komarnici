@@ -26,7 +26,7 @@ export async function lightFrame(LightFrames, elementMain, elementSec, bodyMain,
 export async function buttonsStyle(BUTTONS, elementMain, elementSec, bodyMain) {
 
     function buttonStyle(button) {
-        if (button.tagName === 'BUTTON') {
+        if (!button.classList.contains('guide')) {
             button.style.backgroundColor = elementMain
             button.style.color = '#ffffff'
             if (button.classList.contains('cta-button')) {
@@ -38,7 +38,7 @@ export async function buttonsStyle(BUTTONS, elementMain, elementSec, bodyMain) {
         }
     }
     function buttoneHover(button) {
-        if (button.tagName === 'BUTTON') {
+        if (!button.classList.contains('guide')) {
             button.style.backgroundColor = elementSec
             button.style.color = bodyMain
         } else {

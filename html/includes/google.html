@@ -1,0 +1,59 @@
+<!-- Structured Data (JSON‑LD) -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Vaske Komarnici",
+        "image": "https://vaske-komarnici.com/img/logo/preview.jpg",
+        "logo": "https://vaske-komarnici.com/img/logo/android-chrome-512x512.png",
+        "url": "https://vaske-komarnici.com",
+        "email": "vaske.komarnici@gmail.com",
+        "telephone": "+381631051331",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Partizanske avijacije 42",
+            "addressLocality": "Beograd",
+            "addressCountry": "RS"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 44.816880,
+            "longitude": 20.383283
+        },
+        "description": "Izrada i montaža rolo, plise i fiksnih komarnika po meri u Beogradu. Brza ugradnja i servis komarnika.",
+        "priceRange": "$$",
+        "openingHours": [
+            "Mo-Su 00:00-24:00"
+        ]
+    }
+</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17002561060"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    // Google Ads konverzije
+    gtag('config', 'AW-17002561060');
+
+    // Google Analytics
+    gtag('config', 'G-WV3X5ZL398');
+</script>
+<!-- Event snippet for AKCIJA - Besplatno Merenje i Montaža -->
+<script>
+    function gtag_report_conversion(url) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+            window.location = url;
+        }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-17002561060/SeSHCNvupcQaEKT8uas_',
+            'event_callback': callback
+        });
+        return false;
+    }
+</script>
+<!-- Google AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5692012727130730" crossorigin="anonymous"></script>

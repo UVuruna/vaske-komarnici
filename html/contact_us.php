@@ -18,7 +18,7 @@ $alts = [
 ?>
 
 <header>
-    <h1><?= $title ?></h1>
+    <h1><?php echo explode(" | ", $title)[0] ?></h1>
     <h2>Spremni za besplatno merenje?</h2>
     <p><strong>Napomena</strong>: Prikazane cene su okvirne i informativne prirode. Konačna cena može se razlikovati u zavisnosti od specifičnih zahteva i dimenzija. Prilagođavanje proizvoda je moguće u dogovoru sa kupcem.</p>
 </header>
@@ -27,7 +27,7 @@ $alts = [
     <div id="guide">
         <button onclick="closeBtn();">&times;</button>
     </div>
-    <i class="fa-solid guide pulse"></i>
+    <button class="fa-solid guide pulse" aria-label="Instrukcije za korišćenje tabele za naručivanje komarnika"></button>
 
     <section id="orderSelectorTable">
         <table class="light">
