@@ -72,9 +72,6 @@ function displayProduct(
             <meta itemprop="image" content="{$basePath}img/items/product/{$imgLink}">
             <meta itemprop="description" content="Kvalitetni {$altText} za prozore i vrata">
 
-            <div id="guide">
-                <button onclick="closeBtn();">&times;</button>
-            </div>
             <button class="fa-solid guide pulse" aria-label="Instrukcije za korišćenje prezentacija slika komarnika"></button>
             {$titleHTML}
             <div class='selectFrame'>

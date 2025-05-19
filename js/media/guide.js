@@ -1,3 +1,15 @@
+const guideDiv = document.getElementById('guide')
+
+guideDiv.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeBtn()
+    }
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        guideDiv.querySelector('button').focus()
+    }
+})
+
 export async function initGuide() {
     for (const guide of document.querySelectorAll('#header .guide')) {
         guide.onclick = function () {
@@ -26,7 +38,6 @@ window.showGuide = function(videoSRC, videoALT = '') {
     const version = window.version
     const path = window.path
 
-    const guideDiv = document.getElementById('guide')
     guideDiv.style.display = 'flex'
     guideDiv.insertAdjacentHTML(
         'afterbegin',
@@ -40,6 +51,7 @@ window.showGuide = function(videoSRC, videoALT = '') {
     )
     const video = guideDiv.querySelector('#guideVideo')
     video.style.border = `0.75rem ridge ${colors.primaryElement}`
+    guideDiv.focus()
 
     // Auto close on end
     video.onended = () => {
@@ -49,7 +61,6 @@ window.showGuide = function(videoSRC, videoALT = '') {
         guideDiv.style.display = 'none'
     }
 }
-
 
 window.closeBtn =  function() {
     const guideDiv = document.getElementById('guide')

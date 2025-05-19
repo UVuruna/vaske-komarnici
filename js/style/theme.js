@@ -41,7 +41,6 @@ window.themeCycle = async function() {
     const { primaryElement: elementMain, primary: bodyMain } = window.ThemeColors[newTheme]
     window.theme = newTheme
     document.body.style.backgroundColor = bodyMain
-    window.elementMain = elementMain
 
     await Promise.all([
         window.updateManifest(bodyMain, elementMain),
@@ -62,6 +61,7 @@ async function settingTheme() {
         primary: bodyMain,
         secondary: bodySec
     } = window.ThemeColors[window.theme]
+    window.elementMain = elementMain
 
     const LOGO = document.getElementById('LOGO')
     const MENU = document.getElementById('MENU')

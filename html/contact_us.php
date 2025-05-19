@@ -8,25 +8,22 @@ $ids = [
     "PliseWindow_One",
 ];
 $alts = [
-    "Fiksni komarnik porudžbina",
-    "Rolo komarnik porudžbina",
-    "Dvodelni Plise komarnik za vrata porudžbina",
-    "Jednodelni Plise komarnik za vrata porudžbina",
-    "Dvodelni komarnik za prozor porudžbina",
-    "Jednodelni komarnik za prozor porudžbina",
+    "Fiksni komarnik",
+    "Rolo komarnik",
+    "Dvodelni Plise komarnik za vrata",
+    "Jednodelni Plise komarnik za vrata",
+    "Dvodelni komarnik za prozor",
+    "Jednodelni komarnik za prozor",
 ];
 ?>
 
 <header>
     <h1><?php echo explode(" | ", $title)[0] ?></h1>
-    <h2>Spremni za besplatno merenje?</h2>
+    <h2>Zatražite besplatno merenje i ugradnju komarnika</h2>
     <p><strong>Napomena</strong>: Prikazane cene su okvirne i informativne prirode. Konačna cena može se razlikovati u zavisnosti od specifičnih zahteva i dimenzija. Prilagođavanje proizvoda je moguće u dogovoru sa kupcem.</p>
 </header>
 
 <div id="contact_us" class="order">
-    <div id="guide">
-        <button onclick="closeBtn();">&times;</button>
-    </div>
     <button class="fa-solid guide pulse" aria-label="Instrukcije za korišćenje tabele za naručivanje komarnika"></button>
 
     <section id="orderSelectorTable">
@@ -51,16 +48,27 @@ $alts = [
                             $typeText = 'Plise';
                         }
                     ?>
-                    <tr id="<?php echo $id ?>">
+                    <tr id="<?php echo $id ?>" itemscope itemtype="https://schema.org/Product">
+                        <td style="display: none;">
+                            <meta class="metaName" itemprop="name" content="<?php echo $alts[$index] ?>">
+                            <meta itemprop="category" content="Komarnici">
+                            <meta itemprop="brand" content="Vaske Komarnici">
+                            <meta class="metaImage" itemprop="image" content="<?php echo $basePath ?>img/items/product/<?php echo $id ?>_White_Light.webp">
+                            <meta class="metaDescription" itemprop="description" content="Porudžbina - Kvalitetni <?php echo $alts[$index] ?> izrađeni po meri">
+                        </td>
                         <td>
                             <div class="tableColumn">
-                                <div class="orderCategory" onclick="swapType(this); calculatePrice(this)" >
-                                    <img class="category" src="<?php echo $basePath ?>img/items/product/<?php echo $id ?>_White_Light.webp" alt="<?php echo $alts[$index] ?>" width="80" height="80">
+                                <button class="orderCategory false" onclick="swapType(this); calculatePrice(this)" >
+                                    <img class="category" src="<?php echo $basePath ?>img/items/product/<?php echo $id ?>_White_Light.webp" alt="<?php echo $alts[$index] ?> porudžbina" width="80" height="80">
                                     <p class="categoryText"><?php echo $typeText ?></p>
-                                </div>
+                                </button>
                                 <div class="color">
-                                    <img class="frame" onclick="swapType(this); calculatePrice(this)" src="<?php echo $basePath ?>img/other/White.webp" alt="Boja rama" width="30" height="30">
-                                    <img class="net" onclick="swapType(this)" src="<?php echo $basePath ?>img/other/Light.webp" alt="Boja rama" width="30" height="30">
+                                    <button class="false" onclick="swapType(this.firstElementChild); calculatePrice(this.firstElementChild)">
+                                        <img class="frame" src="<?php echo $basePath ?>img/other/White.webp" alt="Boja rama" width="30" height="30">
+                                    </button>
+                                    <button class="false" onclick="swapType(this.firstElementChild)">
+                                        <img class="net" src="<?php echo $basePath ?>img/other/Light.webp" alt="Boja rama" width="30" height="30">
+                                    </button>
                                 </div>
                             </div>
                         </td>
@@ -122,17 +130,22 @@ $alts = [
                 </thead>
                 <tbody id="orderList">
                     <tr class="empty">
-                        <td colspan="6">Nema porudžbina</td>
+                        <td colspan="6">Nema</td>
                     </tr>
                 </tbody>
             </table>
             <div class="separator">
-                <input id="name" class="light" type="text" name="name" placeholder="Ime" required autocomplete="on"/>
-                <input id="email" class="light" type="text" name="email" placeholder="Email" pattern="[^@]+@[^@]+\.[^@]+" required autocomplete="on"/>
-                <input id="phone" class="light" type="text" name="phone" placeholder="Broj telefona" pattern="^\+?[0-9]{10,15}$" required autocomplete="on"/>
-                <input id="address" class="light" type="text" name="address" placeholder="Adresa (opciono)" autocomplete="on"/>
+                <input id="name" class="light" type="text" name="name" placeholder="Ime" required autocomplete="on"
+                    title="Unesite ime i prezime za porudžbinu"/>
+                <input id="email" class="light" type="text" name="email" placeholder="Email" pattern="[^@]+@[^@]+\.[^@]+" required autocomplete="on"
+                    title="Unesite ispravnu email adresu za potvrdu"/>
+                <input id="phone" class="light" type="text" name="phone" placeholder="Broj telefona" pattern="^\+?[0-9]{10,15}$" required autocomplete="on"
+                    title="Unesite broj telefona radi dogovora"/>
+                <input id="address" class="light" type="text" name="address" placeholder="Adresa (opciono)" autocomplete="on"
+                    title="Unesite adresu ukoliko želite da zakažete dolazak"/>
             </div>
-            <textarea id="orderDetail" class="light" name="orderDetail" placeholder="Detalji Porudžbine (opciono)" rows="3"></textarea>
+            <textarea id="orderDetail" class="light" name="orderDetail" placeholder="Detalji Porudžbine (opciono)" rows="3"
+                title="Unesite detalje porudžbine i posebne zahteve ukoliko ih imate"></textarea>
             <input type="hidden" name="orderList" id="orderListInput">
             <button type="submit" class="cta-button pulse">Pošaljite zahtev</button>
         </form>

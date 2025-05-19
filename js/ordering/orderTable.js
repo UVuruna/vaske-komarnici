@@ -27,12 +27,24 @@ const swappingNet = Object.keys(netTranslate)
 
 let priceDict
 
+function swapMeta(tableRow, imageURL, imgNAME) {
+    const metaName = tableRow.querySelector('.metaName')
+    const metaImage = tableRow.querySelector('.metaImage')
+    const metaDescription = tableRow.querySelector('.metaDescription')
+    const newDescription = `Porudžbina - Kvalitetni ${imgNAME} izrađeni po meri`
+
+    metaName.setAttribute('content', imgNAME)
+    metaImage.setAttribute('content', imageURL)
+    metaDescription.setAttribute('content', newDescription)
+}
+
 // Function for changing the type of insect screen and colors of the frame and net
 function swapType(element) {
     const tableRow = element.closest('tr')
     let newTYPE
 
     if (element.classList.contains('orderCategory')) {
+        
         const text = element.querySelector('p')
         const image = element.querySelector('img')
         const imageSRC = image.src
@@ -46,8 +58,10 @@ function swapType(element) {
             (swappingCategory.indexOf(TYPE) + 1) % swappingCategory.length
             ]
 
-        image.src = imageSRC.replace(TYPE, newTYPE)
-        image.alt = `${categoryTranslate[newTYPE]} porudžbina`
+        const newSRC = imageSRC.replace(TYPE, newTYPE)
+        const newNAME = categoryTranslate[newTYPE]
+        image.src = newSRC
+        image.alt = `${newNAME} porudžbina`
         tableRow.id = newTYPE
 
         for (const item of swappingMainCategory) {
@@ -56,6 +70,8 @@ function swapType(element) {
                 break
             }
         }
+        swapMeta(tableRow, newSRC, newNAME)
+
     } else {
         const imageSRC = element.src
         const TYPE = getID(imageSRC)
@@ -202,7 +218,9 @@ function addOrder(element) {
         const newCell = document.createElement('td')
         if (index === 0) {
             newCell.innerHTML = `
-                <i onclick="deleteOrder(this.closest('tr'))" style="margin:0 0.15rem 0 0; cursor: pointer" class="fa-solid ban"></i>
+                <button style="color:${window.elementMain}" class="false" onclick="deleteOrder(this.closest('tr'))">
+                    <i style="margin:0 0.15rem 0 0; cursor: pointer" class="fa-solid ban"></i>
+                </button>
                 ${item}
             `
         } else if (index === order.length - 1) {

@@ -74,14 +74,14 @@
         });
     </script>
 
-    <?php include "{$basePath}html/includes/google.html" ?>
+    <?php include "{$basePath}html/head/google.html" ?>
 
     <?php if ($init["carousel"]): ?>
-        <?php include "{$basePath}html/carouselFiles.php" ?>
+        <?php include "{$basePath}html/head/carouselFiles.php" ?>
         <script type="application/ld+json">
             <?= json_encode($carouselJsonLD, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) ?>
         </script>
     <?php endif ?>
 </head>
 
-<?php include "{$basePath}html/includes/loader.php" ?>
+

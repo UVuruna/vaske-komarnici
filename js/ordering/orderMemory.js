@@ -46,7 +46,9 @@ async function loadSavedOrder() {
                         newCell.textContent = orderItem
                     } else {
                         newCell.innerHTML = `
-                            <i onclick="deleteOrder(this.closest('tr'))" style="margin:0 0.15rem 0 0; cursor: pointer" class="fa-solid ban"></i>
+                            <button style="color:${window.elementMain}" class="false" onclick="deleteOrder(this.closest('tr'))">
+                                <i style="margin:0 0.15rem 0 0; cursor: pointer" class="fa-solid ban"></i>
+                            </button>
                             ${orderItem}
                         `
                     }

@@ -131,6 +131,10 @@
         justify-content: left;
     }
 
+    .dropdownTrigger ul {
+        width: 80%;
+    }
+
     .menu {
         overflow: hidden;
         display: none;

@@ -70,6 +70,11 @@ th:last-child {
     gap: 0.25rem;
 }
 
+.color button,
+.orderCategory {
+    padding: 0;
+}
+
 .controls>button {
     padding: 0;
     width: 2rem;

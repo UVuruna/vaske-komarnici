@@ -1,7 +1,4 @@
 <header class="carouselHeader">
-    <div id="guide" style="display: none;">
-        <button onclick="closeBtn();">&times;</button>
-    </div>
     <button class="fa-solid guide pulse" aria-label="Instrukcije za korišćenje navigacionog menija"></button>
 
     <h2>Naši Radovi na Terenu</h2>
