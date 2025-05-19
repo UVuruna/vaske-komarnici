@@ -25,7 +25,7 @@
                         echo implode("<br>", $firstTwo);
                     ?>
                 </h1>
-                <p>Izaberite idealan model za vaš prostor. Pronađite komarnike svih vrsta i boja, sve na jednom mestu.</p>
+                <p>Pogledajte kompletan katalog: fiksni, rolo i plisirani komarnici svih dimenzija, boja i mreža. Na jednom mestu – sve što vam je potrebno za zaštitu od insekata.</p>
             </header>
             <?php
             include "{$basePath}html/includes/header.php";

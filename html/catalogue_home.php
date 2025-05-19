@@ -4,8 +4,8 @@
 
 <div class="catalogue">
     <header>
-        <h2>Katalog komarnika</h2>
-        <p>Izaberite idealan model za vaš prostor. Pronađite komarnike svih vrsta i boja, sve na jednom mestu.</p>
+        <h2>Komarnici – Prodaja, Ugradnja i Cena po m²</h2>
+        <p>Fiksni, rolo i plise komarnici za prozore i vrata. Izaberite savršen model uz akcijske cene i profesionalnu montažu u Beogradu i okolini.</p>
     </header>
 
     <video id="showcase" title="Prezentacija komarnika" class="video-loop" autoplay muted loop playsinline preload="none"></video>

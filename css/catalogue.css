@@ -163,7 +163,8 @@
 
 @media (max-width: 1000px) {
     .promoContainer { 
-        grid-template-columns: calc(60%) calc(40%); 
+        grid-template-columns: calc(54%) calc(44%);
+        gap: 2%; 
     }
     
     .selectFrame {

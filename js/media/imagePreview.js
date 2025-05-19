@@ -4,26 +4,27 @@ const nextBtn = lightbox.querySelector('.next');
 const prevBtn = lightbox.querySelector('.prev');
 
 const focusableElements = [closeBtn, nextBtn, prevBtn];
+let opened = false
 let currentSRC
 let mediaList = []
 
 
 
+
 lightbox.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
-        lightbox.style.display = 'none';
+        closeLightbox()
     }
 
     if (e.key === 'Tab') {
         e.preventDefault();
         const focusedIndex = focusableElements.indexOf(document.activeElement);
-        if (e.shiftKey) {
-            const prevIndex = (focusedIndex - 1 + focusableElements.length) % focusableElements.length;
-            focusableElements[prevIndex].focus();
-        } else {
-            const nextIndex = (focusedIndex + 1) % focusableElements.length;
-            focusableElements[nextIndex].focus();
-        }
+        const index = 
+            (e.shiftKey) 
+            ? (focusedIndex - 1 + focusableElements.length) % focusableElements.length
+            : (focusedIndex + 1) % focusableElements.length
+        
+        focusableElements[index].focus();
     }
 });
 
@@ -39,6 +40,11 @@ prevBtn.addEventListener('click', () => {
     currentSRC = mediaList[prevIndex]
     showLightboxMedia(currentSRC)
 })
+
+window.closeLightbox = function() {
+    lightbox.style.display = 'none'
+    opened = false
+}
 
 function showLightboxMedia(src) {
     const img = document.getElementById('lightbox-image')
@@ -59,7 +65,10 @@ function showLightboxMedia(src) {
 
     const lightbox = document.getElementById('lightbox');
     lightbox.style.display = 'flex';
-    lightbox.focus();
+    if (!opened) {
+        lightbox.focus()
+        opened = true
+    }
 }
 
 function showLightbox(src) {

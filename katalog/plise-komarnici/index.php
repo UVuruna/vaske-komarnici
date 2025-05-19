@@ -19,7 +19,7 @@
         <main>
             <header>
                 <h1><?php echo explode(" | ", $title)[0] ?></h1>
-                <p>Izaberite idealan model za vaš prostor – plisirani komarnici svih vrsta i boja, na jednom mestu. Pronađite rešenje koje odgovara vašim potrebama.</p>
+                <p>Plise komarnici za vrata i prozore – praktično, elegantno i lako za svakodnevnu upotrebu. Izaberite model po meri i boji, koji se uklapa u svaki enterijer i eksterijer.</p>
             </header>
             <?php
             include "{$basePath}html/includes/header.php";

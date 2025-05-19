@@ -19,7 +19,7 @@
         <main>
             <header>
                 <h1><?php echo explode(" | ", $title)[0] ?></h1>
-                <p>Izaberite idealan model za vaš prostor – fiksni komarnici svih vrsta i boja, na jednom mestu. Pronađite rešenje koje odgovara vašim potrebama.</p>
+                <p>Fiksni komarnici u svim dimenzijama, bojama i vrstama mreža – trajna zaštita za prozore koji se ređe otvaraju. Pronađite model koji se savršeno uklapa u vaš prostor.</p>
             </header>
             <?php
             include "{$basePath}html/includes/header.php";

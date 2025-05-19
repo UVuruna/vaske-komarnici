@@ -42,7 +42,12 @@ function displayProduct(
                 <div>
                     <strong class="price">Cena:</strong>
                     <span class="old-price">{$oldPrice}.99 €/m²</span>
-                    <strong class="price" itemprop="price" content="{$price}">{$price} € / m²</strong>
+
+                    <div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                        <meta itemprop="priceCurrency" content="EUR">
+                        <strong class="price" itemprop="price" content="{$price}">{$price} € / m²</strong>
+                        <link itemprop="availability" href="https://schema.org/InStock" />
+                    </div>
                 </div>
             </div>
             
@@ -60,7 +65,13 @@ function displayProduct(
 
     echo <<<HTML
     <div class='promoContainer'>
-        <section class="promo">
+        <section class="promo" itemscope itemtype="https://schema.org/Product">
+            <meta itemprop="name" content="{$altText}">
+            <meta itemprop="category" content="Komarnici">
+            <meta itemprop="brand" content="Vaske Komarnici">
+            <meta itemprop="image" content="{$basePath}img/items/product/{$imgLink}">
+            <meta itemprop="description" content="Kvalitetni {$altText} za prozore i vrata">
+
             <div id="guide">
                 <button onclick="closeBtn();">&times;</button>
             </div>
@@ -85,12 +96,12 @@ function displayProduct(
                 </div>
                 {$tipRamaHtml}
             </div>
-            <img width='500' height='500' class='promoImage hoverHighlight hoverable' src='{$basePath}img/items/product/{$imgLink}' alt='{$altText} slika' loading='lazy'/>
+            <img width='500' height='500' class='promoImage hoverHighlight hoverable' src='{$basePath}img/items/product/{$imgLink}' alt='{$altText} –  protivinsektna zaštita, Beograd' loading='lazy'/>
             {$cenaHtml}
             {$saznajVišeHtml}
         </section>
         <section class="explanation">
-            <div class="light">
+            <article class="light">
                 <h2>{$altText}</h2>
                 <div>
                     <p class="type"></p>
@@ -104,7 +115,7 @@ function displayProduct(
                     <h3 class="netTitle">Boja mreže</h3>
                     <p class="net"></p>
                 </div>
-            </div>
+            </article>
         </section>
     </div>
     HTML;

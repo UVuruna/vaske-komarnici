@@ -251,3 +251,14 @@ article {
         filter: hue-rotate(12deg) contrast(85%) brightness(135%) saturate(150%);
     }
 }
+
+.read-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

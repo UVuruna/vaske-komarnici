@@ -19,7 +19,7 @@
         <main>
             <header>
                 <h1><?php echo explode(" | ", $title)[0] ?></h1>
-                <p>Izaberite idealan model za vaš prostor – rolo komarnici svih vrsta i boja, na jednom mestu. Pronađite rešenje koje odgovara vašim potrebama.</p>
+                <p>Rolo komarnici sa mehanizmom za uvlačenje – diskretni, funkcionalni i dugotrajni. Pogodni za čestu upotrebu, dostupni u više boja i tipova mreža.</p>
             </header>
             <?php
             include "{$basePath}html/includes/header.php";

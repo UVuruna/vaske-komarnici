@@ -1,28 +1,3 @@
-<?php
-    $folder = "{$basePath}img/slideshow/";
-    $allFiles = scandir($folder);
-    $files = [];
-
-    foreach ($allFiles as $file) {
-        if ($file === '.' || $file === '..') {
-            continue;
-        }
-        foreach ($init['carousel'] as $item) {
-            if (strpos($file, $item) !== false) {
-                $files[] = "{$folder}{$file}";
-                break;
-            }
-        }
-    }
-    shuffle($files);
-
-    function is_video($filename) {
-        $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-        $video_extensions = ['mp4'];
-        return in_array($ext, $video_extensions);
-    }
-?>
-
 <header class="carouselHeader">
     <div id="guide" style="display: none;">
         <button onclick="closeBtn();">&times;</button>
@@ -46,14 +21,14 @@
                     <video class="clickable lazy-media video-loop"
                         src="<?= $file ?>" 
                         autoplay muted loop playsinline controls preload="none"
-                        aria-label="Video sa terena <?= $cleanName ?>"
-                        tabindex="0">
+                        aria-label="Primer ugradnje komarnika - <?= $cleanName ?>"
+                        role="button" tabindex="0">
                         Vaš pretraživač ne podržava video tag.
                     </video>
                 <?php else: ?>
                     <img class="clickable"
-                    src="<?= $file ?>" alt="Fotografija sa terena <?= $cleanName ?>"
-                    loading="lazy" tabindex="0">
+                    src="<?= $file ?>" alt="Primer ugradnje komarnika - <?= $cleanName ?>"
+                    loading="lazy" role="button" tabindex="0">
                 <?php endif ?>
             </div>
         <?php endforeach ?>
@@ -65,6 +40,5 @@
     <video id="lightbox-video" src=""></video>
     <button class="next" aria-label="Sledeći medijski zapis">&gt;</button>
     <button class="prev" aria-label="Prethodni medijski zapis">&lt;</button>
-    <button class="close" onclick="this.parentElement.style.display='none'" aria-label="Zatvori prikaz">&times;</button>
+    <button class="close" onclick="closeLightbox()" aria-label="Zatvori prikaz">&times;</button>
 </div>
-
