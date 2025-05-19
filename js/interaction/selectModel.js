@@ -48,17 +48,17 @@ export async function selectModel() {
             seenPromos.add(promo)
         }
 
-        selector.onclick = function () {
+        selector.parentElement.onclick = function () {
             // VAR declaration
-            const promo = this.closest('.promo')
+            const promo = selector.closest('.promo')
             const image = promo.querySelector('.promoImage')
             let imageSRC = image.getAttribute('src')
             image.style.opacity = 0
 
             setTimeout(() => {
                 // Normal Situation ==> Changing Selected Part (net,frame,sides)
-                if (this.tagName !== 'I') {
-                    const name = this.getAttribute('src').split('/').pop().split('.')[0] // White,Brown,Antracite,Light,Dark,Both,One
+                if (selector.tagName !== 'I') {
+                    const name = selector.getAttribute('src').split('/').pop().split('.')[0] // White,Brown,Antracite,Light,Dark,Both,One
 
                     // This is if actual photo is without INSECT SCREEN
                     if (!(imageSRC.includes('Light') || imageSRC.includes('Dark'))) {
@@ -75,7 +75,7 @@ export async function selectModel() {
                             image.src = newName
 
                             // Configuring Interactive Text elements
-                            catalogueText(findElements(getParts(newName), this))
+                            catalogueText(findElements(getParts(newName), selector))
                         }
                     }
                     // Open Window PHOTO
@@ -94,7 +94,7 @@ export async function selectModel() {
                     image.src = newName
 
                     // Configuring Interactive Text elements
-                    catalogueText(findElements(getParts(newName), this))
+                    catalogueText(findElements(getParts(newName), selector))
                 }
                 setTimeout(() => {
                     image.style.opacity = 1

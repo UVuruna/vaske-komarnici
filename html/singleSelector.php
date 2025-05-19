@@ -22,8 +22,12 @@ function displayProduct(
             <div class='light border'>
                 <h3><strong>Tip</strong></h3>
                 <ul>
-                    <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Both.webp?{$version}' alt='{$altText} dvostrani' loading='lazy'/></li>
-                    <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/One.webp?{$version}' alt='{$altText} jednostrani' loading='lazy'/></li>
+                    <li><button class='false'>
+                        <img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Both.webp?{$version}' alt='{$altText} dvostrani' loading='lazy'/>
+                    </li></button>
+                    <li><button class='false'>
+                        <img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/One.webp?{$version}' alt='{$altText} jednostrani' loading='lazy'/>
+                    </li></button>
                 </ul>
             </div>
         HTML;
@@ -81,20 +85,30 @@ function displayProduct(
             <button class="fa-solid guide pulse" aria-label="Instrukcije za korišćenje prezentacija slika komarnika"></button>
             {$titleHTML}
             <div class='selectFrame'>
-                <i class='light border fa-solid ban' width='45' height='45'></i>
+                <button class='false'><i class='light border fa-solid ban' width='45' height='45'></i></button>
                 <div class='light border'>
                     <h3><strong>Ram</strong></h3>
                     <ul>
-                        <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/White.webp?{$version}' alt='{$altText} bele boje' loading='lazy'/></li>
-                        <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Antracite.webp?{$version}' alt='{$altText} antracit boje' loading='lazy'/></li>
-                        <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Brown.webp?{$version}' alt='{$altText} braon boje'/></li>
+                        <li><button class='false'>
+                            <img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/White.webp?{$version}' alt='{$altText} bele boje' loading='lazy'/>
+                        </li></button>
+                        <li><button class='false'>
+                            <img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Antracite.webp?{$version}' alt='{$altText} antracit boje' loading='lazy'/>
+                        </li></button>
+                        <li><button class='false'>
+                            <img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Brown.webp?{$version}' alt='{$altText} braon boje'/>
+                        </li></button>
                     </ul>
                 </div>
                 <div class='light border'>
                     <h3><strong>Mreža</strong></h3>
                     <ul>
-                        <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Light.webp?{$version}' alt='{$altText} tamnije (crne) mreže' loading='lazy'/></li>
-                        <li><img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Dark.webp?{$version}' alt='{$altText} tamnije (crne) mreže' loading='lazy'/></li>
+                        <li><button class='false'>
+                            <img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Light.webp?{$version}' alt='{$altText} tamnije (crne) mreže' loading='lazy'/>
+                        </li></button>
+                        <li><button class='false'>
+                            <img width='40' height='40' class='hoverHighlight hoverable' src='{$basePath}img/other/Dark.webp?{$version}' alt='{$altText} tamnije (crne) mreže' loading='lazy'/>
+                        </li></button>
                     </ul>
                 </div>
                 {$tipRamaHtml}
