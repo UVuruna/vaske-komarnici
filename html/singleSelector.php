@@ -61,6 +61,12 @@ function displayProduct(
                 <button class="pulse" onclick="window.location.href='{$basePath}/kontakt';">Naručite Odmah</button>
             <div>
         HTML;
+    } else {
+        $saznajVišeHtml = <<<HTML
+            <div class="catalogueAction">
+                <button class="pulse" onclick="window.location.href='{$basePath}/kontakt';">Naručite Odmah</button>
+            <div>
+        HTML;
     }
 
     echo <<<HTML
