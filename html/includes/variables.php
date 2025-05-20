@@ -9,7 +9,7 @@
     $companyPhoneLocal  = "063 105-1331";
     $companyPhoneGlobal = "+381 63 105 1331";
 
-    $version = "1.42";
+    $version = "1.45";
 
     $title = match ($page) {
         'o_nama' => "Ko smo mi? | Komarnici Beograd (Servis i Ugradnja)",

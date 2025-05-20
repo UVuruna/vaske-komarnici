@@ -56,22 +56,17 @@
     <?php foreach ($styles as $css): ?>
         <link rel="stylesheet" href="<?= $basePath ?>css/<?= $css ?>.css?v=<?= $version ?>"/>
     <?php endforeach; ?>
-    <link rel="stylesheet" href="<?php echo $basePath ?>css/footer.css?v=<?php echo $version ?>" media="print" onload="this.media='all'"/>
-    <link rel="stylesheet" href="<?php echo $basePath ?>css/guide.css?v=<?php echo $version ?>" media="print" onload="this.media='all'"/>
-
-
     <link rel="stylesheet" href="<?= $basePath ?>css/footer.css?v=<?= $version ?>" media="print" onload="this.media='all'"/>
     <link rel="stylesheet" href="<?= $basePath ?>css/guide.css?v=<?= $version ?>" media="print" onload="this.media='all'"/>
 
     <script type="module">
-        const version = '<?php echo $version ?>';
-        const path = '<?php echo $basePath ?>';
-        const config =  <?php echo json_encode($config) ?>;
-        const initDict =  <?php echo json_encode($init) ?>;
+        const time = <?= $start ?>*1000;
+        const version = <?= $version ?>;
+        const path = '<?= $basePath ?>';
+        const config =  <?= json_encode($config) ?>;
+        const initDict =  <?= json_encode($init) ?>;
 
-        import(`${path}js/init.js?v=${version}`).then(({init}) => {
-            init(version, path, config, initDict);
-        });
+        import(`${path}js/init.js?v=${version}`).then(({init}) => {init(time, version, path, config, initDict)})
     </script>
 
     <?php include "{$basePath}html/head/google.html" ?>

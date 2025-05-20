@@ -1,4 +1,5 @@
 <?php
+    $start = microtime(true);
     $basePath = "./";
     $page     = null;
     include "{$basePath}html/includes/variables.php";
@@ -28,3 +29,4 @@
         </main>
     </body>
 </html>
+

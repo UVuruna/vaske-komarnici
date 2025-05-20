@@ -1,4 +1,5 @@
 <?php
+    $start = microtime(true);
     $basePath = "../";
     $page     = "o_nama";
     include "{$basePath}html/includes/variables.php";

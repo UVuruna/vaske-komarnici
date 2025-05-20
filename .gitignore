@@ -1,5 +1,4 @@
 support/
-html/ordering.php
 PHPMailer/
 .env
 vendor/
