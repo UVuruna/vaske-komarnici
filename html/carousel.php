@@ -16,11 +16,11 @@
                 ?>
                 <?php if ($isVideo): ?>
                     <video class="clickable lazy-media video-loop"
-                        src="<?= $file ?>" 
                         autoplay muted loop playsinline controls preload="none"
                         aria-label="Primer ugradnje komarnika - <?= $cleanName ?>"
                         role="button" tabindex="0">
                         Vaš pretraživač ne podržava video tag.
+                        <source data-src="<?= $file ?>" type="video/mp4"/>
                     </video>
                 <?php else: ?>
                     <img class="clickable"

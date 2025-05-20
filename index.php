@@ -21,8 +21,8 @@
             <?php
             include "{$basePath}html/includes/header.php";
             include "{$basePath}html/about_us.php";
-            include "{$basePath}html/carousel.php";
             include "{$basePath}html/catalogue_home.php";
+            include "{$basePath}html/carousel.php";
             include "{$basePath}html/includes/footer.php"
             ?>
         </main>

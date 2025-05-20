@@ -56,9 +56,9 @@ export async function loadVideo(videoID) {
         }
     }
     videoElement.innerHTML = `
-            <source data-src="${basePath}img/items/showroom/${videoID}.mp4?v=${version}" type="video/mp4" />
-            <source data-src="${basePath}img/items/showroom/${videoID}.webm?v=${version}" type="video/webm" />
-            <source data-src=".${basePath}img/items/showroom/${videoID}_H264.mp4?v=${version}" type="video/mp4" />
+            <source data-src="${basePath}img/items/showroom/${videoID}.mp4?v=${version}" type="video/mp4"/>
+            <source data-src="${basePath}img/items/showroom/${videoID}.webm?v=${version}" type="video/webm"/>
+            <source data-src=".${basePath}img/items/showroom/${videoID}_H264.mp4?v=${version}" type="video/mp4"/>
         `
     loadDelay(videoElement)
 }

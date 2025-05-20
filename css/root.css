@@ -45,11 +45,12 @@ body {
 }
 
 main {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 2rem;
-    /*opacity: 0;*/
+    opacity: 0;
     background-color: inherit;
+    transition: opacity 0.5s ease;
 }
 
 button {

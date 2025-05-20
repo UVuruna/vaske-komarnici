@@ -23,15 +23,41 @@
     }
 
 
-    function generateImageDescription($url) {
+    function generateName($url) {
         $name = pathinfo($url, PATHINFO_FILENAME);
     
         if (stripos($name, 'Rolo') !== false) {
-            return "Primer ugradnje rolo komarnika";
+            return "rolo komarnika";
         } elseif (stripos($name, 'Plise') !== false) {
-            return "Primer ugradnje plise komarnika";
+            return "plise komarnika";
         } else {
-            return "Primer ugradnje komarnika";
+            return "fiksnih komarnika";
+        }
+    }
+
+    $extension = [
+        "White_Light",
+        "White_Dark",
+        "Antracite_Light",
+        "Antracite_Dark",
+        "Brown_Light",
+        "Brown_Dark"
+    ];
+    $type = ["Both","One"];
+    $category = ["Door","Window"];
+    function getThumbnail($name) {
+        global $extension,$type,$category;
+        $ext = $extension[array_rand($extension)];
+        
+        if ($name === "rolo komarnika") {
+            return "Rolled_{$ext}.webp";
+        } elseif ($name === "plise komarnika") {
+            $typ = $type[array_rand($type)];
+            $cat = $category[array_rand($category)];
+            return "Plise{$cat}_{$typ}_{$ext}.webp";
+        } else {
+            $typ = $type[array_rand($type)];
+            return "Fixed_{$typ}_{$ext}.webp";
         }
     }
 
@@ -49,9 +75,13 @@
     ];
     
     foreach ($files as $file) {
+        $name = generateName($file);
         $carouselJsonLD['image'][] = [
             "@type" => generateType($file),
-            "contentUrl" => str_replace($basePath, "https://vaske-komarnici.com/", $file),
-            "description" => generateImageDescription($file)
+            "name" => "Ugradnja {$name}",
+            "description" => "Pogledajte kako izgleda profesionalna ugradnja {$name}",
+            "thumbnailUrl" => "https://vaske-komarnici.com/img/items/product/" . getThumbnail($name),
+            "uploadDate" => "2025-05-07T00:00:00+02:00",
+            "contentUrl" => str_replace($basePath, "https://vaske-komarnici.com/", $file)
         ];
     }

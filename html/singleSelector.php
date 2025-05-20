@@ -36,6 +36,7 @@ function displayProduct(
     $cenaHtml = '';
     if ($price) {
         $oldPrice = floor($price /0.85);
+        $year = date('Y');
         
         $cenaHtml = <<<HTML
             <div class="priceFrame">
@@ -51,6 +52,11 @@ function displayProduct(
                         <meta itemprop="priceCurrency" content="EUR">
                         <strong class="price" itemprop="price" content="{$price}">{$price} € / m²</strong>
                         <link itemprop="availability" href="https://schema.org/InStock" />
+
+                        <!-- DODATA POLJA, ISPRAVNO POSTAVLJENA -->
+                        <meta itemprop="priceValidUntil" content="{$year}-12-31">
+                        <meta itemprop="hasMerchantReturnPolicy" content="https://vaske-komarnici.com/kontakt">
+                        <meta itemprop="shippingDetails" content="https://vaske-komarnici.com/o_nama">
                     </div>
                 </div>
             </div>
@@ -81,6 +87,7 @@ function displayProduct(
             <meta itemprop="brand" content="Vaske Komarnici">
             <meta itemprop="image" content="{$basePath}img/items/product/{$imgLink}">
             <meta itemprop="description" content="Kvalitetni {$altText} za prozore i vrata">
+            <meta itemprop="priceValidUntil" content="2025-12-31">
 
             <button class="fa-solid guide pulse" aria-label="Instrukcije za korišćenje prezentacija slika komarnika"></button>
             {$titleHTML}
