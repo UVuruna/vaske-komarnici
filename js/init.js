@@ -1,3 +1,6 @@
+const debug = true
+let initStart
+
 async function presentation(version, videoTitles) {
     const {selectModel, promoWidth} = await import('./interaction/selectModel.js?v=' + version)
     await selectModel()
@@ -22,10 +25,10 @@ async function order(version, priceDict) {
     import('./ordering/orderMemory.js?v=' + version)
 }
 
-async function loadGlobals() {
+async function setManifest(primary, primaryElement) {
     if (!sessionStorage.getItem('start')) {
-        window.updateManifest(window.ThemeColors[window.theme]['primary'],window.ThemeColors[window.theme]['primaryElement'])
-        sessionStorage.setItem('start', true)
+        updateManifest(primary,primaryElement)
+        sessionStorage.setItem('start', JSON.stringify(true))
     }
 }
 
@@ -38,44 +41,38 @@ function removeLoadingScreen() {
 
 
 export async function init(phpStart, version, path, config, initDict) {
-    const initStart = Date.now()
+    if (debug) initStart = Date.now()
     window.path = path
     window.version = version
     window.ThemeColors = config['ThemeColors']
     window.theme = config['theme']
     window.ThemeList = config['ThemeList']
-    
-    await import('./style/updateManifest.js?v=' + version)
-    await (async () => {
-        loadGlobals()
-        await import('./style/theme.js?v=' + version).then(module => module.settingThemeOnload())
-        import('./media/guide.js?v=' + version).then(module => module.initGuide())
-    })()
+    const Showcase = initDict['presentation'] ? true : false
+    const Carousel = initDict['carousel'] ? true : false
+    const Ordering = initDict['order'] ? true : false
+
+    await import('./style/theme.js?v=' + version).then(module => module.settingThemeOnload(Ordering))
 
     const promises = []
-    let showcase = false
-    if (initDict['presentation']) {
-        promises.push(presentation(version, initDict['presentation']))
-        showcase = true
-    }
-    if (initDict['carousel']) {
-        promises.push(carousel(version))
-        if (showcase) {
-            promises.push((async () => {import('./media/media.js?v=' + version).then(module => module.loadDelay())})())
-        } else {
-            promises.push((async () => {import('./media/media.js?v=' + version).then(module => {module.loadDelay(); module.videoLoop(); module.videoPlay()})})())
-        }
-    }
-    if (initDict['order']) {promises.push(order(version, initDict['order']))}
-
+    if (Showcase) promises.push(presentation(version, initDict['presentation']))
+    if (Carousel) promises.push(carousel(version))
+    if (Carousel && Showcase) promises.push(import('./media/media.js?v=' + version).then(module => module.loadDelay()))
+    if (Carousel && !Showcase) promises.push(import('./media/media.js?v=' + version).then(module => {module.loadDelay(); module.videoLoop(); module.videoPlay()}))
+    if (Ordering) promises.push(order(version, initDict['order']))
     await Promise.all(promises)
+
     removeLoadingScreen()
+
+    await import('./style/updateManifest.js?v=' + version)
+    setManifest(window.ThemeColors[window.theme]['primary'],window.ThemeColors[window.theme]['primaryElement'])
+    import('./media/guide.js?v=' + version).then(module => module.initGuide())
     
-    
-    const now = Date.now();
-    const pageLoaded = (now-phpStart)
-    const initLoaded = (now-initStart)
-    console.log(`Page load: ${pageLoaded} ms`)
-    console.log(`JS execute: ${initLoaded} ms (${((initLoaded/pageLoaded)*100).toFixed(2)}%)`)
-    console.log(`Width: ${window.innerWidth}px | Height: ${window.innerHeight}px`)
+    if (debug) {
+        const now = Date.now()
+        const pageLoaded = (now-phpStart)
+        const initLoaded = (now-initStart)
+        console.log(`Page load: ${pageLoaded} ms`)
+        console.log(`JS execute: ${initLoaded} ms (${((initLoaded/pageLoaded)*100).toFixed(2)}%)`)
+        console.log(`Width: ${window.innerWidth}px | Height: ${window.innerHeight}px`)
+    }
 }
