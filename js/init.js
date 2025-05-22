@@ -36,7 +36,7 @@ function removeLoadingScreen() {
     const loader = document.getElementById("loader")
     loader.style.opacity = "0"
     document.querySelector("main").style.opacity = "1"
-    setTimeout(() => {loader.remove()}, 500)
+    setTimeout(() => {loader.remove()}, 0)
 }
 
 

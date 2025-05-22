@@ -34,27 +34,23 @@ export async function settingThemeOnload(Ordering) {
 }
 
 window.themeCycle = async function() {
-    //const time = performance.now()
     const Themes = window.ThemeList
     //Get index of current theme and find next theme in list for cycle
     const newTheme = Themes[(Themes.indexOf(window.theme) + 1) % Themes.length]
     const { primaryElement: elementMain, primary: bodyMain } = window.ThemeColors[newTheme]
     window.theme = newTheme
     document.body.style.backgroundColor = bodyMain
-
     await Promise.all([
         window.updateManifest(bodyMain, elementMain),
         settingTheme(true)
     ])
     
-    document.cookie = `theme=${newTheme}; path=/`;
     for (const bold of document.querySelectorAll('.explanation strong'))  window.explanationStyle(bold)
-
-    //if (window.debug) console.log(`>>>>\nTheme swapped in: ${(performance.now() - time).toFixed(2)} ms`)
 }
 
 async function settingTheme(Ordering) {
-    //window.debug = window.debug && load
+    document.cookie = `theme=${window.theme}; path=/`;
+    console.log(document.cookie)
     const {
         primaryElement: elementMain,
         secondaryElement: elementSec,

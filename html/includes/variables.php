@@ -9,7 +9,7 @@
     $companyPhoneLocal  = "063 105-1331";
     $companyPhoneGlobal = "+381 63 105 1331";
 
-    $version = "1.45";
+    $version = "1.52";
 
     $title = match ($page) {
         'o_nama' => "Ko smo mi? | Komarnici Beograd (Servis i Ugradnja)",
@@ -38,3 +38,40 @@
         'Rolled' => 39.99,
         'Plise' => 44.99,
     ];
+
+    $ThemeList = ['morning', 'noon', 'afternoon', 'night'];
+
+    $ThemeColors = [
+        'morning' => [
+            'primary' => '#36597c',
+            'secondary' => '#cedce9',
+            'primaryElement' => '#b28d34',
+            'secondaryElement' => '#f0c42d'
+        ],
+        'noon' => [
+            'primary' => '#2f3727',
+            'secondary' => '#dfdedd',
+            'primaryElement' => '#437118',
+            'secondaryElement' => '#90a955'
+        ],
+        'afternoon' => [
+            'primary' => '#263751',
+            'secondary' => '#bdc4d4',
+            'primaryElement' => '#840000',
+            'secondaryElement' => '#ba4c5b'
+        ],
+        'night' => [
+            'primary' => '#524e53',
+            'secondary' => '#d5d3e1',
+            'primaryElement' => '#7151a9',
+            'secondaryElement' => '#8e83aa'
+        ]
+    ];
+    
+    $config = [
+        'ThemeColors' => $ThemeColors,
+        'ThemeList' => $ThemeList,
+        'theme' => $theme
+    ];
+
+    extract($ThemeColors[$theme]);

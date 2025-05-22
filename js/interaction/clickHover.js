@@ -48,7 +48,6 @@ window.navigationMenu = function (event, button) {
 }
 
 document.body.addEventListener('click', () => {
-    document.querySelectorAll('.navigation.show').forEach(dropdown => {dropdown.classList.remove('show')})
-
-    document.querySelectorAll('[aria-expanded="true"]').forEach(btn => {btn.setAttribute('aria-expanded', 'false')})
+    document.querySelectorAll('.navigation.show').forEach(dropdown => dropdown.classList.remove('show'))
+    document.querySelectorAll('[aria-expanded="true"]').forEach(btn => btn.setAttribute('aria-expanded', 'false'))
 })

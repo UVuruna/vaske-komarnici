@@ -17,14 +17,13 @@
     font-weight: 700;
 }
 
-/* Logo */
-#LOGO {
-    height: 110%;
+#header svg {
+    height: 100%;
     width: auto;
 }
 
 .logo-frame {
-    height: 95%;
+    height: 110%;
 }
 
 /* Pages Span Section */
@@ -57,10 +56,6 @@
     gap: 3rem;
     padding: 0;
     margin: 0;
-}
-
-#dropdownMENU {
-    width: 60px;
 }
 
 .dropdownTrigger {

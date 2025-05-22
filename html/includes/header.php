@@ -5,8 +5,7 @@
 <header id="header">
     <button onclick="themeCycle('<?php echo $basePath ?>')" class="logo-frame false" aria-label="Promenite temu sajta">  
         <?php echo file_get_contents("{$basePath}img/logo/logo.svg") ?>
-    </button>
-        
+    </button>  
     <nav class="pages_frame" aria-label="Glavna navigacija">
         <button onclick="navigationMenu(event, this)" id="dropdownMENU" class="false"
             aria-haspopup="true" aria-expanded="false" aria-label="Otvorite meni">

@@ -1,9 +1,8 @@
 <?php
-    $start = microtime(true);
     $basePath = "../";
+    include "{$basePath}config.php";
     $page     = "katalog";
     include "{$basePath}html/includes/variables.php";
-    include "{$basePath}html/includes/config.php";
     
     $styles   = [ "catalogue", "singleCatalogue", "carousel" ];
     $init = [

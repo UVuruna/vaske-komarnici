@@ -1,10 +1,9 @@
 <?php
-    $start = microtime(true);
     $basePath = "./";
-    $page     = null;
+    include "{$basePath}config.php";
+    $page = null;
     include "{$basePath}html/includes/variables.php";
-    include "{$basePath}html/includes/config.php";
-
+    
     $styles   = [ "about_us", "catalogue", "carousel" ];
     $init = [
         "presentation" => ["showcase"],

@@ -1,9 +1,8 @@
 <?php
-    $start = microtime(true);
     $basePath = "../";
+    include "{$basePath}config.php";
     $page     = "o_nama";
     include "{$basePath}html/includes/variables.php";
-    include "{$basePath}html/includes/config.php";
     
     $styles   = [ "about_us", "carousel" ];
     $init = [
